@@ -18,7 +18,7 @@ public class TipoCarnetController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/tipocarnet/findAll")
+    @GetMapping("/TipoCarnet/findAll")
     public ResponseEntity<List<TipoCarnet>> getAllJugadores() {
         List<TipoCarnet> jugadores = servicio.findAll();
         if (jugadores.isEmpty())
@@ -26,7 +26,7 @@ public class TipoCarnetController {
         else
             return ResponseEntity.ok(jugadores);
     }
-    @GetMapping("/tipocarnetNombre/{nombre}")
+    @GetMapping("/TipoCarnetNombre/{nombre}")
     public ResponseEntity<TipoCarnet> getTipoCarnetByNombre(@PathVariable @NotBlank String nombre) {
         TipoCarnet idTipo = servicio.findByNombre(nombre.toUpperCase());
         if (idTipo == null) {
@@ -35,7 +35,7 @@ public class TipoCarnetController {
             return ResponseEntity.ok(idTipo);
         }
     }
-    @GetMapping("/tipocarnetId/{id}")
+    @GetMapping("/TipoCarnetId/{id}")
     public ResponseEntity<TipoCarnet> getTipoCarnetById(@PathVariable @NotBlank Integer id) {
         Optional<TipoCarnet> tipoCarnetOptional = servicio.findById(id);
         if (!tipoCarnetOptional.isPresent()) {
@@ -46,9 +46,7 @@ public class TipoCarnetController {
         }
     }
 
-
-
-    @PostMapping("/tipocarnetsave")
+    @PostMapping("/TipoCarnetsave")
     public ResponseEntity<?> crearTipoCarnet(@RequestParam String nombre) {
         TipoCarnet tipoCarnetCreado = servicio.save(nombre.toUpperCase());
 
@@ -58,7 +56,7 @@ public class TipoCarnetController {
             return ResponseEntity.status(HttpStatus.CREATED).body(tipoCarnetCreado);
         }
     }
-    @DeleteMapping("/tipocarnetDelete/{id}")
+    @DeleteMapping("/TipoCarnetDelete/{id}")
     public ResponseEntity<Void> deleteTipoCarnet(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

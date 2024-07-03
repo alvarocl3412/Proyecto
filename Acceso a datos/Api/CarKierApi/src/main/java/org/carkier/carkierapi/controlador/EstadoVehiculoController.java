@@ -22,7 +22,7 @@ public class EstadoVehiculoController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/estadovehiculo/findAll")
+    @GetMapping("/EstadoVehiculo/findAll")
     public ResponseEntity<List<EstadoVehiculo>> getAllEstadoVehiculos() {
         List<EstadoVehiculo> estado = servicio.findAll();
         if (estado.isEmpty())
@@ -30,7 +30,7 @@ public class EstadoVehiculoController {
         else
             return ResponseEntity.ok(estado);
     }
-    @GetMapping("/estadovehiculoId/{id}")
+    @GetMapping("/EstadoVehiculoId/{id}")
     public ResponseEntity<EstadoVehiculo> getEstadoVehiculotById(@PathVariable  Integer id) {
         Optional<EstadoVehiculo> estados = servicio.findById(id);
         if (!estados.isPresent()) {
@@ -40,7 +40,7 @@ public class EstadoVehiculoController {
             return ResponseEntity.ok(estado);
         }
     }
-    @GetMapping("/estadovehiculoEstado/{estado}")
+    @GetMapping("/EstadoVehiculoEstado/{estado}")
     public ResponseEntity<EstadoVehiculo> getEstadoVehiculoByEstado(@PathVariable  String estado) {
         EstadoVehiculo estados = servicio.findByEstado(estado.toUpperCase());
         if (estados == null) {
@@ -49,7 +49,7 @@ public class EstadoVehiculoController {
             return ResponseEntity.ok(estados);
         }
     }
-    @PostMapping("/estadovehiculoSave")
+    @PostMapping("/EstadoVehiculoSave")
     public ResponseEntity<?> crearTipoCarnet(@RequestParam String estado) {
         EstadoVehiculo estadoCreado = servicio.save(estado.toUpperCase());
         if (estadoCreado == null) {
@@ -59,7 +59,7 @@ public class EstadoVehiculoController {
         }
     }
 
-    @DeleteMapping("/estadovehiculoDelete/{id}")
+    @DeleteMapping("EstadoVehiculoDelete/{id}")
     public ResponseEntity<Void> deleteTipoCarnet(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

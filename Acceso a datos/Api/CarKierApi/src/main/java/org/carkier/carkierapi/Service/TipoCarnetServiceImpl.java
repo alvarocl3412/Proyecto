@@ -13,7 +13,6 @@ import java.util.Optional;
 public class TipoCarnetServiceImpl implements TipoCarnetService {
     private final TipoCarnetRepository repositorio;
 
-
     public TipoCarnetServiceImpl(TipoCarnetRepository equpo) {
         this.repositorio = equpo;
     }

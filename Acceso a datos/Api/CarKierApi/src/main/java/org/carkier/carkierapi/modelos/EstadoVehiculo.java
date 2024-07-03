@@ -12,7 +12,6 @@ public class EstadoVehiculo {
     @Column(name = "idestado", nullable = false)
     private Integer id;
 
-    @Size(max = 100)
     @NotNull
     @Column(name = "estado", nullable = false, length = 100)
     private String estado;
