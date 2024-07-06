@@ -1,9 +1,7 @@
 package org.carkier.carkierapi.Service;
 
 import org.carkier.carkierapi.Repositorio.EstadoContratoRepository;
-import org.carkier.carkierapi.Repositorio.EstadoVehiculoRepository;
 import org.carkier.carkierapi.modelos.EstadoContrato;
-import org.carkier.carkierapi.modelos.EstadoVehiculo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

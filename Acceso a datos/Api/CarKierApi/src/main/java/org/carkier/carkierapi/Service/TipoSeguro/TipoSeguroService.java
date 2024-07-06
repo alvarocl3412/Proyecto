@@ -1,9 +1,6 @@
 package org.carkier.carkierapi.Service;
 
-import org.carkier.carkierapi.modelos.EstadoContrato;
-import org.carkier.carkierapi.modelos.EstadoVehiculo;
 import org.carkier.carkierapi.modelos.TipoSeguro;
-
 import java.util.List;
 import java.util.Optional;
 

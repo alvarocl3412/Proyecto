@@ -3,9 +3,7 @@ package org.carkier.carkierapi.Service;
 
 import jakarta.transaction.Transactional;
 import org.carkier.carkierapi.Repositorio.EstadoVehiculoRepository;
-import org.carkier.carkierapi.Repositorio.TipoCarnetRepository;
 import org.carkier.carkierapi.modelos.EstadoVehiculo;
-import org.carkier.carkierapi.modelos.TipoCarnet;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,10 +1,7 @@
 package org.carkier.carkierapi.Service;
 
 import jakarta.transaction.Transactional;
-import org.carkier.carkierapi.Repositorio.EstadoContratoRepository;
 import org.carkier.carkierapi.Repositorio.TipoSeguroRepository;
-import org.carkier.carkierapi.modelos.EstadoContrato;
-import org.carkier.carkierapi.modelos.EstadoVehiculo;
 import org.carkier.carkierapi.modelos.TipoSeguro;
 import org.springframework.stereotype.Service;
 
