@@ -1,6 +1,6 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.DatosDelUsuario;
 
-import org.carkier.carkierapi.modelos.DatosDelUsuario;
+import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
 
 import java.util.List;
 import java.util.Optional;

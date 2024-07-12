@@ -1,16 +1,17 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.Usuario;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.carkier.carkierapi.Repositorio.DatosDelUsuarioRepository;
 import org.carkier.carkierapi.Repositorio.UsuarioRepository;
-import org.carkier.carkierapi.modelos.DatosDelUsuario;
-import org.carkier.carkierapi.modelos.Usuario;
+import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
+import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -32,15 +33,9 @@ public class UsuarioServiceImpl  implements  UsuarioService{
         // Para cada usuario, obtener sus datos del usuario
         usuarios.forEach(usuario -> {
             DatosDelUsuario datos = datosDelUsuarioRepository.findById(usuario.getId()).orElse(null);
-            usuario.setDatosDelUsuario(datos);
+      //      usuario.setDatosDelUsuario(datos);
         });
          return usuarios;
-    }
-    @Override
-    public List<Usuario> findAllUsuariosBaneados() {
-        return findAllUsuariosConDatos().stream()
-                .filter(usuario -> usuario.getDatosDelUsuario() != null && usuario.getDatosDelUsuario().getFechaBanInicio() != null)
-                .collect(Collectors.toList());
     }
 
     @Override
@@ -59,9 +54,16 @@ public class UsuarioServiceImpl  implements  UsuarioService{
             Usuario usuario = optionalUsuario.get();
             Argon2 argon2 = Argon2Factory.create();
             if (argon2.verify(usuario.getContrasena(), contrasena)) {
-                // Cargar los datos del usuario
-                Optional<DatosDelUsuario> optionalDatos = datosDelUsuarioRepository.findById(usuario.getId());
-                optionalDatos.ifPresent(usuario::setDatosDelUsuario);
+                //Como existe el usuario miramos ahora si esta baneado o no
+                DatosDelUsuario datUsu = datosDelUsuarioRepository.findById(usuario.getId()).get();
+                LocalDate hoy = LocalDate.now();
+                if (datUsu.getFechaBanInicio() != null && datUsu.getFechaBanFinal() != null
+                        && (hoy.isAfter(datUsu.getFechaBanInicio()) || hoy.isEqual(datUsu.getFechaBanInicio()))
+                        && (hoy.isBefore(datUsu.getFechaBanFinal()) || hoy.isEqual(datUsu.getFechaBanFinal()))) {
+                    // El usuario está baneado, retornar Optional.empty()
+                    return Optional.empty();
+                }
+                // El usuario no está baneado, retornar el usuario
                 return Optional.of(usuario);
             }
         }

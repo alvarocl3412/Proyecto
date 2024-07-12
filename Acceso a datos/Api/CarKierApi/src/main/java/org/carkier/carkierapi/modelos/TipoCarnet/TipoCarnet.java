@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.modelos.CarnetsDeConducir;
+package org.carkier.carkierapi.modelos.TipoCarnet;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

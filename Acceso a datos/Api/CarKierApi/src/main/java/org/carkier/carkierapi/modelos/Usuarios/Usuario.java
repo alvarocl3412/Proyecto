@@ -1,17 +1,10 @@
 package org.carkier.carkierapi.modelos.Usuarios;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import org.carkier.carkierapi.modelos.CarnetsDeConducir.CarnetsDeConducir;
-import org.carkier.carkierapi.modelos.DatosDelUsuario;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
-public class UsuarioDTO {
+public class Usuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,10 +29,10 @@ public class UsuarioDTO {
     @Column(name = "contrasena", nullable = false, length = 254)
     private String contrasena;
 
-    public UsuarioDTO() {
+    public Usuario() {
     }
 
-    public UsuarioDTO(Integer id, String dni, String nombre, String apellidos, String telefono, String correo, String contrasena) {
+    public Usuario(Integer id, String dni, String nombre, String apellidos, String telefono, String correo, String contrasena) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;

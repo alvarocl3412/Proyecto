@@ -1,6 +1,6 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.TipoCarnet;
 
-import org.carkier.carkierapi.modelos.TipoCarnet;
+import org.carkier.carkierapi.modelos.TipoCarnet.TipoCarnet;
 import java.util.List;
 import java.util.Optional;
 

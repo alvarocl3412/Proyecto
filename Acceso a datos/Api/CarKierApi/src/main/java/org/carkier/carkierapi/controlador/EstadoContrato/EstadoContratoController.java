@@ -1,7 +1,7 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.EstadoContrato;
 
 import org.carkier.carkierapi.Service.EstadoContrato.EstadoContratoService;
-import org.carkier.carkierapi.modelos.EstadoContrato;
+import org.carkier.carkierapi.modelos.EstadoContratos.EstadoContrato;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +36,7 @@ public class EstadoContratoController {
         }
     }
     @GetMapping("/EstadoContratoEstado/{estado}")
-    public ResponseEntity<EstadoContrato> getEstadoVehiculoByEstado(@PathVariable  String estado) {
+    public ResponseEntity<EstadoContrato> getEstadoContratoByEstado(@PathVariable  String estado) {
         EstadoContrato estados = servicio.findByEstado(estado.toUpperCase());
         if (estados == null) {
             return ResponseEntity.notFound().build();
@@ -45,7 +45,7 @@ public class EstadoContratoController {
         }
     }
     @PostMapping("/EstadoContratoSave")
-    public ResponseEntity<?> crearTipoCarnet(@RequestParam String estado) {
+    public ResponseEntity<?> crearEstadoContrato(@RequestParam String estado) {
         EstadoContrato estadoCreado = servicio.save(estado.toUpperCase());
         if (estadoCreado == null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe un estado con ese nombre");
@@ -55,7 +55,7 @@ public class EstadoContratoController {
     }
 
     @DeleteMapping("/EstadoContratoDelete/{id}")
-    public ResponseEntity<Void> deleteTipoCarnet(@PathVariable  Integer id) {
+    public ResponseEntity<Void> deleteEstadoContrato(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
     }

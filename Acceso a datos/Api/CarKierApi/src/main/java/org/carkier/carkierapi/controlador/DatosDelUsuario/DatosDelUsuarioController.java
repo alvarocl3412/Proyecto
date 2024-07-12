@@ -1,7 +1,7 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.DatosDelUsuario;
 
 import org.carkier.carkierapi.Service.DatosDelUsuario.DatosDelUsuarioService;
-import org.carkier.carkierapi.modelos.DatosDelUsuario;
+import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class DatosDelUsuarioController {
     }
 
     @GetMapping("/DatosDelUsuarioId/{id}")
-    public ResponseEntity<DatosDelUsuario> getUsuarioById(@PathVariable Integer id) {
+    public ResponseEntity<DatosDelUsuario> getDatosById(@PathVariable Integer id) {
         Optional<DatosDelUsuario> datos = servicio.findById(id);
         if (!datos.isPresent()) {
             return ResponseEntity.notFound().build();

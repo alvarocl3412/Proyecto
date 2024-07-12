@@ -1,6 +1,6 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.EstadoContrato;
 
-import org.carkier.carkierapi.modelos.EstadoContrato;
+import org.carkier.carkierapi.modelos.EstadoContratos.EstadoContrato;
 import java.util.List;
 import java.util.Optional;
 

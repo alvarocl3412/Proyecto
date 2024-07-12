@@ -1,6 +1,6 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.EstadoVehiculo;
 
-import org.carkier.carkierapi.modelos.EstadoVehiculo;
+import org.carkier.carkierapi.modelos.EstadoVehiculo.EstadoVehiculo;
 
 import java.util.List;
 import java.util.Optional;

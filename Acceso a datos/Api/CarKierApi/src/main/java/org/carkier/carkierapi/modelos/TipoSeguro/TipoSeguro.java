@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.modelos;
+package org.carkier.carkierapi.modelos.TipoSeguro;
 
 import jakarta.persistence.*;
 

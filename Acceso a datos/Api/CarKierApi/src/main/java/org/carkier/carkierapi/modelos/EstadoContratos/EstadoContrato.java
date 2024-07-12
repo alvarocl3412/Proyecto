@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.modelos;
+package org.carkier.carkierapi.modelos.EstadoContratos;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

@@ -1,6 +1,6 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.TipoSeguro;
 
-import org.carkier.carkierapi.modelos.TipoSeguro;
+import org.carkier.carkierapi.modelos.TipoSeguro.TipoSeguro;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ public interface TipoSeguroService {
     TipoSeguro findByNombre(String nombre);
 
     TipoSeguro updatePrecio(Integer id, double precio);
-    TipoSeguro save(String nombre,String descripcion ,double precio);
+    TipoSeguro save(TipoSeguro seguro);
 
     void deleteById(Integer id);
 }

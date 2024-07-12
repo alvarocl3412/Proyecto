@@ -1,8 +1,8 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.TipoSeguro;
 
 import jakarta.transaction.Transactional;
 import org.carkier.carkierapi.Repositorio.TipoSeguroRepository;
-import org.carkier.carkierapi.modelos.TipoSeguro;
+import org.carkier.carkierapi.modelos.TipoSeguro.TipoSeguro;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,14 +39,9 @@ public class TipoSeguroServiceImpl implements TipoSeguroService{
         return repositorio.save(tipoSeguro);
     }
 
-    @Transactional
     @Override
-    public TipoSeguro save(String nombre, String descripcion, double precio) {
-        TipoSeguro tipoSeguro = new TipoSeguro();
-        tipoSeguro.setNombre(nombre);
-        tipoSeguro.setDescripcion(descripcion);
-        tipoSeguro.setCoste(precio);
-        return repositorio.save(tipoSeguro);
+    public TipoSeguro save(TipoSeguro seguro) {
+        return repositorio.save(seguro);
     }
 
     @Override

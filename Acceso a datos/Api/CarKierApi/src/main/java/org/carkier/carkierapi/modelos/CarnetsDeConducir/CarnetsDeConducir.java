@@ -1,13 +1,8 @@
-package org.carkier.carkierapi.modelos;
+package org.carkier.carkierapi.modelos.CarnetsDeConducir;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.core.sym.Name;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.carkier.carkierapi.modelos.TipoCarnet;
-import org.carkier.carkierapi.modelos.Usuario;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
@@ -20,15 +15,13 @@ import java.time.LocalDate;
         private Integer id;
 
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "idusuario", referencedColumnName = "idusuarios")
+        @Column(name = "idusuario")
         // Evita la recursión infinita al serializar
         @JsonBackReference
-        private Usuario idusuario;
+        private Integer idusuario;
 
-        @OneToOne
-        @JoinColumn(name = "id_tipocarnet", referencedColumnName = "id_tipo")
-        private TipoCarnet idTipocarnet;
+        @Column(name = "id_tipocarnet")
+        private Integer idTipocarnet;
 
         @NotNull
         @Column(name = "fecha_expedicion", nullable = false)
@@ -40,7 +33,7 @@ import java.time.LocalDate;
         public CarnetsDeConducir() {
         }
 
-        public CarnetsDeConducir(Integer id, Usuario idusuario, TipoCarnet idTipocarnet, LocalDate fechaExpedicion, LocalDate fechaCaducidad) {
+        public CarnetsDeConducir(Integer id, Integer idusuario, Integer idTipocarnet, LocalDate fechaExpedicion, LocalDate fechaCaducidad) {
             this.id = id;
             this.idusuario = idusuario;
             this.idTipocarnet = idTipocarnet;
@@ -56,19 +49,19 @@ import java.time.LocalDate;
             this.id = id;
         }
 
-        public Usuario getIdusuario() {
+        public Integer getIdusuario() {
             return idusuario;
         }
 
-        public void setIdusuario(Usuario idusuario) {
+        public void setIdusuario(Integer idusuario) {
             this.idusuario = idusuario;
         }
 
-        public TipoCarnet getIdTipocarnet() {
+        public Integer getIdTipocarnet() {
             return idTipocarnet;
         }
 
-        public void setIdTipocarnet(TipoCarnet idTipocarnet) {
+        public void setIdTipocarnet(Integer idTipocarnet) {
             this.idTipocarnet = idTipocarnet;
         }
 

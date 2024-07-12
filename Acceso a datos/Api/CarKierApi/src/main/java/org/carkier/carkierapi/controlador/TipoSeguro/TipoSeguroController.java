@@ -1,7 +1,8 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.TipoSeguro;
 
 import org.carkier.carkierapi.Service.TipoSeguro.TipoSeguroService;
-import org.carkier.carkierapi.modelos.TipoSeguro;
+import org.carkier.carkierapi.modelos.TipoSeguro.TipoSeguro;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,7 @@ public class TipoSeguroController {
     }
 
     @GetMapping("/TipoSeguroNombre/{nombre}")
-    public ResponseEntity<TipoSeguro> getEstadoVehiculoByEstado(@PathVariable  String nombre) {
+    public ResponseEntity<TipoSeguro> getSeguroByNombre(@PathVariable  String nombre) {
         TipoSeguro estados = servicio.findByNombre(nombre.toLowerCase());
         if (estados == null) {
             return ResponseEntity.notFound().build();
@@ -48,20 +49,24 @@ public class TipoSeguroController {
     }
 
     @PutMapping("/TipoSeguroModificar/{id}/precio")
-    public ResponseEntity<TipoSeguro> updatePrecio(@PathVariable Integer id, @RequestParam Double precio) {
+    public ResponseEntity<TipoSeguro> updatePrecioSeguro(@PathVariable Integer id, @RequestParam Double precio) {
         TipoSeguro actualizado = servicio.updatePrecio(id, precio);
         return ResponseEntity.ok(actualizado);
     }
 
 
-    @PostMapping("/TipoSeguroSave/{id}/precio")
-    public ResponseEntity<TipoSeguro> saveTipoSeguro(@RequestParam String nombre, @RequestParam String descripcion, @RequestParam Double coste) {
-        TipoSeguro nuevoTipoSeguro = servicio.save(nombre, descripcion, coste);
-        return ResponseEntity.ok(nuevoTipoSeguro);
+    @PostMapping("/TipoSeguroSave")
+    public ResponseEntity<String> crearTipoSeguro(@RequestBody TipoSeguro seguro) {
+        TipoSeguro seguroNueva = servicio.save(seguro);
+        if (seguroNueva != null) {
+            return ResponseEntity.ok("Seguro registrado con éxito");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el segurp");
+        }
     }
 
     @DeleteMapping("TipoSeguroDelete/{id}")
-    public ResponseEntity<Void> deleteTipoCarnet(@PathVariable  Integer id) {
+    public ResponseEntity<Void> deleteTipoSeguro(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
     }

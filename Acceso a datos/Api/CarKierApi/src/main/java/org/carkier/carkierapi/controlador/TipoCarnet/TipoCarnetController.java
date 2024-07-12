@@ -1,8 +1,7 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.TipoCarnet;
 
-import jakarta.validation.constraints.NotBlank;
 import org.carkier.carkierapi.Service.TipoCarnet.TipoCarnetService;
-import org.carkier.carkierapi.modelos.TipoCarnet;
+import org.carkier.carkierapi.modelos.TipoCarnet.TipoCarnet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,7 @@ public class TipoCarnetController {
     }
 
     @GetMapping("/TipoCarnet/findAll")
-    public ResponseEntity<List<TipoCarnet>> getAllJugadores() {
+    public ResponseEntity<List<TipoCarnet>> getAllTiposCarnets() {
         List<TipoCarnet> jugadores = servicio.findAll();
         if (jugadores.isEmpty())
             return ResponseEntity.notFound().build();

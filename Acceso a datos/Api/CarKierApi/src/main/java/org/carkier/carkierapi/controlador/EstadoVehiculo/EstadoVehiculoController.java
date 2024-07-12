@@ -1,7 +1,7 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.EstadoVehiculo;
 
 import org.carkier.carkierapi.Service.EstadoVehiculo.EstadoVehiculoService;
-import org.carkier.carkierapi.modelos.EstadoVehiculo;
+import org.carkier.carkierapi.modelos.EstadoVehiculo.EstadoVehiculo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +57,7 @@ public class EstadoVehiculoController {
     }
 
     @DeleteMapping("EstadoVehiculoDelete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable  Integer id) {
+    public ResponseEntity<Void> deleteEstadoVehiculo(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
     }

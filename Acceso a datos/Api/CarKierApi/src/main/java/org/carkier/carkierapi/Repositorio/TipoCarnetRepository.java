@@ -1,6 +1,6 @@
 package org.carkier.carkierapi.Repositorio;
 
-import org.carkier.carkierapi.modelos.TipoCarnet;
+import org.carkier.carkierapi.modelos.TipoCarnet.TipoCarnet;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.CarnetsDeConducir;
 
 import org.carkier.carkierapi.Service.CarnetsDeConducir.CarnetsDeConducirService;
 import org.carkier.carkierapi.modelos.CarnetsDeConducir.CarnetsDeConducir;
@@ -42,6 +42,12 @@ public class CarnetsDeConducirController {
     public ResponseEntity<CarnetsDeConducir> crearCarnet(@RequestBody CarnetsDeConducir carnetDTO) {
         CarnetsDeConducir nuevoCarnet = servicio.save(carnetDTO);
         return new ResponseEntity<>(nuevoCarnet, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("CarnetsDelete/{id}")
+    public ResponseEntity<Void> deleteCarnets(@PathVariable  Integer id) {
+        servicio.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

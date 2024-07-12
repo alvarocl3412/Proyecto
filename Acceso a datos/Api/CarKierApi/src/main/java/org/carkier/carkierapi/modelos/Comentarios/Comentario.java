@@ -1,9 +1,8 @@
-package org.carkier.carkierapi;
+package org.carkier.carkierapi.modelos.Comentarios;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity

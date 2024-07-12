@@ -1,9 +1,9 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.TipoCarnet;
 
 
 import jakarta.transaction.Transactional;
 import org.carkier.carkierapi.Repositorio.TipoCarnetRepository;
-import org.carkier.carkierapi.modelos.TipoCarnet;
+import org.carkier.carkierapi.modelos.TipoCarnet.TipoCarnet;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

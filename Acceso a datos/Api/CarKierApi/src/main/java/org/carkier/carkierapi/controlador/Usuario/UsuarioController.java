@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.controlador;
+package org.carkier.carkierapi.controlador.Usuario;
 
 import org.carkier.carkierapi.Service.Usuario.UsuarioService;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
@@ -17,7 +17,6 @@ public class UsuarioController {
     public UsuarioController(UsuarioService servicio) {
         this.servicio = servicio;
     }
-
     @GetMapping("/Usuario/findAll")
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
         List<Usuario> usuarios = servicio.findAll();
@@ -59,7 +58,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/UsuarioRegistrar")
-    public ResponseEntity<String> registerUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<String> crearUsuario(@RequestBody Usuario usuario) {
         Usuario savedUsuario = servicio.save(usuario);
         if (savedUsuario != null) {
             return ResponseEntity.ok("Usuario registrado con éxito");
@@ -67,4 +66,6 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el usuario");
         }
     }
+    //Apunte para eliminar usuario lo que hago es en datos del usuario bloquearle ahi
+    // y automaticamente se me elimanaria cada mes de la base de datos solo
 }

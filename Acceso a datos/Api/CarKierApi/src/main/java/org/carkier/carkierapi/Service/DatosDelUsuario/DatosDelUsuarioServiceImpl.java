@@ -1,7 +1,7 @@
-package org.carkier.carkierapi.Service;
+package org.carkier.carkierapi.Service.DatosDelUsuario;
 
 import org.carkier.carkierapi.Repositorio.DatosDelUsuarioRepository;
-import org.carkier.carkierapi.modelos.DatosDelUsuario;
+import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DatosDelUsuarioServiceImpl  implements DatosDelUsuarioService{
+public class DatosDelUsuarioServiceImpl  implements DatosDelUsuarioService {
     private final DatosDelUsuarioRepository repositorio;
 
     public DatosDelUsuarioServiceImpl(DatosDelUsuarioRepository repositorio) {
