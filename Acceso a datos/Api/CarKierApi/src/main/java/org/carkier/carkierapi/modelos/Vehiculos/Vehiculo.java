@@ -1,8 +1,6 @@
 package org.carkier.carkierapi.modelos.Vehiculos;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "vehiculos")
@@ -21,15 +19,13 @@ public class Vehiculo {
     @Column(name = "idestado", nullable = false)
     private Integer idEstado;
 
-    @Size(max = 20)
     @Column(name = "matricula", nullable = false, length = 20)
     private String matricula;
 
-    @Size(max = 100)
     @Column(name = "marca", nullable = false, length = 100)
     private String marca;
 
-    @Size(max = 100)
+
     @Column(name = "modelo", nullable = false, length = 100)
     private String modelo;
 
@@ -39,7 +35,7 @@ public class Vehiculo {
     @Column(name = "km")
     private Integer km;
 
-    @Column(name = "precioventa", nullable = false)
+    @Column(name = "precioventa")
     private Double precioventa;
 
     @Column(name = "preciodia", nullable = false)

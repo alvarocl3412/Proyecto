@@ -11,7 +11,6 @@ public class DatosDelUsuario {
     @Column(name = "idusuario", nullable = false)
     private Integer id;
 
-
     @Column(name = "puntos")
     private Integer puntos;
 

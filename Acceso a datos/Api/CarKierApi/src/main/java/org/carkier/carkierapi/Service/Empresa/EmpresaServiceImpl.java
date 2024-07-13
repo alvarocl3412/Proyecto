@@ -1,19 +1,13 @@
 package org.carkier.carkierapi.Service.Empresa;
 
-import jakarta.transaction.Transactional;
 import org.carkier.carkierapi.Repositorio.EmpresaRepository;
-import org.carkier.carkierapi.Repositorio.UsuarioRepository;
 import org.carkier.carkierapi.modelos.Empresa.Empresa;
-import org.carkier.carkierapi.modelos.TipoSeguro.TipoSeguro;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class EmpresaServiceImpl  implements  EmpresaService{
-
-
     private final EmpresaRepository repositorio;
 
     public EmpresaServiceImpl(EmpresaRepository repositorio) {
@@ -40,6 +34,7 @@ public class EmpresaServiceImpl  implements  EmpresaService{
             EmpresaActualizada.setNombre(empresa.getNombre());
             EmpresaActualizada.setDireccion(empresa.getDireccion());
             EmpresaActualizada.setTelefono(empresa.getTelefono());
+            EmpresaActualizada.setDescripcion(empresa.getDescripcion());
             EmpresaActualizada.setCorreoElectronico(empresa.getCorreoElectronico());
             EmpresaActualizada.setOfreceCoches(empresa.getOfreceCoches());
 
@@ -56,10 +51,9 @@ public class EmpresaServiceImpl  implements  EmpresaService{
     }
 
     @Override
-    @Transactional
     public void deleteById(Integer id) {
         Empresa empresa = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Tipo de segurp no encontrado con ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("No encontrado  la empresa con el ID: " + id));
         repositorio.delete(empresa);
     }
 }

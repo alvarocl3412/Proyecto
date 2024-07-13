@@ -1,7 +1,6 @@
 package org.carkier.carkierapi.modelos.TipoCarnet;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tipo_carnet")
@@ -12,8 +11,7 @@ public class TipoCarnet {
     @Column(name = "id_tipo", nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(name = "nombre", nullable = false, length = 10)
+    @Column(name = "nombre", nullable = false, length = 35)
     private String nombre;
 
     public TipoCarnet() {

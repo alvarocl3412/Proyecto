@@ -2,28 +2,23 @@ package org.carkier.carkierapi.modelos.CarnetsDeConducir;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 
     @Entity
     @Table(name = "carnets_de_conducir")
     public class CarnetsDeConducir {
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "idcarnet", nullable = false)
         private Integer id;
 
-
         @Column(name = "idusuario")
-        // Evita la recursión infinita al serializar
-        @JsonBackReference
         private Integer idusuario;
 
         @Column(name = "id_tipocarnet")
         private Integer idTipocarnet;
 
-        @NotNull
         @Column(name = "fecha_expedicion", nullable = false)
         private LocalDate fechaExpedicion;
 
@@ -81,14 +76,4 @@ import java.time.LocalDate;
             this.fechaCaducidad = fechaCaducidad;
         }
 
-        @Override
-        public String toString() {
-            return "CarnetsDeConducir{" +
-                    "id=" + id +
-                    ", idusuario=" + idusuario +
-                    ", idTipocarnet=" + idTipocarnet +
-                    ", fechaExpedicion=" + fechaExpedicion +
-                    ", fechaCaducidad=" + fechaCaducidad +
-                    '}';
-        }
     }

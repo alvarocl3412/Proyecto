@@ -46,17 +46,17 @@ public class EstadoVehiculoController {
             return ResponseEntity.ok(estados);
         }
     }
-    @PostMapping("/EstadoVehiculoSave")
+    @PostMapping("/crearEstadoVehiculo")
     public ResponseEntity<?> crearTipoCarnet(@RequestParam String estado) {
         EstadoVehiculo estadoCreado = servicio.save(estado.toUpperCase());
         if (estadoCreado == null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe un estado con ese nombre");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe un estado del vehiculo con ese nombre");
         } else {
             return ResponseEntity.status(HttpStatus.CREATED).body(estadoCreado);
         }
     }
 
-    @DeleteMapping("EstadoVehiculoDelete/{id}")
+    @DeleteMapping("deleteEstadoVehiculo/{id}")
     public ResponseEntity<Void> deleteEstadoVehiculo(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

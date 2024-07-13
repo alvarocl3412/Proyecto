@@ -1,9 +1,7 @@
 package org.carkier.carkierapi.controlador.Comentarios;
 
 import org.carkier.carkierapi.Service.Comentarios.ComentarioService;
-import org.carkier.carkierapi.Service.Vehiculos.VehiculoService;
 import org.carkier.carkierapi.modelos.Comentarios.Comentario;
-import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +26,7 @@ public class ComentarioController {
         else
             return ResponseEntity.ok(comentarios);
     }
-    @GetMapping("/VehiuculosId/{id}")
+    @GetMapping("/ComentariosId/{id}")
     public ResponseEntity<Comentario> getComentarioById(@PathVariable Integer id) {
         Optional<Comentario> comentario = servicio.findById(id);
         if (!comentario.isPresent()) {
@@ -54,7 +52,7 @@ public class ComentarioController {
         }
     }
 
-    @DeleteMapping("ComentarioDelete/{id}")
+    @DeleteMapping("deleteComentario/{id}")
     public ResponseEntity<Void> deleteComentario(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

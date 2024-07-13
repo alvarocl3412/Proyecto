@@ -2,6 +2,7 @@ package org.carkier.carkierapi.controlador.Usuario;
 
 import org.carkier.carkierapi.Service.Usuario.UsuarioService;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
+import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,13 +48,20 @@ public class UsuarioController {
         }
     }
 
+    @PutMapping("/updateUsuario")
+    public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuario) {
+        Optional<Usuario> updatedUsuario = servicio.updateUsuario(usuario);
+        return updatedUsuario.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping("/UsuarioInicioSesion")
     public ResponseEntity<?> loginUsuario(@RequestParam String correo, @RequestParam String contrasena) {
         Optional<Usuario> usuario = servicio.findByCorreoAndContrasena(correo, contrasena);
         if (usuario.isPresent()) {
             return ResponseEntity.ok(usuario.get());
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid correo or contrasena");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalido el  correo o la contraseña");
         }
     }
 

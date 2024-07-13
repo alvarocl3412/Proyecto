@@ -5,14 +5,12 @@ import org.carkier.carkierapi.modelos.Empresa.Empresa;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/CarKier")
 public class EmpresaController {
-
     private  final EmpresaService servicio;
 
     public EmpresaController(EmpresaService servicio) {
@@ -53,8 +51,8 @@ public class EmpresaController {
         }
     }
 
-    @DeleteMapping("CarnetsDelete/{id}")
-    public ResponseEntity<Void> deleteCarnets(@PathVariable  Integer id) {
+    @DeleteMapping("deleteEmpresa/{id}")
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
     }

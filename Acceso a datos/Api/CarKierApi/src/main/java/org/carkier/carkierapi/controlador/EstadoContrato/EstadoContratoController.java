@@ -5,7 +5,6 @@ import org.carkier.carkierapi.modelos.EstadoContratos.EstadoContrato;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -44,17 +43,17 @@ public class EstadoContratoController {
             return ResponseEntity.ok(estados);
         }
     }
-    @PostMapping("/EstadoContratoSave")
+    @PostMapping("/crearEstadoContrato")
     public ResponseEntity<?> crearEstadoContrato(@RequestParam String estado) {
         EstadoContrato estadoCreado = servicio.save(estado.toUpperCase());
         if (estadoCreado == null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe un estado con ese nombre");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe un estado  del contrato con ese nombre");
         } else {
             return ResponseEntity.status(HttpStatus.CREATED).body(estadoCreado);
         }
     }
 
-    @DeleteMapping("/EstadoContratoDelete/{id}")
+    @DeleteMapping("/deleteEstadoContrato/{id}")
     public ResponseEntity<Void> deleteEstadoContrato(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

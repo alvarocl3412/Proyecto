@@ -1,8 +1,6 @@
 package org.carkier.carkierapi.modelos.Contratos;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 
 @Entity
@@ -32,7 +30,7 @@ public class Contrato {
     private Double precioTotal;
 
     @Column(name = "pagado", nullable = false)
-    private Byte pagado;
+    private Boolean pagado;
 
     @Column(name = "fecha_inicio", nullable = false)
     private LocalDate fechaInicio;
@@ -43,7 +41,7 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(Integer id, Integer idvehiculo, Integer idCliente, Integer idEstado, Integer idSeguro, Double precioDia, Double precioTotal, Byte pagado, LocalDate fechaInicio, LocalDate fechaFin) {
+    public Contrato(Integer id, Integer idvehiculo, Integer idCliente, Integer idEstado, Integer idSeguro, Double precioDia, Double precioTotal, Boolean pagado, LocalDate fechaInicio, LocalDate fechaFin) {
         this.id = id;
         this.idvehiculo = idvehiculo;
         this.idCliente = idCliente;
@@ -112,11 +110,11 @@ public class Contrato {
         this.precioTotal = precioTotal;
     }
 
-    public Byte getPagado() {
+    public Boolean getPagado() {
         return pagado;
     }
 
-    public void setPagado(Byte pagado) {
+    public void setPagado(Boolean pagado) {
         this.pagado = pagado;
     }
 

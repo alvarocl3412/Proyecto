@@ -18,7 +18,7 @@ public class DatosDelUsuarioController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/DatosDelUsuario/findAll")
+    @GetMapping("/DatosUsuarios/findAll")
     public ResponseEntity<List<DatosDelUsuario>> getAllDatos() {
         List<DatosDelUsuario> datosusu = servicio.findAll();
         if (datosusu.isEmpty())
@@ -27,7 +27,7 @@ public class DatosDelUsuarioController {
             return ResponseEntity.ok(datosusu);
     }
 
-    @GetMapping("/DatosDelUsuarioId/{id}")
+    @GetMapping("/DatosUsuariosId/{id}")
     public ResponseEntity<DatosDelUsuario> getDatosById(@PathVariable Integer id) {
         Optional<DatosDelUsuario> datos = servicio.findById(id);
         if (!datos.isPresent()) {
@@ -38,19 +38,13 @@ public class DatosDelUsuarioController {
         }
     }
 
-    @PutMapping("/DatosDelUsuarioModificarPrecio/{id}/puntos")
-    public ResponseEntity<DatosDelUsuario> updatePrecio(@PathVariable Integer id, @RequestParam Integer puntos) {
-        DatosDelUsuario actualizado = servicio.updatePrecio(id, puntos);
-        return ResponseEntity.ok(actualizado);
+    @PutMapping("/updateDatosUsuarios")
+    public ResponseEntity<DatosDelUsuario> updateDatos(@RequestBody DatosDelUsuario datos) {
+        Optional<DatosDelUsuario> datosActualizado = servicio.updateDatos(datos);
+        return datosActualizado.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
-
-    @PutMapping("/DatosDelUsuarioAdmin/{id}/admin")
-    public ResponseEntity<DatosDelUsuario> updateAdmin(@PathVariable Integer id, @RequestParam Boolean admin) {
-        DatosDelUsuario actualizado = servicio.updateAdmin(id, admin);
-        return ResponseEntity.ok(actualizado);
-    }
-
-    @PutMapping("/DatosDelUsuarioMBanear/{id}")
+    @PutMapping("/DatosDelUsuarioBanear/{id}")
     public ResponseEntity<DatosDelUsuario> BanearUsuario(@PathVariable Integer id) {
         DatosDelUsuario actualizado = servicio.banearUsuario(id);
         return ResponseEntity.ok(actualizado);

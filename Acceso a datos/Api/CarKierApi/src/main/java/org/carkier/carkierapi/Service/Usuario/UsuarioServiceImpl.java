@@ -17,11 +17,13 @@ import java.util.Optional;
 @Service
 public class UsuarioServiceImpl  implements  UsuarioService{
     private final UsuarioRepository repositorio;
-    @Autowired
     private DatosDelUsuarioRepository datosDelUsuarioRepository;
-    public UsuarioServiceImpl(UsuarioRepository repositorio) {
+
+    public UsuarioServiceImpl(UsuarioRepository repositorio, DatosDelUsuarioRepository datosDelUsuarioRepository) {
         this.repositorio = repositorio;
+        this.datosDelUsuarioRepository = datosDelUsuarioRepository;
     }
+
     @Override
     public List<Usuario> findAll() {
         return repositorio.findAll();
@@ -68,6 +70,24 @@ public class UsuarioServiceImpl  implements  UsuarioService{
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<Usuario> updateUsuario(Usuario usuario) {
+        Optional<Usuario> usur = repositorio.findById(usuario.getId());
+        if (usur.isPresent()){
+            Usuario usuarioActualizado = usur.get();
+            usuarioActualizado.setDni(usuario.getDni());
+            usuarioActualizado.setNombre(usuario.getNombre());
+            usuarioActualizado.setApellidos(usuario.getApellidos());
+            usuarioActualizado.setTelefono(usuario.getTelefono());
+            usuarioActualizado.setCorreo(usuario.getCorreo());
+            usuarioActualizado.setContrasena(usuario.getContrasena());
+            repositorio.save(usuario);
+            return Optional.of(usuarioActualizado);
+        } else {
+            return Optional.empty();
+        }
     }
 
     @Override

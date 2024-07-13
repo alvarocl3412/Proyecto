@@ -1,8 +1,6 @@
 package org.carkier.carkierapi.modelos.Empresa;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "empresas")
@@ -12,24 +10,19 @@ public class Empresa {
     @Column(name = "idempresa", nullable = false)
     private Integer id;
 
-    @Size(max = 100)
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
-    @Size(max = 45)
-    @Column(name = "descripcion", length = 45)
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Size(max = 255)
     @Column(name = "direccion", nullable = false)
     private String direccion;
 
-    @Size(max = 20)
     @Column(name = "telefono", nullable = false, length = 20)
     private String telefono;
 
-    @Size(max = 100)
-    @Column(name = "correo_electronico", nullable = false, length = 100)
+    @Column(name = "correo_electronico", nullable = false)
     private String correoElectronico;
 
     @Column(name = "ofrece_coches")

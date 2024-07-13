@@ -10,5 +10,6 @@ public interface UsuarioService {
     Optional<Usuario> findById(Integer id);
     Optional<Usuario>findByDni(String dni);
     Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
+    Optional<Usuario> updateUsuario(Usuario usuario);
     Usuario save(Usuario usuario);
 }

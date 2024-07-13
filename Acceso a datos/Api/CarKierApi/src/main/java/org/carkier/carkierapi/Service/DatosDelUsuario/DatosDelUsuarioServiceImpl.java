@@ -3,7 +3,6 @@ package org.carkier.carkierapi.Service.DatosDelUsuario;
 import org.carkier.carkierapi.Repositorio.DatosDelUsuarioRepository;
 import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -26,20 +25,22 @@ public class DatosDelUsuarioServiceImpl  implements DatosDelUsuarioService {
     }
 
     @Override
-    public DatosDelUsuario updatePrecio(Integer id, Integer puntos) {
-        DatosDelUsuario datosUsu = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Datos del usuario no encontrado con el id: " + id));
-        datosUsu.setPuntos(datosUsu.getPuntos() + puntos);
-        return repositorio.save(datosUsu);
+    public Optional<DatosDelUsuario> updateDatos(DatosDelUsuario datos) {
+        Optional<DatosDelUsuario> datosUsu = repositorio.findById(datos.getId());
+        if (datosUsu.isPresent()){
+            DatosDelUsuario datosActualizados = datosUsu.get();
+            datosActualizados.setPuntos(datos.getPuntos());
+            datosActualizados.setAdministrador(datos.isAdministrador());
+            datosActualizados.setFechaBanInicio(datos.getFechaBanInicio());
+            datosActualizados.setFechaBanFinal(datos.getFechaBanFinal());
+            datosActualizados.setCantidadBan(datos.getCantidadBan());
+            datosActualizados.setMarcaEliminar(datos.isMarcaEliminar());
+            repositorio.save(datosActualizados);
+            return Optional.of(datosActualizados);
+        } else {
+            return Optional.empty();
+        }
     }
- @Override
-    public DatosDelUsuario updateAdmin(Integer id, Boolean admin) {
-        DatosDelUsuario datosUsu = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Datos del usuario no encontrado con el id: " + id));
-        datosUsu.setAdministrador(admin);
-        return repositorio.save(datosUsu);
-    }
-
     @Override
     public DatosDelUsuario banearUsuario(Integer id) {
         DatosDelUsuario datosUsu = repositorio.findById(id)

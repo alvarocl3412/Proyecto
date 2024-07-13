@@ -1,7 +1,6 @@
 package org.carkier.carkierapi.Service.TipoCarnet;
 
 
-import jakarta.transaction.Transactional;
 import org.carkier.carkierapi.Repositorio.TipoCarnetRepository;
 import org.carkier.carkierapi.modelos.TipoCarnet.TipoCarnet;
 import org.springframework.stereotype.Service;
@@ -36,8 +35,7 @@ public class TipoCarnetServiceImpl implements TipoCarnetService {
     public TipoCarnet save(String nombre) {
         TipoCarnet tipoCarnetExistente = repositorio.findByNombre(nombre.toUpperCase());
         if (tipoCarnetExistente != null) {
-            // Si ya existe un tipo de carné con el mismo nombre, devolvemos null o lanzamos una excepción, según tu lógica de negocio
-            return null; // O puedes lanzar una excepción aquí
+            return null;
         }
 
         TipoCarnet nuevoTipoCarnet = new TipoCarnet();
@@ -47,10 +45,9 @@ public class TipoCarnetServiceImpl implements TipoCarnetService {
     }
 
     @Override
-    @Transactional
     public void deleteById(Integer id) {
         TipoCarnet tipoCarnet = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Tipo de carnet no encontrado con ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Tipo de carnet no se ha  encontrado con el ID: " + id));
 
         repositorio.delete(tipoCarnet);
     }

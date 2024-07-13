@@ -1,7 +1,6 @@
 package org.carkier.carkierapi.modelos.EstadoVehiculo;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "estado_vehiculo")
@@ -11,8 +10,7 @@ public class EstadoVehiculo {
     @Column(name = "idestado", nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(name = "estado", nullable = false, length = 100)
+    @Column(name = "estado", nullable = false, length = 150)
     private String estado;
 
     public EstadoVehiculo() {

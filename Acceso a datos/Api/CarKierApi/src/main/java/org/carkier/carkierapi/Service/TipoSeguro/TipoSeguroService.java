@@ -8,8 +8,7 @@ public interface TipoSeguroService {
     List<TipoSeguro> findAll();
     Optional<TipoSeguro> findById(Integer id);
     TipoSeguro findByNombre(String nombre);
-
-    TipoSeguro updatePrecio(Integer id, double precio);
+    Optional<TipoSeguro> updateSeguro(TipoSeguro seguro);
     TipoSeguro save(TipoSeguro seguro);
 
     void deleteById(Integer id);

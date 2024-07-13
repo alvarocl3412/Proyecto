@@ -34,8 +34,7 @@ public class EstadoContratoServiceImpl implements EstadoContratoService {
     public EstadoContrato save(String estado) {
         EstadoContrato existeEstado = repositorio.findByEstado(estado.toUpperCase());
         if (existeEstado != null) {
-            // Si ya existe un tipo de carné con el mismo nombre, devolvemos null o lanzamos una excepción, según tu lógica de negocio
-            return null; // O puedes lanzar una excepción aquí
+            return null;
         }
         EstadoContrato nuevoEstado = new EstadoContrato();
         nuevoEstado.setEstado(estado.toUpperCase());
@@ -45,7 +44,7 @@ public class EstadoContratoServiceImpl implements EstadoContratoService {
     @Override
     public void deleteById(Integer id) {
         EstadoContrato estado = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Tipo de carnet no encontrado con ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("El estado del contrato  no se ha  encontrado con el ID: " + id));
         repositorio.delete(estado);
     }
 }

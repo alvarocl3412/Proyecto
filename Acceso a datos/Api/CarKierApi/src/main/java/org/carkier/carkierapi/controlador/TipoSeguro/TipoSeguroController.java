@@ -38,7 +38,7 @@ public class TipoSeguroController {
         }
     }
 
-    @GetMapping("/TipoSeguroNombre/{nombre}")
+    @GetMapping("/buscarSeguroNombre/{nombre}")
     public ResponseEntity<TipoSeguro> getSeguroByNombre(@PathVariable  String nombre) {
         TipoSeguro estados = servicio.findByNombre(nombre.toLowerCase());
         if (estados == null) {
@@ -48,14 +48,15 @@ public class TipoSeguroController {
         }
     }
 
-    @PutMapping("/TipoSeguroModificar/{id}/precio")
-    public ResponseEntity<TipoSeguro> updatePrecioSeguro(@PathVariable Integer id, @RequestParam Double precio) {
-        TipoSeguro actualizado = servicio.updatePrecio(id, precio);
-        return ResponseEntity.ok(actualizado);
+    @PutMapping("/modificarSeguro")
+    public ResponseEntity<TipoSeguro> updateSeguro(@RequestBody TipoSeguro seguro) {
+        Optional<TipoSeguro> seguroActualizado = servicio.updateSeguro(seguro);
+        return seguroActualizado.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 
-    @PostMapping("/TipoSeguroSave")
+    @PostMapping("/crearSeguro")
     public ResponseEntity<String> crearTipoSeguro(@RequestBody TipoSeguro seguro) {
         TipoSeguro seguroNueva = servicio.save(seguro);
         if (seguroNueva != null) {
@@ -65,7 +66,7 @@ public class TipoSeguroController {
         }
     }
 
-    @DeleteMapping("TipoSeguroDelete/{id}")
+    @DeleteMapping("deleteTipoSeguro/{id}")
     public ResponseEntity<Void> deleteTipoSeguro(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

@@ -1,7 +1,6 @@
 package org.carkier.carkierapi.Service.EstadoVehiculo;
 
 
-import jakarta.transaction.Transactional;
 import org.carkier.carkierapi.Repositorio.EstadoVehiculoRepository;
 import org.carkier.carkierapi.modelos.EstadoVehiculo.EstadoVehiculo;
 import org.springframework.stereotype.Service;
@@ -34,8 +33,7 @@ public class EstadoVehiculoServiceImpl implements EstadoVehiculoService {
     public EstadoVehiculo save(String estado) {
         EstadoVehiculo existeEstado = repositorio.findByEstado(estado.toUpperCase());
         if (existeEstado != null) {
-            // Si ya existe un tipo de carné con el mismo nombre, devolvemos null o lanzamos una excepción, según tu lógica de negocio
-            return null; // O puedes lanzar una excepción aquí
+            return null;
         }
         EstadoVehiculo nuevoEstado = new EstadoVehiculo();
         nuevoEstado.setEstado(estado.toUpperCase());
@@ -43,10 +41,9 @@ public class EstadoVehiculoServiceImpl implements EstadoVehiculoService {
     }
 
     @Override
-    @Transactional
     public void deleteById(Integer id) {
             EstadoVehiculo estado = repositorio.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Tipo de carnet no encontrado con ID: " + id));
+                    .orElseThrow(() -> new IllegalArgumentException("Estado del vehiuclo no se ha  encontrado con el ID: " + id));
             repositorio.delete(estado);
     }
 }

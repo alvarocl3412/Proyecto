@@ -47,13 +47,13 @@ public class VehiculosController {
     public ResponseEntity<String> crearVehiculo(@RequestBody Vehiculo vehiculo) {
         Vehiculo vehiculoNuevo = servicio.save(vehiculo);
         if (vehiculoNuevo != null) {
-            return ResponseEntity.ok("Vehiuclo registrado con éxito");
+            return ResponseEntity.ok("Vehiculo registrado con éxito");
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el vehiculo");
         }
     }
 
-    @DeleteMapping("VehiculoDelete/{id}")
+    @DeleteMapping("deleteVehiculo/{id}")
     public ResponseEntity<Void> deleteVehiculo(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();

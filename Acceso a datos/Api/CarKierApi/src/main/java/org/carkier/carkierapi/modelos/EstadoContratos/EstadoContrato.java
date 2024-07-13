@@ -1,7 +1,6 @@
 package org.carkier.carkierapi.modelos.EstadoContratos;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "estado_contrato")
@@ -12,8 +11,7 @@ public class EstadoContrato {
     @Column(name = "idestado", nullable = false)
     private Integer id;
 
-    @NotNull
-    @Column(name = "estado", nullable = false, length = 100)
+    @Column(name = "estado", nullable = false,length = 150)
     private String estado;
 
     public EstadoContrato() {

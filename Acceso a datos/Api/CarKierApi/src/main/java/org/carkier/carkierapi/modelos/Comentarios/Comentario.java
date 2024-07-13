@@ -1,8 +1,6 @@
 package org.carkier.carkierapi.modelos.Comentarios;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 
 @Entity
@@ -16,16 +14,12 @@ public class Comentario {
     @Column(name = "idusuario")
     private Integer idUsuario;
 
-    @NotNull
     @Column(name = "idvehiculo", nullable = false)
     private Integer idVehiculo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idcomentario")
-    private Comentario idComentarioRespuesta;
+    @Column(name = "idcomentario")
+    private Integer idComentarioRespuesta;
 
-    @NotNull
-    @Lob
     @Column(name = "comentario", nullable = false)
     private String comentario;
 
@@ -35,7 +29,7 @@ public class Comentario {
     public Comentario() {
     }
 
-    public Comentario(Integer id, Integer idUsuario, Integer idVehiculo, Comentario idComentarioRespuesta, String comentario, LocalDate fecha) {
+    public Comentario(Integer id, Integer idUsuario, Integer idVehiculo, Integer idComentarioRespuesta, String comentario, LocalDate fecha) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.idVehiculo = idVehiculo;
@@ -68,11 +62,11 @@ public class Comentario {
         this.idVehiculo = idVehiculo;
     }
 
-    public Comentario getIdComentarioRespuesta() {
+    public Integer getIdComentarioRespuesta() {
         return idComentarioRespuesta;
     }
 
-    public void setIdComentarioRespuesta(Comentario idComentarioRespuesta) {
+    public void setIdComentarioRespuesta(Integer idComentarioRespuesta) {
         this.idComentarioRespuesta = idComentarioRespuesta;
     }
 
