@@ -1,9 +1,8 @@
 package org.carkier.carkierapi.Service.TipoSeguro;
 
-import org.carkier.carkierapi.Repositorio.TipoSeguroRepository;
+import org.carkier.carkierapi.Repositorio.TipoSeguro.TipoSeguroRepository;
 import org.carkier.carkierapi.modelos.TipoSeguro.TipoSeguro;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +51,7 @@ public class TipoSeguroServiceImpl implements TipoSeguroService{
     @Override
     public void deleteById(Integer id) {
         TipoSeguro estado = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("El tipo de seguro no se ha  encontrado con el ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("El tipo de seguro no se ha encontrado con el ID: " + id));
         repositorio.delete(estado);
     }
 

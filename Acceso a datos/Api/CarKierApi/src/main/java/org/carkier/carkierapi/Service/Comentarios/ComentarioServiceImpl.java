@@ -1,8 +1,8 @@
 package org.carkier.carkierapi.Service.Comentarios;
 
-import org.carkier.carkierapi.Repositorio.ComentarioRepository;
-import org.carkier.carkierapi.Repositorio.UsuarioRepository;
-import org.carkier.carkierapi.Repositorio.VehiculoRepository;
+import org.carkier.carkierapi.Repositorio.Comentarios.ComentarioRepository;
+import org.carkier.carkierapi.Repositorio.Usuarios.UsuarioRepository;
+import org.carkier.carkierapi.Repositorio.Vehiculos.VehiculoRepository;
 import org.carkier.carkierapi.modelos.Comentarios.Comentario;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
@@ -69,7 +69,7 @@ public class ComentarioServiceImpl implements ComentarioService {
     @Override
     public void deleteById(Integer id) {
         Comentario comentario = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Comentario no encontrado con ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("El comentario no se ha encontrado con el ID: " + id));
         repositorio.delete(comentario);
     }
 }

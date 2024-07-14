@@ -62,7 +62,7 @@ public class TipoSeguroController {
         if (seguroNueva != null) {
             return ResponseEntity.ok("Seguro registrado con éxito");
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el segurp");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el seguro");
         }
     }
 

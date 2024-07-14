@@ -2,7 +2,6 @@ package org.carkier.carkierapi.controlador.Usuario;
 
 import org.carkier.carkierapi.Service.Usuario.UsuarioService;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
-import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

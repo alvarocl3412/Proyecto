@@ -24,6 +24,7 @@ public class EstadoContratoController {
         else
             return ResponseEntity.ok(estado);
     }
+
     @GetMapping("/EstadoContratoId/{id}")
     public ResponseEntity<EstadoContrato> getEstadoContratoById(@PathVariable Integer id) {
         Optional<EstadoContrato> estados = servicio.findById(id);

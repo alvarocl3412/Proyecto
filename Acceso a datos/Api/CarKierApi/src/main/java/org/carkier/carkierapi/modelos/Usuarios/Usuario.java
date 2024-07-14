@@ -17,16 +17,16 @@ public class Usuario{
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "apellidos", nullable = false, length = 45)
+    @Column(name = "apellidos", nullable = false, length = 155)
     private String apellidos;
 
     @Column(name = "telefono", nullable = false, length = 20)
     private String telefono;
 
-    @Column(name = "correo", nullable = false, length = 100)
+    @Column(name = "correo", nullable = false)
     private String correo;
 
-    @Column(name = "contrasena", nullable = false, length = 254)
+    @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
     public Usuario() {

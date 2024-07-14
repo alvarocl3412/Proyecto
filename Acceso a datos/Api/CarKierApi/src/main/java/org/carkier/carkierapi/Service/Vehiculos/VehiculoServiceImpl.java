@@ -1,11 +1,10 @@
 package org.carkier.carkierapi.Service.Vehiculos;
 
 import jakarta.transaction.Transactional;
-import org.carkier.carkierapi.Repositorio.EmpresaRepository;
-import org.carkier.carkierapi.Repositorio.UsuarioRepository;
-import org.carkier.carkierapi.Repositorio.VehiculoRepository;
+import org.carkier.carkierapi.Repositorio.Empresa.EmpresaRepository;
+import org.carkier.carkierapi.Repositorio.Usuarios.UsuarioRepository;
+import org.carkier.carkierapi.Repositorio.Vehiculos.VehiculoRepository;
 import org.carkier.carkierapi.modelos.Empresa.Empresa;
-import org.carkier.carkierapi.modelos.TipoSeguro.TipoSeguro;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +15,14 @@ import java.util.Optional;
 
 @Service
 public class VehiculoServiceImpl implements VehiculoService {
-
     private final VehiculoRepository repositorio;
+    private final UsuarioRepository repositorioUsuario;
+    private final EmpresaRepository repositorioEpresa;
 
-    @Autowired
-    private UsuarioRepository repositorioUsuario;
-
-    @Autowired
-    private EmpresaRepository repositorioEpresa;
-
-    public VehiculoServiceImpl(VehiculoRepository repositorio) {
+    public VehiculoServiceImpl(VehiculoRepository repositorio, UsuarioRepository repositorioUsuario, EmpresaRepository repositorioEpresa) {
         this.repositorio = repositorio;
+        this.repositorioUsuario = repositorioUsuario;
+        this.repositorioEpresa = repositorioEpresa;
     }
 
     @Override
@@ -87,7 +83,7 @@ public class VehiculoServiceImpl implements VehiculoService {
     @Transactional
     public void deleteById(Integer id) {
         Vehiculo vehiculo = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Tipo de segurp no encontrado con ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("El vehiculo no se ha  encontrado con el ID: " + id));
         repositorio.delete(vehiculo);
     }
 }

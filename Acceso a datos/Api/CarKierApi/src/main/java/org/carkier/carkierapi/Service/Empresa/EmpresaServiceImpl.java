@@ -1,6 +1,6 @@
 package org.carkier.carkierapi.Service.Empresa;
 
-import org.carkier.carkierapi.Repositorio.EmpresaRepository;
+import org.carkier.carkierapi.Repositorio.Empresa.EmpresaRepository;
 import org.carkier.carkierapi.modelos.Empresa.Empresa;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -53,7 +53,7 @@ public class EmpresaServiceImpl  implements  EmpresaService{
     @Override
     public void deleteById(Integer id) {
         Empresa empresa = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("No encontrado  la empresa con el ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("No se ha  encontrado la empresa con el ID: " + id));
         repositorio.delete(empresa);
     }
 }

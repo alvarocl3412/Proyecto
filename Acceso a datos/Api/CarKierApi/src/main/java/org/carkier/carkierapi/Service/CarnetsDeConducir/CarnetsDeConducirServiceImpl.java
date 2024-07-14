@@ -1,6 +1,6 @@
 package org.carkier.carkierapi.Service.CarnetsDeConducir;
 
-import org.carkier.carkierapi.Repositorio.CarnetsDeConducirRepository;
+import org.carkier.carkierapi.Repositorio.CarnetDeConducir.CarnetsDeConducirRepository;
 import org.carkier.carkierapi.modelos.CarnetsDeConducir.CarnetsDeConducir;
 import org.springframework.stereotype.Service;
 import java.util.List;

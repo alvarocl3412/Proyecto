@@ -1,8 +1,8 @@
 package org.carkier.carkierapi.Service.Contratos;
 
-import org.carkier.carkierapi.Repositorio.ContratoRepository;
-import org.carkier.carkierapi.Repositorio.UsuarioRepository;
-import org.carkier.carkierapi.Repositorio.VehiculoRepository;
+import org.carkier.carkierapi.Repositorio.Contratos.ContratoRepository;
+import org.carkier.carkierapi.Repositorio.Usuarios.UsuarioRepository;
+import org.carkier.carkierapi.Repositorio.Vehiculos.VehiculoRepository;
 import org.carkier.carkierapi.modelos.Contratos.Contrato;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
@@ -67,7 +67,7 @@ public class ContratoServiceImpl implements ContratoService {
     @Override
     public void deleteById(Integer id) {
         Contrato contrato = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Contrato no encontrado con ID: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("El contrato no se ha encontrado con el ID: " + id));
         repositorio.delete(contrato);
     }
 }

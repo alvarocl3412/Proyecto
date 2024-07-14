@@ -1,6 +1,5 @@
 package org.carkier.carkierapi.modelos.CarnetsDeConducir;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 

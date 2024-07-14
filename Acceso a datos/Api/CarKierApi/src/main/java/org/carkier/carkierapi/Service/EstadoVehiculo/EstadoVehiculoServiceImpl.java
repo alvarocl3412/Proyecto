@@ -1,7 +1,6 @@
 package org.carkier.carkierapi.Service.EstadoVehiculo;
 
-
-import org.carkier.carkierapi.Repositorio.EstadoVehiculoRepository;
+import org.carkier.carkierapi.Repositorio.EstadoVehiculo.EstadoVehiculoRepository;
 import org.carkier.carkierapi.modelos.EstadoVehiculo.EstadoVehiculo;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +9,7 @@ import java.util.Optional;
 
 @Service
 public class EstadoVehiculoServiceImpl implements EstadoVehiculoService {
-
     private final EstadoVehiculoRepository repositorio;
-
 
     public EstadoVehiculoServiceImpl(EstadoVehiculoRepository equpo) {
         this.repositorio = equpo;
@@ -21,14 +18,17 @@ public class EstadoVehiculoServiceImpl implements EstadoVehiculoService {
     public List<EstadoVehiculo> findAll() {
         return repositorio.findAll();
     }
+
     @Override
     public Optional<EstadoVehiculo> findById(Integer id) {
         return repositorio.findById(id);
     }
+
     @Override
     public EstadoVehiculo findByEstado(String estado) {
         return repositorio.findByEstado(estado.toUpperCase());
     }
+
     @Override
     public EstadoVehiculo save(String estado) {
         EstadoVehiculo existeEstado = repositorio.findByEstado(estado.toUpperCase());

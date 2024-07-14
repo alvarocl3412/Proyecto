@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.Repositorio;
+package org.carkier.carkierapi.Repositorio.Usuarios;
 
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

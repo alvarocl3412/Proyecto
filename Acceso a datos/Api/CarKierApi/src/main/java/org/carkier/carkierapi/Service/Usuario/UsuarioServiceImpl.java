@@ -2,17 +2,14 @@ package org.carkier.carkierapi.Service.Usuario;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
-import org.carkier.carkierapi.Repositorio.DatosDelUsuarioRepository;
-import org.carkier.carkierapi.Repositorio.UsuarioRepository;
+import org.carkier.carkierapi.Repositorio.DatosDelUsuario.DatosDelUsuarioRepository;
+import org.carkier.carkierapi.Repositorio.Usuarios.UsuarioRepository;
 import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-
 
 @Service
 public class UsuarioServiceImpl  implements  UsuarioService{
@@ -27,17 +24,6 @@ public class UsuarioServiceImpl  implements  UsuarioService{
     @Override
     public List<Usuario> findAll() {
         return repositorio.findAll();
-    }
-
-    private List<Usuario> findAllUsuariosConDatos() {
-        List<Usuario> usuarios = repositorio.findAll();
-
-        // Para cada usuario, obtener sus datos del usuario
-        usuarios.forEach(usuario -> {
-            DatosDelUsuario datos = datosDelUsuarioRepository.findById(usuario.getId()).orElse(null);
-      //      usuario.setDatosDelUsuario(datos);
-        });
-         return usuarios;
     }
 
     @Override
@@ -93,7 +79,7 @@ public class UsuarioServiceImpl  implements  UsuarioService{
     @Override
     public Usuario save(Usuario usuario) {
         Argon2 argon2 = Argon2Factory.create();
-        usuario.setContrasena(argon2.hash(2, 65536, 1, usuario.getContrasena()));  // Codificar en una sola línea
+        usuario.setContrasena(argon2.hash(2, 65536, 1, usuario.getContrasena()));  // Codificamos la contraseña
         return repositorio.save(usuario);
     }
 

@@ -1,10 +1,8 @@
 package org.carkier.carkierapi.Service.TipoCarnet;
 
-
-import org.carkier.carkierapi.Repositorio.TipoCarnetRepository;
+import org.carkier.carkierapi.Repositorio.TipoCarnet.TipoCarnetRepository;
 import org.carkier.carkierapi.modelos.TipoCarnet.TipoCarnet;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

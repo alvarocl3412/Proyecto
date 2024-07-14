@@ -1,4 +1,4 @@
-package org.carkier.carkierapi.Repositorio;
+package org.carkier.carkierapi.Repositorio.EstadoContrato;
 
 import org.carkier.carkierapi.modelos.EstadoContratos.EstadoContrato;
 import org.springframework.data.jpa.repository.JpaRepository;

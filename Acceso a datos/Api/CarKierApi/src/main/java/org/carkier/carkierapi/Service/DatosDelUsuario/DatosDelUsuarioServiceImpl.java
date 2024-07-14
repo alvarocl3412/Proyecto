@@ -1,6 +1,6 @@
 package org.carkier.carkierapi.Service.DatosDelUsuario;
 
-import org.carkier.carkierapi.Repositorio.DatosDelUsuarioRepository;
+import org.carkier.carkierapi.Repositorio.DatosDelUsuario.DatosDelUsuarioRepository;
 import org.carkier.carkierapi.modelos.DatosDelUsuario.DatosDelUsuario;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -44,7 +44,7 @@ public class DatosDelUsuarioServiceImpl  implements DatosDelUsuarioService {
     @Override
     public DatosDelUsuario banearUsuario(Integer id) {
         DatosDelUsuario datosUsu = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Datos del usuario no encontrado con el id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Los datos del usuario no se ha encontrado con el id: " + id));
         datosUsu.setFechaBanInicio(LocalDate.now());
         switch (datosUsu.getCantidadBan()) {
             case 0:
@@ -76,7 +76,7 @@ public class DatosDelUsuarioServiceImpl  implements DatosDelUsuarioService {
     @Override
     public DatosDelUsuario marcarEliminarUsuario(Integer id) {
         DatosDelUsuario datosUsu = repositorio.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Datos del usuario no encontrado con el id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Los datos del usuario no se ha encontrado con el id: " + id));
         datosUsu.setMarcaEliminar(true);
         return repositorio.save(datosUsu);
     }

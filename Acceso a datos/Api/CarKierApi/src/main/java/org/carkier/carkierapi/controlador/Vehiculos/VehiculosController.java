@@ -12,7 +12,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/CarKier")
 public class VehiculosController {
-
     private final VehiculoService servicio;
 
     public VehiculosController(VehiculoService servicio) {
