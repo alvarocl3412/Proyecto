@@ -3,8 +3,11 @@ C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarK
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.pdb
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.AssemblyReference.cache
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.InicioSesion.resources
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Usuarios.resources
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.Principal.resources
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.Properties.Resources.resources
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.GenerateResource.cache
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.CoreCompileInputs.cache
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.exe
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.pdb
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerUsuarios.resources

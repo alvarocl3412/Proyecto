@@ -21,34 +21,66 @@ namespace CarKier
 
         }
 
-        //Para mostrar la contraseña
+        //Metodos funcionalidades
 
+        //Boton de inicio sesio comprobar que no estan los campos en blancos, comprobar que existe el
+        //Usuario y comprobar que es administrador y si es iniciar sesion correctamente si no mensaje de error
+        private void btnInicioSesion_Click(object sender, EventArgs e)
+        {
+          //  if (validarDatos())
+           // {
+                Principal infoDesarrollador = new Principal();
+                infoDesarrollador.Show();
+            //}
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Para mostrar la contraseña
         private void pbOjo_Click(object sender, EventArgs e)
         {
             // Alternar entre mostrar y ocultar la contraseña
             mostrarContraseña = !mostrarContraseña;
 
-            if (mostrarContraseña) {
+            if (mostrarContraseña)
+            {
                 // Mostrar contraseña
                 txtContrasena.PasswordChar = '\0';
-            } else {
+            }
+            else
+            {
                 // Ocultar contraseña
                 txtContrasena.PasswordChar = '*';
             }
         }
 
 
-
-        //Boton de inicio sesio comprobar que no estan los campos en blancos, comprobar que existe el
-        //Usuario y comprobar que es administrador y si es iniciar sesion correctamente si no mensaje de error
-        private void btnInicioSesion_Click(object sender, EventArgs e)
+        private void InicioSesion_SizeChanged(object sender, EventArgs e)
         {
-            if (validarDatos())
-            {
-               
-            }
+            int espacioEntreControles = 0;
+            //Calcular los Labels
+            lblCorreo.Left = (ClientSize.Width - lblCorreo.Width) / 2;
+            lblContraseña.Left = (ClientSize.Width - lblContraseña.Width) / 2;
+
+
+            // Calcular Los TextBox y la imagen del ojo para la contraseña
+            txtCorreoElectronico.Left = (ClientSize.Width - txtCorreoElectronico.Width) / 2;
+            int nuevoLeftTxtContraseña = (ClientSize.Width - txtContrasena.Width) / 2;
+            txtContrasena.Left = nuevoLeftTxtContraseña;
+            pbOjo.Left = nuevoLeftTxtContraseña + txtContrasena.Width + espacioEntreControles;
+
+            //Calcular los botones
+            btnInicioSesion.Left = (ClientSize.Width - btnInicioSesion.Width) / 2;
+            btnSalir.Left = (ClientSize.Width - btnSalir.Width) / 2;
+
         }
 
+  
+
+        //Metodos extras
         public bool validarDatos()
         {
             if (string.IsNullOrEmpty(txtCorreoElectronico.Text))
@@ -69,24 +101,6 @@ namespace CarKier
 
         }
 
-        private void InicioSesion_SizeChanged(object sender, EventArgs e)
-        {
-            int espacioEntreControles = 0;
-            //Calcular los Labels
-            lblCorreo.Left = (ClientSize.Width - lblCorreo.Width) / 2;
-            lblContraseña.Left = (ClientSize.Width - lblContraseña.Width) / 2;
-
-
-            // Calcular Los TextBox y la imagen del ojo para la contraseña
-            txtCorreoElectronico.Left = (ClientSize.Width - txtCorreoElectronico.Width) / 2;
-            int nuevoLeftTxtContraseña = (ClientSize.Width - txtContrasena.Width) / 2;
-            txtContrasena.Left =nuevoLeftTxtContraseña;
-            pbOjo.Left = nuevoLeftTxtContraseña + txtContrasena.Width + espacioEntreControles;
-           
-            //Calcular los botones
-            btnInicioSesion.Left = (ClientSize.Width - btnInicioSesion.Width) / 2;
-            btnSalir.Left = (ClientSize.Width - btnSalir.Width) / 2;
-
-        }
+        
     }
 }

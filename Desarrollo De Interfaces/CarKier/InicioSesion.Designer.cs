@@ -58,10 +58,11 @@
             // 
             this.lblCorreo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Location = new System.Drawing.Point(366, 227);
+            this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblCorreo.Location = new System.Drawing.Point(341, 223);
             this.lblCorreo.Margin = new System.Windows.Forms.Padding(13);
             this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(88, 13);
+            this.lblCorreo.Size = new System.Drawing.Size(140, 20);
             this.lblCorreo.TabIndex = 2;
             this.lblCorreo.Text = "Correo Elctronico";
             // 
@@ -79,10 +80,11 @@
             // 
             this.lblContraseña.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(384, 281);
+            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblContraseña.Location = new System.Drawing.Point(362, 279);
             this.lblContraseña.Margin = new System.Windows.Forms.Padding(13);
             this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(61, 13);
+            this.lblContraseña.Size = new System.Drawing.Size(95, 20);
             this.lblContraseña.TabIndex = 4;
             this.lblContraseña.Text = "Contraseña";
             // 
@@ -114,7 +116,7 @@
             // 
             this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pbLogo.Image = global::CarKier.Properties.Resources.logo;
-            this.pbLogo.Location = new System.Drawing.Point(312, 51);
+            this.pbLogo.Location = new System.Drawing.Point(312, 46);
             this.pbLogo.Margin = new System.Windows.Forms.Padding(13);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(195, 164);
@@ -133,6 +135,7 @@
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // InicioSesion
             // 
