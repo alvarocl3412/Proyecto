@@ -45,18 +45,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnVerDatos = new System.Windows.Forms.Button();
             this.lvMostrarCarnets = new System.Windows.Forms.ListView();
-            this.label2 = new System.Windows.Forms.Label();
             this.chID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFecha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFechaCadu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsCarnet = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ntsmNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mtsmVer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
             this.cmsCarnet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
@@ -204,16 +204,6 @@
             this.lvMostrarCarnets.UseCompatibleStateImageBehavior = false;
             this.lvMostrarCarnets.View = System.Windows.Forms.View.Details;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(360, 237);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 20);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Carnets de conducir";
-            // 
             // chID
             // 
             this.chID.Text = "idCarnet";
@@ -242,49 +232,61 @@
             // 
             this.cmsCarnet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
-            this.nuevoToolStripMenuItem,
+            this.ntsmNuevo,
             this.toolStripSeparator2,
-            this.verToolStripMenuItem,
+            this.mtsmVer,
             this.toolStripSeparator3,
             this.eliminarToolStripMenuItem});
             this.cmsCarnet.Name = "cmsCarnet";
-            this.cmsCarnet.Size = new System.Drawing.Size(118, 88);
+            this.cmsCarnet.Size = new System.Drawing.Size(181, 110);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ntsmNuevo
+            // 
+            this.ntsmNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
+            this.ntsmNuevo.Name = "ntsmNuevo";
+            this.ntsmNuevo.Size = new System.Drawing.Size(180, 22);
+            this.ntsmNuevo.Text = "Nuevo";
+            this.ntsmNuevo.Click += new System.EventHandler(this.ntsmNuevo_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mtsmVer
+            // 
+            this.mtsmVer.Image = global::CarKier.Properties.Resources.ojo1;
+            this.mtsmVer.Name = "mtsmVer";
+            this.mtsmVer.Size = new System.Drawing.Size(180, 22);
+            this.mtsmVer.Text = "Ver";
+            this.mtsmVer.Click += new System.EventHandler(this.mtsmVer_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             // 
-            // toolStripSeparator1
+            // label2
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            this.nuevoToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_add_16xMD;
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.nuevoToolStripMenuItem.Text = "Nuevo";
-            // 
-            // verToolStripMenuItem
-            // 
-            this.verToolStripMenuItem.Image = global::CarKier.Properties.Resources.ojo1;
-            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.verToolStripMenuItem.Text = "Ver";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(360, 237);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 20);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Carnets de conducir";
             // 
             // pcFotoImaggen
             // 
@@ -352,8 +354,8 @@
         private System.Windows.Forms.ColumnHeader chFecha;
         private System.Windows.Forms.ColumnHeader chFechaCadu;
         private System.Windows.Forms.ContextMenuStrip cmsCarnet;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ntsmNuevo;
+        private System.Windows.Forms.ToolStripMenuItem mtsmVer;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

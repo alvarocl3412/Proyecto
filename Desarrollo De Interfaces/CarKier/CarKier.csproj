@@ -52,6 +52,12 @@
     <Compile Include="InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLL\CarnetVerModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\CarnetVerModificar.Designer.cs">
+      <DependentUpon>CarnetVerModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="PLL\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\CarnetVerModificar.resx">
+      <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -110,11 +119,15 @@
   <ItemGroup>
     <Content Include="drawable\action_add_16xMD.png" />
     <Content Include="drawable\action_Cancel_16xMD.png" />
+    <Content Include="drawable\carnet.png" />
     <Content Include="drawable\foto Usuario.png" />
     <Content Include="drawable\logo.ico" />
     <Content Include="drawable\logo.png" />
+    <Content Include="drawable\modificar.png" />
     <Content Include="drawable\ojo.png" />
+    <Content Include="drawable\Save_6530.png" />
     <Content Include="drawable\Usuario.png" />
+    <None Include="Resources\carnet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
