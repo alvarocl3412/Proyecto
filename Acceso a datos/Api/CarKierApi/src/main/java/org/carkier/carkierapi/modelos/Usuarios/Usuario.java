@@ -2,6 +2,8 @@ package org.carkier.carkierapi.modelos.Usuarios;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario{
@@ -29,10 +31,13 @@ public class Usuario{
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+
     public Usuario() {
     }
 
-    public Usuario(Integer id, String dni, String nombre, String apellidos, String telefono, String correo, String contrasena) {
+    public Usuario(Integer id, String dni, String nombre, String apellidos, String telefono, String correo, String contrasena, LocalDate fechaNacimiento) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -40,6 +45,7 @@ public class Usuario{
         this.telefono = telefono;
         this.correo = correo;
         this.contrasena = contrasena;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public Integer getId() {
@@ -98,6 +104,14 @@ public class Usuario{
         this.contrasena = contrasena;
     }
 
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -108,6 +122,7 @@ public class Usuario{
                 ", telefono='" + telefono + '\'' +
                 ", correo='" + correo + '\'' +
                 ", contrasena='" + contrasena + '\'' +
+                ", fecha nacimiento ='" + fechaNacimiento + '\'' +
                 '}';
     }
 }
