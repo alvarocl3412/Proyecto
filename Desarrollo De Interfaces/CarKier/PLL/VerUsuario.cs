@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CarKier.PLL
 {
-    public partial class VerUsuarios : Form
+    public partial class VerUsuario : Form
     {
-        public VerUsuarios()
+        public VerUsuario()
         {
             InitializeComponent();
         }
@@ -29,10 +29,27 @@ namespace CarKier.PLL
             PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(2);
             CarnetVerModificar.Show();
         }
-
-
         #endregion
 
-    
+
+        #region Funcionalidad botones
+        private void btnDatos_Click(object sender, EventArgs e)
+        {
+            PLL.DatosDelUsuario DatosUsu = new PLL.DatosDelUsuario();
+            DatosUsu.Show();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+
     }
 }

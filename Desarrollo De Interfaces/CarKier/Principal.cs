@@ -33,5 +33,26 @@ namespace CarKier
             infoUsuarios.MdiParent = this;
             infoUsuarios.Show();
         }
+
+        private void vehiculosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (typeof(PLL.Vehiculos) == form.GetType())
+                {
+                    form.Activate(); //Nos muestra por formulario 
+                    return;
+                }
+            }
+
+            //Si no esta activo, lo instanciamos y mostramos
+            PLL.Vehiculos vehiculos = new PLL.Vehiculos();
+            vehiculos.MdiParent = this;
+            vehiculos.Show();
+        
+        }
+
+
+
     }
 }

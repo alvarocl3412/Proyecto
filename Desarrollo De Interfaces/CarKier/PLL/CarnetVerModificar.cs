@@ -22,7 +22,7 @@ namespace CarKier.PLL
         {
             InitializeComponent();
             this.numero = numero;
-            if(numero == 1)
+            if (numero == 1)
             {
                 InicializarComponenterAñadir();
             }
@@ -40,7 +40,7 @@ namespace CarKier.PLL
         }
 
         private void InicializarComponentesVer()
-        {  
+        {
             //Le pasamos argumentos
             txtIdCarnet.Text = "1";
             txtIdUsuario.Text = "1";
@@ -57,15 +57,19 @@ namespace CarKier.PLL
             if (numero == 1)
             {
                 DialogResult result = MessageBox.Show("¿Quieres agregar el nuevo carnet?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                // Evalúa la respuesta del usuario
                 if (result == DialogResult.Yes)
                 {
                     // El usuario hizo clic en "Yes"
+                    //Se agrega el nuevo carnet
 
+
+                    //Cerramos la ventana
+                    this.Close();
                 }
                 else if (result == DialogResult.No)
                 {
                     // El usuario hizo clic en "No"
+                    this.Close();
 
                 }
             }
@@ -82,7 +86,7 @@ namespace CarKier.PLL
                 {
                     // El usuario hizo clic en "No"
                 }
-            } 
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -90,8 +94,22 @@ namespace CarKier.PLL
             DialogResult result = MessageBox.Show("¿Seguro que quieres salir sin guardar los cambios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // El usuario hizo clic en "Yes"
-                this.Close();
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario hizo clic en "Yes"
+
+                    //Metodo para guardar
+
+
+                    //MeTtodo para cerrar
+                    this.Close();
+                } else
+                {
+                    //EL usuario hizo clic en "No"
+                    //Cerramos sin guardar
+                    this.Close();
+                }
+
             }
         }
         #endregion

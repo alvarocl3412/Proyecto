@@ -53,7 +53,7 @@ namespace CarKier.PLL
 
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PLL.VerUsuarios infoUsuarios = new PLL.VerUsuarios();
+            PLL.VerUsuario infoUsuarios = new PLL.VerUsuario();
             infoUsuarios.Show();
         }
     }

@@ -38,20 +38,17 @@
             this.chTelefono = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chCorreo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFiltrarDni = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.msUsuarios = new System.Windows.Forms.MenuStrip();
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
-            this.msUsuarios.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvUsuarios
@@ -123,12 +120,22 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(118, 88);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
+            // 
             // nuevoToolStripMenuItem1
             // 
             this.nuevoToolStripMenuItem1.Image = global::CarKier.Properties.Resources.action_add_16xMD;
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
             this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
             // 
             // verToolStripMenuItem
             // 
@@ -137,6 +144,11 @@
             this.verToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.verToolStripMenuItem.Text = "Ver";
             this.verToolStripMenuItem.Click += new System.EventHandler(this.verToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
             // 
             // eliminarToolStripMenuItem
             // 
@@ -168,62 +180,27 @@
             // pcFotoImaggen
             // 
             this.pcFotoImaggen.Image = global::CarKier.Properties.Resources.Usuario;
-            this.pcFotoImaggen.Location = new System.Drawing.Point(650, 38);
+            this.pcFotoImaggen.Location = new System.Drawing.Point(30, 17);
             this.pcFotoImaggen.Name = "pcFotoImaggen";
-            this.pcFotoImaggen.Size = new System.Drawing.Size(109, 65);
+            this.pcFotoImaggen.Size = new System.Drawing.Size(134, 93);
             this.pcFotoImaggen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcFotoImaggen.TabIndex = 3;
             this.pcFotoImaggen.TabStop = false;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
-            // 
-            // msUsuarios
-            // 
-            this.msUsuarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem});
-            this.msUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.msUsuarios.Name = "msUsuarios";
-            this.msUsuarios.Size = new System.Drawing.Size(800, 24);
-            this.msUsuarios.TabIndex = 5;
-            this.msUsuarios.Text = "menuStrip1";
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.msUsuarios);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.pcFotoImaggen);
             this.Controls.Add(this.txtFiltrarDni);
             this.Controls.Add(this.lvUsuarios);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.msUsuarios;
             this.Name = "Usuarios";
             this.Text = "Usuarios";
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).EndInit();
-            this.msUsuarios.ResumeLayout(false);
-            this.msUsuarios.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,7 +224,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.MenuStrip msUsuarios;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
     }
 }

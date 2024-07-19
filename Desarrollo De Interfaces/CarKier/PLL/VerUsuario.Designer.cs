@@ -1,6 +1,6 @@
 ﻿namespace CarKier.PLL
 {
-    partial class VerUsuarios
+    partial class VerUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerUsuarios));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerUsuario));
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -42,8 +42,6 @@
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.lblCorreo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnVerDatos = new System.Windows.Forms.Button();
             this.lvMostrarCarnets = new System.Windows.Forms.ListView();
             this.chID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,13 +49,19 @@
             this.chFechaCadu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsCarnet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ntsmNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mtsmVer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
+            this.ntsmNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mtsmVer = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
+            this.lblDatos = new System.Windows.Forms.Label();
+            this.lblFechaNac = new System.Windows.Forms.Label();
+            this.txtFechaNac = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnDatos = new System.Windows.Forms.Button();
             this.cmsCarnet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +70,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Italic);
-            this.lblNombre.Location = new System.Drawing.Point(206, 88);
+            this.lblNombre.Location = new System.Drawing.Point(209, 82);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(73, 20);
             this.lblNombre.TabIndex = 5;
@@ -74,7 +78,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(303, 89);
+            this.txtNombre.Location = new System.Drawing.Point(326, 82);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(130, 20);
             this.txtNombre.TabIndex = 6;
@@ -83,7 +87,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(225, 45);
+            this.lblId.Location = new System.Drawing.Point(225, 39);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(30, 20);
             this.lblId.TabIndex = 7;
@@ -91,21 +95,21 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(303, 48);
+            this.txtID.Location = new System.Drawing.Point(326, 41);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(130, 20);
             this.txtID.TabIndex = 8;
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(566, 48);
+            this.txtDni.Location = new System.Drawing.Point(566, 42);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(189, 20);
             this.txtDni.TabIndex = 9;
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(566, 89);
+            this.txtApellidos.Location = new System.Drawing.Point(566, 83);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(189, 20);
             this.txtApellidos.TabIndex = 10;
@@ -114,7 +118,7 @@
             // 
             this.lblDni.AutoSize = true;
             this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDni.Location = new System.Drawing.Point(508, 48);
+            this.lblDni.Location = new System.Drawing.Point(508, 42);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(41, 20);
             this.lblDni.TabIndex = 11;
@@ -124,7 +128,7 @@
             // 
             this.lblApellidos.AutoSize = true;
             this.lblApellidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidos.Location = new System.Drawing.Point(486, 88);
+            this.lblApellidos.Location = new System.Drawing.Point(484, 82);
             this.lblApellidos.Name = "lblApellidos";
             this.lblApellidos.Size = new System.Drawing.Size(74, 20);
             this.lblApellidos.TabIndex = 12;
@@ -134,7 +138,7 @@
             // 
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(205, 132);
+            this.lblTelefono.Location = new System.Drawing.Point(209, 126);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(75, 20);
             this.lblTelefono.TabIndex = 13;
@@ -142,14 +146,14 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(303, 134);
+            this.txtTelefono.Location = new System.Drawing.Point(326, 128);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(130, 20);
             this.txtTelefono.TabIndex = 14;
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(566, 132);
+            this.txtCorreo.Location = new System.Drawing.Point(566, 126);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(189, 20);
             this.txtCorreo.TabIndex = 15;
@@ -158,31 +162,11 @@
             // 
             this.lblCorreo.AutoSize = true;
             this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorreo.Location = new System.Drawing.Point(490, 132);
+            this.lblCorreo.Location = new System.Drawing.Point(490, 126);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(61, 20);
             this.lblCorreo.TabIndex = 16;
             this.lblCorreo.Text = "Correo:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(353, 176);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 20);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Datos:";
-            // 
-            // btnVerDatos
-            // 
-            this.btnVerDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerDatos.Location = new System.Drawing.Point(450, 171);
-            this.btnVerDatos.Name = "btnVerDatos";
-            this.btnVerDatos.Size = new System.Drawing.Size(88, 30);
-            this.btnVerDatos.TabIndex = 20;
-            this.btnVerDatos.Text = "Datos";
-            this.btnVerDatos.UseVisualStyleBackColor = true;
             // 
             // lvMostrarCarnets
             // 
@@ -196,10 +180,10 @@
             this.lvMostrarCarnets.FullRowSelect = true;
             this.lvMostrarCarnets.GridLines = true;
             this.lvMostrarCarnets.HideSelection = false;
-            this.lvMostrarCarnets.Location = new System.Drawing.Point(114, 260);
+            this.lvMostrarCarnets.Location = new System.Drawing.Point(114, 263);
             this.lvMostrarCarnets.MultiSelect = false;
             this.lvMostrarCarnets.Name = "lvMostrarCarnets";
-            this.lvMostrarCarnets.Size = new System.Drawing.Size(609, 178);
+            this.lvMostrarCarnets.Size = new System.Drawing.Size(609, 124);
             this.lvMostrarCarnets.TabIndex = 21;
             this.lvMostrarCarnets.UseCompatibleStateImageBehavior = false;
             this.lvMostrarCarnets.View = System.Windows.Forms.View.Details;
@@ -238,75 +222,143 @@
             this.toolStripSeparator3,
             this.eliminarToolStripMenuItem});
             this.cmsCarnet.Name = "cmsCarnet";
-            this.cmsCarnet.Size = new System.Drawing.Size(181, 110);
+            this.cmsCarnet.Size = new System.Drawing.Size(118, 88);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // ntsmNuevo
-            // 
-            this.ntsmNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
-            this.ntsmNuevo.Name = "ntsmNuevo";
-            this.ntsmNuevo.Size = new System.Drawing.Size(180, 22);
-            this.ntsmNuevo.Text = "Nuevo";
-            this.ntsmNuevo.Click += new System.EventHandler(this.ntsmNuevo_Click);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // mtsmVer
-            // 
-            this.mtsmVer.Image = global::CarKier.Properties.Resources.ojo1;
-            this.mtsmVer.Name = "mtsmVer";
-            this.mtsmVer.Size = new System.Drawing.Size(180, 22);
-            this.mtsmVer.Text = "Ver";
-            this.mtsmVer.Click += new System.EventHandler(this.mtsmVer_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(360, 237);
+            this.label2.Location = new System.Drawing.Point(358, 245);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 20);
             this.label2.TabIndex = 22;
             this.label2.Text = "Carnets de conducir";
             // 
+            // ntsmNuevo
+            // 
+            this.ntsmNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
+            this.ntsmNuevo.Name = "ntsmNuevo";
+            this.ntsmNuevo.Size = new System.Drawing.Size(117, 22);
+            this.ntsmNuevo.Text = "Nuevo";
+            this.ntsmNuevo.Click += new System.EventHandler(this.ntsmNuevo_Click);
+            // 
+            // mtsmVer
+            // 
+            this.mtsmVer.Image = global::CarKier.Properties.Resources.ojo1;
+            this.mtsmVer.Name = "mtsmVer";
+            this.mtsmVer.Size = new System.Drawing.Size(117, 22);
+            this.mtsmVer.Text = "Ver";
+            this.mtsmVer.Click += new System.EventHandler(this.mtsmVer_Click);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            // 
             // pcFotoImaggen
             // 
             this.pcFotoImaggen.Image = global::CarKier.Properties.Resources.Usuario;
-            this.pcFotoImaggen.Location = new System.Drawing.Point(25, 37);
+            this.pcFotoImaggen.Location = new System.Drawing.Point(24, 32);
             this.pcFotoImaggen.Name = "pcFotoImaggen";
             this.pcFotoImaggen.Size = new System.Drawing.Size(183, 154);
             this.pcFotoImaggen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcFotoImaggen.TabIndex = 4;
             this.pcFotoImaggen.TabStop = false;
             // 
-            // VerUsuarios
+            // lblDatos
+            // 
+            this.lblDatos.AutoSize = true;
+            this.lblDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
+            this.lblDatos.Location = new System.Drawing.Point(490, 167);
+            this.lblDatos.Name = "lblDatos";
+            this.lblDatos.Size = new System.Drawing.Size(56, 20);
+            this.lblDatos.TabIndex = 23;
+            this.lblDatos.Text = "Datos:";
+            // 
+            // lblFechaNac
+            // 
+            this.lblFechaNac.AutoSize = true;
+            this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
+            this.lblFechaNac.Location = new System.Drawing.Point(206, 165);
+            this.lblFechaNac.Name = "lblFechaNac";
+            this.lblFechaNac.Size = new System.Drawing.Size(141, 20);
+            this.lblFechaNac.TabIndex = 24;
+            this.lblFechaNac.Text = "Fecha Nacimiento:";
+            // 
+            // txtFechaNac
+            // 
+            this.txtFechaNac.Location = new System.Drawing.Point(353, 164);
+            this.txtFechaNac.Name = "txtFechaNac";
+            this.txtFechaNac.Size = new System.Drawing.Size(103, 20);
+            this.txtFechaNac.TabIndex = 25;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Image = global::CarKier.Properties.Resources.Save_6530;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(243, 404);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(110, 34);
+            this.btnGuardar.TabIndex = 27;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(455, 404);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(112, 34);
+            this.btnCancelar.TabIndex = 28;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnDatos
+            // 
+            this.btnDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatos.Location = new System.Drawing.Point(566, 159);
+            this.btnDatos.Name = "btnDatos";
+            this.btnDatos.Size = new System.Drawing.Size(103, 32);
+            this.btnDatos.TabIndex = 29;
+            this.btnDatos.Text = "Datos";
+            this.btnDatos.UseVisualStyleBackColor = true;
+            this.btnDatos.Click += new System.EventHandler(this.btnDatos_Click);
+            // 
+            // VerUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDatos);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.txtFechaNac);
+            this.Controls.Add(this.lblFechaNac);
+            this.Controls.Add(this.lblDatos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lvMostrarCarnets);
-            this.Controls.Add(this.btnVerDatos);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtTelefono);
@@ -321,7 +373,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pcFotoImaggen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VerUsuarios";
+            this.Name = "VerUsuario";
             this.Text = "VerUsuarios";
             this.cmsCarnet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).EndInit();
@@ -345,8 +397,6 @@
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnVerDatos;
         private System.Windows.Forms.ListView lvMostrarCarnets;
         private System.Windows.Forms.ColumnHeader chID;
         private System.Windows.Forms.Label label2;
@@ -360,5 +410,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.Label lblDatos;
+        private System.Windows.Forms.Label lblFechaNac;
+        private System.Windows.Forms.TextBox txtFechaNac;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnDatos;
     }
 }

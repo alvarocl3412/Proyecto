@@ -58,17 +58,35 @@
     <Compile Include="PLL\CarnetVerModificar.Designer.cs">
       <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLL\DatosDelUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\DatosDelUsuario.Designer.cs">
+      <DependentUpon>DatosDelUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="PLL\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PLL\Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="PLL\VerUsuarios.cs">
+    <Compile Include="PLL\Vehiculos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PLL\VerUsuarios.Designer.cs">
-      <DependentUpon>VerUsuarios.cs</DependentUpon>
+    <Compile Include="PLL\Vehiculos.Designer.cs">
+      <DependentUpon>Vehiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLL\VerUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\VerUsuario.Designer.cs">
+      <DependentUpon>VerUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLL\VerVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\VerVehiculo.Designer.cs">
+      <DependentUpon>VerVehiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -84,11 +102,20 @@
     <EmbeddedResource Include="PLL\CarnetVerModificar.resx">
       <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PLL\DatosDelUsuario.resx">
+      <DependentUpon>DatosDelUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PLL\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PLL\VerUsuarios.resx">
-      <DependentUpon>VerUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="PLL\Vehiculos.resx">
+      <DependentUpon>Vehiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\VerUsuario.resx">
+      <DependentUpon>VerUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\VerVehiculo.resx">
+      <DependentUpon>VerVehiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -120,6 +147,7 @@
     <Content Include="drawable\action_add_16xMD.png" />
     <Content Include="drawable\action_Cancel_16xMD.png" />
     <Content Include="drawable\carnet.png" />
+    <Content Include="drawable\coche.png" />
     <Content Include="drawable\foto Usuario.png" />
     <Content Include="drawable\logo.ico" />
     <Content Include="drawable\logo.png" />

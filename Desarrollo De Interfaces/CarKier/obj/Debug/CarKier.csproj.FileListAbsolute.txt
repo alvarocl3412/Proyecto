@@ -10,5 +10,7 @@ C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarK
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.CoreCompileInputs.cache
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.exe
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.pdb
-C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerUsuarios.resources
 C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.CarnetVerModificar.resources
+C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.DatosDelUsuario.resources
+C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerUsuario.resources
+C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Vehiculos.resources
