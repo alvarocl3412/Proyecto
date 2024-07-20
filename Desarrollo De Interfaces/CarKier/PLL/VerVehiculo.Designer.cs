@@ -61,7 +61,7 @@
             // 
             this.lblIdVehiculo.AutoSize = true;
             this.lblIdVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdVehiculo.Location = new System.Drawing.Point(193, 73);
+            this.lblIdVehiculo.Location = new System.Drawing.Point(188, 43);
             this.lblIdVehiculo.Name = "lblIdVehiculo";
             this.lblIdVehiculo.Size = new System.Drawing.Size(92, 20);
             this.lblIdVehiculo.TabIndex = 5;
@@ -71,7 +71,7 @@
             // 
             this.lblIdEmpresa.AutoSize = true;
             this.lblIdEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblIdEmpresa.Location = new System.Drawing.Point(453, 74);
+            this.lblIdEmpresa.Location = new System.Drawing.Point(468, 45);
             this.lblIdEmpresa.Name = "lblIdEmpresa";
             this.lblIdEmpresa.Size = new System.Drawing.Size(95, 20);
             this.lblIdEmpresa.TabIndex = 6;
@@ -81,7 +81,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblUsuario.Location = new System.Drawing.Point(193, 130);
+            this.lblUsuario.Location = new System.Drawing.Point(446, 92);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(145, 20);
             this.lblUsuario.TabIndex = 7;
@@ -91,7 +91,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblEstado.Location = new System.Drawing.Point(46, 198);
+            this.lblEstado.Location = new System.Drawing.Point(201, 94);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(64, 20);
             this.lblEstado.TabIndex = 8;
@@ -101,7 +101,7 @@
             // 
             this.lblModelo.AutoSize = true;
             this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblModelo.Location = new System.Drawing.Point(46, 265);
+            this.lblModelo.Location = new System.Drawing.Point(42, 211);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(65, 20);
             this.lblModelo.TabIndex = 9;
@@ -111,7 +111,7 @@
             // 
             this.lblAnio.AutoSize = true;
             this.lblAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblAnio.Location = new System.Drawing.Point(287, 263);
+            this.lblAnio.Location = new System.Drawing.Point(279, 211);
             this.lblAnio.Name = "lblAnio";
             this.lblAnio.Size = new System.Drawing.Size(42, 20);
             this.lblAnio.TabIndex = 10;
@@ -121,7 +121,7 @@
             // 
             this.lblKilometro.AutoSize = true;
             this.lblKilometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblKilometro.Location = new System.Drawing.Point(491, 265);
+            this.lblKilometro.Location = new System.Drawing.Point(484, 211);
             this.lblKilometro.Name = "lblKilometro";
             this.lblKilometro.Size = new System.Drawing.Size(79, 20);
             this.lblKilometro.TabIndex = 11;
@@ -131,7 +131,7 @@
             // 
             this.lblMatricula.AutoSize = true;
             this.lblMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblMatricula.Location = new System.Drawing.Point(269, 200);
+            this.lblMatricula.Location = new System.Drawing.Point(192, 145);
             this.lblMatricula.Name = "lblMatricula";
             this.lblMatricula.Size = new System.Drawing.Size(77, 20);
             this.lblMatricula.TabIndex = 12;
@@ -141,7 +141,7 @@
             // 
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblPrecioVenta.Location = new System.Drawing.Point(176, 330);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(176, 279);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(104, 20);
             this.lblPrecioVenta.TabIndex = 13;
@@ -151,7 +151,7 @@
             // 
             this.lblPrecioDia.AutoSize = true;
             this.lblPrecioDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblPrecioDia.Location = new System.Drawing.Point(453, 328);
+            this.lblPrecioDia.Location = new System.Drawing.Point(446, 281);
             this.lblPrecioDia.Name = "lblPrecioDia";
             this.lblPrecioDia.Size = new System.Drawing.Size(85, 20);
             this.lblPrecioDia.TabIndex = 14;
@@ -161,7 +161,7 @@
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblMarca.Location = new System.Drawing.Point(505, 199);
+            this.lblMarca.Location = new System.Drawing.Point(491, 143);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(57, 20);
             this.lblMarca.TabIndex = 15;
@@ -169,88 +169,88 @@
             // 
             // txtIdVehiculo
             // 
-            this.txtIdVehiculo.Location = new System.Drawing.Point(291, 73);
+            this.txtIdVehiculo.Location = new System.Drawing.Point(292, 43);
             this.txtIdVehiculo.Name = "txtIdVehiculo";
-            this.txtIdVehiculo.Size = new System.Drawing.Size(100, 20);
+            this.txtIdVehiculo.Size = new System.Drawing.Size(129, 20);
             this.txtIdVehiculo.TabIndex = 16;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(366, 130);
+            this.textBox2.Location = new System.Drawing.Point(292, 94);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(129, 20);
             this.textBox2.TabIndex = 17;
             // 
             // txtEmpresa
             // 
-            this.txtEmpresa.Location = new System.Drawing.Point(551, 75);
+            this.txtEmpresa.Location = new System.Drawing.Point(595, 45);
             this.txtEmpresa.Name = "txtEmpresa";
-            this.txtEmpresa.Size = new System.Drawing.Size(100, 20);
+            this.txtEmpresa.Size = new System.Drawing.Size(171, 20);
             this.txtEmpresa.TabIndex = 18;
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(128, 200);
+            this.txtEstado.Location = new System.Drawing.Point(595, 94);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(100, 20);
+            this.txtEstado.Size = new System.Drawing.Size(171, 20);
             this.txtEstado.TabIndex = 19;
             // 
             // txtModelo
             // 
-            this.txtModelo.Location = new System.Drawing.Point(128, 265);
+            this.txtModelo.Location = new System.Drawing.Point(129, 213);
             this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(100, 20);
+            this.txtModelo.Size = new System.Drawing.Size(136, 20);
             this.txtModelo.TabIndex = 20;
             // 
             // txtAnio
             // 
-            this.txtAnio.Location = new System.Drawing.Point(358, 263);
+            this.txtAnio.Location = new System.Drawing.Point(340, 211);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(100, 20);
+            this.txtAnio.Size = new System.Drawing.Size(117, 20);
             this.txtAnio.TabIndex = 21;
             // 
             // txtKilometro
             // 
-            this.txtKilometro.Location = new System.Drawing.Point(588, 263);
+            this.txtKilometro.Location = new System.Drawing.Point(595, 211);
             this.txtKilometro.Name = "txtKilometro";
             this.txtKilometro.Size = new System.Drawing.Size(100, 20);
             this.txtKilometro.TabIndex = 22;
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(358, 201);
+            this.txtMatricula.Location = new System.Drawing.Point(292, 145);
             this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(100, 20);
+            this.txtMatricula.Size = new System.Drawing.Size(136, 20);
             this.txtMatricula.TabIndex = 23;
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(300, 330);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(292, 281);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(109, 20);
             this.txtPrecioVenta.TabIndex = 24;
             // 
             // txtPrecioDia
             // 
-            this.txtPrecioDia.Location = new System.Drawing.Point(544, 330);
+            this.txtPrecioDia.Location = new System.Drawing.Point(549, 281);
             this.txtPrecioDia.Name = "txtPrecioDia";
-            this.txtPrecioDia.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecioDia.Size = new System.Drawing.Size(112, 20);
             this.txtPrecioDia.TabIndex = 25;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(588, 200);
+            this.textBox11.Location = new System.Drawing.Point(595, 143);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.Size = new System.Drawing.Size(171, 20);
             this.textBox11.TabIndex = 26;
             // 
             // pcCoche
             // 
             this.pcCoche.BackColor = System.Drawing.Color.Transparent;
             this.pcCoche.Image = global::CarKier.Properties.Resources.coche;
-            this.pcCoche.Location = new System.Drawing.Point(23, 31);
+            this.pcCoche.Location = new System.Drawing.Point(18, 33);
             this.pcCoche.Name = "pcCoche";
-            this.pcCoche.Size = new System.Drawing.Size(157, 119);
+            this.pcCoche.Size = new System.Drawing.Size(168, 146);
             this.pcCoche.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcCoche.TabIndex = 4;
             this.pcCoche.TabStop = false;
@@ -260,24 +260,26 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(450, 383);
+            this.btnCancelar.Location = new System.Drawing.Point(488, 355);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 34);
+            this.btnCancelar.Size = new System.Drawing.Size(127, 41);
             this.btnCancelar.TabIndex = 30;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::CarKier.Properties.Resources.Save_6530;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(238, 383);
+            this.btnGuardar.Location = new System.Drawing.Point(227, 355);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 34);
+            this.btnGuardar.Size = new System.Drawing.Size(127, 41);
             this.btnGuardar.TabIndex = 29;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // VerVehiculo
             // 
@@ -311,7 +313,7 @@
             this.Controls.Add(this.pcCoche);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerVehiculo";
-            this.Text = "VerVehiculo";
+            this.Text = "Vehiculo";
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -52,7 +52,38 @@ namespace CarKier
         
         }
 
+        private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (typeof(PLL.Empresas) == form.GetType())
+                {
+                    form.Activate(); //Nos muestra por formulario 
+                    return;
+                }
+            }
 
+            //Si no esta activo, lo instanciamos y mostramos
+            PLL.Empresas empresas = new PLL.Empresas();
+            empresas.MdiParent = this;
+            empresas.Show();
+        }
 
+        private void seguToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (typeof(PLL.Contratos) == form.GetType())
+                {
+                    form.Activate(); //Nos muestra por formulario 
+                    return;
+                }
+            }
+
+            //Si no esta activo, lo instanciamos y mostramos
+            PLL.Contratos contratos = new PLL.Contratos();
+            contratos.MdiParent = this;
+            contratos.Show();
+        }
     }
 }

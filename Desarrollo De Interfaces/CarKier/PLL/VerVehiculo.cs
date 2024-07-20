@@ -16,5 +16,46 @@ namespace CarKier.PLL
         {
             InitializeComponent();
         }
+
+        #region Funcionalidades de los botones GUARDAR y CANCELAR
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Quieres guardar los vehiculos ?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // El usuario hizo clic en "Yes"
+                //Se agrega el nuevo carnet
+
+
+                //Cerramos la ventana
+                this.Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                // El usuario hizo clic en "No"
+                this.Close();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Quieres salir sin guardar el  vehiculo?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // El usuario hizo clic en "Yes"
+                //Se agrega el nuevo carnet
+
+
+                //Cerramos la ventana
+                this.Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                // El usuario hizo clic en "No"
+                this.Close();
+            }
+        }
+
+        #endregion
     }
 }

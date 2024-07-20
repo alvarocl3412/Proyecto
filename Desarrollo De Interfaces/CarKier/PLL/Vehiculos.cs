@@ -16,5 +16,11 @@ namespace CarKier.PLL
         {
             InitializeComponent();
         }
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PLL.VerVehiculo infoVehiculo= new PLL.VerVehiculo();
+            infoVehiculo.Show();
+        }
     }
 }

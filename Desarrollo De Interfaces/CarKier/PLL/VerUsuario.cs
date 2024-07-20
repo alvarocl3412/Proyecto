@@ -17,7 +17,7 @@ namespace CarKier.PLL
             InitializeComponent();
         }
 
-        #region Métodos para la tabla añadir ver 
+        #region Métodos para la tabla NUEVO,VER Y ELIMINAR
         private void ntsmNuevo_Click(object sender, EventArgs e)
         {
             PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(1);
@@ -29,10 +29,15 @@ namespace CarKier.PLL
             PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(2);
             CarnetVerModificar.Show();
         }
+        private void mtsmEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
 
-        #region Funcionalidad botones
+        #region Funcionalidad botones ver DATOS,GUARDAR,CANCELAR
         private void btnDatos_Click(object sender, EventArgs e)
         {
             PLL.DatosDelUsuario DatosUsu = new PLL.DatosDelUsuario();
@@ -41,13 +46,42 @@ namespace CarKier.PLL
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("¿Quieres guardar los datos del usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // El usuario hizo clic en "Yes"
+                //Se agrega el nuevo carnet
 
+
+                //Cerramos la ventana
+                this.Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                // El usuario hizo clic en "No"
+                this.Close();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("¿Quieres salir sin guardar los datos del usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // El usuario hizo clic en "Yes"
+                //Se agrega el nuevo carnet
 
+
+                //Cerramos la ventana
+                this.Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                // El usuario hizo clic en "No"
+                this.Close();
+            }
         }
+
         #endregion
 
 

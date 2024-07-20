@@ -58,11 +58,23 @@
     <Compile Include="PLL\CarnetVerModificar.Designer.cs">
       <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLL\Contratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\Contratos.Designer.cs">
+      <DependentUpon>Contratos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PLL\DatosDelUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PLL\DatosDelUsuario.Designer.cs">
       <DependentUpon>DatosDelUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLL\Empresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\Empresas.Designer.cs">
+      <DependentUpon>Empresas.cs</DependentUpon>
     </Compile>
     <Compile Include="PLL\Usuarios.cs">
       <SubType>Form</SubType>
@@ -75,6 +87,18 @@
     </Compile>
     <Compile Include="PLL\Vehiculos.Designer.cs">
       <DependentUpon>Vehiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLL\VerContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\VerContrato.Designer.cs">
+      <DependentUpon>VerContrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLL\VerEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\VerEmpresa.Designer.cs">
+      <DependentUpon>VerEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="PLL\VerUsuario.cs">
       <SubType>Form</SubType>
@@ -102,14 +126,26 @@
     <EmbeddedResource Include="PLL\CarnetVerModificar.resx">
       <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PLL\Contratos.resx">
+      <DependentUpon>Contratos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PLL\DatosDelUsuario.resx">
       <DependentUpon>DatosDelUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\Empresas.resx">
+      <DependentUpon>Empresas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\Vehiculos.resx">
       <DependentUpon>Vehiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\VerContrato.resx">
+      <DependentUpon>VerContrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\VerEmpresa.resx">
+      <DependentUpon>VerEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\VerUsuario.resx">
       <DependentUpon>VerUsuario.cs</DependentUpon>
@@ -148,6 +184,7 @@
     <Content Include="drawable\action_Cancel_16xMD.png" />
     <Content Include="drawable\carnet.png" />
     <Content Include="drawable\coche.png" />
+    <Content Include="drawable\empresa.png" />
     <Content Include="drawable\foto Usuario.png" />
     <Content Include="drawable\logo.ico" />
     <Content Include="drawable\logo.png" />

@@ -49,12 +49,12 @@
             this.chFechaCadu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsCarnet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.label2 = new System.Windows.Forms.Label();
             this.ntsmNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mtsmVer = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mtsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
             this.lblDatos = new System.Windows.Forms.Label();
             this.lblFechaNac = new System.Windows.Forms.Label();
@@ -220,7 +220,7 @@
             this.toolStripSeparator2,
             this.mtsmVer,
             this.toolStripSeparator3,
-            this.eliminarToolStripMenuItem});
+            this.mtsmEliminar});
             this.cmsCarnet.Name = "cmsCarnet";
             this.cmsCarnet.Size = new System.Drawing.Size(118, 88);
             // 
@@ -228,26 +228,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(358, 245);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 20);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Carnets de conducir";
             // 
             // ntsmNuevo
             // 
@@ -257,6 +237,11 @@
             this.ntsmNuevo.Text = "Nuevo";
             this.ntsmNuevo.Click += new System.EventHandler(this.ntsmNuevo_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            // 
             // mtsmVer
             // 
             this.mtsmVer.Image = global::CarKier.Properties.Resources.ojo1;
@@ -265,12 +250,28 @@
             this.mtsmVer.Text = "Ver";
             this.mtsmVer.Click += new System.EventHandler(this.mtsmVer_Click);
             // 
-            // eliminarToolStripMenuItem
+            // toolStripSeparator3
             // 
-            this.eliminarToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
+            // 
+            // mtsmEliminar
+            // 
+            this.mtsmEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.mtsmEliminar.Name = "mtsmEliminar";
+            this.mtsmEliminar.Size = new System.Drawing.Size(117, 22);
+            this.mtsmEliminar.Text = "Eliminar";
+            this.mtsmEliminar.Click += new System.EventHandler(this.mtsmEliminar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(358, 242);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 20);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Carnets de conducir";
             // 
             // pcFotoImaggen
             // 
@@ -286,7 +287,7 @@
             // 
             this.lblDatos.AutoSize = true;
             this.lblDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblDatos.Location = new System.Drawing.Point(490, 167);
+            this.lblDatos.Location = new System.Drawing.Point(523, 171);
             this.lblDatos.Name = "lblDatos";
             this.lblDatos.Size = new System.Drawing.Size(56, 20);
             this.lblDatos.TabIndex = 23;
@@ -296,7 +297,7 @@
             // 
             this.lblFechaNac.AutoSize = true;
             this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblFechaNac.Location = new System.Drawing.Point(206, 165);
+            this.lblFechaNac.Location = new System.Drawing.Point(209, 165);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(141, 20);
             this.lblFechaNac.TabIndex = 24;
@@ -306,7 +307,7 @@
             // 
             this.txtFechaNac.Location = new System.Drawing.Point(353, 164);
             this.txtFechaNac.Name = "txtFechaNac";
-            this.txtFechaNac.Size = new System.Drawing.Size(103, 20);
+            this.txtFechaNac.Size = new System.Drawing.Size(139, 20);
             this.txtFechaNac.TabIndex = 25;
             // 
             // btnGuardar
@@ -338,7 +339,7 @@
             // btnDatos
             // 
             this.btnDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatos.Location = new System.Drawing.Point(566, 159);
+            this.btnDatos.Location = new System.Drawing.Point(620, 159);
             this.btnDatos.Name = "btnDatos";
             this.btnDatos.Size = new System.Drawing.Size(103, 32);
             this.btnDatos.TabIndex = 29;
@@ -372,9 +373,10 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pcFotoImaggen);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerUsuario";
-            this.Text = "VerUsuarios";
+            this.Text = "Usuario";
             this.cmsCarnet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).EndInit();
             this.ResumeLayout(false);
@@ -406,7 +408,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsCarnet;
         private System.Windows.Forms.ToolStripMenuItem ntsmNuevo;
         private System.Windows.Forms.ToolStripMenuItem mtsmVer;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mtsmEliminar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;

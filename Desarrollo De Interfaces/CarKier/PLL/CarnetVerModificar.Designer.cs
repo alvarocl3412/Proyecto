@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarnetVerModificar));
             this.txtFechaCaducidad = new System.Windows.Forms.TextBox();
             this.txtFechaExpedicion = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
@@ -47,7 +48,7 @@
             // txtFechaCaducidad
             // 
             this.txtFechaCaducidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.txtFechaCaducidad.Location = new System.Drawing.Point(646, 160);
+            this.txtFechaCaducidad.Location = new System.Drawing.Point(646, 219);
             this.txtFechaCaducidad.Name = "txtFechaCaducidad";
             this.txtFechaCaducidad.Size = new System.Drawing.Size(134, 26);
             this.txtFechaCaducidad.TabIndex = 20;
@@ -55,7 +56,7 @@
             // txtFechaExpedicion
             // 
             this.txtFechaExpedicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.txtFechaExpedicion.Location = new System.Drawing.Point(360, 160);
+            this.txtFechaExpedicion.Location = new System.Drawing.Point(361, 216);
             this.txtFechaExpedicion.Name = "txtFechaExpedicion";
             this.txtFechaExpedicion.Size = new System.Drawing.Size(134, 26);
             this.txtFechaExpedicion.TabIndex = 19;
@@ -63,7 +64,7 @@
             // txtTipo
             // 
             this.txtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.txtTipo.Location = new System.Drawing.Point(467, 94);
+            this.txtTipo.Location = new System.Drawing.Point(466, 169);
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(128, 26);
             this.txtTipo.TabIndex = 18;
@@ -71,7 +72,7 @@
             // txtIdUsuario
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(646, 38);
+            this.txtIdUsuario.Location = new System.Drawing.Point(646, 113);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.Size = new System.Drawing.Size(134, 26);
             this.txtIdUsuario.TabIndex = 17;
@@ -79,7 +80,7 @@
             // txtIdCarnet
             // 
             this.txtIdCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdCarnet.Location = new System.Drawing.Point(316, 38);
+            this.txtIdCarnet.Location = new System.Drawing.Point(297, 116);
             this.txtIdCarnet.Name = "txtIdCarnet";
             this.txtIdCarnet.Size = new System.Drawing.Size(128, 26);
             this.txtIdCarnet.TabIndex = 16;
@@ -88,7 +89,7 @@
             // 
             this.lblFechaCaducidad.AutoSize = true;
             this.lblFechaCaducidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblFechaCaducidad.Location = new System.Drawing.Point(503, 163);
+            this.lblFechaCaducidad.Location = new System.Drawing.Point(502, 222);
             this.lblFechaCaducidad.Name = "lblFechaCaducidad";
             this.lblFechaCaducidad.Size = new System.Drawing.Size(138, 20);
             this.lblFechaCaducidad.TabIndex = 15;
@@ -98,7 +99,7 @@
             // 
             this.LblFechaExpedicion.AutoSize = true;
             this.LblFechaExpedicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.LblFechaExpedicion.Location = new System.Drawing.Point(216, 161);
+            this.LblFechaExpedicion.Location = new System.Drawing.Point(216, 222);
             this.LblFechaExpedicion.Name = "LblFechaExpedicion";
             this.LblFechaExpedicion.Size = new System.Drawing.Size(139, 20);
             this.LblFechaExpedicion.TabIndex = 14;
@@ -108,7 +109,7 @@
             // 
             this.lblTipo.AutoSize = true;
             this.lblTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipo.Location = new System.Drawing.Point(408, 96);
+            this.lblTipo.Location = new System.Drawing.Point(417, 172);
             this.lblTipo.Name = "lblTipo";
             this.lblTipo.Size = new System.Drawing.Size(43, 20);
             this.lblTipo.TabIndex = 13;
@@ -118,7 +119,7 @@
             // 
             this.lblIdUuario.AutoSize = true;
             this.lblIdUuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblIdUuario.Location = new System.Drawing.Point(544, 41);
+            this.lblIdUuario.Location = new System.Drawing.Point(541, 122);
             this.lblIdUuario.Name = "lblIdUuario";
             this.lblIdUuario.Size = new System.Drawing.Size(82, 20);
             this.lblIdUuario.TabIndex = 12;
@@ -128,7 +129,7 @@
             // 
             this.lblIdCarnet.AutoSize = true;
             this.lblIdCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdCarnet.Location = new System.Drawing.Point(235, 41);
+            this.lblIdCarnet.Location = new System.Drawing.Point(216, 119);
             this.lblIdCarnet.Name = "lblIdCarnet";
             this.lblIdCarnet.Size = new System.Drawing.Size(75, 20);
             this.lblIdCarnet.TabIndex = 11;
@@ -151,7 +152,7 @@
             // 
             this.pcImgCarnet.BackColor = System.Drawing.Color.Transparent;
             this.pcImgCarnet.Image = global::CarKier.Properties.Resources.carnet1;
-            this.pcImgCarnet.Location = new System.Drawing.Point(26, 41);
+            this.pcImgCarnet.Location = new System.Drawing.Point(17, 105);
             this.pcImgCarnet.Name = "pcImgCarnet";
             this.pcImgCarnet.Size = new System.Drawing.Size(193, 150);
             this.pcImgCarnet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -189,8 +190,9 @@
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.lblIdUuario);
             this.Controls.Add(this.lblIdCarnet);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CarnetVerModificar";
-            this.Text = "CarnetVerModificar";
+            this.Text = "Usuario Carnet";
             ((System.ComponentModel.ISupportInitialize)(this.pcImgCarnet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

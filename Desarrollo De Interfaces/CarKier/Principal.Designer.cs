@@ -59,6 +59,7 @@
             this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
             this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.vehiculosToolStripMenuItem.Text = "Empresas";
+            this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
@@ -79,6 +80,7 @@
             this.seguToolStripMenuItem.Name = "seguToolStripMenuItem";
             this.seguToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.seguToolStripMenuItem.Text = "Contratos";
+            this.seguToolStripMenuItem.Click += new System.EventHandler(this.seguToolStripMenuItem_Click);
             // 
             // comentariosToolStripMenuItem
             // 

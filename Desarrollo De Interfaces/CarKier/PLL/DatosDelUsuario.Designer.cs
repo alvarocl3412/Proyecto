@@ -196,6 +196,7 @@
             this.btnCancelar.TabIndex = 30;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -208,6 +209,7 @@
             this.btnGuardar.TabIndex = 29;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // DatosDelUsuario
             // 
@@ -233,7 +235,7 @@
             this.Controls.Add(this.lblIdUsuario);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DatosDelUsuario";
-            this.Text = "DatosDelUsuario";
+            this.Text = "Datos Usuario";
             this.ResumeLayout(false);
             this.PerformLayout();
 

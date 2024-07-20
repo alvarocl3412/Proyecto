@@ -10,17 +10,19 @@ using System.Windows.Forms;
 
 namespace CarKier.PLL
 {
-    public partial class DatosDelUsuario : Form
+    public partial class VerEmpresa : Form
     {
-        public DatosDelUsuario()
+        public VerEmpresa()
         {
             InitializeComponent();
         }
 
-        #region Funcionalidades de los botones GUARDAR Y CANCELAR
+
+
+        #region Funcionalida los botones: GUARDAR y CANCEÑAR
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Quieres guardar los datos del usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Quieres guardar  los datos de las empresas?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 // El usuario hizo clic en "Yes"
@@ -39,7 +41,7 @@ namespace CarKier.PLL
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Quieres salir sin guardar los datos del usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Quieres salir sin guardar los datos de las empresas?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 // El usuario hizo clic en "Yes"
@@ -55,9 +57,8 @@ namespace CarKier.PLL
                 this.Close();
             }
         }
+        #endregion  
 
-
-        #endregion
 
     }
 }

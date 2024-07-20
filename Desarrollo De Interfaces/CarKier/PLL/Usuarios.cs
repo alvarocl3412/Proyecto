@@ -23,7 +23,7 @@ namespace CarKier.PLL
         private void txtFiltrarDni_Enter(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
-            if (txt.Text == "Introduce Dni para filtrar")
+            if (txt.Text == "Introduce el Dni para filtrar")
             {
                 txt.Text = "";
                 txt.ForeColor = Color.Black;
@@ -35,9 +35,15 @@ namespace CarKier.PLL
             TextBox txt = sender as TextBox;
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
-                txt.Text = "Introduce Dni para filtrar";
+                txt.Text = "Introduce el Dni para filtrar";
                 txt.ForeColor = Color.Gray;
             }
+        }
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PLL.VerUsuario infoUsuarios = new PLL.VerUsuario();
+            infoUsuarios.Show();
         }
 
 
@@ -51,10 +57,6 @@ namespace CarKier.PLL
             txtFiltrarDni.Leave += txtFiltrarDni_Leave;
         }
 
-        private void verToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PLL.VerUsuario infoUsuarios = new PLL.VerUsuario();
-            infoUsuarios.Show();
-        }
+      
     }
 }
