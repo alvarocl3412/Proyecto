@@ -85,5 +85,39 @@ namespace CarKier
             contratos.MdiParent = this;
             contratos.Show();
         }
+
+        private void comentariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (typeof(PLL.Seguros) == form.GetType())
+                {
+                    form.Activate(); //Nos muestra por formulario 
+                    return;
+                }
+            }
+
+            //Si no esta activo, lo instanciamos y mostramos
+            PLL.Seguros seguros = new PLL.Seguros();
+            seguros.MdiParent = this;
+            seguros.Show();
+        }
+
+        private void comentariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (typeof(PLL.Comentarios) == form.GetType())
+                {
+                    form.Activate(); //Nos muestra por formulario 
+                    return;
+                }
+            }
+
+            //Si no esta activo, lo instanciamos y mostramos
+            PLL.Comentarios comentarios = new PLL.Comentarios();
+            comentarios.MdiParent = this;
+            comentarios.Show();
+        }
     }
 }

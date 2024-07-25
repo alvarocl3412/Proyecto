@@ -87,12 +87,14 @@
             this.comentariosToolStripMenuItem.Name = "comentariosToolStripMenuItem";
             this.comentariosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.comentariosToolStripMenuItem.Text = "Seguros";
+            this.comentariosToolStripMenuItem.Click += new System.EventHandler(this.comentariosToolStripMenuItem_Click);
             // 
             // comentariosToolStripMenuItem1
             // 
             this.comentariosToolStripMenuItem1.Name = "comentariosToolStripMenuItem1";
             this.comentariosToolStripMenuItem1.Size = new System.Drawing.Size(87, 20);
             this.comentariosToolStripMenuItem1.Text = "Comentarios";
+            this.comentariosToolStripMenuItem1.Click += new System.EventHandler(this.comentariosToolStripMenuItem1_Click);
             // 
             // Principal
             // 

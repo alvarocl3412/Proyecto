@@ -59,7 +59,7 @@
             // 
             this.lblIdContrato.AutoSize = true;
             this.lblIdContrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdContrato.Location = new System.Drawing.Point(255, 39);
+            this.lblIdContrato.Location = new System.Drawing.Point(255, 72);
             this.lblIdContrato.Name = "lblIdContrato";
             this.lblIdContrato.Size = new System.Drawing.Size(89, 20);
             this.lblIdContrato.TabIndex = 12;
@@ -69,7 +69,7 @@
             // 
             this.lblIdCliente.AutoSize = true;
             this.lblIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdCliente.Location = new System.Drawing.Point(261, 97);
+            this.lblIdCliente.Location = new System.Drawing.Point(261, 130);
             this.lblIdCliente.Name = "lblIdCliente";
             this.lblIdCliente.Size = new System.Drawing.Size(74, 20);
             this.lblIdCliente.TabIndex = 13;
@@ -79,7 +79,7 @@
             // 
             this.lblSeguro.AutoSize = true;
             this.lblSeguro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeguro.Location = new System.Drawing.Point(262, 149);
+            this.lblSeguro.Location = new System.Drawing.Point(262, 182);
             this.lblSeguro.Name = "lblSeguro";
             this.lblSeguro.Size = new System.Drawing.Size(65, 20);
             this.lblSeguro.TabIndex = 14;
@@ -89,7 +89,7 @@
             // 
             this.lblFechaInicio.AutoSize = true;
             this.lblFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaInicio.Location = new System.Drawing.Point(242, 203);
+            this.lblFechaInicio.Location = new System.Drawing.Point(242, 236);
             this.lblFechaInicio.Name = "lblFechaInicio";
             this.lblFechaInicio.Size = new System.Drawing.Size(99, 20);
             this.lblFechaInicio.TabIndex = 15;
@@ -99,7 +99,7 @@
             // 
             this.lblPrecioDia.AutoSize = true;
             this.lblPrecioDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioDia.Location = new System.Drawing.Point(242, 263);
+            this.lblPrecioDia.Location = new System.Drawing.Point(242, 296);
             this.lblPrecioDia.Name = "lblPrecioDia";
             this.lblPrecioDia.Size = new System.Drawing.Size(85, 20);
             this.lblPrecioDia.TabIndex = 16;
@@ -109,7 +109,7 @@
             // 
             this.lblIdEmpresa.AutoSize = true;
             this.lblIdEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdEmpresa.Location = new System.Drawing.Point(521, 37);
+            this.lblIdEmpresa.Location = new System.Drawing.Point(521, 70);
             this.lblIdEmpresa.Name = "lblIdEmpresa";
             this.lblIdEmpresa.Size = new System.Drawing.Size(89, 20);
             this.lblIdEmpresa.TabIndex = 17;
@@ -119,7 +119,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(528, 97);
+            this.lblEstado.Location = new System.Drawing.Point(528, 130);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(64, 20);
             this.lblEstado.TabIndex = 18;
@@ -129,7 +129,7 @@
             // 
             this.lblPagado.AutoSize = true;
             this.lblPagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPagado.Location = new System.Drawing.Point(529, 149);
+            this.lblPagado.Location = new System.Drawing.Point(529, 182);
             this.lblPagado.Name = "lblPagado";
             this.lblPagado.Size = new System.Drawing.Size(68, 20);
             this.lblPagado.TabIndex = 19;
@@ -139,7 +139,7 @@
             // 
             this.lblFechaFinal.AutoSize = true;
             this.lblFechaFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaFinal.Location = new System.Drawing.Point(514, 203);
+            this.lblFechaFinal.Location = new System.Drawing.Point(514, 236);
             this.lblFechaFinal.Name = "lblFechaFinal";
             this.lblFechaFinal.Size = new System.Drawing.Size(96, 20);
             this.lblFechaFinal.TabIndex = 20;
@@ -149,7 +149,7 @@
             // 
             this.lblPreciototal.AutoSize = true;
             this.lblPreciototal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPreciototal.Location = new System.Drawing.Point(521, 261);
+            this.lblPreciototal.Location = new System.Drawing.Point(521, 294);
             this.lblPreciototal.Name = "lblPreciototal";
             this.lblPreciototal.Size = new System.Drawing.Size(96, 20);
             this.lblPreciototal.TabIndex = 21;
@@ -157,77 +157,77 @@
             // 
             // txtIdContrato
             // 
-            this.txtIdContrato.Location = new System.Drawing.Point(355, 39);
+            this.txtIdContrato.Location = new System.Drawing.Point(355, 72);
             this.txtIdContrato.Name = "txtIdContrato";
             this.txtIdContrato.Size = new System.Drawing.Size(128, 20);
             this.txtIdContrato.TabIndex = 22;
             // 
             // txtFechaFinal
             // 
-            this.txtFechaFinal.Location = new System.Drawing.Point(624, 205);
+            this.txtFechaFinal.Location = new System.Drawing.Point(624, 238);
             this.txtFechaFinal.Name = "txtFechaFinal";
             this.txtFechaFinal.Size = new System.Drawing.Size(149, 20);
             this.txtFechaFinal.TabIndex = 23;
             // 
             // txtFechaInicio
             // 
-            this.txtFechaInicio.Location = new System.Drawing.Point(355, 203);
+            this.txtFechaInicio.Location = new System.Drawing.Point(355, 236);
             this.txtFechaInicio.Name = "txtFechaInicio";
             this.txtFechaInicio.Size = new System.Drawing.Size(128, 20);
             this.txtFechaInicio.TabIndex = 24;
             // 
             // txtSeguro
             // 
-            this.txtSeguro.Location = new System.Drawing.Point(355, 149);
+            this.txtSeguro.Location = new System.Drawing.Point(355, 182);
             this.txtSeguro.Name = "txtSeguro";
             this.txtSeguro.Size = new System.Drawing.Size(128, 20);
             this.txtSeguro.TabIndex = 25;
             // 
             // txtPagado
             // 
-            this.txtPagado.Location = new System.Drawing.Point(624, 151);
+            this.txtPagado.Location = new System.Drawing.Point(624, 184);
             this.txtPagado.Name = "txtPagado";
             this.txtPagado.Size = new System.Drawing.Size(149, 20);
             this.txtPagado.TabIndex = 26;
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(624, 97);
+            this.txtEstado.Location = new System.Drawing.Point(624, 130);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(149, 20);
             this.txtEstado.TabIndex = 27;
             // 
             // txtIdCliente
             // 
-            this.txtIdCliente.Location = new System.Drawing.Point(355, 97);
+            this.txtIdCliente.Location = new System.Drawing.Point(355, 130);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(128, 20);
             this.txtIdCliente.TabIndex = 28;
             // 
             // txtIdVehiculo
             // 
-            this.txtIdVehiculo.Location = new System.Drawing.Point(624, 39);
+            this.txtIdVehiculo.Location = new System.Drawing.Point(624, 72);
             this.txtIdVehiculo.Name = "txtIdVehiculo";
             this.txtIdVehiculo.Size = new System.Drawing.Size(149, 20);
             this.txtIdVehiculo.TabIndex = 29;
             // 
             // txtPrecioDia
             // 
-            this.txtPrecioDia.Location = new System.Drawing.Point(355, 263);
+            this.txtPrecioDia.Location = new System.Drawing.Point(355, 296);
             this.txtPrecioDia.Name = "txtPrecioDia";
             this.txtPrecioDia.Size = new System.Drawing.Size(128, 20);
             this.txtPrecioDia.TabIndex = 30;
             // 
             // txtPrecioTotal
             // 
-            this.txtPrecioTotal.Location = new System.Drawing.Point(624, 261);
+            this.txtPrecioTotal.Location = new System.Drawing.Point(624, 294);
             this.txtPrecioTotal.Name = "txtPrecioTotal";
             this.txtPrecioTotal.Size = new System.Drawing.Size(149, 20);
             this.txtPrecioTotal.TabIndex = 31;
             // 
             // pbImgContrato
             // 
-            this.pbImgContrato.Location = new System.Drawing.Point(12, 39);
+            this.pbImgContrato.Location = new System.Drawing.Point(12, 72);
             this.pbImgContrato.Name = "pbImgContrato";
             this.pbImgContrato.Size = new System.Drawing.Size(210, 194);
             this.pbImgContrato.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -239,9 +239,9 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(458, 370);
+            this.btnCancelar.Location = new System.Drawing.Point(502, 370);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 34);
+            this.btnCancelar.Size = new System.Drawing.Size(128, 34);
             this.btnCancelar.TabIndex = 33;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -254,7 +254,7 @@
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGuardar.Location = new System.Drawing.Point(246, 370);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 34);
+            this.btnGuardar.Size = new System.Drawing.Size(128, 34);
             this.btnGuardar.TabIndex = 32;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;

@@ -58,6 +58,12 @@
     <Compile Include="PLL\CarnetVerModificar.Designer.cs">
       <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLL\Comentarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\Comentarios.Designer.cs">
+      <DependentUpon>Comentarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="PLL\Contratos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,12 @@
     <Compile Include="PLL\Empresas.Designer.cs">
       <DependentUpon>Empresas.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLL\Seguros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\Seguros.Designer.cs">
+      <DependentUpon>Seguros.cs</DependentUpon>
+    </Compile>
     <Compile Include="PLL\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,12 @@
     <Compile Include="PLL\Vehiculos.Designer.cs">
       <DependentUpon>Vehiculos.cs</DependentUpon>
     </Compile>
+    <Compile Include="PLL\VerComentario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\VerComentario.Designer.cs">
+      <DependentUpon>VerComentario.cs</DependentUpon>
+    </Compile>
     <Compile Include="PLL\VerContrato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +117,12 @@
     </Compile>
     <Compile Include="PLL\VerEmpresa.Designer.cs">
       <DependentUpon>VerEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLL\VerSeguro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLL\VerSeguro.Designer.cs">
+      <DependentUpon>VerSeguro.cs</DependentUpon>
     </Compile>
     <Compile Include="PLL\VerUsuario.cs">
       <SubType>Form</SubType>
@@ -126,6 +150,9 @@
     <EmbeddedResource Include="PLL\CarnetVerModificar.resx">
       <DependentUpon>CarnetVerModificar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PLL\Comentarios.resx">
+      <DependentUpon>Comentarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PLL\Contratos.resx">
       <DependentUpon>Contratos.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,17 +162,26 @@
     <EmbeddedResource Include="PLL\Empresas.resx">
       <DependentUpon>Empresas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PLL\Seguros.resx">
+      <DependentUpon>Seguros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PLL\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\Vehiculos.resx">
       <DependentUpon>Vehiculos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PLL\VerComentario.resx">
+      <DependentUpon>VerComentario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PLL\VerContrato.resx">
       <DependentUpon>VerContrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\VerEmpresa.resx">
       <DependentUpon>VerEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLL\VerSeguro.resx">
+      <DependentUpon>VerSeguro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLL\VerUsuario.resx">
       <DependentUpon>VerUsuario.cs</DependentUpon>
@@ -184,6 +220,7 @@
     <Content Include="drawable\action_Cancel_16xMD.png" />
     <Content Include="drawable\carnet.png" />
     <Content Include="drawable\coche.png" />
+    <Content Include="drawable\comentario.png" />
     <Content Include="drawable\empresa.png" />
     <Content Include="drawable\foto Usuario.png" />
     <Content Include="drawable\logo.ico" />
@@ -191,6 +228,7 @@
     <Content Include="drawable\modificar.png" />
     <Content Include="drawable\ojo.png" />
     <Content Include="drawable\Save_6530.png" />
+    <Content Include="drawable\seguro coche.png" />
     <Content Include="drawable\Usuario.png" />
     <None Include="Resources\carnet.png" />
   </ItemGroup>
