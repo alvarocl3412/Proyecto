@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerContrato));
-            this.lblIdContrato = new System.Windows.Forms.Label();
             this.lblIdCliente = new System.Windows.Forms.Label();
             this.lblSeguro = new System.Windows.Forms.Label();
             this.lblFechaInicio = new System.Windows.Forms.Label();
             this.lblPrecioDia = new System.Windows.Forms.Label();
-            this.lblIdEmpresa = new System.Windows.Forms.Label();
+            this.lblIdVehiculo = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblPagado = new System.Windows.Forms.Label();
             this.lblFechaFinal = new System.Windows.Forms.Label();
             this.lblPreciototal = new System.Windows.Forms.Label();
-            this.txtIdContrato = new System.Windows.Forms.TextBox();
             this.txtFechaFinal = new System.Windows.Forms.TextBox();
             this.txtFechaInicio = new System.Windows.Forms.TextBox();
             this.txtSeguro = new System.Windows.Forms.TextBox();
@@ -54,16 +52,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImgContrato)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblIdContrato
-            // 
-            this.lblIdContrato.AutoSize = true;
-            this.lblIdContrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdContrato.Location = new System.Drawing.Point(255, 72);
-            this.lblIdContrato.Name = "lblIdContrato";
-            this.lblIdContrato.Size = new System.Drawing.Size(89, 20);
-            this.lblIdContrato.TabIndex = 12;
-            this.lblIdContrato.Text = "IdContrato:";
             // 
             // lblIdCliente
             // 
@@ -105,15 +93,15 @@
             this.lblPrecioDia.TabIndex = 16;
             this.lblPrecioDia.Text = "Precio Dia:";
             // 
-            // lblIdEmpresa
+            // lblIdVehiculo
             // 
-            this.lblIdEmpresa.AutoSize = true;
-            this.lblIdEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdEmpresa.Location = new System.Drawing.Point(521, 70);
-            this.lblIdEmpresa.Name = "lblIdEmpresa";
-            this.lblIdEmpresa.Size = new System.Drawing.Size(89, 20);
-            this.lblIdEmpresa.TabIndex = 17;
-            this.lblIdEmpresa.Text = "idEmpresa:";
+            this.lblIdVehiculo.AutoSize = true;
+            this.lblIdVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdVehiculo.Location = new System.Drawing.Point(349, 76);
+            this.lblIdVehiculo.Name = "lblIdVehiculo";
+            this.lblIdVehiculo.Size = new System.Drawing.Size(86, 20);
+            this.lblIdVehiculo.TabIndex = 17;
+            this.lblIdVehiculo.Text = "idVehiuclo:";
             // 
             // lblEstado
             // 
@@ -154,13 +142,6 @@
             this.lblPreciototal.Size = new System.Drawing.Size(96, 20);
             this.lblPreciototal.TabIndex = 21;
             this.lblPreciototal.Text = "Precio Total:";
-            // 
-            // txtIdContrato
-            // 
-            this.txtIdContrato.Location = new System.Drawing.Point(355, 72);
-            this.txtIdContrato.Name = "txtIdContrato";
-            this.txtIdContrato.Size = new System.Drawing.Size(128, 20);
-            this.txtIdContrato.TabIndex = 22;
             // 
             // txtFechaFinal
             // 
@@ -206,7 +187,7 @@
             // 
             // txtIdVehiculo
             // 
-            this.txtIdVehiculo.Location = new System.Drawing.Point(624, 72);
+            this.txtIdVehiculo.Location = new System.Drawing.Point(479, 78);
             this.txtIdVehiculo.Name = "txtIdVehiculo";
             this.txtIdVehiculo.Size = new System.Drawing.Size(149, 20);
             this.txtIdVehiculo.TabIndex = 29;
@@ -276,17 +257,15 @@
             this.Controls.Add(this.txtSeguro);
             this.Controls.Add(this.txtFechaInicio);
             this.Controls.Add(this.txtFechaFinal);
-            this.Controls.Add(this.txtIdContrato);
             this.Controls.Add(this.lblPreciototal);
             this.Controls.Add(this.lblFechaFinal);
             this.Controls.Add(this.lblPagado);
             this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.lblIdEmpresa);
+            this.Controls.Add(this.lblIdVehiculo);
             this.Controls.Add(this.lblPrecioDia);
             this.Controls.Add(this.lblFechaInicio);
             this.Controls.Add(this.lblSeguro);
             this.Controls.Add(this.lblIdCliente);
-            this.Controls.Add(this.lblIdContrato);
             this.Controls.Add(this.pbImgContrato);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerContrato";
@@ -300,17 +279,15 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pbImgContrato;
-        private System.Windows.Forms.Label lblIdContrato;
         private System.Windows.Forms.Label lblIdCliente;
         private System.Windows.Forms.Label lblSeguro;
         private System.Windows.Forms.Label lblFechaInicio;
         private System.Windows.Forms.Label lblPrecioDia;
-        private System.Windows.Forms.Label lblIdEmpresa;
+        private System.Windows.Forms.Label lblIdVehiculo;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblPagado;
         private System.Windows.Forms.Label lblFechaFinal;
         private System.Windows.Forms.Label lblPreciototal;
-        private System.Windows.Forms.TextBox txtIdContrato;
         private System.Windows.Forms.TextBox txtFechaFinal;
         private System.Windows.Forms.TextBox txtFechaInicio;
         private System.Windows.Forms.TextBox txtSeguro;

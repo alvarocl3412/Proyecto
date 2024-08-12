@@ -19,3 +19,7 @@ C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarK
 C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerEmpresa.resources
 C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Contratos.resources
 C:\Users\Alumno\Desktop\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerContrato.resources
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Comentarios.resources
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Seguros.resources
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerComentario.resources
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerSeguro.resources

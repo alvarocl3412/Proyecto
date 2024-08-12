@@ -30,14 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerEmpresa));
             this.pbImgEmpresa = new System.Windows.Forms.PictureBox();
-            this.lblIdEmpresa = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.lblCorreo = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtIdEmpresa = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -59,21 +57,11 @@
             this.pbImgEmpresa.TabIndex = 9;
             this.pbImgEmpresa.TabStop = false;
             // 
-            // lblIdEmpresa
-            // 
-            this.lblIdEmpresa.AutoSize = true;
-            this.lblIdEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdEmpresa.Location = new System.Drawing.Point(287, 58);
-            this.lblIdEmpresa.Name = "lblIdEmpresa";
-            this.lblIdEmpresa.Size = new System.Drawing.Size(89, 20);
-            this.lblIdEmpresa.TabIndex = 10;
-            this.lblIdEmpresa.Text = "idEmpresa:";
-            // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(538, 60);
+            this.lblNombre.Location = new System.Drawing.Point(296, 63);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(69, 20);
             this.lblNombre.TabIndex = 11;
@@ -130,13 +118,6 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Ofrece Coches:";
             // 
-            // txtIdEmpresa
-            // 
-            this.txtIdEmpresa.Location = new System.Drawing.Point(384, 60);
-            this.txtIdEmpresa.Name = "txtIdEmpresa";
-            this.txtIdEmpresa.Size = new System.Drawing.Size(127, 20);
-            this.txtIdEmpresa.TabIndex = 17;
-            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(54, 267);
@@ -147,9 +128,9 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(620, 60);
+            this.txtNombre.Location = new System.Drawing.Point(384, 63);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(127, 20);
+            this.txtNombre.Size = new System.Drawing.Size(149, 20);
             this.txtNombre.TabIndex = 19;
             // 
             // textBox4
@@ -219,14 +200,12 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.txtIdEmpresa);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.lblTelefono);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblIdEmpresa);
             this.Controls.Add(this.pbImgEmpresa);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerEmpresa";
@@ -240,14 +219,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pbImgEmpresa;
-        private System.Windows.Forms.Label lblIdEmpresa;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtIdEmpresa;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox textBox4;

@@ -41,6 +41,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pcImgComentario = new System.Windows.Forms.PictureBox();
+            this.lblIdRespuesta = new System.Windows.Forms.Label();
+            this.txtRespuesta = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcImgComentario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             // 
             this.lblIdUsuario.AutoSize = true;
             this.lblIdUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdUsuario.Location = new System.Drawing.Point(236, 93);
+            this.lblIdUsuario.Location = new System.Drawing.Point(251, 91);
             this.lblIdUsuario.Name = "lblIdUsuario";
             this.lblIdUsuario.Size = new System.Drawing.Size(86, 20);
             this.lblIdUsuario.TabIndex = 16;
@@ -103,7 +105,7 @@
             // 
             // txtIdUsuario
             // 
-            this.txtIdUsuario.Location = new System.Drawing.Point(356, 95);
+            this.txtIdUsuario.Location = new System.Drawing.Point(356, 92);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.Size = new System.Drawing.Size(121, 20);
             this.txtIdUsuario.TabIndex = 21;
@@ -166,11 +168,30 @@
             this.pcImgComentario.TabIndex = 14;
             this.pcImgComentario.TabStop = false;
             // 
+            // lblIdRespuesta
+            // 
+            this.lblIdRespuesta.AutoSize = true;
+            this.lblIdRespuesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdRespuesta.Location = new System.Drawing.Point(508, 28);
+            this.lblIdRespuesta.Name = "lblIdRespuesta";
+            this.lblIdRespuesta.Size = new System.Drawing.Size(109, 20);
+            this.lblIdRespuesta.TabIndex = 38;
+            this.lblIdRespuesta.Text = "Id Respuesta:";
+            // 
+            // txtRespuesta
+            // 
+            this.txtRespuesta.Location = new System.Drawing.Point(627, 30);
+            this.txtRespuesta.Name = "txtRespuesta";
+            this.txtRespuesta.Size = new System.Drawing.Size(121, 20);
+            this.txtRespuesta.TabIndex = 39;
+            // 
             // VerComentario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRespuesta);
+            this.Controls.Add(this.lblIdRespuesta);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtComentario);
@@ -207,5 +228,7 @@
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label lblIdRespuesta;
+        private System.Windows.Forms.TextBox txtRespuesta;
     }
 }

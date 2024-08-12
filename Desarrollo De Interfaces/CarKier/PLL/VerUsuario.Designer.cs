@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerUsuario));
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
@@ -56,12 +54,12 @@
             this.mtsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
-            this.lblDatos = new System.Windows.Forms.Label();
             this.lblFechaNac = new System.Windows.Forms.Label();
             this.txtFechaNac = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnDatos = new System.Windows.Forms.Button();
+            this.btnContratos = new System.Windows.Forms.Button();
             this.cmsCarnet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +68,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Italic);
-            this.lblNombre.Location = new System.Drawing.Point(209, 82);
+            this.lblNombre.Location = new System.Drawing.Point(483, 41);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(73, 20);
             this.lblNombre.TabIndex = 5;
@@ -78,47 +76,30 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(326, 82);
+            this.txtNombre.Location = new System.Drawing.Point(562, 41);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(130, 20);
+            this.txtNombre.Size = new System.Drawing.Size(193, 20);
             this.txtNombre.TabIndex = 6;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(225, 39);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(30, 20);
-            this.lblId.TabIndex = 7;
-            this.lblId.Text = "ID:";
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(326, 41);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(130, 20);
-            this.txtID.TabIndex = 8;
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(566, 42);
+            this.txtDni.Location = new System.Drawing.Point(326, 42);
             this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(189, 20);
+            this.txtDni.Size = new System.Drawing.Size(130, 20);
             this.txtDni.TabIndex = 9;
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(566, 83);
+            this.txtApellidos.Location = new System.Drawing.Point(326, 85);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(189, 20);
+            this.txtApellidos.Size = new System.Drawing.Size(130, 20);
             this.txtApellidos.TabIndex = 10;
             // 
             // lblDni
             // 
             this.lblDni.AutoSize = true;
             this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDni.Location = new System.Drawing.Point(508, 42);
+            this.lblDni.Location = new System.Drawing.Point(229, 42);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(41, 20);
             this.lblDni.TabIndex = 11;
@@ -128,7 +109,7 @@
             // 
             this.lblApellidos.AutoSize = true;
             this.lblApellidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidos.Location = new System.Drawing.Point(484, 82);
+            this.lblApellidos.Location = new System.Drawing.Point(213, 83);
             this.lblApellidos.Name = "lblApellidos";
             this.lblApellidos.Size = new System.Drawing.Size(74, 20);
             this.lblApellidos.TabIndex = 12;
@@ -138,7 +119,7 @@
             // 
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(209, 126);
+            this.lblTelefono.Location = new System.Drawing.Point(483, 83);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(75, 20);
             this.lblTelefono.TabIndex = 13;
@@ -146,23 +127,23 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(326, 128);
+            this.txtTelefono.Location = new System.Drawing.Point(562, 83);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(130, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(193, 20);
             this.txtTelefono.TabIndex = 14;
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(566, 126);
+            this.txtCorreo.Location = new System.Drawing.Point(562, 124);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(189, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(193, 20);
             this.txtCorreo.TabIndex = 15;
             // 
             // lblCorreo
             // 
             this.lblCorreo.AutoSize = true;
             this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorreo.Location = new System.Drawing.Point(490, 126);
+            this.lblCorreo.Location = new System.Drawing.Point(495, 124);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(61, 20);
             this.lblCorreo.TabIndex = 16;
@@ -180,7 +161,7 @@
             this.lvMostrarCarnets.FullRowSelect = true;
             this.lvMostrarCarnets.GridLines = true;
             this.lvMostrarCarnets.HideSelection = false;
-            this.lvMostrarCarnets.Location = new System.Drawing.Point(114, 263);
+            this.lvMostrarCarnets.Location = new System.Drawing.Point(114, 258);
             this.lvMostrarCarnets.MultiSelect = false;
             this.lvMostrarCarnets.Name = "lvMostrarCarnets";
             this.lvMostrarCarnets.Size = new System.Drawing.Size(609, 124);
@@ -267,7 +248,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(358, 242);
+            this.label2.Location = new System.Drawing.Point(358, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 20);
             this.label2.TabIndex = 22;
@@ -283,21 +264,11 @@
             this.pcFotoImaggen.TabIndex = 4;
             this.pcFotoImaggen.TabStop = false;
             // 
-            // lblDatos
-            // 
-            this.lblDatos.AutoSize = true;
-            this.lblDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblDatos.Location = new System.Drawing.Point(523, 171);
-            this.lblDatos.Name = "lblDatos";
-            this.lblDatos.Size = new System.Drawing.Size(56, 20);
-            this.lblDatos.TabIndex = 23;
-            this.lblDatos.Text = "Datos:";
-            // 
             // lblFechaNac
             // 
             this.lblFechaNac.AutoSize = true;
             this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblFechaNac.Location = new System.Drawing.Point(209, 165);
+            this.lblFechaNac.Location = new System.Drawing.Point(205, 125);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(141, 20);
             this.lblFechaNac.TabIndex = 24;
@@ -305,7 +276,7 @@
             // 
             // txtFechaNac
             // 
-            this.txtFechaNac.Location = new System.Drawing.Point(353, 164);
+            this.txtFechaNac.Location = new System.Drawing.Point(348, 125);
             this.txtFechaNac.Name = "txtFechaNac";
             this.txtFechaNac.Size = new System.Drawing.Size(139, 20);
             this.txtFechaNac.TabIndex = 25;
@@ -339,25 +310,35 @@
             // btnDatos
             // 
             this.btnDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatos.Location = new System.Drawing.Point(620, 159);
+            this.btnDatos.Location = new System.Drawing.Point(243, 170);
             this.btnDatos.Name = "btnDatos";
-            this.btnDatos.Size = new System.Drawing.Size(103, 32);
+            this.btnDatos.Size = new System.Drawing.Size(149, 32);
             this.btnDatos.TabIndex = 29;
-            this.btnDatos.Text = "Datos";
+            this.btnDatos.Text = "Especificaciones";
             this.btnDatos.UseVisualStyleBackColor = true;
             this.btnDatos.Click += new System.EventHandler(this.btnDatos_Click);
+            // 
+            // btnContratos
+            // 
+            this.btnContratos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContratos.Location = new System.Drawing.Point(548, 170);
+            this.btnContratos.Name = "btnContratos";
+            this.btnContratos.Size = new System.Drawing.Size(103, 32);
+            this.btnContratos.TabIndex = 30;
+            this.btnContratos.Text = "Contratos";
+            this.btnContratos.UseVisualStyleBackColor = true;
             // 
             // VerUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnContratos);
             this.Controls.Add(this.btnDatos);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtFechaNac);
             this.Controls.Add(this.lblFechaNac);
-            this.Controls.Add(this.lblDatos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lvMostrarCarnets);
             this.Controls.Add(this.lblCorreo);
@@ -368,8 +349,6 @@
             this.Controls.Add(this.lblDni);
             this.Controls.Add(this.txtApellidos);
             this.Controls.Add(this.txtDni);
-            this.Controls.Add(this.txtID);
-            this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pcFotoImaggen);
@@ -389,8 +368,6 @@
         private System.Windows.Forms.PictureBox pcFotoImaggen;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.Label lblDni;
@@ -412,11 +389,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.Label lblDatos;
         private System.Windows.Forms.Label lblFechaNac;
         private System.Windows.Forms.TextBox txtFechaNac;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnDatos;
+        private System.Windows.Forms.Button btnContratos;
     }
 }
