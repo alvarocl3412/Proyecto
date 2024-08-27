@@ -14,7 +14,7 @@ namespace CarKier.DAL
     public class InicioSesionDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "https://10.0.2.2:8080/CarKier/UsuarioInicioSesion";
+        string apiUrl = "http://10.0.2.2:8089/CarKier/UsuarioInicioSesion";
 
         public InicioSesionDal()
         {
@@ -24,20 +24,13 @@ namespace CarKier.DAL
 
         public async Task<usuarios> Login(string correo, string contrasena)
         {
-
-            // Crear un diccionario con los parámetros
-            var parametros = new { correo = correo, contrasena = contrasena };
-
-            // Convertir el diccionario a JSON
-            string jsonData = JsonConvert.SerializeObject(parametros);
-
-            // Crear el contenido de la solicitud, especificando el tipo de contenido (application/json)
-            HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            // Construir la URL con los parámetros
+            string urlConParametros = $"{apiUrl}?correo={Uri.EscapeDataString(correo)}&contrasena={Uri.EscapeDataString(contrasena)}";
 
             try
             {
-                // Realizar la solicitud POST
-                HttpResponseMessage response = await _httpClient.PostAsync(apiUrl, content);
+                // Realizar la solicitud POST (sin cuerpo, ya que los parámetros están en la URL)
+                HttpResponseMessage response = await _httpClient.PostAsync(urlConParametros, null);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();
@@ -58,5 +51,6 @@ namespace CarKier.DAL
                 return null;
             }
         }
+
     }
 }
