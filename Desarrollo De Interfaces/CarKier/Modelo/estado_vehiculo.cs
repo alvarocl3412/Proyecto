@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class estado_vehiculo
+    public class estado_vehiculo
     {
         public int idestado { get; set; }
 

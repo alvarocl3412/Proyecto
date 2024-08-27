@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class contratos
+    public class contratos
     {
         // Propiedades
         public int idcontrato { get; set; }
@@ -39,5 +39,7 @@ namespace CarKier.DAL
             this.precio_total = precio_total;
             this.pagado = pagado;
         }
+
+
     }
 }

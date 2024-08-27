@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class datos_del_usuario
+    public class datos_del_usuario
     {
         // Propiedades
         public int idusuario { get; set; }

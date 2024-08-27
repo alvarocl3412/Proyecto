@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class estado_contrato
+    public class estado_contrato
     {
         public int idestado { get; set; }
 
@@ -14,7 +14,7 @@ namespace CarKier.DAL
 
         public estado_contrato() { }
 
-        public estado_contrato(int idestado,string estado)
+        public estado_contrato(int idestado, string estado)
         {
             this.idestado = idestado;
             this.estado = estado;

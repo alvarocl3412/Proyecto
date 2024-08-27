@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class empresas
+    public class empresas
     {
+
         // Propiedades
         public int idempresa { get; set; }
-        public int nombre { get; set; } // Usualmente, nombre sería string, pero lo mantendré como int según tu especificación
+        public int nombre { get; set; }
         public string descripcion { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
         public string correo_electronico { get; set; }
-        public int ofrece_coches { get; set; } // Usualmente un booleano, pero lo mantendré como int según tu especificación
+        public int ofrece_coches { get; set; }
 
         // Constructor por defecto
         public empresas()

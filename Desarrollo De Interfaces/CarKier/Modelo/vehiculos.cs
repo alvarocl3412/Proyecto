@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class vehiculos
+    public class vehiculos
     {
+
         // Propiedades
         public int idvehiculo { get; set; }
         public int idempresa { get; set; }
@@ -41,6 +42,5 @@ namespace CarKier.DAL
             this.precioventa = precioventa;
             this.preciodia = preciodia;
         }
-
     }
 }

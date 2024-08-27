@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class tipos_seguros
+    public class tipos_seguros
     {
         public int idseguro { get; set; }
 
@@ -18,7 +18,7 @@ namespace CarKier.DAL
 
         public tipos_seguros() { }
 
-        public tipos_seguros(int idseguro, string nombre,string descripcion, double coste)
+        public tipos_seguros(int idseguro, string nombre, string descripcion, double coste)
         {
             this.idseguro = idseguro;
             this.nombre = nombre;

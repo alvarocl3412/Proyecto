@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class comentarios
+    public class comentarios
     {
+
         // Propiedades
         public int idcomentarios { get; set; }
         public int idusuarios { get; set; }

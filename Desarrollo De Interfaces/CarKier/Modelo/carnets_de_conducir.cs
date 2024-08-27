@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class carnets_de_conducir
+    public class carnets_de_conducir
     {
         public int IdCarnet { get; set; }
         public int IdUsuario { get; set; }
@@ -29,5 +29,6 @@ namespace CarKier.DAL
             FechaExpedicion = fechaExpedicion;
             FechaCaducidad = fechaCaducidad;
         }
+
     }
 }

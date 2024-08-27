@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarKier.DAL
+namespace CarKier.Modelo
 {
-    internal class tipo_carnet
+    public class tipo_carnet
     {
         public int id_tipo { get; set; }
 

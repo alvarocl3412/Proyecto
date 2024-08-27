@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,23 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\carnets_de_conducir.cs" />
-    <Compile Include="DAL\comentarios.cs" />
-    <Compile Include="DAL\contratos.cs" />
-    <Compile Include="DAL\datos_del_usuario.cs" />
-    <Compile Include="DAL\empresas.cs" />
-    <Compile Include="DAL\estado_contrato.cs" />
-    <Compile Include="DAL\estado_vehiculo.cs" />
-    <Compile Include="DAL\tipos_seguros.cs" />
-    <Compile Include="DAL\tipo_carnet.cs" />
-    <Compile Include="DAL\usuarios.cs" />
-    <Compile Include="DAL\vehiculos.cs" />
+    <Compile Include="DAL\InicioSesionDal.cs" />
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\carnets_de_conducir.cs" />
+    <Compile Include="Modelo\comentarios.cs" />
+    <Compile Include="Modelo\contratos.cs" />
+    <Compile Include="Modelo\datos_del_usuario.cs" />
+    <Compile Include="Modelo\empresas.cs" />
+    <Compile Include="Modelo\estado_contrato.cs" />
+    <Compile Include="Modelo\estado_vehiculo.cs" />
+    <Compile Include="Modelo\tipos_seguros.cs" />
+    <Compile Include="Modelo\tipo_carnet.cs" />
+    <Compile Include="Modelo\usuarios.cs" />
+    <Compile Include="Modelo\vehiculos.cs" />
     <Compile Include="PLL\CarnetVerModificar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +217,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,5 +248,6 @@
     <Content Include="drawable\Usuario.png" />
     <None Include="Resources\carnet.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

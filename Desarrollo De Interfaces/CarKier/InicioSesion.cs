@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,24 +15,43 @@ namespace CarKier
     public partial class InicioSesion : Form
     {
         private bool mostrarContraseña = false;
+        string apiUrl = "https://CarKier/crear";
         public InicioSesion()
         {
             InitializeComponent();
-            this.Resize += InicioSesion_SizeChanged; // Suscripción al evento Resize
-
-
+            this.Resize += InicioSesion_SizeChanged;
         }
 
         //Metodos funcionalidades
 
         //Boton de inicio sesio comprobar que no estan los campos en blancos, comprobar que existe el
         //Usuario y comprobar que es administrador y si es iniciar sesion correctamente si no mensaje de error
-        private void btnInicioSesion_Click(object sender, EventArgs e)
+        private async void btnInicioSesion_Click(object sender, EventArgs e)
         {
-          //  if (validarDatos())
-           // {
+            //  if (validarDatos())
+            // {
+            string correo = txtCorreoElectronico.Text;
+            string contrasena = txtContrasena.Text;
+
+            InicioSesionDal inicioSesion = new InicioSesionDal();
+
+            // Llamar al método LoginUsuarioAsync y obtener el objeto Usuario
+            usuarios usuario = await inicioSesion.Login(correo, contrasena);
+
+            if (usuario != null)
+            {
+                // Lógica para un inicio de sesión exitoso
+                MessageBox.Show($"Bienvenido, {usuario.nombre}");
+                // Puedes acceder a otras propiedades del usuario aquí
                 Principal infoDesarrollador = new Principal();
                 infoDesarrollador.Show();
+            }
+            else
+            {
+                // Lógica para un inicio de sesión fallido
+                MessageBox.Show("Correo o contraseña incorrectos.");
+            }
+
             //}
         }
 
@@ -101,6 +122,6 @@ namespace CarKier
 
         }
 
-        
+
     }
 }
