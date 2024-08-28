@@ -14,7 +14,7 @@ namespace CarKier.DAL
     public class InicioSesionDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier/UsuarioInicioSesion";
+        string apiUrl = "http://10.0.2.2:8089/CarKier/UsuarioInicioSesionAdmin";
 
         public InicioSesionDal()
         {

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,8 +17,46 @@ namespace CarKier.PLL
     {
         public Empresas()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
+
+        private async void Empresas_Load(object sender, EventArgs e)
+        {
+            await CargarDatos();
+        }
+        private async Task<List<empresas>> ObtenerEmpresasAsync()
+        {
+            EmpresasDal empr = new EmpresasDal();
+            return await empr.findAll();
+        }
+
+        private async Task CargarDatos()
+        {
+            // Obtener la lista de empresas de manera asíncrona
+            List<empresas> listaEmpresas = await ObtenerEmpresasAsync();
+
+            // Cargar la lista en el ListView
+            CargarTabla(listaEmpresas);
+        }
+        private void CargarTabla(List<empresas> listaEmpresas)
+        {
+            // Limpiar elementos existentes
+            lvEmpresas.Items.Clear();
+
+            // Cargar los datos en el ListView
+            foreach (var empresa in listaEmpresas)
+            {
+                ListViewItem item = new ListViewItem(empresa.idempresa.ToString());
+                item.SubItems.Add(empresa.nombre);
+                item.SubItems.Add(empresa.descripcion);
+                item.SubItems.Add(empresa.direccion);
+                item.SubItems.Add(empresa.telefono);
+                item.SubItems.Add(empresa.correo_electronico);
+                item.SubItems.Add(empresa.ofrece_coches.ToString());
+                lvEmpresas.Items.Add(item);
+            }
+        }
+
 
         #region Funcionalidad hint para el texto Filtrar
 
@@ -55,7 +96,6 @@ namespace CarKier.PLL
         {
 
         }
-        #endregion
-
+        #endregion  
     }
 }

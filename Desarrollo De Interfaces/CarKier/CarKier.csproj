@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EmpresasDal.cs" />
     <Compile Include="DAL\InicioSesionDal.cs" />
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>

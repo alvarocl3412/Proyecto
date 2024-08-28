@@ -28,31 +28,32 @@ namespace CarKier
         //Usuario y comprobar que es administrador y si es iniciar sesion correctamente si no mensaje de error
         private async void btnInicioSesion_Click(object sender, EventArgs e)
         {
-            //  if (validarDatos())
-            // {
-            string correo = txtCorreoElectronico.Text;
-            string contrasena = txtContrasena.Text;
+              if (validarDatos())
+              {
+                string correo = txtCorreoElectronico.Text;
+                string contrasena = txtContrasena.Text;
 
-            InicioSesionDal inicioSesion = new InicioSesionDal();
+                InicioSesionDal inicioSesion = new InicioSesionDal();
 
-            // Llamar al método LoginUsuarioAsync y obtener el objeto Usuario
-            usuarios usuario = await inicioSesion.Login(correo, contrasena);
+                // Llamar al método LoginUsuarioAsync y obtener el objeto Usuario
+                usuarios usuario = await inicioSesion.Login(correo, contrasena);
 
-            if (usuario != null)
-            {
-                // Lógica para un inicio de sesión exitoso
-                MessageBox.Show($"Bienvenido, {usuario.nombre}");
-                // Puedes acceder a otras propiedades del usuario aquí
-                Principal infoDesarrollador = new Principal();
-                infoDesarrollador.Show();
+                    if (usuario != null)
+                    {
+                    MessageBox.Show($"Bienvenido, {usuario.nombre}");
+             
+                    Principal infoDesarrollador = new Principal();
+                    infoDesarrollador.Show();
+
+                    // Cerrar la ventana de inicio de sesión
+                   
+                }
+                    else
+                    {
+                    // Lógica para un inicio de sesión fallido
+                    MessageBox.Show("Correo o contraseña incorrectos.");
+                    }
             }
-            else
-            {
-                // Lógica para un inicio de sesión fallido
-                MessageBox.Show("Correo o contraseña incorrectos.");
-            }
-
-            //}
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

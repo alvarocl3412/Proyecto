@@ -208,6 +208,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Empresas";
             this.Text = "Empresas";
+            this.Load += new System.EventHandler(this.Empresas_Load);
             this.xmsMenuTablaEmpresa.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImgEmpresa)).EndInit();
             this.ResumeLayout(false);

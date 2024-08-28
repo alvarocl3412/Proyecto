@@ -11,7 +11,7 @@ namespace CarKier.Modelo
 
         // Propiedades
         public int idempresa { get; set; }
-        public int nombre { get; set; }
+        public string nombre { get; set; }
         public string descripcion { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
@@ -24,7 +24,7 @@ namespace CarKier.Modelo
         }
 
         // Constructor que inicializa todas las propiedades
-        public empresas(int idempresa, int nombre, string descripcion, string direccion, string telefono, string correo_electronico, int ofrece_coches)
+        public empresas(int idempresa, string nombre, string descripcion, string direccion, string telefono, string correo_electronico, int ofrece_coches)
         {
             this.idempresa = idempresa;
             this.nombre = nombre;
