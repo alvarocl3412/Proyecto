@@ -25,10 +25,10 @@ public class VehiculoServiceImpl implements VehiculoService {
         this.repositorioEpresa = repositorioEpresa;
     }
 
-    @Override
-    public List<Vehiculo> findAll() {
-        return repositorio.findAll();
-    }
+        @Override
+        public List<Vehiculo> findAll() {
+            return repositorio.findAll();
+        }
 
     @Override
     public Optional<Vehiculo> findById(Integer id) {

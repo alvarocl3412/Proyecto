@@ -18,7 +18,7 @@ public class TipoSeguroController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/TipoSeguro/findAll")
+    @GetMapping("/TipoSegurofindAll")
     public ResponseEntity<List<TipoSeguro>> getAllSeguros() {
         List<TipoSeguro> seguros = servicio.findAll();
         if (seguros.isEmpty())

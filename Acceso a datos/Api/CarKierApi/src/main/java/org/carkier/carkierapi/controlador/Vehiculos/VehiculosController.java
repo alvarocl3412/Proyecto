@@ -18,7 +18,7 @@ public class VehiculosController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/Vehiculos/findAll")
+    @GetMapping("/VehiculosfindAll")
     public ResponseEntity<List<Vehiculo>> getAllVehiculos() {
         List<Vehiculo> usuarios = servicio.findAll();
         if (usuarios.isEmpty())

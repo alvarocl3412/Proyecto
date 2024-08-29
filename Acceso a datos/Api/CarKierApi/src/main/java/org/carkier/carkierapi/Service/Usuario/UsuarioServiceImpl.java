@@ -42,17 +42,27 @@ public class UsuarioServiceImpl  implements  UsuarioService{
             Usuario usuario = optionalUsuario.get();
             Argon2 argon2 = Argon2Factory.create();
             if (argon2.verify(usuario.getContrasena(), contrasena)) {
-                //Como existe el usuario miramos ahora si esta baneado o no
-                DatosDelUsuario datUsu = datosDelUsuarioRepository.findById(usuario.getId()).get();
-                LocalDate hoy = LocalDate.now();
-                if (datUsu.getFechaBanInicio() != null && datUsu.getFechaBanFinal() != null
-                        && (hoy.isAfter(datUsu.getFechaBanInicio()) || hoy.isEqual(datUsu.getFechaBanInicio()))
-                        && (hoy.isBefore(datUsu.getFechaBanFinal()) || hoy.isEqual(datUsu.getFechaBanFinal()))) {
-                    // El usuario está baneado, retornar Optional.empty()
-                    return Optional.empty();
-                }
-                // El usuario no está baneado, retornar el usuario
                 return Optional.of(usuario);
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Usuario> findByCorreoAndContrasenaAdmin(String correo, String contrasena) {
+        Optional<Usuario> optionalUsuario = repositorio.findByCorreo(correo);
+        if (optionalUsuario.isPresent()) {
+            Usuario usuario = optionalUsuario.get();
+            Argon2 argon2 = Argon2Factory.create();
+            if (argon2.verify(usuario.getContrasena(), contrasena)) {
+
+                Optional<DatosDelUsuario> datosusu = datosDelUsuarioRepository.findById(usuario.getId());
+                if (datosusu.isPresent()) {
+                    DatosDelUsuario datos = datosusu.get();
+                    if (datos.isAdministrador()){
+                        return Optional.of(usuario);
+                    }
+                }
             }
         }
         return Optional.empty();

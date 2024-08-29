@@ -15,7 +15,7 @@ public class ContratoController {
     public ContratoController(ContratoService servicio) {
         this.servicio = servicio;
     }
-    @GetMapping("/Contrato/findAll")
+    @GetMapping("/ContratofindAll")
     public ResponseEntity<List<Contrato>> getAllContrato() {
         List<Contrato> contratos = servicio.findAll();
         if (contratos.isEmpty())

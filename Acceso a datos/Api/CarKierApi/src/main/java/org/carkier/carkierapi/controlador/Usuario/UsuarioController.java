@@ -17,7 +17,7 @@ public class UsuarioController {
     public UsuarioController(UsuarioService servicio) {
         this.servicio = servicio;
     }
-    @GetMapping("/Usuario/findAll")
+    @GetMapping("/UsuariofindAll")
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
         List<Usuario> usuarios = servicio.findAll();
         if (usuarios.isEmpty())
@@ -57,6 +57,16 @@ public class UsuarioController {
     @PostMapping("/UsuarioInicioSesion")
     public ResponseEntity<?> loginUsuario(@RequestParam String correo, @RequestParam String contrasena) {
         Optional<Usuario> usuario = servicio.findByCorreoAndContrasena(correo, contrasena);
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok(usuario.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalido el  correo o la contraseña");
+        }
+    }
+
+    @PostMapping("/UsuarioInicioSesionAdmin")
+    public ResponseEntity<?> loginUsuarioAdmin(@RequestParam String correo, @RequestParam String contrasena) {
+        Optional<Usuario> usuario = servicio.findByCorreoAndContrasenaAdmin(correo, contrasena);
         if (usuario.isPresent()) {
             return ResponseEntity.ok(usuario.get());
         } else {
