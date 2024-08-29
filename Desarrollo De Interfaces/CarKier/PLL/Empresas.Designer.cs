@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Empresas));
             this.lvEmpresas = new System.Windows.Forms.ListView();
-            this.chIdEmpresa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDescripcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDireccion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,7 +54,6 @@
             // lvEmpresas
             // 
             this.lvEmpresas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chIdEmpresa,
             this.chNombre,
             this.chDescripcion,
             this.chDireccion,
@@ -74,11 +72,6 @@
             this.lvEmpresas.TabIndex = 3;
             this.lvEmpresas.UseCompatibleStateImageBehavior = false;
             this.lvEmpresas.View = System.Windows.Forms.View.Details;
-            // 
-            // chIdEmpresa
-            // 
-            this.chIdEmpresa.Text = "idEmpresa";
-            this.chIdEmpresa.Width = 100;
             // 
             // chNombre
             // 
@@ -106,7 +99,7 @@
             // 
             // chCorreo
             // 
-            this.chCorreo.Text = "Correo";
+            this.chCorreo.Text = "correo_electronico";
             this.chCorreo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chCorreo.Width = 130;
             // 
@@ -219,7 +212,6 @@
         #endregion
 
         private System.Windows.Forms.ListView lvEmpresas;
-        private System.Windows.Forms.ColumnHeader chIdEmpresa;
         private System.Windows.Forms.ColumnHeader chNombre;
         private System.Windows.Forms.ColumnHeader chDescripcion;
         private System.Windows.Forms.ColumnHeader chDireccion;

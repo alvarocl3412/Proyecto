@@ -34,6 +34,9 @@ namespace CarKier.DAL
                 // Leer el contenido de la respuesta como string
                 string responseData = await response.Content.ReadAsStringAsync();
 
+                // Imprimir el JSON para inspección
+                Console.WriteLine("JSON recibido: " + responseData);
+
                 // Deserializar el string JSON a una lista de objetos Empresa
                 List<empresas> empresas = JsonConvert.DeserializeObject<List<empresas>>(responseData);
 

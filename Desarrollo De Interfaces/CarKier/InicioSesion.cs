@@ -41,7 +41,8 @@ namespace CarKier
                     if (usuario != null)
                     {
                     MessageBox.Show($"Bienvenido, {usuario.nombre}");
-             
+                    this.Hide();
+
                     Principal infoDesarrollador = new Principal();
                     infoDesarrollador.Show();
 

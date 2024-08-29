@@ -46,13 +46,12 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var empresa in listaEmpresas)
             {
-                ListViewItem item = new ListViewItem(empresa.idempresa.ToString());
-                item.SubItems.Add(empresa.nombre);
+                ListViewItem item = new ListViewItem(empresa.nombre.ToString());
                 item.SubItems.Add(empresa.descripcion);
                 item.SubItems.Add(empresa.direccion);
                 item.SubItems.Add(empresa.telefono);
-                item.SubItems.Add(empresa.correo_electronico);
-                item.SubItems.Add(empresa.ofrece_coches.ToString());
+                item.SubItems.Add(empresa.correoElectronico);
+                item.SubItems.Add(empresa.ofreceCoches.ToString());
                 lvEmpresas.Items.Add(item);
             }
         }

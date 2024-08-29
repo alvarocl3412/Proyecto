@@ -15,8 +15,8 @@ namespace CarKier.Modelo
         public string descripcion { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
-        public string correo_electronico { get; set; }
-        public int ofrece_coches { get; set; }
+        public string correoElectronico { get; set; }
+        public int ofreceCoches { get; set; }
 
         // Constructor por defecto
         public empresas()
@@ -31,8 +31,8 @@ namespace CarKier.Modelo
             this.descripcion = descripcion;
             this.direccion = direccion;
             this.telefono = telefono;
-            this.correo_electronico = correo_electronico;
-            this.ofrece_coches = ofrece_coches;
+            this.correoElectronico = correo_electronico;
+            this.ofreceCoches = ofrece_coches;
         }
     }
 }
