@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\ContratosDal.cs" />
     <Compile Include="DAL\EmpresasDal.cs" />
     <Compile Include="DAL\InicioSesionDal.cs" />
+    <Compile Include="DAL\UsuariosDal.cs" />
+    <Compile Include="DAL\VehiculosDal.cs" />
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>

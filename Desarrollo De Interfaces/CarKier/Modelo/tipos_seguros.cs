@@ -8,7 +8,7 @@ namespace CarKier.Modelo
 {
     public class tipos_seguros
     {
-        public int idseguro { get; set; }
+        public int id { get; set; }
 
         public string nombre { get; set; }
 
@@ -20,7 +20,7 @@ namespace CarKier.Modelo
 
         public tipos_seguros(int idseguro, string nombre, string descripcion, double coste)
         {
-            this.idseguro = idseguro;
+            this.id = idseguro;
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.coste = coste;

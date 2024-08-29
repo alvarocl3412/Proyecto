@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,10 @@ namespace CarKier.PLL
         public Contratos()
         {
             InitializeComponent();
+        }
+        private void Contratos_Load(object sender, EventArgs e)
+        {
+            CargarTabla();
         }
 
         #region Funcionalida Filtrar
@@ -58,7 +64,41 @@ namespace CarKier.PLL
 
         }
 
+
         #endregion
+
+
+        private async Task CargarTabla()
+        {
+            ContratosDal vdal = new ContratosDal();
+            
+            //Creamos la lista y llamamos al metodo para pedir los vehiuclos
+            List<contratos> listaContratos = await vdal.ContratosfindAll();
+
+            // Limpiar elementos existentes
+            lvContratos.Items.Clear();
+
+            // Cargar los datos en el ListView
+            foreach (var contra in listaContratos)
+            {
+              
+                ListViewItem item = new ListViewItem(contra.idvehiculo.ToString());
+
+                item.SubItems.Add(contra.idcliente.ToString());
+
+                item.SubItems.Add(contra.idEstado.ToString());
+
+                string seguro = await vdal.findSegurosid(contra.idSeguro);
+                item.SubItems.Add(seguro);
+
+                item.SubItems.Add(contra.fechaInicio.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(contra.fechaFin.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(contra.precioDia.ToString());
+                item.SubItems.Add(contra.precioTotal.ToString());
+                item.SubItems.Add(contra.pagado ? "SI" : "NO");
+                lvContratos.Items.Add(item);
+            }
+        }
 
 
     }

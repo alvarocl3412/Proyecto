@@ -119,5 +119,10 @@ namespace CarKier
             comentarios.MdiParent = this;
             comentarios.Show();
         }
+
+        private void Principal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); // Esto cierra toda la aplicación
+        }
     }
 }

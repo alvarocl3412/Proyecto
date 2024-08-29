@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
             this.lvUsuarios = new System.Windows.Forms.ListView();
-            this.chIdUsuarios = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDni = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chApellidos = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,6 +46,7 @@
             this.txtFiltrarDni = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
+            this.chFechaNac = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
             this.SuspendLayout();
@@ -54,12 +54,12 @@
             // lvUsuarios
             // 
             this.lvUsuarios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chIdUsuarios,
             this.chDni,
             this.chNombre,
             this.chApellidos,
             this.chTelefono,
-            this.chCorreo});
+            this.chCorreo,
+            this.chFechaNac});
             this.lvUsuarios.ContextMenuStrip = this.contextMenuStrip1;
             this.lvUsuarios.Cursor = System.Windows.Forms.Cursors.Default;
             this.lvUsuarios.FullRowSelect = true;
@@ -73,16 +73,11 @@
             this.lvUsuarios.UseCompatibleStateImageBehavior = false;
             this.lvUsuarios.View = System.Windows.Forms.View.Details;
             // 
-            // chIdUsuarios
-            // 
-            this.chIdUsuarios.Text = "IdUsuarios";
-            this.chIdUsuarios.Width = 77;
-            // 
             // chDni
             // 
             this.chDni.Text = "DNI";
             this.chDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chDni.Width = 97;
+            this.chDni.Width = 80;
             // 
             // chNombre
             // 
@@ -100,7 +95,7 @@
             // 
             this.chTelefono.Text = "Telefono";
             this.chTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chTelefono.Width = 123;
+            this.chTelefono.Width = 110;
             // 
             // chCorreo
             // 
@@ -187,6 +182,11 @@
             this.pcFotoImaggen.TabIndex = 3;
             this.pcFotoImaggen.TabStop = false;
             // 
+            // chFechaNac
+            // 
+            this.chFechaNac.Text = "FechaNacimiento";
+            this.chFechaNac.Width = 100;
+            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +199,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Usuarios";
             this.Text = "Usuarios";
+            this.Load += new System.EventHandler(this.Usuarios_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).EndInit();
             this.ResumeLayout(false);
@@ -208,7 +209,6 @@
 
         #endregion
         private System.Windows.Forms.ListView lvUsuarios;
-        private System.Windows.Forms.ColumnHeader chIdUsuarios;
         private System.Windows.Forms.ColumnHeader chDni;
         private System.Windows.Forms.ColumnHeader chNombre;
         private System.Windows.Forms.ColumnHeader chApellidos;
@@ -224,5 +224,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ColumnHeader chFechaNac;
     }
 }

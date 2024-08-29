@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contratos));
             this.lvContratos = new System.Windows.Forms.ListView();
-            this.chidContrato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIdVehiculo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIdCliente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chEstado = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,15 +40,15 @@
             this.chPrecioDia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPrecioFinal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPagado = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmdMenuContrato = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmVer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFiltrarContratos = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
-            this.cmdMenuContrato = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmVer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.pbImgContrato = new System.Windows.Forms.PictureBox();
             this.cmdMenuContrato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImgContrato)).BeginInit();
@@ -58,7 +57,6 @@
             // lvContratos
             // 
             this.lvContratos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chidContrato,
             this.chIdVehiculo,
             this.chIdCliente,
             this.chEstado,
@@ -80,11 +78,6 @@
             this.lvContratos.TabIndex = 4;
             this.lvContratos.UseCompatibleStateImageBehavior = false;
             this.lvContratos.View = System.Windows.Forms.View.Details;
-            // 
-            // chidContrato
-            // 
-            this.chidContrato.Text = "IdContrato";
-            this.chidContrato.Width = 61;
             // 
             // chIdVehiculo
             // 
@@ -139,6 +132,57 @@
             this.chPagado.Text = "Pagado";
             this.chPagado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // cmdMenuContrato
+            // 
+            this.cmdMenuContrato.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.tsmNuevo,
+            this.toolStripSeparator2,
+            this.tsmVer,
+            this.toolStripSeparator3,
+            this.tsmEliminar});
+            this.cmdMenuContrato.Name = "cmdMenuContrato";
+            this.cmdMenuContrato.Size = new System.Drawing.Size(118, 88);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmNuevo
+            // 
+            this.tsmNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
+            this.tsmNuevo.Name = "tsmNuevo";
+            this.tsmNuevo.Size = new System.Drawing.Size(117, 22);
+            this.tsmNuevo.Text = "Nuevo";
+            this.tsmNuevo.Click += new System.EventHandler(this.tsmNuevo_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmVer
+            // 
+            this.tsmVer.Image = global::CarKier.Properties.Resources.ojo1;
+            this.tsmVer.Name = "tsmVer";
+            this.tsmVer.Size = new System.Drawing.Size(117, 22);
+            this.tsmVer.Text = "Ver";
+            this.tsmVer.Click += new System.EventHandler(this.tsmVer_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmEliminar
+            // 
+            this.tsmEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.tsmEliminar.Name = "tsmEliminar";
+            this.tsmEliminar.Size = new System.Drawing.Size(117, 22);
+            this.tsmEliminar.Text = "Eliminar";
+            this.tsmEliminar.Click += new System.EventHandler(this.tsmEliminar_Click);
+            // 
             // txtFiltrarContratos
             // 
             this.txtFiltrarContratos.Location = new System.Drawing.Point(259, 59);
@@ -157,57 +201,6 @@
             this.btnFiltrar.TabIndex = 7;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
-            // 
-            // cmdMenuContrato
-            // 
-            this.cmdMenuContrato.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.tsmNuevo,
-            this.toolStripSeparator2,
-            this.tsmVer,
-            this.toolStripSeparator3,
-            this.tsmEliminar});
-            this.cmdMenuContrato.Name = "cmdMenuContrato";
-            this.cmdMenuContrato.Size = new System.Drawing.Size(118, 88);
-            // 
-            // tsmNuevo
-            // 
-            this.tsmNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
-            this.tsmNuevo.Name = "tsmNuevo";
-            this.tsmNuevo.Size = new System.Drawing.Size(117, 22);
-            this.tsmNuevo.Text = "Nuevo";
-            this.tsmNuevo.Click += new System.EventHandler(this.tsmNuevo_Click);
-            // 
-            // tsmVer
-            // 
-            this.tsmVer.Image = global::CarKier.Properties.Resources.ojo1;
-            this.tsmVer.Name = "tsmVer";
-            this.tsmVer.Size = new System.Drawing.Size(117, 22);
-            this.tsmVer.Text = "Ver";
-            this.tsmVer.Click += new System.EventHandler(this.tsmVer_Click);
-            // 
-            // tsmEliminar
-            // 
-            this.tsmEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
-            this.tsmEliminar.Name = "tsmEliminar";
-            this.tsmEliminar.Size = new System.Drawing.Size(117, 22);
-            this.tsmEliminar.Text = "Eliminar";
-            this.tsmEliminar.Click += new System.EventHandler(this.tsmEliminar_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
             // 
             // pbImgContrato
             // 
@@ -230,6 +223,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Contratos";
             this.Text = "Contratos";
+            this.Load += new System.EventHandler(this.Contratos_Load);
             this.cmdMenuContrato.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImgContrato)).EndInit();
             this.ResumeLayout(false);
@@ -240,7 +234,6 @@
         #endregion
 
         private System.Windows.Forms.ListView lvContratos;
-        private System.Windows.Forms.ColumnHeader chidContrato;
         private System.Windows.Forms.ColumnHeader chIdVehiculo;
         private System.Windows.Forms.ColumnHeader chIdCliente;
         private System.Windows.Forms.ColumnHeader chEstado;

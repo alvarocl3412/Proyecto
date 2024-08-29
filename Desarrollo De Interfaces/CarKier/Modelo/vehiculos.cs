@@ -10,17 +10,17 @@ namespace CarKier.Modelo
     {
 
         // Propiedades
-        public int idvehiculo { get; set; }
-        public int idempresa { get; set; }
-        public int idusuariospropietario { get; set; }
-        public int idestado { get; set; }
+        public int? id { get; set; }
+        public int? idEmpresa { get; set; }
+        public int? idUsuariosPropietario { get; set; }
+        public int? idEstado { get; set; }
         public string matricula { get; set; }
         public string marca { get; set; }
         public string modelo { get; set; }
-        public int anio { get; set; }
-        public int km { get; set; }
-        public double precioventa { get; set; }
-        public double preciodia { get; set; }
+        public int? anio { get; set; }
+        public int? km { get; set; }
+        public double? precioventa { get; set; }
+        public double? preciodia { get; set; }
 
         // Constructor por defecto
         public vehiculos()
@@ -28,12 +28,12 @@ namespace CarKier.Modelo
         }
 
         // Constructor que inicializa todas las propiedades
-        public vehiculos(int idvehiculo, int idempresa, int idusuariospropietario, int idestado, string matricula, string marca, string modelo, int anio, int km, double precioventa, double preciodia)
+        public vehiculos(int? idvehiculo, int? idempresa, int? idusuariospropietario, int? idestado, string matricula, string marca, string modelo, int? anio, int? km, double? precioventa, double? preciodia)
         {
-            this.idvehiculo = idvehiculo;
-            this.idempresa = idempresa;
-            this.idusuariospropietario = idusuariospropietario;
-            this.idestado = idestado;
+            this.id = idvehiculo;
+            this.idEmpresa = idempresa;
+            this.idUsuariosPropietario = idusuariospropietario;
+            this.idEstado = idestado;
             this.matricula = matricula;
             this.marca = marca;
             this.modelo = modelo;
