@@ -36,6 +36,7 @@
             this.chApellidos = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTelefono = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chCorreo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chFechaNac = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,6 @@
             this.txtFiltrarDni = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
-            this.chFechaNac = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,7 @@
             this.lvUsuarios.TabIndex = 1;
             this.lvUsuarios.UseCompatibleStateImageBehavior = false;
             this.lvUsuarios.View = System.Windows.Forms.View.Details;
+            this.lvUsuarios.DoubleClick += new System.EventHandler(this.lvUsuarios_DoubleClick);
             // 
             // chDni
             // 
@@ -102,6 +103,11 @@
             this.chCorreo.Text = "Correo";
             this.chCorreo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chCorreo.Width = 153;
+            // 
+            // chFechaNac
+            // 
+            this.chFechaNac.Text = "FechaNacimiento";
+            this.chFechaNac.Width = 100;
             // 
             // contextMenuStrip1
             // 
@@ -181,11 +187,6 @@
             this.pcFotoImaggen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcFotoImaggen.TabIndex = 3;
             this.pcFotoImaggen.TabStop = false;
-            // 
-            // chFechaNac
-            // 
-            this.chFechaNac.Text = "FechaNacimiento";
-            this.chFechaNac.Width = 100;
             // 
             // Usuarios
             // 

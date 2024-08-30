@@ -15,6 +15,7 @@ namespace CarKier.PLL
     public partial class VerUsuario : Form
     {
         private static  usuarios _usuario;
+        private static CarnetsDeConducirDal cdcdal = new CarnetsDeConducirDal();
         public VerUsuario()
         {
             InitializeComponent();
@@ -31,12 +32,12 @@ namespace CarKier.PLL
             txtTelefono.Text = _usuario.telefono;
             txtFechaNac.Text = _usuario.fechaNacimiento.ToString();
             txtCorreo.Text = _usuario.correo;
-            CargarTabla(_usuario);
+            CargarTabla();
         }
 
         private  void VerUsuario_Load(object sender, EventArgs e)
         {
-            CargarTabla(_usuario);
+            
         }
 
         #region Métodos para la tabla NUEVO,VER Y ELIMINAR
@@ -106,9 +107,9 @@ namespace CarKier.PLL
 
 
         #endregion
-        private async Task CargarTabla(usuarios _usuario)
+        private async Task CargarTabla()
         {
-            CarnetsDeConducirDal cdcdal = new CarnetsDeConducirDal();
+            
             List<carnets_de_conducir> listaCarntes = await cdcdal.findAllByUsuario(_usuario.id);
             // Limpiar elementos existentes
             lvMostrarCarnets.Items.Clear();

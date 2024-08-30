@@ -46,53 +46,6 @@ namespace CarKier.DAL
             }
         }
 
-        public async Task<string> findUsuarioid(int? id)
-        {
-            // Verificar si el id es null
-            if (id == null)
-                return "No Pertenece";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/UsuarioId/" + id.ToString();
-
-            try
-            {
-                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
-                response.EnsureSuccessStatusCode();
-
-                string responseData = await response.Content.ReadAsStringAsync();
-
-                usuarios usuario = JsonConvert.DeserializeObject<usuarios>(responseData);
-                return usuario?.nombre ?? "No Pertenece";
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return "Error"; // Retorna "Error" si hay una excepción
-            }
-        }
-
-        public async Task<string> findVehiculoid(int? id)
-        {
-            // Verificar si el id es null
-            if (id == null)
-                return "No Pertenece";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/VehiuculosId/" + id.ToString();
-
-            try
-            {
-                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
-                response.EnsureSuccessStatusCode();
-
-                string responseData = await response.Content.ReadAsStringAsync();
-
-                vehiculos vehiculo = JsonConvert.DeserializeObject<vehiculos>(responseData);
-                return vehiculo?.matricula ?? "No Pertenece";
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return "Error"; // Retorna "Error" si hay una excepción
-            }
-        }
 
         public async Task<comentarios> findComentarioid(int? id)
         {

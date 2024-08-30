@@ -14,32 +14,21 @@ namespace CarKier.PLL
 {
     public partial class Usuarios : Form
     {
+        private static UsuariosDal usuDal = new UsuariosDal();
         public Usuarios()
         {
             InitializeComponent();
             configuracion();
+            CargarTabla();
         }
-        private async void Usuarios_Load(object sender, EventArgs e)
+        private  void Usuarios_Load(object sender, EventArgs e)
         {
-            await CargarDatos();
-        }
-
-        private async Task<List<usuarios>> ObtenerUsuariosAsync()
-        {
-            UsuariosDal usuDal = new UsuariosDal();
-            return await usuDal.UsuariosfindAll();
+          
         }
 
-        private async Task CargarDatos()
+        private async void CargarTabla()
         {
-            // Obtener la lista de empresas de manera asíncrona
-            List<usuarios> listaUsuarios = await ObtenerUsuariosAsync();
-
-            // Cargar la lista en el ListView
-            CargarTabla(listaUsuarios);
-        }
-        private void CargarTabla(List<usuarios> listaUsuarios)
-        {
+            List<usuarios> listaUsuarios = await usuDal.UsuariosfindAll();
             // Limpiar elementos existentes
             lvUsuarios.Items.Clear();
 
@@ -80,9 +69,12 @@ namespace CarKier.PLL
 
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            verCliente();
+            verUsuario();
         }
-
+        private void lvUsuarios_DoubleClick(object sender, EventArgs e)
+        {
+            verUsuario();
+        }
 
         //Metodos complementarios
 
@@ -94,7 +86,7 @@ namespace CarKier.PLL
             txtFiltrarDni.Leave += txtFiltrarDni_Leave;
         }
 
-        private async void verCliente()
+        private async void verUsuario()
         {
             UsuariosDal usu = new UsuariosDal();
             if (lvUsuarios.SelectedItems.Count > 0)
@@ -119,7 +111,6 @@ namespace CarKier.PLL
                 MessageBox.Show("No se ha seleccionado ningún registro");
             }
         }
-
 
 
     }

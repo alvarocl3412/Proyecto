@@ -44,5 +44,30 @@ namespace CarKier.DAL
                 return null;
             }
         }
+
+        public async Task<string> findSegurosid(int? id)
+        {
+            // Verificar si el id es null
+            if (id == null)
+                return "Sin Seguro";
+            string urlConParametros = "http://10.0.2.2:8089/CarKier/TipoSeguroId/" + id.ToString();
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                tipos_seguros tipos = JsonConvert.DeserializeObject<tipos_seguros>(responseData);
+                return tipos?.nombre ?? "Sin Seguro";
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return "Error"; // Retorna "Error" si hay una excepción
+            }
+        }
+
     }
 }

@@ -14,6 +14,11 @@ namespace CarKier.PLL
 {
     public partial class Contratos : Form
     {
+        private static ContratosDal contratoDal = new ContratosDal();
+        private static VehiculosDal vehiculoDal = new VehiculosDal();
+        private static UsuariosDal usuDal = new UsuariosDal();
+        private static EstadoContratoDal estadoContDal = new EstadoContratoDal();
+        private static SegurosDal seguroDal = new SegurosDal();
         public Contratos()
         {
             InitializeComponent();
@@ -70,10 +75,8 @@ namespace CarKier.PLL
 
         private async Task CargarTabla()
         {
-            ContratosDal vdal = new ContratosDal();
-
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
-            List<contratos> listaContratos = await vdal.ContratosfindAll();
+            List<contratos> listaContratos = await contratoDal.ContratosfindAll();
 
             // Limpiar elementos existentes
             lvContratos.Items.Clear();
@@ -82,17 +85,17 @@ namespace CarKier.PLL
             foreach (var contra in listaContratos)
             {
 
-                string matricula = await vdal.findVehiculoid(contra.idvehiculo);
+                string matricula = await vehiculoDal.findVehiculoid(contra.idvehiculo);
                 ListViewItem item = new ListViewItem(matricula);
 
 
-                string nom = await vdal.findUsuarioid(contra.idcliente);
+                string nom = await usuDal.findUsuarioid(contra.idcliente);
                 item.SubItems.Add(nom);
 
-                string estado = await vdal.findEstadoid(contra.idEstado); 
+                string estado = await estadoContDal.findEstadoContratoid(contra.idEstado);
                 item.SubItems.Add(estado);
 
-                string seguro = await vdal.findSegurosid(contra.idSeguro);
+                string seguro = await seguroDal.findSegurosid(contra.idSeguro);
                 item.SubItems.Add(seguro);
 
                 item.SubItems.Add(contra.fechaInicio.ToString("dd/MM/yyyy"));

@@ -12,7 +12,7 @@ namespace CarKier.DAL
     public class CarnetsDeConducirDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier";
+        string apiUrl = "http://10.0.2.2:8089/CarKier/";
 
         public CarnetsDeConducirDal()
         {
@@ -22,7 +22,7 @@ namespace CarKier.DAL
 
         public async Task<List<carnets_de_conducir>> findAllByUsuario(int id)
         {
-            apiUrl += "/mostrarCarnetsUsuario/findAll"+id.ToString();
+            apiUrl += "mostrarCarnetsUsuario/" + id.ToString();
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);

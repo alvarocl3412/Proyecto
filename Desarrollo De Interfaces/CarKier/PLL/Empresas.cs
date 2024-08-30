@@ -15,31 +15,22 @@ namespace CarKier.PLL
 {
     public partial class Empresas : Form
     {
+        private static EmpresasDal emprDal = new EmpresasDal();
+
         public Empresas()
         {
             InitializeComponent();  
         }
 
-        private async void Empresas_Load(object sender, EventArgs e)
+        private  void Empresas_Load(object sender, EventArgs e)
         {
-            await CargarDatos();
+             CargarTabla();
         }
-        private async Task<List<empresas>> ObtenerEmpresasAsync()
+     
+        private async Task CargarTabla()
         {
-            EmpresasDal empr = new EmpresasDal();
-            return await empr.findAll();
-        }
 
-        private async Task CargarDatos()
-        {
-            // Obtener la lista de empresas de manera asíncrona
-            List<empresas> listaEmpresas = await ObtenerEmpresasAsync();
-
-            // Cargar la lista en el ListView
-            CargarTabla(listaEmpresas);
-        }
-        private void CargarTabla(List<empresas> listaEmpresas)
-        {
+            List<empresas> listaEmpresas = await emprDal.findEmpresaAll();
             // Limpiar elementos existentes
             lvEmpresas.Items.Clear();
 

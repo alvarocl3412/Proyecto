@@ -371,7 +371,6 @@
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.ListView lvMostrarCarnets;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ColumnHeader chTipo;
         private System.Windows.Forms.ColumnHeader chFecha;
         private System.Windows.Forms.ColumnHeader chFechaCadu;
         private System.Windows.Forms.ContextMenuStrip cmsCarnet;
@@ -387,5 +386,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnDatos;
         private System.Windows.Forms.Button btnContratos;
+        private System.Windows.Forms.ColumnHeader chTipo;
     }
 }

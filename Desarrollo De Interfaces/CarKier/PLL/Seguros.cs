@@ -14,6 +14,7 @@ namespace CarKier.PLL
 {
     public partial class Seguros : Form
     {
+        private static SegurosDal vdal = new SegurosDal();
         public Seguros()
         {
             InitializeComponent();
@@ -46,8 +47,7 @@ namespace CarKier.PLL
 
         private async Task CargarTabla()
         {
-            SegurosDal vdal = new SegurosDal();
-
+           
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<tipos_seguros> listaSeguros = await vdal.SegurosfindAll();
 

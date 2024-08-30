@@ -15,9 +15,14 @@ namespace CarKier.PLL
 {
     public partial class Vehiculos : Form
     {
+        private static VehiculosDal vehiculoDal = new VehiculosDal();
+        private static UsuariosDal usuDal = new UsuariosDal();
+        private static EmpresasDal emprDal = new EmpresasDal();
+        private static EstadoVehiculoDal estadoVehiDal = new EstadoVehiculoDal();
         public Vehiculos()
         {
             InitializeComponent();
+            CargarTabla();
         }
 
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
@@ -28,15 +33,13 @@ namespace CarKier.PLL
 
         private async void Vehiculos_Load(object sender, EventArgs e)
         {
-            CargarTabla();
+           // CargarTabla();
         }
       
         private async Task CargarTabla()
         {
-            VehiculosDal vdal = new VehiculosDal();
-            empresas empr = new empresas();
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
-            List<vehiculos> listaVehiculo = await vdal.VehiculosfindAll();
+            List<vehiculos> listaVehiculo = await vehiculoDal.VehiculosfindAll();
 
             // Limpiar elementos existentes
             lvVehiculos.Items.Clear();
@@ -44,13 +47,13 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var vehiculo in listaVehiculo)
             {
-               string idEm = await vdal.findEmpresId(vehiculo.idEmpresa);
+               string idEm = await emprDal.findEmpresId(vehiculo.idEmpresa);
                ListViewItem item = new ListViewItem(idEm);
 
-                string idusu = await vdal.findUsuarioid(vehiculo.idUsuariosPropietario);
+                string idusu = await usuDal.findUsuarioid(vehiculo.idUsuariosPropietario);
                 item.SubItems.Add(idusu);
 
-                string idest = await vdal.findEstadoid(vehiculo.idEstado);
+                string idest = await estadoVehiDal.findEstadoid(vehiculo.idEstado);
                 item.SubItems.Add(idest);
 
                 item.SubItems.Add(vehiculo.matricula);

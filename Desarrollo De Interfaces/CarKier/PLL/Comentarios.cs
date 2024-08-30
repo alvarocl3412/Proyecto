@@ -14,13 +14,17 @@ namespace CarKier.PLL
 {
     public partial class Comentarios : Form
     {
+        private static ComentariosDal comenDal = new ComentariosDal();
+        private static UsuariosDal usuDal = new UsuariosDal();
+        private static VehiculosDal vehiDal = new VehiculosDal();
         public Comentarios()
         {
             InitializeComponent();
         }
-        private void Comentarios_Load(object sender, EventArgs e)
+
+        private async void Comentarios_Load(object sender, EventArgs e)
         {
-            CargarTabla();
+            await CargarTabla();
         }
 
         #region Metodos para la tabla
@@ -46,10 +50,10 @@ namespace CarKier.PLL
 
         private async Task CargarTabla()
         {
-            ComentariosDal vdal = new ComentariosDal();
+            
 
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
-            List<comentarios> listaComentarios = await vdal.ComentariosfindAll();
+            List<comentarios> listaComentarios = await comenDal.ComentariosfindAll();
 
             // Limpiar elementos existentes
             lvComentarios.Items.Clear();
@@ -58,18 +62,18 @@ namespace CarKier.PLL
             foreach (var comentarios in listaComentarios)
             {
 
-                string nom = await vdal.findUsuarioid(comentarios.idUsuario);
+                string nom = await usuDal.findUsuarioid(comentarios.idUsuario);
                 ListViewItem item = new ListViewItem(nom);
 
 
-                string vehiculo = await vdal.findVehiculoid(comentarios.idVehiculo);
+                string vehiculo = await vehiDal.findVehiculoid(comentarios.idVehiculo);
                 item.SubItems.Add(vehiculo);
 
                 string cadena = "no responde";
                 if(comentarios.idComentarioRespuesta != null)
                 {
-                    comentarios comen = await vdal.findComentarioid(comentarios.idComentarioRespuesta);
-                    cadena = await vdal.findUsuarioid(comen.idUsuario);
+                    comentarios comen = await comenDal.findComentarioid(comentarios.idComentarioRespuesta);
+                    cadena = await usuDal.findUsuarioid(comen.idUsuario);
                 }
                 
                 //   string usurespon = await vdal.findUsuarioid(comen.idUsuario);

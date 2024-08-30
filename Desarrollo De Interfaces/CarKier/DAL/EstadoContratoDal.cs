@@ -9,40 +9,37 @@ using System.Threading.Tasks;
 
 namespace CarKier.DAL
 {
-    public class ContratosDal
+    public class EstadoContratoDal
     {
         private readonly HttpClient _httpClient;
         string apiUrl = "http://10.0.2.2:8089/CarKier/";
 
-        public ContratosDal()
+        public EstadoContratoDal()
         {
             _httpClient = new HttpClient();
         }
 
-
-        public async Task<List<contratos>> ContratosfindAll()
+        public async Task<string> findEstadoContratoid(int? id)
         {
-            apiUrl += "ContratofindAll";
+            // Verificar si el id es null
+            if (id == null)
+                return "Sin Estado";
+            string urlConParametros = apiUrl+"EstadoContratoId/" + id.ToString();
+
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
-
-                // Verificar si la solicitud fue exitosa
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
                 response.EnsureSuccessStatusCode();
 
-                // Leer el contenido de la respuesta como string
                 string responseData = await response.Content.ReadAsStringAsync();
 
-                // Deserializar el string JSON a una lista de objetos Empresa
-                List<contratos> listaContrato = JsonConvert.DeserializeObject<List<contratos>>(responseData);
-
-
-                return listaContrato;
+                estado_contrato estadoContrato = JsonConvert.DeserializeObject<estado_contrato>(responseData);
+                return estadoContrato?.estado ?? "Sin Estado";
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return null;
+                return "Error"; // Retorna "Error" si hay una excepción
             }
         }
 

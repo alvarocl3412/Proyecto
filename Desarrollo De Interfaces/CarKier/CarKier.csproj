@@ -53,6 +53,8 @@
     <Compile Include="DAL\ComentariosDal.cs" />
     <Compile Include="DAL\ContratosDal.cs" />
     <Compile Include="DAL\EmpresasDal.cs" />
+    <Compile Include="DAL\EstadoContratoDal.cs" />
+    <Compile Include="DAL\EstadoVehiculoDal.cs" />
     <Compile Include="DAL\InicioSesionDal.cs" />
     <Compile Include="DAL\SegurosDal.cs" />
     <Compile Include="DAL\UsuariosDal.cs" />
