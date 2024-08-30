@@ -65,8 +65,15 @@ namespace CarKier.PLL
                 string vehiculo = await vdal.findVehiculoid(comentarios.idVehiculo);
                 item.SubItems.Add(vehiculo);
 
-                string usurespon = await vdal.findUsuarioid(comentarios.idComentarioRespuesta);
-                item.SubItems.Add(usurespon);
+                string cadena = "no responde";
+                if(comentarios.idComentarioRespuesta != null)
+                {
+                    comentarios comen = await vdal.findComentarioid(comentarios.idComentarioRespuesta);
+                    cadena = await vdal.findUsuarioid(comen.idUsuario);
+                }
+                
+                //   string usurespon = await vdal.findUsuarioid(comen.idUsuario);
+                item.SubItems.Add(cadena);
 
                 item.SubItems.Add(comentarios.comentario);
 

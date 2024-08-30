@@ -22,7 +22,7 @@ namespace CarKier.DAL
 
         public async Task<List<comentarios>> ComentariosfindAll()
         {
-            apiUrl += "Comentarios/findAll";
+            apiUrl += "ComentariosfindAll";
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
@@ -93,6 +93,31 @@ namespace CarKier.DAL
                 return "Error"; // Retorna "Error" si hay una excepción
             }
         }
+
+        public async Task<comentarios> findComentarioid(int? id)
+        {
+            // Verificar si el id es null
+            if (id == null)
+                return null;
+            string urlConParametros = "http://10.0.2.2:8089/CarKier/ComentariosId/" + id.ToString();
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                comentarios comentario = JsonConvert.DeserializeObject<comentarios>(responseData);
+                return comentario;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null; // Retorna "Error" si hay una excepción
+            }
+        }
+
 
     }
 }

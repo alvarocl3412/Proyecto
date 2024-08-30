@@ -81,15 +81,15 @@
             // 
             // chIdVehiculo
             // 
-            this.chIdVehiculo.Text = "IdVehiculo";
+            this.chIdVehiculo.Text = "Vehiculo";
             this.chIdVehiculo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chIdVehiculo.Width = 65;
+            this.chIdVehiculo.Width = 85;
             // 
             // chIdCliente
             // 
-            this.chIdCliente.Text = "IdCliente";
+            this.chIdCliente.Text = "Cliente";
             this.chIdCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chIdCliente.Width = 66;
+            this.chIdCliente.Width = 86;
             // 
             // chEstado
             // 

@@ -83,9 +83,9 @@
             // 
             // chEmpresa
             // 
-            this.chEmpresa.Text = "idEmpresa";
+            this.chEmpresa.Text = "Empresa";
             this.chEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chEmpresa.Width = 61;
+            this.chEmpresa.Width = 91;
             // 
             // chIdUsuario
             // 
