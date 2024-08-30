@@ -56,9 +56,20 @@ namespace CarKier.PLL
             infoEmpresa.Show();
         }
 
-        private void tsmiEliminar_Click(object sender, EventArgs e)
+        private async void tsmiEliminar_Click(object sender, EventArgs e)
         {
+            // Obtener el elemento seleccionado
+            var selectedItem = lvEmpresas.SelectedItems[0];
 
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int? empresaId = (int)selectedItem.Tag;
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar la empresas seleccionado?",
+          "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                bool eliminado = await emprDal.deleteEmpresaId(empresaId);
+                CargarTabla();
+            }
         }
 
         //METODOS PARA EL HINT DEL FILTRAR
