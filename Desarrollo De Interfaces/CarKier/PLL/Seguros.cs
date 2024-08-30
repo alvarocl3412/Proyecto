@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,5 +38,32 @@ namespace CarKier.PLL
         }
 
         #endregion
+
+        private void Seguros_Load(object sender, EventArgs e)
+        {
+            CargarTabla();
+        }
+
+        private async Task CargarTabla()
+        {
+            SegurosDal vdal = new SegurosDal();
+
+            //Creamos la lista y llamamos al metodo para pedir los vehiuclos
+            List<tipos_seguros> listaSeguros = await vdal.SegurosfindAll();
+
+            // Limpiar elementos existentes
+            lvSeguros.Items.Clear();
+
+            // Cargar los datos en el ListView
+            foreach (var seguros in listaSeguros)
+            {
+
+                ListViewItem item = new ListViewItem(seguros.nombre);
+                item.SubItems.Add(seguros.descripcion);
+                item.SubItems.Add(seguros.coste.ToString());
+                lvSeguros.Items.Add(item);
+            }
+        }
+
     }
 }

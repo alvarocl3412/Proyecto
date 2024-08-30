@@ -10,10 +10,11 @@ namespace CarKier.Modelo
     {
 
         // Propiedades
-        public int idcomentarios { get; set; }
-        public int idusuarios { get; set; }
-        public int idvehiculo { get; set; }
-        public int idcomentario { get; set; }
+        public int id { get; set; }
+        public int idUsuario { get; set; }
+        public int idVehiculo { get; set; }
+        public int? idComentarioRespuesta { get; set; }
+        public string comentario { get; set; }
         public DateTime fecha { get; set; }
 
         // Constructor por defecto
@@ -22,12 +23,13 @@ namespace CarKier.Modelo
         }
 
         // Constructor que inicializa todas las propiedades
-        public comentarios(int idcomentarios, int idusuarios, int idvehiculo, int idcomentario, DateTime fecha)
+        public comentarios(int idcomentarios, int idusuarios, int idvehiculo, int? idcomentarioRespuesta,string comentario, DateTime fecha)
         {
-            this.idcomentarios = idcomentarios;
-            this.idusuarios = idusuarios;
-            this.idvehiculo = idvehiculo;
-            this.idcomentario = idcomentario;
+            this.id = idcomentarios;
+            this.idUsuario = idusuarios;
+            this.idVehiculo = idvehiculo;
+            this.idComentarioRespuesta = idcomentarioRespuesta;
+            this.comentario = comentario;
             this.fecha = fecha;
         }
     }

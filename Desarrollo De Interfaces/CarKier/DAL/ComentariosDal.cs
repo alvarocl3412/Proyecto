@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace CarKier.DAL
 {
-    public class ContratosDal
+    public class ComentariosDal
     {
         private readonly HttpClient _httpClient;
         string apiUrl = "http://10.0.2.2:8089/CarKier/";
 
-        public ContratosDal()
+        public ComentariosDal()
         {
             _httpClient = new HttpClient();
         }
 
 
-        public async Task<List<contratos>> ContratosfindAll()
+        public async Task<List<comentarios>> ComentariosfindAll()
         {
-            apiUrl += "ContratofindAll";
+            apiUrl += "Comentarios/findAll";
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
@@ -34,39 +34,15 @@ namespace CarKier.DAL
                 string responseData = await response.Content.ReadAsStringAsync();
 
                 // Deserializar el string JSON a una lista de objetos Empresa
-                List<contratos> listaContrato = JsonConvert.DeserializeObject<List<contratos>>(responseData);
+                List<comentarios> listaComentarios = JsonConvert.DeserializeObject<List<comentarios>>(responseData);
 
 
-                return listaContrato;
+                return listaComentarios;
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
                 return null;
-            }
-        }
-
-        public async Task<string> findSegurosid(int? id)
-        {
-            // Verificar si el id es null
-            if (id == null)
-                return "Sin Seguro";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/TipoSeguroId/" + id.ToString();
-
-            try
-            {
-                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
-                response.EnsureSuccessStatusCode();
-
-                string responseData = await response.Content.ReadAsStringAsync();
-
-                tipos_seguros tipos = JsonConvert.DeserializeObject<tipos_seguros>(responseData);
-                return tipos?.nombre ?? "Sin Seguro";
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return "Error"; // Retorna "Error" si hay una excepción
             }
         }
 
@@ -117,32 +93,6 @@ namespace CarKier.DAL
                 return "Error"; // Retorna "Error" si hay una excepción
             }
         }
-
-        public async Task<string> findEstadoid(int? id)
-        {
-            // Verificar si el id es null
-            if (id == null)
-                return "Sin Estado";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/EstadoContratoId/" + id.ToString();
-
-            try
-            {
-                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
-                response.EnsureSuccessStatusCode();
-
-                string responseData = await response.Content.ReadAsStringAsync();
-
-                estado_contrato estadoContrato = JsonConvert.DeserializeObject<estado_contrato>(responseData);
-                return estadoContrato?.estado ?? "Sin Estado";
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return "Error"; // Retorna "Error" si hay una excepción
-            }
-        }
-
-
 
     }
 }

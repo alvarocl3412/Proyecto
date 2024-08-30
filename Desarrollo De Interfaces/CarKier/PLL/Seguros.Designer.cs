@@ -31,28 +31,26 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Seguros));
             this.lvSeguros = new System.Windows.Forms.ListView();
-            this.chId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDescripcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chCoste = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmsTablaSeguro = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiVer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFiltrarSeguros = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cmsTablaSeguro = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cmsTablaSeguro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lvSeguros
             // 
             this.lvSeguros.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chId,
             this.chNombre,
             this.chDescripcion,
             this.chCoste});
@@ -68,11 +66,6 @@
             this.lvSeguros.TabIndex = 5;
             this.lvSeguros.UseCompatibleStateImageBehavior = false;
             this.lvSeguros.View = System.Windows.Forms.View.Details;
-            // 
-            // chId
-            // 
-            this.chId.Text = "idSeguro";
-            this.chId.Width = 100;
             // 
             // chNombre
             // 
@@ -91,6 +84,57 @@
             this.chCoste.Text = "Coste";
             this.chCoste.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chCoste.Width = 190;
+            // 
+            // cmsTablaSeguro
+            // 
+            this.cmsTablaSeguro.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator3,
+            this.tsmiNuevo,
+            this.toolStripSeparator2,
+            this.tsmiVer,
+            this.toolStripSeparator1,
+            this.tsmiEliminar});
+            this.cmsTablaSeguro.Name = "contextMenuStrip1";
+            this.cmsTablaSeguro.Size = new System.Drawing.Size(118, 88);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmiNuevo
+            // 
+            this.tsmiNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
+            this.tsmiNuevo.Name = "tsmiNuevo";
+            this.tsmiNuevo.Size = new System.Drawing.Size(117, 22);
+            this.tsmiNuevo.Text = "Nuevo";
+            this.tsmiNuevo.Click += new System.EventHandler(this.tsmiNuevo_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmiVer
+            // 
+            this.tsmiVer.Image = global::CarKier.Properties.Resources.ojo1;
+            this.tsmiVer.Name = "tsmiVer";
+            this.tsmiVer.Size = new System.Drawing.Size(117, 22);
+            this.tsmiVer.Text = "Ver";
+            this.tsmiVer.Click += new System.EventHandler(this.tsmiVer_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmiEliminar
+            // 
+            this.tsmiEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.tsmiEliminar.Name = "tsmiEliminar";
+            this.tsmiEliminar.Size = new System.Drawing.Size(117, 22);
+            this.tsmiEliminar.Text = "Eliminar";
+            this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
             // 
             // txtFiltrarSeguros
             // 
@@ -119,57 +163,6 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // cmsTablaSeguro
-            // 
-            this.cmsTablaSeguro.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator3,
-            this.tsmiNuevo,
-            this.toolStripSeparator2,
-            this.tsmiVer,
-            this.toolStripSeparator1,
-            this.tsmiEliminar});
-            this.cmsTablaSeguro.Name = "contextMenuStrip1";
-            this.cmsTablaSeguro.Size = new System.Drawing.Size(118, 88);
-            // 
-            // tsmiNuevo
-            // 
-            this.tsmiNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
-            this.tsmiNuevo.Name = "tsmiNuevo";
-            this.tsmiNuevo.Size = new System.Drawing.Size(180, 22);
-            this.tsmiNuevo.Text = "Nuevo";
-            this.tsmiNuevo.Click += new System.EventHandler(this.tsmiNuevo_Click);
-            // 
-            // tsmiVer
-            // 
-            this.tsmiVer.Image = global::CarKier.Properties.Resources.ojo1;
-            this.tsmiVer.Name = "tsmiVer";
-            this.tsmiVer.Size = new System.Drawing.Size(180, 22);
-            this.tsmiVer.Text = "Ver";
-            this.tsmiVer.Click += new System.EventHandler(this.tsmiVer_Click);
-            // 
-            // tsmiEliminar
-            // 
-            this.tsmiEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
-            this.tsmiEliminar.Name = "tsmiEliminar";
-            this.tsmiEliminar.Size = new System.Drawing.Size(180, 22);
-            this.tsmiEliminar.Text = "Eliminar";
-            this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
             // Seguros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,8 +175,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Seguros";
             this.Text = "Seguros";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.Seguros_Load);
             this.cmsTablaSeguro.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,7 +186,6 @@
         #endregion
 
         private System.Windows.Forms.ListView lvSeguros;
-        private System.Windows.Forms.ColumnHeader chId;
         private System.Windows.Forms.ColumnHeader chNombre;
         private System.Windows.Forms.ColumnHeader chDescripcion;
         private System.Windows.Forms.ColumnHeader chCoste;

@@ -71,7 +71,7 @@ namespace CarKier.PLL
         private async Task CargarTabla()
         {
             ContratosDal vdal = new ContratosDal();
-            
+
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<contratos> listaContratos = await vdal.ContratosfindAll();
 
@@ -81,12 +81,16 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var contra in listaContratos)
             {
-              
-                ListViewItem item = new ListViewItem(contra.idvehiculo.ToString());
 
-                item.SubItems.Add(contra.idcliente.ToString());
+                string matricula = await vdal.findVehiculoid(contra.idvehiculo);
+                ListViewItem item = new ListViewItem(matricula);
 
-                item.SubItems.Add(contra.idEstado.ToString());
+
+                string nom = await vdal.findUsuarioid(contra.idcliente);
+                item.SubItems.Add(nom);
+
+                string estado = await vdal.findEstadoid(contra.idEstado); 
+                item.SubItems.Add(estado);
 
                 string seguro = await vdal.findSegurosid(contra.idSeguro);
                 item.SubItems.Add(seguro);

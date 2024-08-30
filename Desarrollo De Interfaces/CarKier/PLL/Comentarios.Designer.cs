@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comentarios));
             this.lvComentarios = new System.Windows.Forms.ListView();
-            this.chIdComen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIdUsu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIdVehiculo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chIdComenRespuesta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,13 +38,13 @@
             this.chFecha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsTablaComentario = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiVer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFiltrarComentario = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.pcImgComentario = new System.Windows.Forms.PictureBox();
-            this.tsmiNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsTablaComentario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcImgComentario)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +52,6 @@
             // lvComentarios
             // 
             this.lvComentarios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chIdComen,
             this.chIdUsu,
             this.chIdVehiculo,
             this.chIdComenRespuesta,
@@ -72,27 +70,23 @@
             this.lvComentarios.UseCompatibleStateImageBehavior = false;
             this.lvComentarios.View = System.Windows.Forms.View.Details;
             // 
-            // chIdComen
-            // 
-            this.chIdComen.Text = "Id Comentario";
-            this.chIdComen.Width = 90;
-            // 
             // chIdUsu
             // 
-            this.chIdUsu.Text = "Id Usuario";
+            this.chIdUsu.Text = "Usuario";
             this.chIdUsu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chIdUsu.Width = 90;
             // 
             // chIdVehiculo
             // 
-            this.chIdVehiculo.Text = "Id Vehiculo";
+            this.chIdVehiculo.Text = "Vehiculo";
             this.chIdVehiculo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chIdVehiculo.Width = 90;
             // 
             // chIdComenRespuesta
             // 
-            this.chIdComenRespuesta.Text = "idComRespuesta";
-            this.chIdComenRespuesta.Width = 100;
+            this.chIdComenRespuesta.Text = "Comentario Respuesta";
+            this.chIdComenRespuesta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chIdComenRespuesta.Width = 140;
             // 
             // chComentario
             // 
@@ -122,10 +116,34 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
             // 
+            // tsmiNuevo
+            // 
+            this.tsmiNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
+            this.tsmiNuevo.Name = "tsmiNuevo";
+            this.tsmiNuevo.Size = new System.Drawing.Size(117, 22);
+            this.tsmiNuevo.Text = "Nuevo";
+            this.tsmiNuevo.Click += new System.EventHandler(this.tsmiNuevo_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            // 
+            // tsmiVer
+            // 
+            this.tsmiVer.Image = global::CarKier.Properties.Resources.ojo1;
+            this.tsmiVer.Name = "tsmiVer";
+            this.tsmiVer.Size = new System.Drawing.Size(117, 22);
+            this.tsmiVer.Text = "Ver";
+            this.tsmiVer.Click += new System.EventHandler(this.tsmiVer_Click);
+            // 
+            // tsmiEliminar
+            // 
+            this.tsmiEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.tsmiEliminar.Name = "tsmiEliminar";
+            this.tsmiEliminar.Size = new System.Drawing.Size(117, 22);
+            this.tsmiEliminar.Text = "Eliminar";
+            this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
             // 
             // txtFiltrarComentario
             // 
@@ -154,30 +172,6 @@
             this.pcImgComentario.TabIndex = 13;
             this.pcImgComentario.TabStop = false;
             // 
-            // tsmiNuevo
-            // 
-            this.tsmiNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
-            this.tsmiNuevo.Name = "tsmiNuevo";
-            this.tsmiNuevo.Size = new System.Drawing.Size(117, 22);
-            this.tsmiNuevo.Text = "Nuevo";
-            this.tsmiNuevo.Click += new System.EventHandler(this.tsmiNuevo_Click);
-            // 
-            // tsmiVer
-            // 
-            this.tsmiVer.Image = global::CarKier.Properties.Resources.ojo1;
-            this.tsmiVer.Name = "tsmiVer";
-            this.tsmiVer.Size = new System.Drawing.Size(117, 22);
-            this.tsmiVer.Text = "Ver";
-            this.tsmiVer.Click += new System.EventHandler(this.tsmiVer_Click);
-            // 
-            // tsmiEliminar
-            // 
-            this.tsmiEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
-            this.tsmiEliminar.Name = "tsmiEliminar";
-            this.tsmiEliminar.Size = new System.Drawing.Size(117, 22);
-            this.tsmiEliminar.Text = "Eliminar";
-            this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
-            // 
             // Comentarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +184,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Comentarios";
             this.Text = "Comentarios";
+            this.Load += new System.EventHandler(this.Comentarios_Load);
             this.cmsTablaComentario.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcImgComentario)).EndInit();
             this.ResumeLayout(false);
@@ -200,7 +195,6 @@
         #endregion
 
         private System.Windows.Forms.ListView lvComentarios;
-        private System.Windows.Forms.ColumnHeader chIdComen;
         private System.Windows.Forms.ColumnHeader chIdUsu;
         private System.Windows.Forms.ColumnHeader chIdVehiculo;
         private System.Windows.Forms.ColumnHeader chIdComenRespuesta;

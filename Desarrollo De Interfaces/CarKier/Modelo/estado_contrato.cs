@@ -8,7 +8,7 @@ namespace CarKier.Modelo
 {
     public class estado_contrato
     {
-        public int idestado { get; set; }
+        public int id { get; set; }
 
         public string estado { get; set; }
 
@@ -16,7 +16,7 @@ namespace CarKier.Modelo
 
         public estado_contrato(int idestado, string estado)
         {
-            this.idestado = idestado;
+            this.id = idestado;
             this.estado = estado;
         }
     }
