@@ -20,6 +20,11 @@ public class CarnetsDeConducirServiceImpl implements CarnetsDeConducirService {
     }
 
     @Override
+    public List<CarnetsDeConducir> getCarnetsByIdusuario(Integer idusuario) {
+        return repositorio.findByIdusuario(idusuario);
+    }
+
+    @Override
     public Optional<CarnetsDeConducir> findById(Integer id) {
         return repositorio.findById(id);
     }

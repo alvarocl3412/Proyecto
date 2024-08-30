@@ -26,6 +26,16 @@ public class CarnetsDeConducirController {
         else
             return ResponseEntity.ok(carnets);
     }
+
+    @GetMapping("/mostrarCarnetsUsuario/{idusuario}")
+    public ResponseEntity<List<CarnetsDeConducir>> getCarnetsByIdusuario(@PathVariable Integer idusuario) {
+        List<CarnetsDeConducir> carnets = servicio.getCarnetsByIdusuario(idusuario);
+        if (carnets.isEmpty()) {
+            return ResponseEntity.noContent().build(); // No hay carnets para el usuario
+        } else {
+            return ResponseEntity.ok(carnets);
+        }
+    }
     @GetMapping("/CarnetsId/{id}")
     public ResponseEntity<CarnetsDeConducir> getCarnetById(@PathVariable Integer id) {
         Optional<CarnetsDeConducir> carnets = servicio.findById(id);
