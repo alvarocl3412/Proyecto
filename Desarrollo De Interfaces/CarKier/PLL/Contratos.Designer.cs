@@ -78,6 +78,8 @@
             this.lvContratos.TabIndex = 4;
             this.lvContratos.UseCompatibleStateImageBehavior = false;
             this.lvContratos.View = System.Windows.Forms.View.Details;
+            this.lvContratos.SelectedIndexChanged += new System.EventHandler(this.lvContratos_SelectedIndexChanged);
+            this.lvContratos.DoubleClick += new System.EventHandler(this.lvContratos_DoubleClick);
             // 
             // chIdVehiculo
             // 

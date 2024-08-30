@@ -80,6 +80,8 @@
             this.lvVehiculos.TabIndex = 2;
             this.lvVehiculos.UseCompatibleStateImageBehavior = false;
             this.lvVehiculos.View = System.Windows.Forms.View.Details;
+            this.lvVehiculos.SelectedIndexChanged += new System.EventHandler(this.lvVehiculos_SelectedIndexChanged);
+            this.lvVehiculos.DoubleClick += new System.EventHandler(this.lvVehiculos_DoubleClick);
             // 
             // chEmpresa
             // 

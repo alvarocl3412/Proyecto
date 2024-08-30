@@ -35,12 +35,12 @@ namespace CarKier.PLL
             CargarTabla();
         }
 
-        private  void VerUsuario_Load(object sender, EventArgs e)
+        #region METODOS INTERFAZ
+        private void VerUsuario_Load(object sender, EventArgs e)
         {
             
         }
 
-        #region Métodos para la tabla NUEVO,VER Y ELIMINAR
         private void ntsmNuevo_Click(object sender, EventArgs e)
         {
             PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(1);
@@ -52,15 +52,12 @@ namespace CarKier.PLL
             PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(2);
             CarnetVerModificar.Show();
         }
+
         private void mtsmEliminar_Click(object sender, EventArgs e)
         {
 
         }
 
-        #endregion
-
-
-        #region Funcionalidad botones ver DATOS,GUARDAR,CANCELAR
         private void btnDatos_Click(object sender, EventArgs e)
         {
             PLL.DatosDelUsuario DatosUsu = new PLL.DatosDelUsuario();
@@ -105,8 +102,10 @@ namespace CarKier.PLL
             }
         }
 
-
         #endregion
+
+
+        #region METODOS COMPLEMENTARIOS
         private async Task CargarTabla()
         {
             
@@ -123,6 +122,9 @@ namespace CarKier.PLL
                 lvMostrarCarnets.Items.Add(item);
             }
         }
+
+
+        #endregion
 
     }
 }

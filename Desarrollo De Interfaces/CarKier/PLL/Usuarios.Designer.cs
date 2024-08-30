@@ -72,6 +72,7 @@
             this.lvUsuarios.TabIndex = 1;
             this.lvUsuarios.UseCompatibleStateImageBehavior = false;
             this.lvUsuarios.View = System.Windows.Forms.View.Details;
+            this.lvUsuarios.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvUsuarios_ItemSelectionChanged);
             this.lvUsuarios.DoubleClick += new System.EventHandler(this.lvUsuarios_DoubleClick);
             // 
             // chDni

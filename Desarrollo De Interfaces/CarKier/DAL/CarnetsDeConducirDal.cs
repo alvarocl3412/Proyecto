@@ -22,10 +22,10 @@ namespace CarKier.DAL
 
         public async Task<List<carnets_de_conducir>> findAllByUsuario(int id)
         {
-            apiUrl += "mostrarCarnetsUsuario/" + id.ToString();
+            string cadena = apiUrl+"mostrarCarnetsUsuario/" + id.ToString();
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();

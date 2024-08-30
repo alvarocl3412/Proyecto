@@ -23,12 +23,47 @@ namespace CarKier.PLL
         {
             InitializeComponent();
         }
+
+
+        #region METODOS INTERFAZ
         private void Contratos_Load(object sender, EventArgs e)
         {
             CargarTabla();
+            tsmVer.Enabled = false;
+            tsmEliminar.Enabled = false;
         }
 
-        #region Funcionalida Filtrar
+        private void lvContratos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvContratos.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            tsmVer.Enabled = hasSelectedItem;
+            tsmEliminar.Enabled = hasSelectedItem;
+        }
+
+        private void lvContratos_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmVer_Click(object sender, EventArgs e)
+        {
+            PLL.VerContrato infoContrato = new PLL.VerContrato();
+            infoContrato.Show();
+        }
+
+        private void tsmEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void txtFiltrarContratos_Enter(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
@@ -49,28 +84,9 @@ namespace CarKier.PLL
             }
         }
 
-
         #endregion
 
-        #region Funcionalida metodos tabla NUEVO,VER,ELIMINAR
-        private void tsmNuevo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsmVer_Click(object sender, EventArgs e)
-        {
-            PLL.VerContrato infoContrato = new PLL.VerContrato();
-            infoContrato.Show();
-        }
-
-        private void tsmEliminar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        #endregion
+        #region METODOS COMPLEMENTARIOS
 
 
         private async Task CargarTabla()
@@ -106,6 +122,11 @@ namespace CarKier.PLL
                 lvContratos.Items.Add(item);
             }
         }
+
+
+
+
+        #endregion
 
 
     }

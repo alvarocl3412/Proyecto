@@ -17,7 +17,7 @@ namespace CarKier.PLL
             InitializeComponent();
         }
 
-        #region Funcionalidad botones GUARDAR y CANCELAR
+        #region METODOS INTERFAZ
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Quieres guardar los datos del contrato?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

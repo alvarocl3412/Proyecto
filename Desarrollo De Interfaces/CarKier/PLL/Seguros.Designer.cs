@@ -66,6 +66,8 @@
             this.lvSeguros.TabIndex = 5;
             this.lvSeguros.UseCompatibleStateImageBehavior = false;
             this.lvSeguros.View = System.Windows.Forms.View.Details;
+            this.lvSeguros.SelectedIndexChanged += new System.EventHandler(this.lvSeguros_SelectedIndexChanged);
+            this.lvSeguros.DoubleClick += new System.EventHandler(this.lvSeguros_DoubleClick);
             // 
             // chNombre
             // 

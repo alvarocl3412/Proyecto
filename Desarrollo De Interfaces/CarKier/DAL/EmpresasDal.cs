@@ -23,10 +23,10 @@ namespace CarKier.DAL
 
         public async Task<List<empresas>> findEmpresaAll()
         {
-            apiUrl += "/Empresas/findAll";
+            string cadena = apiUrl+"/Empresas/findAll";
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();
@@ -55,7 +55,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "No Pertenece";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/EmpresasId/" + id.ToString();
+            string urlConParametros = apiUrl+"/EmpresasId/" + id.ToString();
 
             try
             {

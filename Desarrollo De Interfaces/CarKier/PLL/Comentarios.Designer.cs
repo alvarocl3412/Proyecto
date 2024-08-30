@@ -69,6 +69,8 @@
             this.lvComentarios.TabIndex = 6;
             this.lvComentarios.UseCompatibleStateImageBehavior = false;
             this.lvComentarios.View = System.Windows.Forms.View.Details;
+            this.lvComentarios.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvComentarios_ItemSelectionChanged);
+            this.lvComentarios.DoubleClick += new System.EventHandler(this.lvComentarios_DoubleClick);
             // 
             // chIdUsu
             // 

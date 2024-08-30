@@ -18,10 +18,32 @@ namespace CarKier.PLL
         public Seguros()
         {
             InitializeComponent();
+            tsmiVer.Enabled = false;
+            tsmiEliminar.Enabled = false;
         }
 
 
-        #region Metodos para las tabla
+        #region METODOS INTERFAZ
+        private void Seguros_Load(object sender, EventArgs e)
+        {
+            CargarTabla();
+        }
+
+        private void lvSeguros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvSeguros.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            tsmiVer.Enabled = hasSelectedItem;
+            tsmiEliminar.Enabled = hasSelectedItem;
+        }
+
+        private void lvSeguros_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
 
@@ -40,11 +62,8 @@ namespace CarKier.PLL
 
         #endregion
 
-        private void Seguros_Load(object sender, EventArgs e)
-        {
-            CargarTabla();
-        }
 
+        #region METODOS COMPLEMENTARIOS
         private async Task CargarTabla()
         {
            
@@ -64,6 +83,10 @@ namespace CarKier.PLL
                 lvSeguros.Items.Add(item);
             }
         }
+
+
+        #endregion
+
 
     }
 }

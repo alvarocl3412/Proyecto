@@ -25,7 +25,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "Ningun estado";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/EstadoVehiculoId/" + id.ToString();
+            string urlConParametros = apiUrl+"/EstadoVehiculoId/" + id.ToString();
 
             try
             {

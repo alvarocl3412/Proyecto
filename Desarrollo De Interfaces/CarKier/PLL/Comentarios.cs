@@ -22,12 +22,31 @@ namespace CarKier.PLL
             InitializeComponent();
         }
 
+
+
+        #region METODOS INTERFAZ
+
         private async void Comentarios_Load(object sender, EventArgs e)
         {
             await CargarTabla();
+            tsmiVer.Enabled = false;
+            tsmiEliminar.Enabled = false;
         }
 
-        #region Metodos para la tabla
+        private void lvComentarios_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvComentarios.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            tsmiVer.Enabled = hasSelectedItem;
+            tsmiEliminar.Enabled = hasSelectedItem;
+        }
+
+        private void lvComentarios_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
@@ -45,13 +64,16 @@ namespace CarKier.PLL
 
         }
 
+
+
         #endregion
 
 
-        private async Task CargarTabla()
-        {
-            
 
+        #region METODOS COMPLEMENTARIOS
+
+        private async Task CargarTabla()
+        { 
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<comentarios> listaComentarios = await comenDal.ComentariosfindAll();
 
@@ -85,6 +107,10 @@ namespace CarKier.PLL
                 lvComentarios.Items.Add(item);
             }
         }
+
+        #endregion
+
+
 
     }
 }

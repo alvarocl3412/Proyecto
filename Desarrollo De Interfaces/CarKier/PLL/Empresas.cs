@@ -19,14 +19,74 @@ namespace CarKier.PLL
 
         public Empresas()
         {
-            InitializeComponent();  
+            InitializeComponent();
         }
 
-        private  void Empresas_Load(object sender, EventArgs e)
+        #region METODOS INTERFZ
+        private void Empresas_Load(object sender, EventArgs e)
         {
-             CargarTabla();
+            CargarTabla();
+            tsmiVer.Enabled = false;
+            tsmiEliminar.Enabled = false;
         }
-     
+
+        private void lvEmpresas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvEmpresas.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            tsmiVer.Enabled = hasSelectedItem;
+            tsmiEliminar.Enabled = hasSelectedItem;
+        }
+
+        private void lvEmpresas_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmiNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmiVer_Click(object sender, EventArgs e)
+        {
+            PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa();
+            infoEmpresa.Show();
+        }
+
+        private void tsmiEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //METODOS PARA EL HINT DEL FILTRAR
+        private void txtFiltrar_Enter(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (txt.Text == "Introduce el telefono para filtrar")
+            {
+                txt.Text = "";
+                txt.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltrar_Leave(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                txt.Text = "Introduce el telefono para filtrar";
+                txt.ForeColor = Color.Gray;
+            }
+
+        }
+
+        #endregion
+
+
+        #region METODOS COMPLEMENTARIOS
         private async Task CargarTabla()
         {
 
@@ -47,45 +107,8 @@ namespace CarKier.PLL
             }
         }
 
-
-        #region Funcionalidad hint para el texto Filtrar
-
-        private void txtFiltrar_Enter(object sender, EventArgs e)
-        {
-            TextBox txt = sender as TextBox;
-            if (txt.Text == "Introduce el telefono para filtrar")
-            {
-                txt.Text = "";
-                txt.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtFiltrar_Leave(object sender, EventArgs e)
-        {
-            TextBox txt = sender as TextBox;
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                txt.Text = "Introduce el telefono para filtrar";
-                txt.ForeColor = Color.Gray;
-            }
-        }
         #endregion
 
-        #region Funcionalidad metodos tabla NUEVO, VER, ELIMINAR
-        private void tsmiNuevo_Click(object sender, EventArgs e)
-        {
 
-        }
-        private void tsmiVer_Click(object sender, EventArgs e)
-        {
-            PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa();
-            infoEmpresa.Show();
-        }
-
-        private void tsmiEliminar_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion  
     }
 }

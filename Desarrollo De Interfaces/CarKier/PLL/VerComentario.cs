@@ -16,6 +16,7 @@ namespace CarKier.PLL
         {
             InitializeComponent();
         }
+        #region METODOS INTERFAZ
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -54,5 +55,7 @@ namespace CarKier.PLL
                 this.Close();
             }
         }
+
+        #endregion
     }
 }

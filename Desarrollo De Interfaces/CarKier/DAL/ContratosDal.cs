@@ -22,10 +22,10 @@ namespace CarKier.DAL
 
         public async Task<List<contratos>> ContratosfindAll()
         {
-            apiUrl += "ContratofindAll";
+            string cadena = apiUrl + "ContratofindAll";
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();

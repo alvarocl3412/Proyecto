@@ -22,10 +22,10 @@ namespace CarKier.DAL
 
         public async Task<List<tipos_seguros>> SegurosfindAll()
         {
-            apiUrl += "TipoSegurofindAll";
+            string cadena = apiUrl + "TipoSegurofindAll";
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();
@@ -50,7 +50,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "Sin Seguro";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/TipoSeguroId/" + id.ToString();
+            string urlConParametros = apiUrl+"TipoSeguroId/" + id.ToString();
 
             try
             {

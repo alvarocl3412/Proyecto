@@ -16,7 +16,7 @@ namespace CarKier.PLL
         {
             InitializeComponent();
         }
-
+        #region METODOS INTERFAZ
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Quieres guardar los datos del seguro?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -54,5 +54,7 @@ namespace CarKier.PLL
                 this.Close();
             }
         }
+
+        #endregion
     }
 }

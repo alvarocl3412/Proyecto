@@ -22,10 +22,10 @@ namespace CarKier.DAL
 
         public async Task<List<comentarios>> ComentariosfindAll()
         {
-            apiUrl += "ComentariosfindAll";
+            string cadena = apiUrl + "ComentariosfindAll";
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();
@@ -52,7 +52,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return null;
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/ComentariosId/" + id.ToString();
+            string urlConParametros = apiUrl+"ComentariosId/" + id.ToString();
 
             try
             {

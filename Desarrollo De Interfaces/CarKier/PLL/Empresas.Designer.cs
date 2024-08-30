@@ -72,6 +72,8 @@
             this.lvEmpresas.TabIndex = 3;
             this.lvEmpresas.UseCompatibleStateImageBehavior = false;
             this.lvEmpresas.View = System.Windows.Forms.View.Details;
+            this.lvEmpresas.SelectedIndexChanged += new System.EventHandler(this.lvEmpresas_SelectedIndexChanged);
+            this.lvEmpresas.DoubleClick += new System.EventHandler(this.lvEmpresas_DoubleClick);
             // 
             // chNombre
             // 

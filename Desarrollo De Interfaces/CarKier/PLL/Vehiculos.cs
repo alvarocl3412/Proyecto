@@ -22,7 +22,31 @@ namespace CarKier.PLL
         public Vehiculos()
         {
             InitializeComponent();
+           
+        }
+
+        #region METODOS INTERFAZ
+
+        private async void Vehiculos_Load(object sender, EventArgs e)
+        {
             CargarTabla();
+            verToolStripMenuItem.Enabled = false;
+            eliminarToolStripMenuItem.Enabled = false;
+        }
+
+        private void lvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvVehiculos.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            verToolStripMenuItem.Enabled = hasSelectedItem;
+            eliminarToolStripMenuItem.Enabled = hasSelectedItem;
+        }
+
+        private void lvVehiculos_DoubleClick(object sender, EventArgs e)
+        {
+
         }
 
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,11 +55,9 @@ namespace CarKier.PLL
             infoVehiculo.Show();
         }
 
-        private async void Vehiculos_Load(object sender, EventArgs e)
-        {
-           // CargarTabla();
-        }
-      
+        #endregion
+
+        #region METODOS COMPLEMENTARIOS
         private async Task CargarTabla()
         {
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
@@ -66,5 +88,10 @@ namespace CarKier.PLL
                 lvVehiculos.Items.Add(item);
             }
         }
+
+
+        #endregion
+
+
     }
 }

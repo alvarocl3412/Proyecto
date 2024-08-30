@@ -22,10 +22,10 @@ namespace CarKier.DAL
 
         public async Task<List<usuarios>> UsuariosfindAll()
         {
-            apiUrl += "/UsuariofindAll";
+            string ruta = apiUrl+"/UsuariofindAll";
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                HttpResponseMessage response = await _httpClient.GetAsync(ruta);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();
@@ -54,7 +54,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (dni == null)
                 return null;
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/UsuarioDni/" + dni;
+            string urlConParametros = apiUrl+"/UsuarioDni/" + dni;
 
             try
             {
@@ -78,7 +78,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "No Pertenece";
-            string urlConParametros = "http://10.0.2.2:8089/CarKier/UsuarioId/" + id.ToString();
+            string urlConParametros = apiUrl+"/UsuarioId/" + id.ToString();
 
             try
             {

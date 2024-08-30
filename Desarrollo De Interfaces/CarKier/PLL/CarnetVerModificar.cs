@@ -33,25 +33,7 @@ namespace CarKier.PLL
             }
         }
 
-        #region Métodos para la inicializacion
-        private void InicializarComponenterAñadir()
-        {
-            btnGuardar.Text = "Agregar";
-        }
-
-        private void InicializarComponentesVer()
-        {
-            //Le pasamos argumentos
-            txtIdCarnet.Text = "1";
-            txtIdUsuario.Text = "1";
-            txtTipo.Text = "1";
-            txtFechaExpedicion.Text = "1";
-            txtFechaCaducidad.Text = "1";
-        }
-        #endregion
-
-
-        #region funcionalidad botones
+        #region METODOS INTERFAZ
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (numero == 1)
@@ -103,7 +85,8 @@ namespace CarKier.PLL
 
                     //MeTtodo para cerrar
                     this.Close();
-                } else
+                }
+                else
                 {
                     //EL usuario hizo clic en "No"
                     //Cerramos sin guardar
@@ -114,6 +97,26 @@ namespace CarKier.PLL
         }
         #endregion
 
+
+        #region METODOS COMPLEMENTARIOS
+        private void InicializarComponenterAñadir()
+        {
+            btnGuardar.Text = "Agregar";
+        }
+
+        private void InicializarComponentesVer()
+        {
+            //Le pasamos argumentos
+            txtIdCarnet.Text = "1";
+            txtIdUsuario.Text = "1";
+            txtTipo.Text = "1";
+            txtFechaExpedicion.Text = "1";
+            txtFechaCaducidad.Text = "1";
+        }
+        #endregion
+
+
+        
 
     }
 }
