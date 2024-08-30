@@ -19,50 +19,11 @@ namespace CarKier.PLL
             InitializeComponent();
             configuracion();
         }
-
-
-        //Metodos funcionalidades
-        private void txtFiltrarDni_Enter(object sender, EventArgs e)
-        {
-            TextBox txt = sender as TextBox;
-            if (txt.Text == "Introduce el Dni para filtrar")
-            {
-                txt.Text = "";
-                txt.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtFiltrarDni_Leave(object sender, EventArgs e)
-        {
-            TextBox txt = sender as TextBox;
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                txt.Text = "Introduce el Dni para filtrar";
-                txt.ForeColor = Color.Gray;
-            }
-        }
-
-        private void verToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PLL.VerUsuario infoUsuarios = new PLL.VerUsuario();
-            infoUsuarios.Show();
-        }
-
-
-        //Metodos complementarios
-
-        private void configuracion()
-            {
-            txtFiltrarDni.Text = "Introduce Dni para filtrar";
-            txtFiltrarDni.ForeColor = Color.Gray;
-            txtFiltrarDni.Enter += txtFiltrarDni_Enter;
-            txtFiltrarDni.Leave += txtFiltrarDni_Leave;
-        }
-
         private async void Usuarios_Load(object sender, EventArgs e)
         {
             await CargarDatos();
         }
+
         private async Task<List<usuarios>> ObtenerUsuariosAsync()
         {
             UsuariosDal usuDal = new UsuariosDal();
@@ -94,5 +55,72 @@ namespace CarKier.PLL
                 lvUsuarios.Items.Add(item);
             }
         }
+
+        //Metodos funcionalidades
+        private void txtFiltrarDni_Enter(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (txt.Text == "Introduce el Dni para filtrar")
+            {
+                txt.Text = "";
+                txt.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltrarDni_Leave(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                txt.Text = "Introduce el Dni para filtrar";
+                txt.ForeColor = Color.Gray;
+            }
+        }
+
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            verCliente();
+        }
+
+
+        //Metodos complementarios
+
+        private void configuracion()
+            {
+            txtFiltrarDni.Text = "Introduce Dni para filtrar";
+            txtFiltrarDni.ForeColor = Color.Gray;
+            txtFiltrarDni.Enter += txtFiltrarDni_Enter;
+            txtFiltrarDni.Leave += txtFiltrarDni_Leave;
+        }
+
+        private async void verCliente()
+        {
+            UsuariosDal usu = new UsuariosDal();
+            if (lvUsuarios.SelectedItems.Count > 0)
+            {
+                var selectedItem = lvUsuarios.SelectedItems[0];
+                string dni = selectedItem.SubItems[0].Text;
+
+                var usuario = await usu.findUsuarioDni(dni);
+
+                if (usuario != null)
+                {
+                    VerUsuario verUsuarioForm = new VerUsuario(usuario);
+                    verUsuarioForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha encontrado el usuario");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ningún registro");
+            }
+        }
+
+
+
     }
 }

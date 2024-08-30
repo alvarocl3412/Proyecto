@@ -41,7 +41,6 @@
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.lblCorreo = new System.Windows.Forms.Label();
             this.lvMostrarCarnets = new System.Windows.Forms.ListView();
-            this.chID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFecha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFechaCadu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -152,7 +151,6 @@
             // lvMostrarCarnets
             // 
             this.lvMostrarCarnets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chID,
             this.chTipo,
             this.chFecha,
             this.chFechaCadu});
@@ -168,12 +166,6 @@
             this.lvMostrarCarnets.TabIndex = 21;
             this.lvMostrarCarnets.UseCompatibleStateImageBehavior = false;
             this.lvMostrarCarnets.View = System.Windows.Forms.View.Details;
-            // 
-            // chID
-            // 
-            this.chID.Text = "idCarnet";
-            this.chID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chID.Width = 117;
             // 
             // chTipo
             // 
@@ -356,6 +348,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerUsuario";
             this.Text = "Usuario";
+            this.Load += new System.EventHandler(this.VerUsuario_Load);
             this.cmsCarnet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).EndInit();
             this.ResumeLayout(false);
@@ -377,7 +370,6 @@
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.ListView lvMostrarCarnets;
-        private System.Windows.Forms.ColumnHeader chID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColumnHeader chTipo;
         private System.Windows.Forms.ColumnHeader chFecha;

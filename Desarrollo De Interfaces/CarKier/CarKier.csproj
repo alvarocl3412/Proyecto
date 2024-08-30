@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\CarnetsDeConducirDal.cs" />
     <Compile Include="DAL\ComentariosDal.cs" />
     <Compile Include="DAL\ContratosDal.cs" />
     <Compile Include="DAL\EmpresasDal.cs" />

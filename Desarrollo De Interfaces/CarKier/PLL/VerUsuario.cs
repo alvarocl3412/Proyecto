@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,29 @@ namespace CarKier.PLL
 {
     public partial class VerUsuario : Form
     {
+        private static  usuarios _usuario;
         public VerUsuario()
         {
             InitializeComponent();
+           
+        }
+
+        public VerUsuario(usuarios usu)
+        {
+            InitializeComponent();
+            _usuario = usu;
+            txtDni.Text = _usuario.dni;
+            txtNombre.Text= _usuario.nombre;
+            txtApellidos.Text = _usuario.apellidos;
+            txtTelefono.Text = _usuario.telefono;
+            txtFechaNac.Text = _usuario.fechaNacimiento.ToString();
+            txtCorreo.Text = _usuario.correo;
+            CargarTabla(_usuario);
+        }
+
+        private  void VerUsuario_Load(object sender, EventArgs e)
+        {
+            CargarTabla(_usuario);
         }
 
         #region Métodos para la tabla NUEVO,VER Y ELIMINAR
@@ -82,8 +104,24 @@ namespace CarKier.PLL
             }
         }
 
-        #endregion
 
+        #endregion
+        private async Task CargarTabla(usuarios _usuario)
+        {
+            CarnetsDeConducirDal cdcdal = new CarnetsDeConducirDal();
+            List<carnets_de_conducir> listaCarntes = await cdcdal.findAllByUsuario(_usuario.id);
+            // Limpiar elementos existentes
+            lvMostrarCarnets.Items.Clear();
+
+            // Cargar los datos en el ListView
+            foreach (var carnet in listaCarntes)
+            {
+                ListViewItem item = new ListViewItem(carnet.idTipocarnet.ToString());
+                item.SubItems.Add(carnet.fechaExpedicion.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(carnet.fechaCaducidad.ToString("dd/MM/yyyy"));
+                lvMostrarCarnets.Items.Add(item);
+            }
+        }
 
     }
 }
