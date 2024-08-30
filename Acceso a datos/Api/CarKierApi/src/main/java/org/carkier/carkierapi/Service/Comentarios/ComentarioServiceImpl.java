@@ -34,6 +34,11 @@ public class ComentarioServiceImpl implements ComentarioService {
     }
 
     @Override
+    public Optional<Comentario> findByIdComentarioRespuesta(Integer idComentarioRespuesta) {
+        return repositorio.findByIdComentarioRespuesta(idComentarioRespuesta);
+    }
+
+    @Override
     public Optional<Comentario> updateComentario(Comentario comentario) {
         Optional<Comentario> existecomentario = repositorio.findById(comentario.getId());
         if (existecomentario.isPresent()) {

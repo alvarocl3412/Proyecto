@@ -18,7 +18,7 @@ public class ComentarioController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/Comentarios/findAll")
+    @GetMapping("/ComentariosfindAll")
     public ResponseEntity<List<Comentario>> getAllComentario() {
         List<Comentario> comentarios = servicio.findAll();
         if (comentarios.isEmpty())
@@ -29,6 +29,16 @@ public class ComentarioController {
     @GetMapping("/ComentariosId/{id}")
     public ResponseEntity<Comentario> getComentarioById(@PathVariable Integer id) {
         Optional<Comentario> comentario = servicio.findById(id);
+        if (!comentario.isPresent()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(comentario.get());
+        }
+    }
+
+    @GetMapping("/ComentariosIdRespuesta/{idComentarioRespuesta}")
+    public ResponseEntity<Comentario> getComentarioByIdRespuesta(@PathVariable Integer idComentarioRespuesta) {
+        Optional<Comentario> comentario = servicio.findByIdComentarioRespuesta(idComentarioRespuesta);
         if (!comentario.isPresent()) {
             return ResponseEntity.notFound().build();
         } else {
