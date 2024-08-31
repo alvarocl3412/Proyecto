@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,10 +16,12 @@ namespace CarKier.PLL
     public partial class Usuarios : Form
     {
         private static UsuariosDal usuDal = new UsuariosDal();
+        private static DatosDelUsuarioDal datosDal = new DatosDelUsuarioDal();
         public Usuarios()
         {
             InitializeComponent();
             configuracion();
+            CargarTabla();
 
         }
 
@@ -28,7 +31,16 @@ namespace CarKier.PLL
             await CargarTabla();
         }
 
-     
+        private void lvUsuarios_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvUsuarios.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            verToolStripMenuItem.Enabled = hasSelectedItem;
+            eliminarToolStripMenuItem.Enabled = hasSelectedItem;
+        }
+
         private void txtFiltrarDni_Enter(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
@@ -49,6 +61,11 @@ namespace CarKier.PLL
             }
         }
 
+        private void nuevoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            crearUsuario();
+        }
+
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
         {
             verUsuario();
@@ -58,17 +75,27 @@ namespace CarKier.PLL
         {
             verUsuario();
         }
-        #endregion
 
-        private void lvUsuarios_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // para saber si hay algo seleccionado
-            bool hasSelectedItem = lvUsuarios.SelectedItems.Count > 0;
+            var selectedItem = lvUsuarios.SelectedItems[0];
+            int id = int.Parse(selectedItem.Tag.ToString());
+            usuarios us = await usuDal.findUsuarioId(id);
+            bool eliminado = await datosDal.DeleteUsuarioId(us.id);
 
-            // para habilitar o sehabilitar las funciones de ver y eliminar
-            verToolStripMenuItem.Enabled = hasSelectedItem;
-            eliminarToolStripMenuItem.Enabled = hasSelectedItem;
+            if (eliminado )
+            {
+                MessageBox.Show("El usuario se eliminara en unos minutos");
+            }
+            else
+            {
+                MessageBox.Show("El usuario  no se eliminara");
+
+            }
+
         }
+
+        #endregion
 
 
         #region METODOS COMPLEMENTARIOS
@@ -76,39 +103,39 @@ namespace CarKier.PLL
         {
             verToolStripMenuItem.Enabled = false;
             eliminarToolStripMenuItem.Enabled = false;
-
             txtFiltrarDni.Text = "Introduce Dni para filtrar";
             txtFiltrarDni.ForeColor = Color.Gray;
             txtFiltrarDni.Enter += txtFiltrarDni_Enter;
             txtFiltrarDni.Leave += txtFiltrarDni_Leave;
         }
 
+        private void crearUsuario()
+        {
+            VerUsuario verUsuarioForm = new VerUsuario();
+            verUsuarioForm.ShowDialog();
+        }
+
         private async void verUsuario()
         {
-            if (lvUsuarios.SelectedItems.Count > 0)
-            {
                 var selectedItem = lvUsuarios.SelectedItems[0];
-                string dni = selectedItem.SubItems[0].Text;
+                int id = int.Parse(selectedItem.Tag.ToString());
 
-                var usuario = await usuDal.findUsuarioDni(dni);
+                usuarios usuario = await usuDal.findUsuarioId(id);
 
                 if (usuario != null)
                 {
                     VerUsuario verUsuarioForm = new VerUsuario(usuario);
                     verUsuarioForm.ShowDialog();
+                    
                 }
                 else
                 {
                     MessageBox.Show("No se ha encontrado el usuario");
                 }
-            }
-            else
-            {
-                MessageBox.Show("No se ha seleccionado ningún registro");
-            }
+
         }
 
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
             List<usuarios> listaUsuarios = await usuDal.UsuariosfindAll();
             if (listaUsuarios == null)
@@ -129,11 +156,14 @@ namespace CarKier.PLL
                 item.SubItems.Add(usuarios.telefono);
                 item.SubItems.Add(usuarios.correo);
                 item.SubItems.Add(usuarios.fechaNacimiento.ToString("dd/MM/yyyy"));
+                item.Tag = usuarios.id.ToString();
                 lvUsuarios.Items.Add(item);
             }
         }
 
+
         #endregion
+
 
     }
 }

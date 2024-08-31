@@ -33,12 +33,10 @@
             this.txtFechaExpedicion = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
-            this.txtIdCarnet = new System.Windows.Forms.TextBox();
             this.lblFechaCaducidad = new System.Windows.Forms.Label();
             this.LblFechaExpedicion = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.lblIdUuario = new System.Windows.Forms.Label();
-            this.lblIdCarnet = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pcImgCarnet = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -64,26 +62,18 @@
             // txtTipo
             // 
             this.txtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.txtTipo.Location = new System.Drawing.Point(466, 169);
+            this.txtTipo.Location = new System.Drawing.Point(646, 135);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(128, 26);
+            this.txtTipo.Size = new System.Drawing.Size(134, 26);
             this.txtTipo.TabIndex = 18;
             // 
             // txtIdUsuario
             // 
             this.txtIdUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(646, 113);
+            this.txtIdUsuario.Location = new System.Drawing.Point(299, 135);
             this.txtIdUsuario.Name = "txtIdUsuario";
-            this.txtIdUsuario.Size = new System.Drawing.Size(134, 26);
+            this.txtIdUsuario.Size = new System.Drawing.Size(196, 26);
             this.txtIdUsuario.TabIndex = 17;
-            // 
-            // txtIdCarnet
-            // 
-            this.txtIdCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdCarnet.Location = new System.Drawing.Point(297, 116);
-            this.txtIdCarnet.Name = "txtIdCarnet";
-            this.txtIdCarnet.Size = new System.Drawing.Size(128, 26);
-            this.txtIdCarnet.TabIndex = 16;
             // 
             // lblFechaCaducidad
             // 
@@ -109,7 +99,7 @@
             // 
             this.lblTipo.AutoSize = true;
             this.lblTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipo.Location = new System.Drawing.Point(417, 172);
+            this.lblTipo.Location = new System.Drawing.Point(575, 139);
             this.lblTipo.Name = "lblTipo";
             this.lblTipo.Size = new System.Drawing.Size(43, 20);
             this.lblTipo.TabIndex = 13;
@@ -119,21 +109,11 @@
             // 
             this.lblIdUuario.AutoSize = true;
             this.lblIdUuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblIdUuario.Location = new System.Drawing.Point(541, 122);
+            this.lblIdUuario.Location = new System.Drawing.Point(224, 138);
             this.lblIdUuario.Name = "lblIdUuario";
-            this.lblIdUuario.Size = new System.Drawing.Size(82, 20);
+            this.lblIdUuario.Size = new System.Drawing.Size(68, 20);
             this.lblIdUuario.TabIndex = 12;
-            this.lblIdUuario.Text = "IdUsuario:";
-            // 
-            // lblIdCarnet
-            // 
-            this.lblIdCarnet.AutoSize = true;
-            this.lblIdCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdCarnet.Location = new System.Drawing.Point(216, 119);
-            this.lblIdCarnet.Name = "lblIdCarnet";
-            this.lblIdCarnet.Size = new System.Drawing.Size(75, 20);
-            this.lblIdCarnet.TabIndex = 11;
-            this.lblIdCarnet.Text = "IdCarnet:";
+            this.lblIdUuario.Text = "Usuario:";
             // 
             // btnGuardar
             // 
@@ -184,15 +164,14 @@
             this.Controls.Add(this.txtFechaExpedicion);
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.txtIdUsuario);
-            this.Controls.Add(this.txtIdCarnet);
             this.Controls.Add(this.lblFechaCaducidad);
             this.Controls.Add(this.LblFechaExpedicion);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.lblIdUuario);
-            this.Controls.Add(this.lblIdCarnet);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CarnetVerModificar";
             this.Text = "Usuario Carnet";
+            this.Load += new System.EventHandler(this.CarnetVerModificar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcImgCarnet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,12 +185,10 @@
         private System.Windows.Forms.TextBox txtFechaExpedicion;
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.TextBox txtIdUsuario;
-        private System.Windows.Forms.TextBox txtIdCarnet;
         private System.Windows.Forms.Label lblFechaCaducidad;
         private System.Windows.Forms.Label LblFechaExpedicion;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.Label lblIdUuario;
-        private System.Windows.Forms.Label lblIdCarnet;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
     }

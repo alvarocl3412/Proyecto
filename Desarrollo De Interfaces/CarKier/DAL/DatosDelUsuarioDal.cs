@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,6 +62,28 @@ namespace CarKier.DAL
                 string responseData = await response.Content.ReadAsStringAsync();
 
                 // Puedes realizar validaciones aquí si lo necesitas, dependiendo de la respuesta
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteUsuarioId(int id)
+        {
+            string cadena = apiUrl+ "DatosDelUsuarioMarcarEliminar/" + id.ToString(); // Construir la URL con el ID del usuario
+
+            try
+            {
+                // Realizar la solicitud HTTP PUT sin cuerpo
+                HttpResponseMessage response = await _httpClient.PutAsync(cadena, null);
+                response.EnsureSuccessStatusCode(); // Verificar si la solicitud fue exitosa
+
+                // Leer la respuesta (opcional)
+                string responseData = await response.Content.ReadAsStringAsync();
+
                 return true;
             }
             catch (HttpRequestException e)

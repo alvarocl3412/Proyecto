@@ -58,6 +58,7 @@
     <Compile Include="DAL\EstadoVehiculoDal.cs" />
     <Compile Include="DAL\InicioSesionDal.cs" />
     <Compile Include="DAL\SegurosDal.cs" />
+    <Compile Include="DAL\TipoCarnetDal.cs" />
     <Compile Include="DAL\UsuariosDal.cs" />
     <Compile Include="DAL\VehiculosDal.cs" />
     <Compile Include="InicioSesion.cs">

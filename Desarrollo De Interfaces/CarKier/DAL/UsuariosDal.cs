@@ -49,12 +49,12 @@ namespace CarKier.DAL
 
         }
 
-        public async Task<usuarios> findUsuarioDni(string dni)
+        public async Task<usuarios> findUsuarioId(int id)
         {
             // Verificar si el id es null
-            if (dni == null)
+            if (id == null)
                 return null;
-            string urlConParametros = apiUrl+"UsuarioDni/" + dni;
+            string urlConParametros = apiUrl+ "UsuarioId/" + id;
 
             try
             {
@@ -97,6 +97,35 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<bool> CrearUsuario(usuarios usuario)
+        {
+            string cadena = apiUrl + "UsuarioRegistrar"; // Cambia esta URL a la de tu API
+
+            try
+            {
+                // Serializar el objeto usuario a JSON
+                var json = JsonConvert.SerializeObject(usuario);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Realizar la solicitud HTTP POST
+                HttpResponseMessage response = await _httpClient.PostAsync(cadena, data);
+                response.EnsureSuccessStatusCode(); // Verificar si la solicitud fue exitosa
+
+                // Leer la respuesta (opcional)
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Puedes realizar validaciones adicionales aquí si es necesario
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                // Manejo de errores
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false;
+            }
+        }
+
+
         public async Task<bool> deleteUsuariosid(int? id)
         {
             // Verificar si el id es null
@@ -120,6 +149,30 @@ namespace CarKier.DAL
                 return false; // Retorna "Error" si hay una excepción
             }
         }
+
+        public async Task<bool> UpdateUsuarioId(usuarios usuario)
+        {
+            string cadena = apiUrl + "updateUsuario";
+            try
+            {
+                var json = JsonConvert.SerializeObject(usuario);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PutAsync(cadena, data);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Puedes realizar validaciones aquí si lo necesitas, dependiendo de la respuesta
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false;
+            }
+        }
+
 
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,63 +14,44 @@ namespace CarKier.PLL
 {
     public partial class CarnetVerModificar : Form
     {
-        public int numero { get; set; }
+        public static CarnetsDeConducirDal cdcDal = new CarnetsDeConducirDal();
+        public static TipoCarnetDal tcDal = new TipoCarnetDal();
+        public static UsuariosDal usuDal = new UsuariosDal();
+        public static carnets_de_conducir _carnet;
         public CarnetVerModificar()
         {
             InitializeComponent();
         }
 
-        public CarnetVerModificar(int numero)
+        public CarnetVerModificar(carnets_de_conducir carnet)
         {
             InitializeComponent();
-            this.numero = numero;
-            if (numero == 1)
-            {
-                InicializarComponenterAñadir();
-            }
+            _carnet = carnet;
+            InicializarComponentesVer();
 
-            if (numero == 2)
-            {
-                InicializarComponentesVer();
-            }
+
         }
 
         #region METODOS INTERFAZ
+
+        private void CarnetVerModificar_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (numero == 1)
+            DialogResult result = MessageBox.Show("¿Quieres guardar los cambios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                DialogResult result = MessageBox.Show("¿Quieres agregar el nuevo carnet?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    // El usuario hizo clic en "Yes"
-                    //Se agrega el nuevo carnet
-
-
-                    //Cerramos la ventana
-                    this.Close();
-                }
-                else if (result == DialogResult.No)
-                {
-                    // El usuario hizo clic en "No"
-                    this.Close();
-
-                }
+                // El usuario hizo clic en "Yes"
+            }
+            else if (result == DialogResult.No)
+            {
+                // El usuario hizo clic en "No"
             }
 
-            if (numero == 2)
-            {
-                DialogResult result = MessageBox.Show("¿Quieres guardar los cambios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    // El usuario hizo clic en "Yes"
-                }
-                else if (result == DialogResult.No)
-                {
-                    // El usuario hizo clic en "No"
-                }
-            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -99,24 +82,20 @@ namespace CarKier.PLL
 
 
         #region METODOS COMPLEMENTARIOS
-        private void InicializarComponenterAñadir()
-        {
-            btnGuardar.Text = "Agregar";
-        }
 
-        private void InicializarComponentesVer()
+        private async void InicializarComponentesVer()
         {
+            usuarios usur = await usuDal.findUsuarioId(_carnet.idusuario);
             //Le pasamos argumentos
-            txtIdCarnet.Text = "1";
-            txtIdUsuario.Text = "1";
-            txtTipo.Text = "1";
-            txtFechaExpedicion.Text = "1";
-            txtFechaCaducidad.Text = "1";
+            txtIdUsuario.Text = usur.nombre + " " + usur.apellidos;
+            txtTipo.Text = await tcDal.findipoCarnetById(_carnet.idTipocarnet);
+            txtFechaExpedicion.Text = _carnet.fechaExpedicion.ToString("dd-MM-yyyy");
+            txtFechaCaducidad.Text = _carnet.fechaCaducidad.ToString("dd-MM-yyyy");
         }
+
+
+
+
         #endregion
-
-
-        
-
     }
 }

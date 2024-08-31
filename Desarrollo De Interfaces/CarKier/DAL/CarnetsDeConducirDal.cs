@@ -49,6 +49,36 @@ namespace CarKier.DAL
 
         }
 
+        public async Task<carnets_de_conducir> findAllByID(int id)
+        {
+            string cadena = apiUrl + "CarnetsId/" + id.ToString();
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
+
+                // Verificar si la solicitud fue exitosa
+                response.EnsureSuccessStatusCode();
+
+                // Leer el contenido de la respuesta como string
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Imprimir el JSON para inspección
+                Console.WriteLine("JSON recibido: " + responseData);
+
+                // Deserializar el string JSON a una lista de objetos Empresa
+                carnets_de_conducir carnet = JsonConvert.DeserializeObject<carnets_de_conducir>(responseData);
+
+                return carnet;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null;
+            }
+
+        }
+
+
         public async Task<bool> deleteCarnetsid(int? id)
         {
             // Verificar si el id es null

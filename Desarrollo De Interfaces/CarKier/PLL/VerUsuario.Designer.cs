@@ -51,7 +51,7 @@
             this.mtsmVer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mtsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTituloCarnet = new System.Windows.Forms.Label();
             this.pcFotoImaggen = new System.Windows.Forms.PictureBox();
             this.lblFechaNac = new System.Windows.Forms.Label();
             this.txtFechaNac = new System.Windows.Forms.TextBox();
@@ -59,6 +59,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnDatos = new System.Windows.Forms.Button();
             this.btnContratos = new System.Windows.Forms.Button();
+            this.lblContrasenia = new System.Windows.Forms.Label();
+            this.txtContrasenia = new System.Windows.Forms.TextBox();
             this.cmsCarnet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcFotoImaggen)).BeginInit();
             this.SuspendLayout();
@@ -238,15 +240,15 @@
             this.mtsmEliminar.Text = "Eliminar";
             this.mtsmEliminar.Click += new System.EventHandler(this.mtsmEliminar_Click);
             // 
-            // label2
+            // lblTituloCarnet
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(358, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 20);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Carnets de conducir";
+            this.lblTituloCarnet.AutoSize = true;
+            this.lblTituloCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCarnet.Location = new System.Drawing.Point(358, 232);
+            this.lblTituloCarnet.Name = "lblTituloCarnet";
+            this.lblTituloCarnet.Size = new System.Drawing.Size(170, 20);
+            this.lblTituloCarnet.TabIndex = 22;
+            this.lblTituloCarnet.Text = "Carnets de conducir";
             // 
             // pcFotoImaggen
             // 
@@ -304,7 +306,7 @@
             // btnDatos
             // 
             this.btnDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatos.Location = new System.Drawing.Point(243, 170);
+            this.btnDatos.Location = new System.Drawing.Point(243, 187);
             this.btnDatos.Name = "btnDatos";
             this.btnDatos.Size = new System.Drawing.Size(149, 32);
             this.btnDatos.TabIndex = 29;
@@ -315,25 +317,44 @@
             // btnContratos
             // 
             this.btnContratos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContratos.Location = new System.Drawing.Point(548, 170);
+            this.btnContratos.Location = new System.Drawing.Point(548, 187);
             this.btnContratos.Name = "btnContratos";
             this.btnContratos.Size = new System.Drawing.Size(103, 32);
             this.btnContratos.TabIndex = 30;
             this.btnContratos.Text = "Contratos";
             this.btnContratos.UseVisualStyleBackColor = true;
             // 
+            // lblContrasenia
+            // 
+            this.lblContrasenia.AutoSize = true;
+            this.lblContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
+            this.lblContrasenia.Location = new System.Drawing.Point(240, 158);
+            this.lblContrasenia.Name = "lblContrasenia";
+            this.lblContrasenia.Size = new System.Drawing.Size(96, 20);
+            this.lblContrasenia.TabIndex = 31;
+            this.lblContrasenia.Text = "Contraseña:";
+            // 
+            // txtContrasenia
+            // 
+            this.txtContrasenia.Location = new System.Drawing.Point(348, 158);
+            this.txtContrasenia.Name = "txtContrasenia";
+            this.txtContrasenia.Size = new System.Drawing.Size(219, 20);
+            this.txtContrasenia.TabIndex = 32;
+            // 
             // VerUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtContrasenia);
+            this.Controls.Add(this.lblContrasenia);
             this.Controls.Add(this.btnContratos);
             this.Controls.Add(this.btnDatos);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtFechaNac);
             this.Controls.Add(this.lblFechaNac);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblTituloCarnet);
             this.Controls.Add(this.lvMostrarCarnets);
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.txtCorreo);
@@ -372,7 +393,7 @@
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.ListView lvMostrarCarnets;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTituloCarnet;
         private System.Windows.Forms.ColumnHeader chFecha;
         private System.Windows.Forms.ColumnHeader chFechaCadu;
         private System.Windows.Forms.ContextMenuStrip cmsCarnet;
@@ -389,5 +410,7 @@
         private System.Windows.Forms.Button btnDatos;
         private System.Windows.Forms.Button btnContratos;
         private System.Windows.Forms.ColumnHeader chTipo;
+        private System.Windows.Forms.Label lblContrasenia;
+        private System.Windows.Forms.TextBox txtContrasenia;
     }
 }

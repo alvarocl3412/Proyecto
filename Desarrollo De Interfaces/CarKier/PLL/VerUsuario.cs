@@ -14,33 +14,44 @@ namespace CarKier.PLL
 {
     public partial class VerUsuario : Form
     {
-        private static  usuarios _usuario;
+        private static usuarios _usuario;
         private static CarnetsDeConducirDal cdcdal = new CarnetsDeConducirDal();
+        private static UsuariosDal usudal = new UsuariosDal();
+
         public VerUsuario()
         {
             InitializeComponent();
-           
+            _usuario = new usuarios();
+            btnGuardar.Text = "Crear";
+            txtContrasenia.Visible = true;
+            lblContrasenia.Visible = true;
         }
 
         public VerUsuario(usuarios usu)
         {
             InitializeComponent();
+            btnGuardar.Text = "Guardar";
             _usuario = usu;
-           
-        }
 
-        #region METODOS INTERFAZ
-        private void VerUsuario_Load(object sender, EventArgs e)
-        {
-            CargarTabla();
-            mtsmVer.Enabled = false;
-            mtsmEliminar.Enabled = false;
             txtDni.Text = _usuario.dni;
             txtNombre.Text = _usuario.nombre;
             txtApellidos.Text = _usuario.apellidos;
             txtTelefono.Text = _usuario.telefono;
             txtFechaNac.Text = _usuario.fechaNacimiento.ToString();
             txtCorreo.Text = _usuario.correo;
+            txtContrasenia.Visible = false;
+            lblContrasenia.Visible = false;
+
+        }
+
+        #region METODOS INTERFAZ
+        private void VerUsuario_Load(object sender, EventArgs e)
+        {
+            CargarTabla();
+           
+            mtsmVer.Enabled = false;
+            mtsmEliminar.Enabled = false;
+          
         }
 
         private void lvMostrarCarnets_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,19 +66,19 @@ namespace CarKier.PLL
 
         private void ntsmNuevo_Click(object sender, EventArgs e)
         {
-            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(1);
+            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar();
             CarnetVerModificar.Show();
         }
 
         private void mtsmVer_Click(object sender, EventArgs e)
         {
-            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(2);
-            CarnetVerModificar.Show();
+            verCarnets();
+
         }
 
         private void lvMostrarCarnets_DoubleClick(object sender, EventArgs e)
         {
-
+            verCarnets();
         }
 
         private async void mtsmEliminar_Click(object sender, EventArgs e)
@@ -95,21 +106,44 @@ namespace CarKier.PLL
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Quieres guardar los datos del usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+
+            if (btnGuardar.Text.Contains("Crear"))
             {
-                // El usuario hizo clic en "Yes"
-                //Se agrega el nuevo carnet
+                DialogResult result = MessageBox.Show("¿Quieres crear el usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+
+                    crearUsuario();
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            else if(btnGuardar.Text.Contains("Guardar"))
+            {
+                DialogResult result = MessageBox.Show("¿Quieres guardar los datos del usuario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+
+                    guardarCambios();
+
+                    //Cerramos la ventana
+                    this.Close();
+
+                    // Llamar al método de actualización en el formulario principal
+                    Usuarios formPrincipal = new Usuarios();
+                    formPrincipal.CargarTabla();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // El usuario hizo clic en "No"
+                    this.Close();
+                }
+            }
 
 
-                //Cerramos la ventana
-                this.Close();
-            }
-            else if (result == DialogResult.No)
-            {
-                // El usuario hizo clic en "No"
-                this.Close();
-            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -137,7 +171,7 @@ namespace CarKier.PLL
         #region METODOS COMPLEMENTARIOS
         private async Task CargarTabla()
         {
-            
+
             List<carnets_de_conducir> listaCarntes = await cdcdal.findAllByUsuario(_usuario.id);
             // Limpiar elementos existentes
             lvMostrarCarnets.Items.Clear();
@@ -153,6 +187,54 @@ namespace CarKier.PLL
             }
         }
 
+        private async Task guardarCambios()
+        {
+            _usuario.dni = txtDni.Text;
+            _usuario.nombre = txtNombre.Text;
+            _usuario.apellidos = txtApellidos.Text;
+            _usuario.telefono = txtTelefono.Text;
+            _usuario.correo = txtCorreo.Text;
+            _usuario.fechaNacimiento = DateTime.Parse(txtFechaNac.Text);
+
+            await usudal.UpdateUsuarioId(_usuario);
+
+
+        }
+
+        private async Task crearUsuario()
+        {
+            _usuario.dni = txtDni.Text;
+            _usuario.nombre = txtNombre.Text;
+            _usuario.apellidos = txtApellidos.Text;
+            _usuario.telefono = txtTelefono.Text;
+            _usuario.fechaNacimiento = DateTime.Parse(txtFechaNac.Text);
+            _usuario.correo = txtCorreo.Text;
+            _usuario.contrasena = txtContrasenia.Text;
+
+            bool creado = await usudal.CrearUsuario(_usuario);
+
+            if (creado)
+            {
+                MessageBox.Show("Se ha creado el usuario correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido crear el usuario");
+
+            }
+        }
+
+        private async void verCarnets()
+        {
+            var selectedItem = lvMostrarCarnets.SelectedItems[0];
+
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int carnetid = int.Parse(selectedItem.Tag.ToString());
+            carnets_de_conducir carnet = await cdcdal.findAllByID(carnetid);
+
+            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(carnet);
+            CarnetVerModificar.Show();
+        }
 
 
         #endregion
