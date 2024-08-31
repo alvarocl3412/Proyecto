@@ -59,9 +59,20 @@ namespace CarKier.PLL
             infoComentario.Show();
         }
 
-        private void tsmiEliminar_Click(object sender, EventArgs e)
+        private async void tsmiEliminar_Click(object sender, EventArgs e)
         {
+            // Obtener el elemento seleccionado
+            var selectedItem = lvComentarios.SelectedItems[0];
 
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int comentario = int.Parse(selectedItem.Tag.ToString());
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar el comentario seleccionado?",
+          "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                bool eliminado = await comenDal.deleteComentarioid(comentario);
+                CargarTabla();
+            }
         }
 
 
@@ -104,6 +115,7 @@ namespace CarKier.PLL
                 item.SubItems.Add(comentarios.comentario);
 
                 item.SubItems.Add(comentarios.fecha.ToString("dd/MM/yyyy"));
+                item.Tag = comentarios.id.ToString();
                 lvComentarios.Items.Add(item);
             }
         }

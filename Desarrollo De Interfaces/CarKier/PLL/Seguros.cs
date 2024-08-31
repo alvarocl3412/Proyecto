@@ -14,12 +14,11 @@ namespace CarKier.PLL
 {
     public partial class Seguros : Form
     {
-        private static SegurosDal vdal = new SegurosDal();
+        private static SegurosDal seguroDal = new SegurosDal();
         public Seguros()
         {
             InitializeComponent();
-            tsmiVer.Enabled = false;
-            tsmiEliminar.Enabled = false;
+
         }
 
 
@@ -27,6 +26,8 @@ namespace CarKier.PLL
         private void Seguros_Load(object sender, EventArgs e)
         {
             CargarTabla();
+            tsmiVer.Enabled = false;
+            tsmiEliminar.Enabled = false;
         }
 
         private void lvSeguros_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,9 +56,20 @@ namespace CarKier.PLL
             infoSeguro.Show();
         }
 
-        private void tsmiEliminar_Click(object sender, EventArgs e)
+        private async void tsmiEliminar_Click(object sender, EventArgs e)
         {
+            // Obtener el elemento seleccionado
+            var selectedItem = lvSeguros.SelectedItems[0];
 
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int seguro = int.Parse(selectedItem.Tag.ToString());
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar el seguro seleccionado?",
+          "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                bool eliminado = await seguroDal.deleteSegurosid(seguro);
+                CargarTabla();
+            }
         }
 
         #endregion
@@ -68,7 +80,7 @@ namespace CarKier.PLL
         {
            
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
-            List<tipos_seguros> listaSeguros = await vdal.SegurosfindAll();
+            List<tipos_seguros> listaSeguros = await seguroDal.SegurosfindAll();
 
             // Limpiar elementos existentes
             lvSeguros.Items.Clear();
@@ -80,6 +92,7 @@ namespace CarKier.PLL
                 ListViewItem item = new ListViewItem(seguros.nombre);
                 item.SubItems.Add(seguros.descripcion);
                 item.SubItems.Add(seguros.coste.ToString());
+                item.Tag = seguros.id.ToString();
                 lvSeguros.Items.Add(item);
             }
         }

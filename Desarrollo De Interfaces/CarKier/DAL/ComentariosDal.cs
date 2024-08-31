@@ -71,6 +71,30 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<bool> deleteComentarioid(int? id)
+        {
+            // Verificar si el id es null
+            if (id == null)
+                return false;
+            string urlConParametros = apiUrl + "deleteComentario/" + id.ToString();
+
+            try
+            {
+                // Usar DELETE en lugar de GET para eliminar
+                HttpResponseMessage response = await _httpClient.DeleteAsync(urlConParametros);
+
+                // Verificar si la solicitud fue exitosa
+                response.EnsureSuccessStatusCode();
+
+                return true; // Si no hubo excepción, la operación fue exitosa
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false; // Retorna "Error" si hay una excepción
+            }
+        }
+
 
     }
 }

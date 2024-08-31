@@ -55,6 +55,22 @@ namespace CarKier.PLL
             infoVehiculo.Show();
         }
 
+        private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Obtener el elemento seleccionado
+            var selectedItem = lvVehiculos.SelectedItems[0];
+
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int seguro = int.Parse(selectedItem.Tag.ToString());
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar el vehiculo seleccionado?",
+          "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                bool eliminado = await vehiculoDal.deleteVehiculoid(seguro);
+                CargarTabla();
+            }
+        }
+
         #endregion
 
         #region METODOS COMPLEMENTARIOS
@@ -85,9 +101,11 @@ namespace CarKier.PLL
                 item.SubItems.Add(vehiculo.km.ToString());
                 item.SubItems.Add(vehiculo.precioventa.ToString());
                 item.SubItems.Add(vehiculo.preciodia.ToString());
+                item.Tag = vehiculo.id.ToString();
                 lvVehiculos.Items.Add(item);
             }
         }
+
 
 
         #endregion

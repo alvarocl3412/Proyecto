@@ -12,7 +12,7 @@ namespace CarKier.DAL
     public class UsuariosDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier";
+        string apiUrl = "http://10.0.2.2:8089/CarKier/";
 
         public UsuariosDal()
         {
@@ -22,7 +22,7 @@ namespace CarKier.DAL
 
         public async Task<List<usuarios>> UsuariosfindAll()
         {
-            string ruta = apiUrl+"/UsuariofindAll";
+            string ruta = apiUrl+"UsuariofindAll";
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(ruta);
@@ -54,7 +54,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (dni == null)
                 return null;
-            string urlConParametros = apiUrl+"/UsuarioDni/" + dni;
+            string urlConParametros = apiUrl+"UsuarioDni/" + dni;
 
             try
             {
@@ -78,7 +78,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "No Pertenece";
-            string urlConParametros = apiUrl+"/UsuarioId/" + id.ToString();
+            string urlConParametros = apiUrl+"UsuarioId/" + id.ToString();
 
             try
             {
@@ -94,6 +94,30 @@ namespace CarKier.DAL
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
                 return "Error"; // Retorna "Error" si hay una excepción
+            }
+        }
+
+        public async Task<bool> deleteUsuariosid(int? id)
+        {
+            // Verificar si el id es null
+            if (id == null)
+                return false;
+            string urlConParametros = apiUrl + "deleteUsuarios/" + id.ToString();
+
+            try
+            {
+                // Usar DELETE en lugar de GET para eliminar
+                HttpResponseMessage response = await _httpClient.DeleteAsync(urlConParametros);
+
+                // Verificar si la solicitud fue exitosa
+                response.EnsureSuccessStatusCode();
+
+                return true; // Si no hubo excepción, la operación fue exitosa
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false; // Retorna "Error" si hay una excepción
             }
         }
 

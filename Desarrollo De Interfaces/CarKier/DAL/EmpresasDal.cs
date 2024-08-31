@@ -13,7 +13,7 @@ namespace CarKier.DAL
     public class EmpresasDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier";
+        string apiUrl = "http://10.0.2.2:8089/CarKier/";
 
         public EmpresasDal()
         {
@@ -23,7 +23,7 @@ namespace CarKier.DAL
 
         public async Task<List<empresas>> findEmpresaAll()
         {
-            string cadena = apiUrl+"/Empresas/findAll";
+            string cadena = apiUrl+"Empresas/findAll";
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(cadena);
@@ -55,7 +55,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "No Pertenece";
-            string urlConParametros = apiUrl+"/EmpresasId/" + id.ToString();
+            string urlConParametros = apiUrl+"EmpresasId/" + id.ToString();
 
             try
             {
@@ -80,7 +80,7 @@ namespace CarKier.DAL
             if (id == null)
                 return false;
 
-            string urlConParametros = apiUrl + "/deleteEmpresa/" + id.ToString();
+            string urlConParametros = apiUrl + "deleteEmpresa/" + id.ToString();
 
             try
             {

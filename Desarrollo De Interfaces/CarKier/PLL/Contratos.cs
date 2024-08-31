@@ -59,9 +59,20 @@ namespace CarKier.PLL
             infoContrato.Show();
         }
 
-        private void tsmEliminar_Click(object sender, EventArgs e)
+        private async void tsmEliminar_Click(object sender, EventArgs e)
         {
+            // Obtener el elemento seleccionado
+            var selectedItem = lvContratos.SelectedItems[0];
 
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int contrato = int.Parse(selectedItem.Tag.ToString());
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar el contrato seleccionado?",
+          "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                bool eliminado = await contratoDal.deleteContratoId(contrato);
+                CargarTabla();
+            }
         }
 
         private void txtFiltrarContratos_Enter(object sender, EventArgs e)
@@ -119,6 +130,7 @@ namespace CarKier.PLL
                 item.SubItems.Add(contra.precioDia.ToString());
                 item.SubItems.Add(contra.precioTotal.ToString());
                 item.SubItems.Add(contra.pagado ? "SI" : "NO");
+                item.Tag = contra.id.ToString();
                 lvContratos.Items.Add(item);
             }
         }

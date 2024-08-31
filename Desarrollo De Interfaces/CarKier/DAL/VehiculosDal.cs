@@ -13,7 +13,7 @@ namespace CarKier.DAL
     public class VehiculosDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier";
+        string apiUrl = "http://10.0.2.2:8089/CarKier/";
 
         public VehiculosDal()
         {
@@ -23,7 +23,7 @@ namespace CarKier.DAL
 
         public async Task<List<vehiculos>> VehiculosfindAll()
         {
-            string cadena = apiUrl +"/VehiculosfindAll";
+            string cadena = apiUrl +"VehiculosfindAll";
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(cadena);
@@ -51,7 +51,7 @@ namespace CarKier.DAL
             // Verificar si el id es null
             if (id == null)
                 return "No Pertenece";
-            string urlConParametros = apiUrl+"/VehiuculosId/" + id.ToString();
+            string urlConParametros = apiUrl+"VehiuculosId/" + id.ToString();
 
             try
             {
@@ -67,6 +67,30 @@ namespace CarKier.DAL
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
                 return "Error"; // Retorna "Error" si hay una excepción
+            }
+        }
+
+        public async Task<bool> deleteVehiculoid(int? id)
+        {
+            // Verificar si el id es null
+            if (id == null)
+                return false;
+            string urlConParametros = apiUrl + "deleteVehiculo/" + id.ToString();
+
+            try
+            {
+                // Usar DELETE en lugar de GET para eliminar
+                HttpResponseMessage response = await _httpClient.DeleteAsync(urlConParametros);
+
+                // Verificar si la solicitud fue exitosa
+                response.EnsureSuccessStatusCode();
+
+                return true; // Si no hubo excepción, la operación fue exitosa
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false; // Retorna "Error" si hay una excepción
             }
         }
 

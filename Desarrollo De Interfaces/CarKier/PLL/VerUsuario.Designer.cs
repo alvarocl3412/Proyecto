@@ -166,6 +166,8 @@
             this.lvMostrarCarnets.TabIndex = 21;
             this.lvMostrarCarnets.UseCompatibleStateImageBehavior = false;
             this.lvMostrarCarnets.View = System.Windows.Forms.View.Details;
+            this.lvMostrarCarnets.SelectedIndexChanged += new System.EventHandler(this.lvMostrarCarnets_SelectedIndexChanged);
+            this.lvMostrarCarnets.DoubleClick += new System.EventHandler(this.lvMostrarCarnets_DoubleClick);
             // 
             // chTipo
             // 

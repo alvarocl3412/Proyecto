@@ -62,7 +62,7 @@ namespace CarKier.PLL
             var selectedItem = lvEmpresas.SelectedItems[0];
 
             // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
-            int? empresaId = (int)selectedItem.Tag;
+            int empresaId = int.Parse(selectedItem.Tag.ToString());
             DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar la empresas seleccionado?",
           "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
@@ -108,12 +108,13 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var empresa in listaEmpresas)
             {
-                ListViewItem item = new ListViewItem(empresa.nombre.ToString());
+                ListViewItem item = new ListViewItem(empresa.nombre);
                 item.SubItems.Add(empresa.descripcion);
                 item.SubItems.Add(empresa.direccion);
                 item.SubItems.Add(empresa.telefono);
                 item.SubItems.Add(empresa.correoElectronico);
                 item.SubItems.Add(empresa.ofreceCoches.ToString());
+                item.Tag = empresa.id.ToString();
                 lvEmpresas.Items.Add(item);
             }
         }

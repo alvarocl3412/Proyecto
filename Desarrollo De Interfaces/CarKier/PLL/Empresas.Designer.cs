@@ -68,7 +68,7 @@
             this.lvEmpresas.Location = new System.Drawing.Point(12, 132);
             this.lvEmpresas.MultiSelect = false;
             this.lvEmpresas.Name = "lvEmpresas";
-            this.lvEmpresas.Size = new System.Drawing.Size(776, 306);
+            this.lvEmpresas.Size = new System.Drawing.Size(730, 306);
             this.lvEmpresas.TabIndex = 3;
             this.lvEmpresas.UseCompatibleStateImageBehavior = false;
             this.lvEmpresas.View = System.Windows.Forms.View.Details;
@@ -85,13 +85,13 @@
             // 
             this.chDescripcion.Text = "Descipcion";
             this.chDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chDescripcion.Width = 122;
+            this.chDescripcion.Width = 132;
             // 
             // chDireccion
             // 
             this.chDireccion.Text = "Direccion";
             this.chDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chDireccion.Width = 100;
+            this.chDireccion.Width = 130;
             // 
             // chTelefono
             // 

@@ -26,19 +26,31 @@ namespace CarKier.PLL
         {
             InitializeComponent();
             _usuario = usu;
-            txtDni.Text = _usuario.dni;
-            txtNombre.Text= _usuario.nombre;
-            txtApellidos.Text = _usuario.apellidos;
-            txtTelefono.Text = _usuario.telefono;
-            txtFechaNac.Text = _usuario.fechaNacimiento.ToString();
-            txtCorreo.Text = _usuario.correo;
-            CargarTabla();
+           
         }
 
         #region METODOS INTERFAZ
         private void VerUsuario_Load(object sender, EventArgs e)
         {
-            
+            CargarTabla();
+            mtsmVer.Enabled = false;
+            mtsmEliminar.Enabled = false;
+            txtDni.Text = _usuario.dni;
+            txtNombre.Text = _usuario.nombre;
+            txtApellidos.Text = _usuario.apellidos;
+            txtTelefono.Text = _usuario.telefono;
+            txtFechaNac.Text = _usuario.fechaNacimiento.ToString();
+            txtCorreo.Text = _usuario.correo;
+        }
+
+        private void lvMostrarCarnets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // para saber si hay algo seleccionado
+            bool hasSelectedItem = lvMostrarCarnets.SelectedItems.Count > 0;
+
+            // para habilitar o sehabilitar las funciones de ver y eliminar
+            mtsmVer.Enabled = hasSelectedItem;
+            mtsmEliminar.Enabled = hasSelectedItem;
         }
 
         private void ntsmNuevo_Click(object sender, EventArgs e)
@@ -53,8 +65,24 @@ namespace CarKier.PLL
             CarnetVerModificar.Show();
         }
 
-        private void mtsmEliminar_Click(object sender, EventArgs e)
+        private void lvMostrarCarnets_DoubleClick(object sender, EventArgs e)
         {
+
+        }
+
+        private async void mtsmEliminar_Click(object sender, EventArgs e)
+        {  // Obtener el elemento seleccionado
+            var selectedItem = lvMostrarCarnets.SelectedItems[0];
+
+            // Suponiendo que el ID de la empresa está almacenado en el Tag del ListViewItem
+            int carnet = int.Parse(selectedItem.Tag.ToString());
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar el carnet de conducir  seleccionado?",
+          "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                bool eliminado = await cdcdal.deleteCarnetsid(carnet);
+                CargarTabla();
+            }
 
         }
 
@@ -119,12 +147,15 @@ namespace CarKier.PLL
                 ListViewItem item = new ListViewItem(carnet.idTipocarnet.ToString());
                 item.SubItems.Add(carnet.fechaExpedicion.ToString("dd/MM/yyyy"));
                 item.SubItems.Add(carnet.fechaCaducidad.ToString("dd/MM/yyyy"));
+                item.Tag = carnet.id.ToString();
                 lvMostrarCarnets.Items.Add(item);
             }
         }
 
 
+
         #endregion
+
 
     }
 }
