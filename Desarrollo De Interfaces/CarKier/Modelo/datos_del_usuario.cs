@@ -9,13 +9,13 @@ namespace CarKier.Modelo
     public class datos_del_usuario
     {
         // Propiedades
-        public int idusuario { get; set; }
+        public int id { get; set; }
         public int puntos { get; set; }
         public bool administrador { get; set; }
-        public DateTime fechaban_inicio { get; set; }
-        public DateTime fechaban_final { get; set; }
-        public DateTime cantidad_ban { get; set; }
-        public bool marcadoeliminar { get; set; }
+        public DateTime? fechaBanInicio { get; set; }
+        public DateTime? fechaBanFinal { get; set; }
+        public int cantidadBan { get; set; }
+        public bool marcaEliminar { get; set; }
 
         // Constructor por defecto
         public datos_del_usuario()
@@ -23,15 +23,15 @@ namespace CarKier.Modelo
         }
 
         // Constructor que inicializa todas las propiedades
-        public datos_del_usuario(int idusuario, int puntos, bool administrador, DateTime fechaban_inicio, DateTime fechaban_final, DateTime cantidad_ban, bool marcadoeliminar)
+        public datos_del_usuario(int id, int puntos, bool administrador, DateTime? fechaBanInicio, DateTime? fechaBanFinal, int cantidadBan, bool marcaEliminar)
         {
-            this.idusuario = idusuario;
+            this.id = id;
             this.puntos = puntos;
             this.administrador = administrador;
-            this.fechaban_inicio = fechaban_inicio;
-            this.fechaban_final = fechaban_final;
-            this.cantidad_ban = cantidad_ban;
-            this.marcadoeliminar = marcadoeliminar;
+            this.fechaBanInicio = fechaBanInicio;
+            this.fechaBanFinal = fechaBanFinal;
+            this.cantidadBan = cantidadBan;
+            this.marcaEliminar = marcaEliminar;
         }
     }
 }

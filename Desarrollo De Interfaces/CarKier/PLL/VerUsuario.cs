@@ -88,7 +88,8 @@ namespace CarKier.PLL
 
         private void btnDatos_Click(object sender, EventArgs e)
         {
-            PLL.DatosDelUsuario DatosUsu = new PLL.DatosDelUsuario();
+
+            PLL.DatosDelUsuario DatosUsu = new PLL.DatosDelUsuario(_usuario);
             DatosUsu.Show();
         }
 

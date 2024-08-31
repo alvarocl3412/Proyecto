@@ -35,22 +35,24 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblFechaFinal = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtPuntos = new System.Windows.Forms.TextBox();
+            this.txtCantidadBan = new System.Windows.Forms.TextBox();
+            this.txtFechaBanInicio = new System.Windows.Forms.TextBox();
+            this.txtFechaBanFinal = new System.Windows.Forms.TextBox();
+            this.cbAdministrador = new System.Windows.Forms.ComboBox();
             this.lblBaneos = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbEliminar = new System.Windows.Forms.CheckBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblPuntos
             // 
             this.lblPuntos.AutoSize = true;
             this.lblPuntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblPuntos.Location = new System.Drawing.Point(469, 98);
+            this.lblPuntos.Location = new System.Drawing.Point(469, 89);
             this.lblPuntos.Name = "lblPuntos";
             this.lblPuntos.Size = new System.Drawing.Size(63, 20);
             this.lblPuntos.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             this.lblAdministrador.AutoSize = true;
             this.lblAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblAdministrador.Location = new System.Drawing.Point(161, 101);
+            this.lblAdministrador.Location = new System.Drawing.Point(150, 88);
             this.lblAdministrador.Name = "lblAdministrador";
             this.lblAdministrador.Size = new System.Drawing.Size(111, 20);
             this.lblAdministrador.TabIndex = 2;
@@ -100,50 +102,50 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.label7.Location = new System.Drawing.Point(161, 261);
+            this.label7.Location = new System.Drawing.Point(106, 262);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 20);
+            this.label7.Size = new System.Drawing.Size(144, 20);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Cantidad:";
+            this.label7.Text = "Cantidad baneado:";
             // 
-            // textBox2
+            // txtPuntos
             // 
-            this.textBox2.Location = new System.Drawing.Point(554, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 20);
-            this.textBox2.TabIndex = 8;
+            this.txtPuntos.Location = new System.Drawing.Point(549, 90);
+            this.txtPuntos.Name = "txtPuntos";
+            this.txtPuntos.Size = new System.Drawing.Size(190, 20);
+            this.txtPuntos.TabIndex = 8;
             // 
-            // textBox3
+            // txtCantidadBan
             // 
-            this.textBox3.Location = new System.Drawing.Point(259, 263);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(157, 20);
-            this.textBox3.TabIndex = 9;
+            this.txtCantidadBan.Location = new System.Drawing.Point(259, 263);
+            this.txtCantidadBan.Name = "txtCantidadBan";
+            this.txtCantidadBan.Size = new System.Drawing.Size(157, 20);
+            this.txtCantidadBan.TabIndex = 9;
             // 
-            // textBox4
+            // txtFechaBanInicio
             // 
-            this.textBox4.Location = new System.Drawing.Point(259, 195);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(157, 20);
-            this.textBox4.TabIndex = 10;
+            this.txtFechaBanInicio.Location = new System.Drawing.Point(259, 195);
+            this.txtFechaBanInicio.Name = "txtFechaBanInicio";
+            this.txtFechaBanInicio.Size = new System.Drawing.Size(157, 20);
+            this.txtFechaBanInicio.TabIndex = 10;
             // 
-            // textBox5
+            // txtFechaBanFinal
             // 
-            this.textBox5.Location = new System.Drawing.Point(545, 196);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(199, 20);
-            this.textBox5.TabIndex = 11;
+            this.txtFechaBanFinal.Location = new System.Drawing.Point(545, 196);
+            this.txtFechaBanFinal.Name = "txtFechaBanFinal";
+            this.txtFechaBanFinal.Size = new System.Drawing.Size(199, 20);
+            this.txtFechaBanFinal.TabIndex = 11;
             // 
-            // comboBox1
+            // cbAdministrador
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbAdministrador.FormattingEnabled = true;
+            this.cbAdministrador.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.comboBox1.Location = new System.Drawing.Point(278, 100);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(171, 21);
-            this.comboBox1.TabIndex = 12;
+            this.cbAdministrador.Location = new System.Drawing.Point(278, 88);
+            this.cbAdministrador.Name = "cbAdministrador";
+            this.cbAdministrador.Size = new System.Drawing.Size(171, 21);
+            this.cbAdministrador.TabIndex = 12;
             // 
             // lblBaneos
             // 
@@ -155,15 +157,15 @@
             this.lblBaneos.TabIndex = 13;
             this.lblBaneos.Text = "BANEOS";
             // 
-            // checkBox1
+            // cbEliminar
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(551, 269);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbEliminar.AutoSize = true;
+            this.cbEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEliminar.Location = new System.Drawing.Point(551, 269);
+            this.cbEliminar.Name = "cbEliminar";
+            this.cbEliminar.Size = new System.Drawing.Size(15, 14);
+            this.cbEliminar.TabIndex = 14;
+            this.cbEliminar.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -191,20 +193,39 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
+            this.lblUsuario.Location = new System.Drawing.Point(288, 42);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(68, 20);
+            this.lblUsuario.TabIndex = 31;
+            this.lblUsuario.Text = "Usuario:";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(403, 43);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(190, 20);
+            this.txtUsuario.TabIndex = 32;
+            // 
             // DatosDelUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cbEliminar);
             this.Controls.Add(this.lblBaneos);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cbAdministrador);
+            this.Controls.Add(this.txtFechaBanFinal);
+            this.Controls.Add(this.txtFechaBanInicio);
+            this.Controls.Add(this.txtCantidadBan);
+            this.Controls.Add(this.txtPuntos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblFechaFinal);
             this.Controls.Add(this.label5);
@@ -214,6 +235,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DatosDelUsuario";
             this.Text = "Datos Usuario";
+            this.Load += new System.EventHandler(this.DatosDelUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,14 +248,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblFechaFinal;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtPuntos;
+        private System.Windows.Forms.TextBox txtCantidadBan;
+        private System.Windows.Forms.TextBox txtFechaBanInicio;
+        private System.Windows.Forms.TextBox txtFechaBanFinal;
+        private System.Windows.Forms.ComboBox cbAdministrador;
         private System.Windows.Forms.Label lblBaneos;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbEliminar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.TextBox txtUsuario;
     }
 }
