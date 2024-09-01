@@ -16,7 +16,7 @@ public class TipoCarnetController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/TipoCarnet/findAll")
+    @GetMapping("/TipoCarnetfindAll")
     public ResponseEntity<List<TipoCarnet>> getAllTiposCarnets() {
         List<TipoCarnet> jugadores = servicio.findAll();
         if (jugadores.isEmpty())

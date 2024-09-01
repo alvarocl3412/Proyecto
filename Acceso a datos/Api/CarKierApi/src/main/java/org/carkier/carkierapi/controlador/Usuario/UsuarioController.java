@@ -83,6 +83,7 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el usuario");
         }
     }
-    //Apunte para eliminar usuario lo que hago es en datos del usuario bloquearle ahi
-    // y automaticamente se me elimanaria cada mes de la base de datos solo
+
+    //Para eliminar se elimina a la fuerza o poeniendolo bloqueado y al cabo de 1 mes se eliminaria
+
 }

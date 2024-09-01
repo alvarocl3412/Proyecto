@@ -51,7 +51,7 @@ public class EmpresaController {
         }
     }
 
-    @DeleteMapping("deleteEmpresa/{id}")
+        @DeleteMapping("deleteEmpresa/{id}")
     public ResponseEntity<Void> deleteEmpresa(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
