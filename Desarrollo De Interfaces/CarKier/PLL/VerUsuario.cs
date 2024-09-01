@@ -16,6 +16,7 @@ namespace CarKier.PLL
     {
         private static usuarios _usuario;
         private static CarnetsDeConducirDal cdcdal = new CarnetsDeConducirDal();
+        private static TipoCarnetDal tcDal = new TipoCarnetDal();
         private static UsuariosDal usudal = new UsuariosDal();
 
         public VerUsuario()
@@ -37,7 +38,7 @@ namespace CarKier.PLL
             txtNombre.Text = _usuario.nombre;
             txtApellidos.Text = _usuario.apellidos;
             txtTelefono.Text = _usuario.telefono;
-            txtFechaNac.Text = _usuario.fechaNacimiento.ToString();
+            txtFechaNac.Text = _usuario.fechaNacimiento.ToString("dd-MM-yyyy");
             txtCorreo.Text = _usuario.correo;
             txtContrasenia.Visible = false;
             lblContrasenia.Visible = false;
@@ -66,8 +67,9 @@ namespace CarKier.PLL
 
         private void ntsmNuevo_Click(object sender, EventArgs e)
         {
-            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar();
-            CarnetVerModificar.Show();
+            int id = _usuario.id;
+            PLL.CarnetVerModificar CarnetNUevo = new PLL.CarnetVerModificar(id);
+            CarnetNUevo.Show();
         }
 
         private void mtsmVer_Click(object sender, EventArgs e)
@@ -179,7 +181,8 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var carnet in listaCarntes)
             {
-                ListViewItem item = new ListViewItem(carnet.idTipocarnet.ToString());
+                string tipo = await tcDal.findipoCarnetById(carnet.idTipocarnet);
+                ListViewItem item = new ListViewItem(tipo);
                 item.SubItems.Add(carnet.fechaExpedicion.ToString("dd/MM/yyyy"));
                 item.SubItems.Add(carnet.fechaCaducidad.ToString("dd/MM/yyyy"));
                 item.Tag = carnet.id.ToString();

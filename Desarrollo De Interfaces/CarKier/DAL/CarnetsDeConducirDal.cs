@@ -1,4 +1,5 @@
 ﻿using CarKier.Modelo;
+using CarKier.PLL;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,34 @@ namespace CarKier.DAL
 
         }
 
+        public async Task<bool> CrearCarnet(carnets_de_conducir carnet)
+        {
+            string cadena = apiUrl + "registrarCarnets";
+
+            
+            try
+            {
+                // Serializar el objeto usuario a JSON
+                var json = JsonConvert.SerializeObject(carnet);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Realizar la solicitud HTTP POST
+                HttpResponseMessage response = await _httpClient.PostAsync(cadena, data);
+                response.EnsureSuccessStatusCode(); // Verificar si la solicitud fue exitosa
+
+                // Leer la respuesta (opcional)
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Puedes realizar validaciones adicionales aquí si es necesario
+                return true;
+            }
+            catch (Exception e)
+            {
+                // Manejo de errores generales
+                Console.WriteLine($"Excepción en la solicitud: {e.Message}");
+                return false;
+            }
+        }
 
         public async Task<bool> deleteCarnetsid(int? id)
         {
@@ -102,6 +131,30 @@ namespace CarKier.DAL
                 return false; // Retorna "Error" si hay una excepción
             }
         }
+
+        public async Task<bool> UpdateCarnetId(carnets_de_conducir carnet)
+        {
+            string cadena = apiUrl + "updateCarnets";
+            try
+            {
+                var json = JsonConvert.SerializeObject(carnet);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PutAsync(cadena, data);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Puedes realizar validaciones aquí si lo necesitas, dependiendo de la respuesta
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false;
+            }
+        }
+
 
     }
 }

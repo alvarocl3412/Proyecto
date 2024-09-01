@@ -8,7 +8,7 @@ namespace CarKier.Modelo
 {
     public class tipo_carnet
     {
-        public int id_tipo { get; set; }
+        public int id { get; set; }
 
         public string nombre { get; set; }
 
@@ -16,7 +16,7 @@ namespace CarKier.Modelo
 
         public tipo_carnet(int idtipo, string nombre)
         {
-            this.id_tipo = idtipo;
+            this.id = idtipo;
             this.nombre = nombre;
         }
     }

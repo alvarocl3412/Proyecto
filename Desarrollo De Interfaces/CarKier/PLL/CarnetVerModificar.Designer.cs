@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarnetVerModificar));
             this.txtFechaCaducidad = new System.Windows.Forms.TextBox();
             this.txtFechaExpedicion = new System.Windows.Forms.TextBox();
-            this.txtTipo = new System.Windows.Forms.TextBox();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.lblFechaCaducidad = new System.Windows.Forms.Label();
             this.LblFechaExpedicion = new System.Windows.Forms.Label();
@@ -40,7 +40,12 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pcImgCarnet = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
+            this.cmsEliminar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.pcImgCarnet)).BeginInit();
+            this.cmsEliminar.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFechaCaducidad
@@ -58,14 +63,6 @@
             this.txtFechaExpedicion.Name = "txtFechaExpedicion";
             this.txtFechaExpedicion.Size = new System.Drawing.Size(134, 26);
             this.txtFechaExpedicion.TabIndex = 19;
-            // 
-            // txtTipo
-            // 
-            this.txtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.txtTipo.Location = new System.Drawing.Point(646, 135);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(134, 26);
-            this.txtTipo.TabIndex = 18;
             // 
             // txtIdUsuario
             // 
@@ -152,17 +149,49 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cbTipo
+            // 
+            this.cbTipo.ContextMenuStrip = this.cmsEliminar;
+            this.cbTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Location = new System.Drawing.Point(646, 135);
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.Size = new System.Drawing.Size(134, 28);
+            this.cbTipo.TabIndex = 24;
+            this.cbTipo.SelectedIndexChanged += new System.EventHandler(this.cbTipo_SelectedIndexChanged);
+            // 
+            // cmsEliminar
+            // 
+            this.cmsEliminar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.eliminarToolStripMenuItem});
+            this.cmsEliminar.Name = "cmsEliminar";
+            this.cmsEliminar.Size = new System.Drawing.Size(181, 54);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
             // CarnetVerModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pcImgCarnet);
             this.Controls.Add(this.txtFechaCaducidad);
             this.Controls.Add(this.txtFechaExpedicion);
-            this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.lblFechaCaducidad);
             this.Controls.Add(this.LblFechaExpedicion);
@@ -173,6 +202,7 @@
             this.Text = "Usuario Carnet";
             this.Load += new System.EventHandler(this.CarnetVerModificar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcImgCarnet)).EndInit();
+            this.cmsEliminar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,7 +213,6 @@
         private System.Windows.Forms.PictureBox pcImgCarnet;
         private System.Windows.Forms.TextBox txtFechaCaducidad;
         private System.Windows.Forms.TextBox txtFechaExpedicion;
-        private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.TextBox txtIdUsuario;
         private System.Windows.Forms.Label lblFechaCaducidad;
         private System.Windows.Forms.Label LblFechaExpedicion;
@@ -191,5 +220,9 @@
         private System.Windows.Forms.Label lblIdUuario;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cbTipo;
+        private System.Windows.Forms.ContextMenuStrip cmsEliminar;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
