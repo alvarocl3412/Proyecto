@@ -58,7 +58,7 @@
             // 
             this.lblIdVehiculo.AutoSize = true;
             this.lblIdVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdVehiculo.Location = new System.Drawing.Point(213, 93);
+            this.lblIdVehiculo.Location = new System.Drawing.Point(217, 93);
             this.lblIdVehiculo.Name = "lblIdVehiculo";
             this.lblIdVehiculo.Size = new System.Drawing.Size(142, 20);
             this.lblIdVehiculo.TabIndex = 17;
@@ -86,7 +86,7 @@
             // 
             // txtIdUsuario
             // 
-            this.txtIdUsuario.Location = new System.Drawing.Point(359, 30);
+            this.txtIdUsuario.Location = new System.Drawing.Point(356, 30);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.Size = new System.Drawing.Size(143, 20);
             this.txtIdUsuario.TabIndex = 21;
@@ -100,7 +100,7 @@
             // 
             // txtIdVehiculo
             // 
-            this.txtIdVehiculo.Location = new System.Drawing.Point(359, 95);
+            this.txtIdVehiculo.Location = new System.Drawing.Point(360, 95);
             this.txtIdVehiculo.Name = "txtIdVehiculo";
             this.txtIdVehiculo.Size = new System.Drawing.Size(143, 20);
             this.txtIdVehiculo.TabIndex = 23;

@@ -15,42 +15,79 @@ namespace CarKier.PLL
     public partial class VerComentario : Form
     {
         private static comentarios _comentarios;
+        private static usuarios usuAdmin;
         private static ComentariosDal comenDal = new ComentariosDal();
         private static VehiculosDal vehiculoDal = new VehiculosDal();
         private static UsuariosDal usuDal = new UsuariosDal();
 
-        public VerComentario()
+        public VerComentario(usuarios us)
         {
             InitializeComponent();
+            usuAdmin = us;
             _comentarios = new comentarios();
+            btnGuardar.Text = "Crear";
+
+            txtIdUsuario.Text = usuAdmin.nombre + " - " + usuAdmin.apellidos;
+
+            txtRespuesta.Visible = false;
+            lblIdRespuesta.Visible = false;
+            txtIdUsuario.Enabled = false;
+            lblFecha.Visible = false;
+            txtFecha.Visible = false;
+
         }
 
-        public VerComentario(comentarios comentario)
+        public VerComentario(comentarios comentario,usuarios us)
         {
             InitializeComponent();
             _comentarios = comentario;
+            usuAdmin = us;
             MostrarComentario();
+            txtRespuesta.Enabled = false;
+            txtIdUsuario.Enabled = false;
         }
 
         #region METODOS INTERFAZ
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Quieres guardar los datos de los comentarios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (btnGuardar.Text.Contains("Crear"))
             {
-                // El usuario hizo clic en "Yes"
-                //Se agrega el nuevo carnet
+                DialogResult result = MessageBox.Show("¿Quieres crear el nuevo comentarios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario hizo clic en "Yes"
+                    //Se agrega el nuevo carnet
+                    CrearComentario();
 
-
-                //Cerramos la ventana
-                this.Close();
-            }
-            else if (result == DialogResult.No)
+                    //Cerramos la ventana
+                    this.Close();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // El usuario hizo clic en "No"
+                    this.Close();
+                }
+            } 
+            else
             {
-                // El usuario hizo clic en "No"
-                this.Close();
+                DialogResult result = MessageBox.Show("¿Quieres guardar los datos de los comentarios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario hizo clic en "Yes"
+                    //Se agrega el nuevo carnet
+                    ModificarComentario();
+
+                    //Cerramos la ventana
+                    this.Close();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // El usuario hizo clic en "No"
+                    this.Close();
+                }
             }
+           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -80,7 +117,7 @@ namespace CarKier.PLL
         private async void MostrarComentario()
         {
             usuarios usu = await usuDal.findUsuarioId(_comentarios.idUsuario);
-            txtIdUsuario.Text = usu.nombre + " " + usu.apellidos;
+            txtIdUsuario.Text = usu.nombre + " - " + usu.apellidos;
 
             string cadena = "nadie";
             if (_comentarios.idComentarioRespuesta != null)
@@ -97,23 +134,62 @@ namespace CarKier.PLL
             txtFecha.Text = _comentarios.fecha.ToString("dd/MM/yyyy");
         }
 
-        private void ModificarComentario()
+        private async void ModificarComentario()
         {
-            recogerDatos();
-        }
-
-        private void recogerDatos()
-        {
+            //Actualizamos los datos los usuarios no se podra modifcar ni el id de respuesta 
             _comentarios.fecha = DateTime.Parse(txtFecha.Text);
             _comentarios.comentario = txtComentario.Text;
-            //_comentarios.idVehiculo = 
-            //_comentarios.idComentarioRespuesta = 
-            //_comentarios.idUsuario =            
+           
+            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
+            if(vehi != null)
+            {
+                _comentarios.idVehiculo = vehi.id;
+            } else
+            {
+                MessageBox.Show("se cerrara la ventana no se guarda");
+                return;
+            }
+            
+
+            bool modificado = await comenDal.UpdateComentario(_comentarios);
+            if (modificado)
+            {
+                MessageBox.Show("Se ha modificado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido modificar correctamente");
+            }
         }
 
-        private void CrearComentario()
+
+        private async void CrearComentario()
         {
 
+            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
+            if (vehi != null)
+            {
+                _comentarios.idVehiculo = vehi.id;
+            }
+            else
+            {
+                MessageBox.Show("se cerrara la ventana no se guarda");
+                return;
+            }
+
+            _comentarios.fecha = DateTime.Now;
+            _comentarios.comentario = txtComentario.Text;
+            _comentarios.idUsuario = usuAdmin.id;
+
+            bool creado = await comenDal.CrearComentario(_comentarios);
+            if (creado)
+            {
+                MessageBox.Show("Se ha creado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido crear correctamente");
+            }
         }
 
         #endregion

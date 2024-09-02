@@ -43,7 +43,7 @@ namespace CarKier
                     MessageBox.Show($"Bienvenido, {usuario.nombre}");
                     this.Hide();
 
-                    Principal infoDesarrollador = new Principal();
+                    Principal infoDesarrollador = new Principal(usuario);
                     infoDesarrollador.Show();
 
                     // Cerrar la ventana de inicio de sesión

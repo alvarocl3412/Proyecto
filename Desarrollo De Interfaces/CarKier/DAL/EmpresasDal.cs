@@ -23,7 +23,7 @@ namespace CarKier.DAL
 
         public async Task<List<empresas>> findEmpresaAll()
         {
-            string cadena = apiUrl+"Empresas/findAll";
+            string cadena = apiUrl+"EmpresasfindAll";
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(cadena);

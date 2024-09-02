@@ -95,6 +95,27 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<vehiculos> findVehiculoMatricula(string matricula)
+        {
+
+            string cadena = apiUrl + "VehiuculosMatricula/" + matricula;
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                vehiculos vehiculo = JsonConvert.DeserializeObject<vehiculos>(responseData);
+                return vehiculo;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null; 
+            }
+        }
         public async Task<bool> CrearVehiculo(vehiculos vehiculo)
         {
             string cadena = apiUrl + "CrearVehiculo"; // Cambia esta URL a la de tu API

@@ -25,12 +25,12 @@ namespace CarKier.DAL
         public async Task<usuarios> Login(string correo, string contrasena)
         {
             // Construir la URL con los parámetros
-            string urlConParametros = $"{apiUrl}?correo={Uri.EscapeDataString(correo)}&contrasena={Uri.EscapeDataString(contrasena)}";
+            string cadena = $"{apiUrl}?correo={Uri.EscapeDataString(correo)}&contrasena={Uri.EscapeDataString(contrasena)}";
 
             try
             {
                 // Realizar la solicitud POST (sin cuerpo, ya que los parámetros están en la URL)
-                HttpResponseMessage response = await _httpClient.PostAsync(urlConParametros, null);
+                HttpResponseMessage response = await _httpClient.PostAsync(cadena, null);
 
                 // Verificar si la solicitud fue exitosa
                 response.EnsureSuccessStatusCode();

@@ -17,9 +17,16 @@ namespace CarKier.PLL
         private static ComentariosDal comenDal = new ComentariosDal();
         private static UsuariosDal usuDal = new UsuariosDal();
         private static VehiculosDal vehiDal = new VehiculosDal();
+        private static usuarios usuAdmin;
         public Comentarios()
         {
             InitializeComponent();
+        }
+
+        public Comentarios(usuarios usu)
+        {
+            InitializeComponent();
+            usuAdmin = usu;
         }
 
 
@@ -47,7 +54,7 @@ namespace CarKier.PLL
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-            PLL.VerComentario comentario = new PLL.VerComentario();
+            PLL.VerComentario comentario = new PLL.VerComentario(usuAdmin);
             comentario.Show();
         }
 
@@ -85,7 +92,7 @@ namespace CarKier.PLL
         #region METODOS COMPLEMENTARIOS
 
         private async Task CargarTabla()
-        { 
+        {
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<comentarios> listaComentarios = await comenDal.ComentariosfindAll();
 
@@ -104,12 +111,12 @@ namespace CarKier.PLL
                 item.SubItems.Add(vehiculo);
 
                 string cadena = "no responde";
-                if(comentarios.idComentarioRespuesta != null)
+                if (comentarios.idComentarioRespuesta != null)
                 {
                     comentarios comen = await comenDal.findComentarioId(comentarios.idComentarioRespuesta);
                     cadena = await usuDal.findUsuarioid(comen.idUsuario);
                 }
-                
+
                 //   string usurespon = await vdal.findUsuarioid(comen.idUsuario);
                 item.SubItems.Add(cadena);
 
@@ -130,7 +137,7 @@ namespace CarKier.PLL
 
             if (comentario != null)
             {
-                PLL.VerComentario verComentario = new PLL.VerComentario(comentario);
+                PLL.VerComentario verComentario = new PLL.VerComentario(comentario,usuAdmin);
                 verComentario.Show();
             }
             else

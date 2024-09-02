@@ -21,7 +21,7 @@ namespace CarKier.DAL
 
         public async Task<List<estado_vehiculo>> findEstadoVehiculoAll()
         {
-            string cadena = apiUrl + "EstadoVehiculo/findAll";
+            string cadena = apiUrl + "EstadoVehiculofindAll";
 
             try
             {
