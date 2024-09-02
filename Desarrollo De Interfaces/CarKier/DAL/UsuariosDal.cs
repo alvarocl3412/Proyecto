@@ -125,6 +125,29 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<bool> UpdateUsuarioId(usuarios usuario)
+        {
+            string cadena = apiUrl + "updateUsuario";
+            try
+            {
+                var json = JsonConvert.SerializeObject(usuario);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PutAsync(cadena, data);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Puedes realizar validaciones aquí si lo necesitas, dependiendo de la respuesta
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false;
+            }
+        }
+
 
         public async Task<bool> deleteUsuariosid(int? id)
         {
@@ -150,28 +173,6 @@ namespace CarKier.DAL
             }
         }
 
-        public async Task<bool> UpdateUsuarioId(usuarios usuario)
-        {
-            string cadena = apiUrl + "updateUsuario";
-            try
-            {
-                var json = JsonConvert.SerializeObject(usuario);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await _httpClient.PutAsync(cadena, data);
-                response.EnsureSuccessStatusCode();
-
-                string responseData = await response.Content.ReadAsStringAsync();
-
-                // Puedes realizar validaciones aquí si lo necesitas, dependiendo de la respuesta
-                return true;
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return false;
-            }
-        }
 
 
 

@@ -196,8 +196,9 @@ namespace CarKier.PLL
             _usuario.nombre = txtNombre.Text;
             _usuario.apellidos = txtApellidos.Text;
             _usuario.telefono = txtTelefono.Text;
-            _usuario.correo = txtCorreo.Text;
             _usuario.fechaNacimiento = DateTime.Parse(txtFechaNac.Text);
+            _usuario.correo = txtCorreo.Text;
+            
 
             await usudal.UpdateUsuarioId(_usuario);
 

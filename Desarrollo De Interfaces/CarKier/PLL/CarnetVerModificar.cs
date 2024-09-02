@@ -118,6 +118,14 @@ namespace CarKier.PLL
             }
         }
 
+        private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int texto = (int)cbTipo.SelectedValue;
+            bool eliminado = await tcDal.deleteTipoCanrteid(texto);
+            CargarTiposDeCarnet();
+
+        }
+
 
 
         #endregion
@@ -240,12 +248,6 @@ namespace CarKier.PLL
 
         #endregion
 
-        private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int texto = (int) cbTipo.SelectedValue;
-            bool eliminado = await tcDal.deleteTipoCanrteid(texto);
-            CargarTiposDeCarnet();
-            
-        }
+
     }
 }

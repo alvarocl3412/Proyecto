@@ -40,20 +40,21 @@ namespace CarKier.PLL
             tsmiEliminar.Enabled = hasSelectedItem;
         }
 
-        private void lvEmpresas_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-
+            PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa();
+            infoEmpresa.Show();
         }
 
         private void tsmiVer_Click(object sender, EventArgs e)
         {
-            PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa();
-            infoEmpresa.Show();
+            verEmpresa();
+        }
+
+        private void lvEmpresas_DoubleClick(object sender, EventArgs e)
+        {
+            verEmpresa();
         }
 
         private async void tsmiEliminar_Click(object sender, EventArgs e)
@@ -98,6 +99,7 @@ namespace CarKier.PLL
 
 
         #region METODOS COMPLEMENTARIOS
+
         private async Task CargarTabla()
         {
 
@@ -117,6 +119,27 @@ namespace CarKier.PLL
                 item.Tag = empresa.id.ToString();
                 lvEmpresas.Items.Add(item);
             }
+        }
+
+        private async void verEmpresa()
+        {
+
+            var selectedItem = lvEmpresas.SelectedItems[0];
+            int id = int.Parse(selectedItem.Tag.ToString());
+
+            empresas empresa = await emprDal.findEmpresId(id);
+
+            if (empresa != null)
+            {
+                PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa(empresa);
+                infoEmpresa.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("No se ha encontrado el usuario");
+            }
+
         }
 
         #endregion

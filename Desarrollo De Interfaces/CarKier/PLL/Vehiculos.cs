@@ -85,8 +85,8 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var vehiculo in listaVehiculo)
             {
-               string idEm = await emprDal.findEmpresId(vehiculo.idEmpresa);
-               ListViewItem item = new ListViewItem(idEm);
+               empresas empresa = await emprDal.findEmpresId(vehiculo.idEmpresa);
+               ListViewItem item = new ListViewItem(empresa.nombre);
 
                 string idusu = await usuDal.findUsuarioid(vehiculo.idUsuariosPropietario);
                 item.SubItems.Add(idusu);
