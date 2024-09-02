@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblIdComentario = new System.Windows.Forms.Label();
             this.lblIdUsuario = new System.Windows.Forms.Label();
             this.lblIdVehiculo = new System.Windows.Forms.Label();
             this.lblComentario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.txtIdComentario = new System.Windows.Forms.TextBox();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
-            this.tctFecha = new System.Windows.Forms.TextBox();
+            this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtIdVehiculo = new System.Windows.Forms.TextBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -46,41 +44,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcImgComentario)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblIdComentario
-            // 
-            this.lblIdComentario.AutoSize = true;
-            this.lblIdComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdComentario.Location = new System.Drawing.Point(236, 28);
-            this.lblIdComentario.Name = "lblIdComentario";
-            this.lblIdComentario.Size = new System.Drawing.Size(113, 20);
-            this.lblIdComentario.TabIndex = 15;
-            this.lblIdComentario.Text = "Id Comentario:";
-            // 
             // lblIdUsuario
             // 
             this.lblIdUsuario.AutoSize = true;
             this.lblIdUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdUsuario.Location = new System.Drawing.Point(251, 91);
+            this.lblIdUsuario.Location = new System.Drawing.Point(254, 30);
             this.lblIdUsuario.Name = "lblIdUsuario";
-            this.lblIdUsuario.Size = new System.Drawing.Size(86, 20);
+            this.lblIdUsuario.Size = new System.Drawing.Size(68, 20);
             this.lblIdUsuario.TabIndex = 16;
-            this.lblIdUsuario.Text = "Id Usuario:";
+            this.lblIdUsuario.Text = "Usuario:";
             // 
             // lblIdVehiculo
             // 
             this.lblIdVehiculo.AutoSize = true;
             this.lblIdVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdVehiculo.Location = new System.Drawing.Point(236, 165);
+            this.lblIdVehiculo.Location = new System.Drawing.Point(213, 93);
             this.lblIdVehiculo.Name = "lblIdVehiculo";
-            this.lblIdVehiculo.Size = new System.Drawing.Size(92, 20);
+            this.lblIdVehiculo.Size = new System.Drawing.Size(142, 20);
             this.lblIdVehiculo.TabIndex = 17;
-            this.lblIdVehiculo.Text = "Id Vehiculo:";
+            this.lblIdVehiculo.Text = "Vehiculo Matricula:";
             // 
             // lblComentario
             // 
             this.lblComentario.AutoSize = true;
             this.lblComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComentario.Location = new System.Drawing.Point(300, 219);
+            this.lblComentario.Location = new System.Drawing.Point(388, 204);
             this.lblComentario.Name = "lblComentario";
             this.lblComentario.Size = new System.Drawing.Size(91, 20);
             this.lblComentario.TabIndex = 18;
@@ -90,43 +78,36 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(517, 93);
+            this.lblFecha.Location = new System.Drawing.Point(540, 93);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(58, 20);
             this.lblFecha.TabIndex = 19;
             this.lblFecha.Text = "Fecha:";
             // 
-            // txtIdComentario
-            // 
-            this.txtIdComentario.Location = new System.Drawing.Point(356, 27);
-            this.txtIdComentario.Name = "txtIdComentario";
-            this.txtIdComentario.Size = new System.Drawing.Size(121, 20);
-            this.txtIdComentario.TabIndex = 20;
-            // 
             // txtIdUsuario
             // 
-            this.txtIdUsuario.Location = new System.Drawing.Point(356, 92);
+            this.txtIdUsuario.Location = new System.Drawing.Point(359, 30);
             this.txtIdUsuario.Name = "txtIdUsuario";
-            this.txtIdUsuario.Size = new System.Drawing.Size(121, 20);
+            this.txtIdUsuario.Size = new System.Drawing.Size(143, 20);
             this.txtIdUsuario.TabIndex = 21;
             // 
-            // tctFecha
+            // txtFecha
             // 
-            this.tctFecha.Location = new System.Drawing.Point(595, 93);
-            this.tctFecha.Name = "tctFecha";
-            this.tctFecha.Size = new System.Drawing.Size(168, 20);
-            this.tctFecha.TabIndex = 22;
+            this.txtFecha.Location = new System.Drawing.Point(618, 93);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(145, 20);
+            this.txtFecha.TabIndex = 22;
             // 
             // txtIdVehiculo
             // 
-            this.txtIdVehiculo.Location = new System.Drawing.Point(356, 167);
+            this.txtIdVehiculo.Location = new System.Drawing.Point(359, 95);
             this.txtIdVehiculo.Name = "txtIdVehiculo";
-            this.txtIdVehiculo.Size = new System.Drawing.Size(121, 20);
+            this.txtIdVehiculo.Size = new System.Drawing.Size(143, 20);
             this.txtIdVehiculo.TabIndex = 23;
             // 
             // txtComentario
             // 
-            this.txtComentario.Location = new System.Drawing.Point(58, 242);
+            this.txtComentario.Location = new System.Drawing.Point(90, 241);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(658, 104);
@@ -174,15 +155,15 @@
             this.lblIdRespuesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdRespuesta.Location = new System.Drawing.Point(508, 28);
             this.lblIdRespuesta.Name = "lblIdRespuesta";
-            this.lblIdRespuesta.Size = new System.Drawing.Size(109, 20);
+            this.lblIdRespuesta.Size = new System.Drawing.Size(104, 20);
             this.lblIdRespuesta.TabIndex = 38;
-            this.lblIdRespuesta.Text = "Id Respuesta:";
+            this.lblIdRespuesta.Text = "Responde a :";
             // 
             // txtRespuesta
             // 
             this.txtRespuesta.Location = new System.Drawing.Point(627, 30);
             this.txtRespuesta.Name = "txtRespuesta";
-            this.txtRespuesta.Size = new System.Drawing.Size(121, 20);
+            this.txtRespuesta.Size = new System.Drawing.Size(136, 20);
             this.txtRespuesta.TabIndex = 39;
             // 
             // VerComentario
@@ -196,14 +177,12 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.txtIdVehiculo);
-            this.Controls.Add(this.tctFecha);
+            this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtIdUsuario);
-            this.Controls.Add(this.txtIdComentario);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblComentario);
             this.Controls.Add(this.lblIdVehiculo);
             this.Controls.Add(this.lblIdUsuario);
-            this.Controls.Add(this.lblIdComentario);
             this.Controls.Add(this.pcImgComentario);
             this.Name = "VerComentario";
             this.Text = "VerComentario";
@@ -216,14 +195,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pcImgComentario;
-        private System.Windows.Forms.Label lblIdComentario;
         private System.Windows.Forms.Label lblIdUsuario;
         private System.Windows.Forms.Label lblIdVehiculo;
         private System.Windows.Forms.Label lblComentario;
         private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.TextBox txtIdComentario;
         private System.Windows.Forms.TextBox txtIdUsuario;
-        private System.Windows.Forms.TextBox tctFecha;
+        private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtIdVehiculo;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Button btnCancelar;

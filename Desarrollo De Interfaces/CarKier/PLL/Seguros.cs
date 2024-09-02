@@ -15,6 +15,7 @@ namespace CarKier.PLL
     public partial class Seguros : Form
     {
         private static SegurosDal seguroDal = new SegurosDal();
+
         public Seguros()
         {
             InitializeComponent();
@@ -40,20 +41,19 @@ namespace CarKier.PLL
             tsmiEliminar.Enabled = hasSelectedItem;
         }
 
-        private void lvSeguros_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
         private void tsmiNuevo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsmiVer_Click(object sender, EventArgs e)
         {
             PLL.VerSeguro infoSeguro = new PLL.VerSeguro();
             infoSeguro.Show();
+        }
+
+        private void lvSeguros_DoubleClick(object sender, EventArgs e)
+        {
+            verSeguro();
+        }
+        private void tsmiVer_Click(object sender, EventArgs e)
+        {
+            verSeguro();
         }
 
         private async void tsmiEliminar_Click(object sender, EventArgs e)
@@ -97,6 +97,23 @@ namespace CarKier.PLL
             }
         }
 
+        private async void verSeguro()
+        {
+            var selectedItem = lvSeguros.SelectedItems[0];
+            int id = int.Parse(selectedItem.Tag.ToString());
+
+            tipos_seguros seguro = await seguroDal.findSegurosId(id);
+
+            if (seguro != null)
+            {
+                PLL.VerSeguro infoSeguro = new PLL.VerSeguro(seguro);
+                infoSeguro.Show();
+            }
+            else
+            {
+                MessageBox.Show("No se ha encontrado el seguro");
+            }
+        }
 
         #endregion
 

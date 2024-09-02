@@ -22,7 +22,7 @@ namespace CarKier.PLL
         public Vehiculos()
         {
             InitializeComponent();
-           
+
         }
 
         #region METODOS INTERFAZ
@@ -46,13 +46,12 @@ namespace CarKier.PLL
 
         private void lvVehiculos_DoubleClick(object sender, EventArgs e)
         {
-
+            verVehiculo();
         }
 
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PLL.VerVehiculo infoVehiculo= new PLL.VerVehiculo();
-            infoVehiculo.Show();
+            verVehiculo();
         }
 
         private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,8 +84,8 @@ namespace CarKier.PLL
             // Cargar los datos en el ListView
             foreach (var vehiculo in listaVehiculo)
             {
-               empresas empresa = await emprDal.findEmpresId(vehiculo.idEmpresa);
-               ListViewItem item = new ListViewItem(empresa.nombre);
+                string nom = await emprDal.findEmpresid(vehiculo.idEmpresa);
+                ListViewItem item = new ListViewItem(nom);
 
                 string idusu = await usuDal.findUsuarioid(vehiculo.idUsuariosPropietario);
                 item.SubItems.Add(idusu);
@@ -99,11 +98,32 @@ namespace CarKier.PLL
                 item.SubItems.Add(vehiculo.modelo);
                 item.SubItems.Add(vehiculo.anio.ToString());
                 item.SubItems.Add(vehiculo.km.ToString());
-                item.SubItems.Add(vehiculo.precioventa.ToString());
-                item.SubItems.Add(vehiculo.preciodia.ToString());
-                item.Tag = vehiculo.id.ToString();
+                item.SubItems.Add(vehiculo.precioventa.ToString() + " €") ;
+                item.SubItems.Add(vehiculo.preciodia.ToString() + " €");
+                item.Tag = vehiculo.id;
                 lvVehiculos.Items.Add(item);
             }
+        }
+
+        private async void verVehiculo()
+        {
+            var selectedItem = lvVehiculos.SelectedItems[0];
+            int id = int.Parse(selectedItem.Tag.ToString());
+
+            vehiculos vehiculo = await vehiculoDal.findVehiculoId(id);
+
+            if (vehiculo != null)
+            {
+                PLL.VerVehiculo infoVehiculo = new PLL.VerVehiculo(vehiculo);
+                infoVehiculo.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("No se ha encontrado el usuario");
+            }
+
+            
         }
 
 

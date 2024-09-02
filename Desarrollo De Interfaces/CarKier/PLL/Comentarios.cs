@@ -43,20 +43,22 @@ namespace CarKier.PLL
             tsmiEliminar.Enabled = hasSelectedItem;
         }
 
-        private void lvComentarios_DoubleClick(object sender, EventArgs e)
-        {
 
-        }
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-
+            PLL.VerComentario comentario = new PLL.VerComentario();
+            comentario.Show();
         }
 
         private void tsmiVer_Click(object sender, EventArgs e)
         {
-            PLL.VerComentario infoComentario = new PLL.VerComentario();
-            infoComentario.Show();
+            verComentario();
+        }
+
+        private void lvComentarios_DoubleClick(object sender, EventArgs e)
+        {
+            verComentario();
         }
 
         private async void tsmiEliminar_Click(object sender, EventArgs e)
@@ -74,7 +76,6 @@ namespace CarKier.PLL
                 CargarTabla();
             }
         }
-
 
 
         #endregion
@@ -105,7 +106,7 @@ namespace CarKier.PLL
                 string cadena = "no responde";
                 if(comentarios.idComentarioRespuesta != null)
                 {
-                    comentarios comen = await comenDal.findComentarioid(comentarios.idComentarioRespuesta);
+                    comentarios comen = await comenDal.findComentarioId(comentarios.idComentarioRespuesta);
                     cadena = await usuDal.findUsuarioid(comen.idUsuario);
                 }
                 
@@ -117,6 +118,24 @@ namespace CarKier.PLL
                 item.SubItems.Add(comentarios.fecha.ToString("dd/MM/yyyy"));
                 item.Tag = comentarios.id.ToString();
                 lvComentarios.Items.Add(item);
+            }
+        }
+
+        private async void verComentario()
+        {
+            var selectedItem = lvComentarios.SelectedItems[0];
+            int id = int.Parse(selectedItem.Tag.ToString());
+
+            comentarios comentario = await comenDal.findComentarioId(id);
+
+            if (comentario != null)
+            {
+                PLL.VerComentario verComentario = new PLL.VerComentario(comentario);
+                verComentario.Show();
+            }
+            else
+            {
+                MessageBox.Show("No se ha encontrado el usuario");
             }
         }
 

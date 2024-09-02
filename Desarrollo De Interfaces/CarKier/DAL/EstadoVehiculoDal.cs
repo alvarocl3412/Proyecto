@@ -19,13 +19,37 @@ namespace CarKier.DAL
             _httpClient = new HttpClient();
         }
 
+        public async Task<List<estado_vehiculo>> findEstadoVehiculoAll()
+        {
+            string cadena = apiUrl + "EstadoVehiculo/findAll";
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
+
+                response.EnsureSuccessStatusCode(); // Verifica si la solicitud fue exitosa
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Supongamos que la API devuelve un JSON con una lista de strings
+                List<estado_vehiculo> estado = JsonConvert.DeserializeObject<List<estado_vehiculo>>(responseData);
+
+                return estado;
+            }
+
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null;
+            }
+        }
 
         public async Task<string> findEstadoid(int? id)
         {
             // Verificar si el id es null
             if (id == null)
                 return "Ningun estado";
-            string urlConParametros = apiUrl+"EstadoVehiculoId/" + id.ToString();
+            string urlConParametros = apiUrl + "EstadoVehiculoId/" + id.ToString();
 
             try
             {

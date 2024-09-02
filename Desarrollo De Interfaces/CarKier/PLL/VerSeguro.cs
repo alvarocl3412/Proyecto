@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarKier.DAL;
+using CarKier.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,28 +14,64 @@ namespace CarKier.PLL
 {
     public partial class VerSeguro : Form
     {
+        private static tipos_seguros _seguro;
+        private static SegurosDal seguroDal = new SegurosDal();
         public VerSeguro()
         {
             InitializeComponent();
+            _seguro = new tipos_seguros();
+            btnGuardar.Text = "Crear";
         }
+
+        public VerSeguro(tipos_seguros seguro)
+        {
+            InitializeComponent();
+            _seguro = seguro;
+            mostrarSeguro();
+        }
+
         #region METODOS INTERFAZ
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Quieres guardar los datos del seguro?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (btnGuardar.Text.Contains("Crear"))
             {
-                // El usuario hizo clic en "Yes"
-                //Se agrega el nuevo carnet
 
+                DialogResult result = MessageBox.Show("¿Quieres crear el nuevo seguro?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario hizo clic en "Yes"
+                    //Se agrega el nuevo seguro
+                    crearSeguro();
 
-                //Cerramos la ventana
-                this.Close();
+                    //Cerramos la ventana
+                    this.Close();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // El usuario hizo clic en "No"
+                    this.Close();
+                }
             }
-            else if (result == DialogResult.No)
+            else
             {
-                // El usuario hizo clic en "No"
-                this.Close();
+
+                DialogResult result = MessageBox.Show("¿Quieres guardar los datos del seguro?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario hizo clic en "Yes"
+                    //Se modiifca el nuevo seguro
+                    modificarSeguro();
+
+                    //Cerramos la ventana
+                    this.Close();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // El usuario hizo clic en "No"
+                    this.Close();
+                }
             }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,6 +92,54 @@ namespace CarKier.PLL
                 this.Close();
             }
         }
+
+        #endregion
+
+
+        #region METODOS COMPLEMENTARIOS
+
+        public void mostrarSeguro()
+        {
+            txtNombre.Text = _seguro.nombre;
+            txtDescripcion.Text = _seguro.descripcion;
+            txtCoste.Text = _seguro.coste.ToString();
+        }
+
+        private async void modificarSeguro()
+        {
+            recogerDatos();
+            bool modificado = await seguroDal.UpdateSeguro(_seguro);
+            if (modificado)
+            {
+                MessageBox.Show("Se ha modificado el seguro correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido modificar el seguro");
+            }
+        }
+
+        private async void crearSeguro()
+        {
+            recogerDatos();
+            bool creado = await seguroDal.CrearSeguro(_seguro);
+            if (creado)
+            {
+                MessageBox.Show("Se ha creado el nuevo seguro");
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido crear el seguro");
+            }
+        }
+
+        private async void recogerDatos()
+        {
+            _seguro.nombre = txtNombre.Text;
+            _seguro.descripcion = txtDescripcion.Text;
+            _seguro.coste = int.Parse(txtCoste.Text);
+        }
+
 
         #endregion
     }

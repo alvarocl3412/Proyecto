@@ -47,7 +47,7 @@ namespace CarKier.DAL
         }
 
 
-        public async Task<comentarios> findComentarioid(int? id)
+        public async Task<comentarios> findComentarioId(int? id)
         {
             // Verificar si el id es null
             if (id == null)

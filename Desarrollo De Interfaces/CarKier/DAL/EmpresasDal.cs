@@ -74,6 +74,30 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<string> findEmpresid(int? id)
+        {
+            // Verificar si el id es null
+            if (id == null)
+                return "No pertenece";
+            string urlConParametros = apiUrl + "EmpresasId/" + id.ToString();
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                empresas empresa = JsonConvert.DeserializeObject<empresas>(responseData);
+                return empresa?.nombre ?? "No pertenece";
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return "No pertenece"; // Retorna "Error" si hay una excepción
+            }
+        }
+
         public async Task<bool> CrearUsuario(empresas empresa)
         {
             string cadena = apiUrl + "CrearEmpresa"; // Cambia esta URL a la de tu API
@@ -102,7 +126,6 @@ namespace CarKier.DAL
             }
         }
 
-
         public async Task<bool> UpdateEmpresa(empresas empresa)
         {
             string cadena = apiUrl + "updateEmpresa";
@@ -125,7 +148,6 @@ namespace CarKier.DAL
                 return false;
             }
         }
-
 
         public async Task<bool> deleteEmpresaId(int? id)
         {
@@ -151,7 +173,6 @@ namespace CarKier.DAL
                 return false; // Retorna false si hay una excepción
             }
         }
-
 
     }
 }

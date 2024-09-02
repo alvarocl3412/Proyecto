@@ -39,19 +39,19 @@
             this.lblPrecioVenta = new System.Windows.Forms.Label();
             this.lblPrecioDia = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtEmpresa = new System.Windows.Forms.TextBox();
-            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.txtUsuPertenece = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtAnio = new System.Windows.Forms.TextBox();
             this.txtKilometro = new System.Windows.Forms.TextBox();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioDia = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.pcCoche = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblEstado.Location = new System.Drawing.Point(209, 143);
+            this.lblEstado.Location = new System.Drawing.Point(499, 94);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(64, 20);
             this.lblEstado.TabIndex = 8;
@@ -89,7 +89,7 @@
             // 
             this.lblModelo.AutoSize = true;
             this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblModelo.Location = new System.Drawing.Point(483, 94);
+            this.lblModelo.Location = new System.Drawing.Point(503, 143);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(65, 20);
             this.lblModelo.TabIndex = 9;
@@ -149,18 +149,11 @@
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblMarca.Location = new System.Drawing.Point(491, 143);
+            this.lblMarca.Location = new System.Drawing.Point(229, 143);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(57, 20);
             this.lblMarca.TabIndex = 15;
             this.lblMarca.Text = "Marca:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(310, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 20);
-            this.textBox2.TabIndex = 17;
             // 
             // txtEmpresa
             // 
@@ -169,16 +162,16 @@
             this.txtEmpresa.Size = new System.Drawing.Size(136, 20);
             this.txtEmpresa.TabIndex = 18;
             // 
-            // txtEstado
+            // txtUsuPertenece
             // 
-            this.txtEstado.Location = new System.Drawing.Point(597, 49);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(171, 20);
-            this.txtEstado.TabIndex = 19;
+            this.txtUsuPertenece.Location = new System.Drawing.Point(597, 49);
+            this.txtUsuPertenece.Name = "txtUsuPertenece";
+            this.txtUsuPertenece.Size = new System.Drawing.Size(171, 20);
+            this.txtUsuPertenece.TabIndex = 19;
             // 
             // txtModelo
             // 
-            this.txtModelo.Location = new System.Drawing.Point(597, 94);
+            this.txtModelo.Location = new System.Drawing.Point(597, 143);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(171, 20);
             this.txtModelo.TabIndex = 20;
@@ -192,9 +185,9 @@
             // 
             // txtKilometro
             // 
-            this.txtKilometro.Location = new System.Drawing.Point(595, 194);
+            this.txtKilometro.Location = new System.Drawing.Point(597, 194);
             this.txtKilometro.Name = "txtKilometro";
-            this.txtKilometro.Size = new System.Drawing.Size(173, 20);
+            this.txtKilometro.Size = new System.Drawing.Size(171, 20);
             this.txtKilometro.TabIndex = 22;
             // 
             // txtMatricula
@@ -218,12 +211,12 @@
             this.txtPrecioDia.Size = new System.Drawing.Size(171, 20);
             this.txtPrecioDia.TabIndex = 25;
             // 
-            // textBox11
+            // txtMarca
             // 
-            this.textBox11.Location = new System.Drawing.Point(595, 143);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(173, 20);
-            this.textBox11.TabIndex = 26;
+            this.txtMarca.Location = new System.Drawing.Point(310, 145);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(136, 20);
+            this.txtMarca.TabIndex = 26;
             // 
             // pcCoche
             // 
@@ -262,23 +255,31 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // cbEstado
+            // 
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Location = new System.Drawing.Point(597, 93);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(171, 21);
+            this.cbEstado.TabIndex = 31;
+            // 
             // VerVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtPrecioDia);
             this.Controls.Add(this.txtPrecioVenta);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.txtKilometro);
             this.Controls.Add(this.txtAnio);
             this.Controls.Add(this.txtModelo);
-            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.txtUsuPertenece);
             this.Controls.Add(this.txtEmpresa);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblPrecioDia);
             this.Controls.Add(this.lblPrecioVenta);
@@ -293,6 +294,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerVehiculo";
             this.Text = "Vehiculo";
+            this.Load += new System.EventHandler(this.VerVehiculo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -312,17 +314,17 @@
         private System.Windows.Forms.Label lblPrecioVenta;
         private System.Windows.Forms.Label lblPrecioDia;
         private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtEmpresa;
-        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox txtUsuPertenece;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.TextBox txtKilometro;
         private System.Windows.Forms.TextBox txtMatricula;
         private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.TextBox txtPrecioDia;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ComboBox cbEstado;
     }
 }

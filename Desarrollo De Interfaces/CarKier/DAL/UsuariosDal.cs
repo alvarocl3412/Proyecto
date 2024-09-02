@@ -49,7 +49,7 @@ namespace CarKier.DAL
 
         }
 
-        public async Task<usuarios> findUsuarioId(int id)
+        public async Task<usuarios> findUsuarioId(int? id)
         {
             // Verificar si el id es null
             if (id == null)
