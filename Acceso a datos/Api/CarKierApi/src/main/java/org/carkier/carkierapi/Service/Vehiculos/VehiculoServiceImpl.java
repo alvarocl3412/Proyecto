@@ -36,6 +36,12 @@ public class VehiculoServiceImpl implements VehiculoService {
     }
 
     @Override
+    public Optional<Vehiculo> findByMatricula(String matricula) {
+        return repositorio.findByMatricula(matricula);
+    }
+
+
+    @Override
     public Optional<Vehiculo> updateVehiuclo(Vehiculo vehiculo) {
         Optional<Vehiculo> existeVehiuclo = repositorio.findById(vehiculo.getId());
         if (existeVehiuclo.isPresent()) {

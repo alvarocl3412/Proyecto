@@ -7,6 +7,8 @@ import java.util.Optional;
 public interface EmpresaService {
     List<Empresa> findAll();
     Optional<Empresa> findById(Integer id);
+
+    Optional<Empresa> findByNombre(String nombre);
     Optional<Empresa> updateEmpresa(Empresa empresa);
     Empresa save(Empresa empresa);
     void deleteById(Integer id);

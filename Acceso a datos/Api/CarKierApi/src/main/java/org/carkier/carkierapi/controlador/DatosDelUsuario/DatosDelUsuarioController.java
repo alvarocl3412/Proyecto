@@ -18,7 +18,7 @@ public class DatosDelUsuarioController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/DatosUsuarios/findAll")
+    @GetMapping("/DatosUsuariosfindAll")
     public ResponseEntity<List<DatosDelUsuario>> getAllDatos() {
         List<DatosDelUsuario> datosusu = servicio.findAll();
         if (datosusu.isEmpty())

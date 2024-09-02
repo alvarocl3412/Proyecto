@@ -19,7 +19,7 @@ public class EstadoVehiculoController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/EstadoVehiculo/findAll")
+    @GetMapping("/EstadoVehiculofindAll")
     public ResponseEntity<List<EstadoVehiculo>> getAllEstadoVehiculos() {
         List<EstadoVehiculo> estado = servicio.findAll();
         if (estado.isEmpty())

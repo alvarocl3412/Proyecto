@@ -25,6 +25,12 @@ public class EmpresaServiceImpl  implements  EmpresaService{
     }
 
     @Override
+    public Optional<Empresa> findByNombre(String nombre) {
+        return repositorio.findByNombre(nombre);
+    }
+
+
+    @Override
     public Optional<Empresa> updateEmpresa(Empresa empresa) {
         Optional<Empresa> exiseEmpresa = repositorio.findById(empresa.getId());
         if (exiseEmpresa.isPresent()) {

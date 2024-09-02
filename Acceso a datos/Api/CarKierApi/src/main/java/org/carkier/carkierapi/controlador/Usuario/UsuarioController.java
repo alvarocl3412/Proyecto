@@ -46,6 +46,15 @@ public class UsuarioController {
             return ResponseEntity.ok(usur);
         }
     }
+    @GetMapping("/UsuarioNombreApellido/{nombre}/{apellidos}")
+    public ResponseEntity<Usuario> getUsuarioByNombreYApellido(@PathVariable String nombre, @PathVariable String apellidos) {
+        Optional<Usuario> usuario = servicio.findByNombreAndApellidos(nombre, apellidos);
+        if (!usuario.isPresent()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(usuario.get());
+        }
+    }
 
     @PutMapping("/updateUsuario")
     public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuario) {

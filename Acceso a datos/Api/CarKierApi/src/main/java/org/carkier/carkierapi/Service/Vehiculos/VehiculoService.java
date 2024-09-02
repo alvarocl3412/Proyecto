@@ -9,6 +9,8 @@ public interface VehiculoService {
     List<Vehiculo> findAll();
 
     Optional<Vehiculo> findById(Integer id);
+
+    Optional<Vehiculo> findByMatricula(String matricula);
     Optional<Vehiculo> updateVehiuclo(Vehiculo vehiculo);
 
     Vehiculo save(Vehiculo vehiculo);

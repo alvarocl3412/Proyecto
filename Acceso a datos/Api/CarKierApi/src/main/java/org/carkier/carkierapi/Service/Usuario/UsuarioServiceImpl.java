@@ -35,6 +35,13 @@ public class UsuarioServiceImpl  implements  UsuarioService{
     public Optional<Usuario> findByDni(String dni) {
         return repositorio.findByDni(dni);
     }
+
+    @Override
+    public Optional<Usuario> findByNombreAndApellidos(String nombre, String apellidos) {
+        return repositorio.findByNombreAndApellidos(nombre,apellidos);
+    }
+
+
     @Override
     public Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena) {
         Optional<Usuario> optionalUsuario = repositorio.findByCorreo(correo);

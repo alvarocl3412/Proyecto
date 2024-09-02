@@ -17,7 +17,7 @@ public class EmpresaController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/Empresas/findAll")
+    @GetMapping("/EmpresasfindAll")
     public ResponseEntity<List<Empresa>> getAllEmpresa() {
         List<Empresa> empresas = servicio.findAll();
         if (empresas.isEmpty())
@@ -28,6 +28,16 @@ public class EmpresaController {
     @GetMapping("/EmpresasId/{id}")
     public ResponseEntity<Empresa> getEmpresaById(@PathVariable Integer id) {
         Optional<Empresa> empresa = servicio.findById(id);
+        if (!empresa.isPresent()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(empresa.get());
+        }
+    }
+
+    @GetMapping("/EmpresasNombre/{nombre}")
+    public ResponseEntity<Empresa> getEmpresaByNombre(@PathVariable String nombre) {
+        Optional<Empresa> empresa = servicio.findByNombre(nombre);
         if (!empresa.isPresent()) {
             return ResponseEntity.notFound().build();
         } else {

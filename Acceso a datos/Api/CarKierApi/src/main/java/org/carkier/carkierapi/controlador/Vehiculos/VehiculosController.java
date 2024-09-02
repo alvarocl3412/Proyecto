@@ -36,6 +36,16 @@ public class VehiculosController {
         }
     }
 
+    @GetMapping("/VehiuculosMatricula/{matricula}")
+    public ResponseEntity<Vehiculo> getVehiculoByMatricula(@PathVariable String matricula) {
+        Optional<Vehiculo> vehiculo = servicio.findByMatricula(matricula);
+        if (!vehiculo.isPresent()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(vehiculo.get());
+        }
+    }
+
     @PutMapping("/updateVehiculo")
     public ResponseEntity<Vehiculo> updateVehiculo(@RequestBody Vehiculo vehiculo) {
         Optional<Vehiculo> updatedVehiculo = servicio.updateVehiuclo(vehiculo);
