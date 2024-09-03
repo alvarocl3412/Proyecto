@@ -25,7 +25,6 @@ namespace CarKier.PLL
         {
             InitializeComponent();
         }
-
         public VerComentario(usuarios us)
         {
             InitializeComponent();
@@ -210,5 +209,6 @@ namespace CarKier.PLL
         }
 
         #endregion
+
     }
 }

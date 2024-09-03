@@ -74,6 +74,7 @@
     <Compile Include="Modelo\empresas.cs" />
     <Compile Include="Modelo\estado_contrato.cs" />
     <Compile Include="Modelo\estado_vehiculo.cs" />
+    <Compile Include="Modelo\guardarUsuario.cs" />
     <Compile Include="Modelo\tipos_seguros.cs" />
     <Compile Include="Modelo\tipo_carnet.cs" />
     <Compile Include="Modelo\usuarios.cs" />

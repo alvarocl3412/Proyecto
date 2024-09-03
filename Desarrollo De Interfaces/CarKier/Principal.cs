@@ -18,6 +18,7 @@ namespace CarKier
         public Principal()
         {
             InitializeComponent();
+        
         }
 
         public Principal(usuarios usu)

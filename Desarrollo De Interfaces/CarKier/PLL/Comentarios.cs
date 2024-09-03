@@ -50,8 +50,6 @@ namespace CarKier.PLL
             tsmiEliminar.Enabled = hasSelectedItem;
         }
 
-
-
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
             PLL.VerComentario comentario = new PLL.VerComentario(usuAdmin);
