@@ -20,6 +20,12 @@ namespace CarKier.PLL
         private static VehiculosDal vehiculoDal = new VehiculosDal();
         private static UsuariosDal usuDal = new UsuariosDal();
 
+
+        public VerComentario()
+        {
+            InitializeComponent();
+        }
+
         public VerComentario(usuarios us)
         {
             InitializeComponent();
@@ -37,10 +43,10 @@ namespace CarKier.PLL
 
         }
 
-        public VerComentario(comentarios comentario,usuarios us)
+        public VerComentario(comentarios comen, usuarios us)
         {
             InitializeComponent();
-            _comentarios = comentario;
+            _comentarios = comen;
             usuAdmin = us;
             MostrarComentario();
             txtRespuesta.Enabled = false;
@@ -68,7 +74,7 @@ namespace CarKier.PLL
                     // El usuario hizo clic en "No"
                     this.Close();
                 }
-            } 
+            }
             else
             {
                 DialogResult result = MessageBox.Show("¿Quieres guardar los datos de los comentarios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -87,12 +93,12 @@ namespace CarKier.PLL
                     this.Close();
                 }
             }
-           
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-         DialogResult result = MessageBox.Show("¿Quieres salir sin guardar los datos de los comentario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Quieres salir sin guardar los datos de los comentario?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 // El usuario hizo clic en "Yes"
@@ -139,17 +145,18 @@ namespace CarKier.PLL
             //Actualizamos los datos los usuarios no se podra modifcar ni el id de respuesta 
             _comentarios.fecha = DateTime.Parse(txtFecha.Text);
             _comentarios.comentario = txtComentario.Text;
-           
+
             vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
-            if(vehi != null)
+            if (vehi != null)
             {
                 _comentarios.idVehiculo = vehi.id;
-            } else
+            }
+            else
             {
                 MessageBox.Show("se cerrara la ventana no se guarda");
                 return;
             }
-            
+
 
             bool modificado = await comenDal.UpdateComentario(_comentarios);
             if (modificado)
@@ -165,30 +172,40 @@ namespace CarKier.PLL
 
         private async void CrearComentario()
         {
+            _comentarios.comentario = txtComentario.Text;
+            _comentarios.idUsuario = usuAdmin.id;
+            _comentarios.idComentarioRespuesta = null;
+           
+
+            if (string.IsNullOrWhiteSpace(txtIdVehiculo.Text))
+            {
+                MessageBox.Show("La matrícula del vehículo no puede estar vacía.");
+                return;
+            }
 
             vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
+
             if (vehi != null)
             {
                 _comentarios.idVehiculo = vehi.id;
             }
             else
             {
-                MessageBox.Show("se cerrara la ventana no se guarda");
+                MessageBox.Show("No se encontró el vehículo con la matrícula proporcionada. Se cerrará la ventana y no se guardará el comentario.");
                 return;
             }
 
-            _comentarios.fecha = DateTime.Now;
-            _comentarios.comentario = txtComentario.Text;
-            _comentarios.idUsuario = usuAdmin.id;
+
 
             bool creado = await comenDal.CrearComentario(_comentarios);
+
             if (creado)
             {
-                MessageBox.Show("Se ha creado correctamente");
+                MessageBox.Show("Se ha creado el comentario correctamente.");
             }
             else
             {
-                MessageBox.Show("No se ha podido crear correctamente");
+                MessageBox.Show("No se ha podido crear el comentario.");
             }
         }
 

@@ -97,8 +97,12 @@ namespace CarKier.DAL
 
         public async Task<vehiculos> findVehiculoMatricula(string matricula)
         {
+            if (string.IsNullOrWhiteSpace(matricula))
+            {
+                throw new ArgumentException("La matrícula no puede estar vacía", nameof(matricula));
+            }
 
-            string cadena = apiUrl + "VehiuculosMatricula/" + matricula;
+            string cadena = apiUrl + "VehiuculosMatricula/" + matricula.ToUpper();
 
             try
             {
@@ -113,9 +117,10 @@ namespace CarKier.DAL
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return null; 
+                return null;
             }
         }
+
         public async Task<bool> CrearVehiculo(vehiculos vehiculo)
         {
             string cadena = apiUrl + "CrearVehiculo"; // Cambia esta URL a la de tu API
