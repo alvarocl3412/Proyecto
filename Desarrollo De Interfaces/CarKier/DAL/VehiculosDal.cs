@@ -102,7 +102,7 @@ namespace CarKier.DAL
                 throw new ArgumentException("La matrícula no puede estar vacía", nameof(matricula));
             }
 
-            string cadena = apiUrl + "VehiuculosMatricula/" + matricula.ToUpper();
+            string cadena = apiUrl + "VehiuculosMatricula/" + Uri.EscapeDataString(matricula.ToUpper());
 
             try
             {
@@ -111,13 +111,30 @@ namespace CarKier.DAL
 
                 string responseData = await response.Content.ReadAsStringAsync();
 
+                // Debug: Verifica la respuesta obtenida
+                Console.WriteLine($"Respuesta de la API para findVehiculoMatricula: {responseData}");
+
                 vehiculos vehiculo = JsonConvert.DeserializeObject<vehiculos>(responseData);
-                return vehiculo;
+
+                if (vehiculo != null)
+                {
+                    return vehiculo;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo deserializar el vehículo.");
+                    return null; // Valor predeterminado si no se encuentra el vehículo
+                }
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return null;
+                return null; // Retorna null en caso de error
+            }
+            catch (JsonException e)
+            {
+                Console.WriteLine($"Error al deserializar el JSON: {e.Message}");
+                return null; // Retorna null si hay un error al deserializar
             }
         }
 
@@ -144,6 +161,29 @@ namespace CarKier.DAL
             catch (HttpRequestException e)
             {
                 // Manejo de errores
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateVehiculo(vehiculos vehiculo)
+        {
+            string cadena = apiUrl + "updateVehiculo";
+            try
+            {
+                var json = JsonConvert.SerializeObject(vehiculo);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PutAsync(cadena, data);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Puedes realizar validaciones aquí si lo necesitas, dependiendo de la respuesta
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
                 return false;
             }

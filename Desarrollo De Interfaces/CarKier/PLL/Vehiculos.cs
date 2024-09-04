@@ -44,6 +44,12 @@ namespace CarKier.PLL
             eliminarToolStripMenuItem.Enabled = hasSelectedItem;
         }
 
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PLL.VerVehiculo infoVehiculo = new PLL.VerVehiculo();
+            infoVehiculo.Show();
+        }
+
         private void lvVehiculos_DoubleClick(object sender, EventArgs e)
         {
             verVehiculo();
@@ -125,6 +131,7 @@ namespace CarKier.PLL
 
             
         }
+
 
 
 

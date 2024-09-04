@@ -98,6 +98,50 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<int> findEmpresNombre(string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new ArgumentException("El nombre no puede estar vacío", nameof(nombre));
+            }
+
+            string urlConParametros = apiUrl + "EmpresasNombre/" + Uri.EscapeDataString(nombre);
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Debug: Verifica la respuesta obtenida
+                Console.WriteLine($"Respuesta de la API para findEmpresNombre: {responseData}");
+
+                empresas empresa = JsonConvert.DeserializeObject<empresas>(responseData);
+
+                if (empresa != null)
+                {
+                    return empresa.id;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo deserializar la empresa.");
+                    return 0; // Valor predeterminado si no se encuentra la empresa
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return 0; // Retorna 0 en caso de error
+            }
+            catch (JsonException e)
+            {
+                Console.WriteLine($"Error al deserializar el JSON: {e.Message}");
+                return 0; // Retorna 0 si hay un error al deserializar
+            }
+        }
+
+
         public async Task<bool> CrearUsuario(empresas empresa)
         {
             string cadena = apiUrl + "CrearEmpresa"; // Cambia esta URL a la de tu API

@@ -97,6 +97,27 @@ namespace CarKier.DAL
             }
         }
 
+        public async Task<int> findUsuarioDni(string dni)
+        {
+            string urlConParametros = apiUrl + "UsuarioDni/" + dni;
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                usuarios usuario = JsonConvert.DeserializeObject<usuarios>(responseData);
+                return usuario.id;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return 0; // Retorna "Error" si hay una excepción
+            }
+        }
+
         public async Task<usuarios> findUsuarioNombreApellido(String nombre, String appellidos)
         {
             // Verificar si el id es null

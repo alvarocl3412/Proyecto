@@ -164,16 +164,16 @@
             // 
             // txtUsuPertenece
             // 
-            this.txtUsuPertenece.Location = new System.Drawing.Point(597, 49);
+            this.txtUsuPertenece.Location = new System.Drawing.Point(622, 49);
             this.txtUsuPertenece.Name = "txtUsuPertenece";
-            this.txtUsuPertenece.Size = new System.Drawing.Size(171, 20);
+            this.txtUsuPertenece.Size = new System.Drawing.Size(146, 20);
             this.txtUsuPertenece.TabIndex = 19;
             // 
             // txtModelo
             // 
-            this.txtModelo.Location = new System.Drawing.Point(597, 143);
+            this.txtModelo.Location = new System.Drawing.Point(622, 143);
             this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(171, 20);
+            this.txtModelo.Size = new System.Drawing.Size(146, 20);
             this.txtModelo.TabIndex = 20;
             // 
             // txtAnio
@@ -185,9 +185,9 @@
             // 
             // txtKilometro
             // 
-            this.txtKilometro.Location = new System.Drawing.Point(597, 194);
+            this.txtKilometro.Location = new System.Drawing.Point(622, 194);
             this.txtKilometro.Name = "txtKilometro";
-            this.txtKilometro.Size = new System.Drawing.Size(171, 20);
+            this.txtKilometro.Size = new System.Drawing.Size(146, 20);
             this.txtKilometro.TabIndex = 22;
             // 
             // txtMatricula
@@ -206,9 +206,9 @@
             // 
             // txtPrecioDia
             // 
-            this.txtPrecioDia.Location = new System.Drawing.Point(597, 246);
+            this.txtPrecioDia.Location = new System.Drawing.Point(622, 246);
             this.txtPrecioDia.Name = "txtPrecioDia";
-            this.txtPrecioDia.Size = new System.Drawing.Size(171, 20);
+            this.txtPrecioDia.Size = new System.Drawing.Size(146, 20);
             this.txtPrecioDia.TabIndex = 25;
             // 
             // txtMarca
@@ -258,9 +258,9 @@
             // cbEstado
             // 
             this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Location = new System.Drawing.Point(597, 93);
+            this.cbEstado.Location = new System.Drawing.Point(622, 93);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(171, 21);
+            this.cbEstado.Size = new System.Drawing.Size(146, 21);
             this.cbEstado.TabIndex = 31;
             // 
             // VerVehiculo

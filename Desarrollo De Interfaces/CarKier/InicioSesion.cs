@@ -20,6 +20,12 @@ namespace CarKier
         {
             InitializeComponent();
             this.Resize += InicioSesion_SizeChanged;
+
+            if (guardarUsuario.numeroGuardado != 0)
+            {
+                Principal infoDesarrollador = new Principal();
+                infoDesarrollador.Show();
+            }
         }
 
         //Metodos funcionalidades
