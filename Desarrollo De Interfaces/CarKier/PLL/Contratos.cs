@@ -43,20 +43,20 @@ namespace CarKier.PLL
             tsmEliminar.Enabled = hasSelectedItem;
         }
 
-        private void lvContratos_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
         private void tsmNuevo_Click(object sender, EventArgs e)
         {
+            PLL.VerContrato infoContrato = new PLL.VerContrato();
+            infoContrato.Show();
+        }
 
+        private void lvContratos_DoubleClick(object sender, EventArgs e)
+        {
+            verContratos();
         }
 
         private void tsmVer_Click(object sender, EventArgs e)
         {
-            PLL.VerContrato infoContrato = new PLL.VerContrato();
-            infoContrato.Show();
+            verContratos();
         }
 
         private async void tsmEliminar_Click(object sender, EventArgs e)
@@ -116,7 +116,7 @@ namespace CarKier.PLL
                 ListViewItem item = new ListViewItem(matricula);
 
 
-                string nom = await usuDal.findUsuarioid(contra.idcliente);
+                string nom = await usuDal.findUsuarioid(contra.idCliente);
                 item.SubItems.Add(nom);
 
                 string estado = await estadoContDal.findEstadoContratoid(contra.idEstado);
@@ -135,6 +135,25 @@ namespace CarKier.PLL
             }
         }
 
+        private async void verContratos()
+        {
+            var selectedItem = lvContratos.SelectedItems[0];
+            int id = int.Parse(selectedItem.Tag.ToString());
+
+            contratos contrato = await contratoDal.findContratoid(id);
+
+            if (contrato != null)
+            {
+                PLL.VerContrato infoContrato = new PLL.VerContrato(contrato);
+                infoContrato.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("No se ha encontrado el usuario");
+            }
+
+        }
 
 
 

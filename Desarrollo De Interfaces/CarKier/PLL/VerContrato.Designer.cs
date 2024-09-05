@@ -40,9 +40,6 @@
             this.lblPreciototal = new System.Windows.Forms.Label();
             this.txtFechaFinal = new System.Windows.Forms.TextBox();
             this.txtFechaInicio = new System.Windows.Forms.TextBox();
-            this.txtSeguro = new System.Windows.Forms.TextBox();
-            this.txtPagado = new System.Windows.Forms.TextBox();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.txtIdVehiculo = new System.Windows.Forms.TextBox();
             this.txtPrecioDia = new System.Windows.Forms.TextBox();
@@ -50,6 +47,9 @@
             this.pbImgContrato = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.cbEstadoContrato = new System.Windows.Forms.ComboBox();
+            this.cbPagado = new System.Windows.Forms.ComboBox();
+            this.cbSeguro = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImgContrato)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,17 +57,17 @@
             // 
             this.lblIdCliente.AutoSize = true;
             this.lblIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdCliente.Location = new System.Drawing.Point(261, 130);
+            this.lblIdCliente.Location = new System.Drawing.Point(259, 130);
             this.lblIdCliente.Name = "lblIdCliente";
-            this.lblIdCliente.Size = new System.Drawing.Size(74, 20);
-            this.lblIdCliente.TabIndex = 13;
-            this.lblIdCliente.Text = "idCliente:";
+            this.lblIdCliente.Size = new System.Drawing.Size(62, 20);
+            this.lblIdCliente.TabIndex = 2;
+            this.lblIdCliente.Text = "Cliente:";
             // 
             // lblSeguro
             // 
             this.lblSeguro.AutoSize = true;
             this.lblSeguro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeguro.Location = new System.Drawing.Point(262, 182);
+            this.lblSeguro.Location = new System.Drawing.Point(259, 182);
             this.lblSeguro.Name = "lblSeguro";
             this.lblSeguro.Size = new System.Drawing.Size(65, 20);
             this.lblSeguro.TabIndex = 14;
@@ -97,11 +97,11 @@
             // 
             this.lblIdVehiculo.AutoSize = true;
             this.lblIdVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdVehiculo.Location = new System.Drawing.Point(349, 76);
+            this.lblIdVehiculo.Location = new System.Drawing.Point(330, 78);
             this.lblIdVehiculo.Name = "lblIdVehiculo";
-            this.lblIdVehiculo.Size = new System.Drawing.Size(86, 20);
+            this.lblIdVehiculo.Size = new System.Drawing.Size(142, 20);
             this.lblIdVehiculo.TabIndex = 17;
-            this.lblIdVehiculo.Text = "idVehiuclo:";
+            this.lblIdVehiculo.Text = "Matricula Vehiculo:";
             // 
             // lblEstado
             // 
@@ -157,40 +157,19 @@
             this.txtFechaInicio.Size = new System.Drawing.Size(128, 20);
             this.txtFechaInicio.TabIndex = 24;
             // 
-            // txtSeguro
-            // 
-            this.txtSeguro.Location = new System.Drawing.Point(355, 182);
-            this.txtSeguro.Name = "txtSeguro";
-            this.txtSeguro.Size = new System.Drawing.Size(128, 20);
-            this.txtSeguro.TabIndex = 25;
-            // 
-            // txtPagado
-            // 
-            this.txtPagado.Location = new System.Drawing.Point(624, 184);
-            this.txtPagado.Name = "txtPagado";
-            this.txtPagado.Size = new System.Drawing.Size(149, 20);
-            this.txtPagado.TabIndex = 26;
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.Location = new System.Drawing.Point(624, 130);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(149, 20);
-            this.txtEstado.TabIndex = 27;
-            // 
             // txtIdCliente
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(355, 130);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(128, 20);
-            this.txtIdCliente.TabIndex = 28;
+            this.txtIdCliente.TabIndex = 2;
             // 
             // txtIdVehiculo
             // 
             this.txtIdVehiculo.Location = new System.Drawing.Point(479, 78);
             this.txtIdVehiculo.Name = "txtIdVehiculo";
             this.txtIdVehiculo.Size = new System.Drawing.Size(149, 20);
-            this.txtIdVehiculo.TabIndex = 29;
+            this.txtIdVehiculo.TabIndex = 1;
             // 
             // txtPrecioDia
             // 
@@ -241,20 +220,48 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // cbEstadoContrato
+            // 
+            this.cbEstadoContrato.FormattingEnabled = true;
+            this.cbEstadoContrato.ItemHeight = 13;
+            this.cbEstadoContrato.Location = new System.Drawing.Point(624, 128);
+            this.cbEstadoContrato.Name = "cbEstadoContrato";
+            this.cbEstadoContrato.Size = new System.Drawing.Size(149, 21);
+            this.cbEstadoContrato.TabIndex = 3;
+            // 
+            // cbPagado
+            // 
+            this.cbPagado.FormattingEnabled = true;
+            this.cbPagado.Items.AddRange(new object[] {
+            "Si",
+            "No"});
+            this.cbPagado.Location = new System.Drawing.Point(624, 182);
+            this.cbPagado.Name = "cbPagado";
+            this.cbPagado.Size = new System.Drawing.Size(149, 21);
+            this.cbPagado.TabIndex = 34;
+            // 
+            // cbSeguro
+            // 
+            this.cbSeguro.FormattingEnabled = true;
+            this.cbSeguro.Location = new System.Drawing.Point(355, 183);
+            this.cbSeguro.Name = "cbSeguro";
+            this.cbSeguro.Size = new System.Drawing.Size(128, 21);
+            this.cbSeguro.TabIndex = 35;
+            // 
             // VerContrato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbSeguro);
+            this.Controls.Add(this.cbPagado);
+            this.Controls.Add(this.cbEstadoContrato);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtPrecioTotal);
             this.Controls.Add(this.txtPrecioDia);
             this.Controls.Add(this.txtIdVehiculo);
             this.Controls.Add(this.txtIdCliente);
-            this.Controls.Add(this.txtEstado);
-            this.Controls.Add(this.txtPagado);
-            this.Controls.Add(this.txtSeguro);
             this.Controls.Add(this.txtFechaInicio);
             this.Controls.Add(this.txtFechaFinal);
             this.Controls.Add(this.lblPreciototal);
@@ -270,6 +277,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerContrato";
             this.Text = "Contrato";
+            this.Load += new System.EventHandler(this.VerContrato_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImgContrato)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,14 +298,14 @@
         private System.Windows.Forms.Label lblPreciototal;
         private System.Windows.Forms.TextBox txtFechaFinal;
         private System.Windows.Forms.TextBox txtFechaInicio;
-        private System.Windows.Forms.TextBox txtSeguro;
-        private System.Windows.Forms.TextBox txtPagado;
-        private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.TextBox txtIdVehiculo;
         private System.Windows.Forms.TextBox txtPrecioDia;
         private System.Windows.Forms.TextBox txtPrecioTotal;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ComboBox cbEstadoContrato;
+        private System.Windows.Forms.ComboBox cbPagado;
+        private System.Windows.Forms.ComboBox cbSeguro;
     }
 }

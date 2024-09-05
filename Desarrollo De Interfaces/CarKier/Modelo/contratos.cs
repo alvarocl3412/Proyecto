@@ -11,7 +11,7 @@ namespace CarKier.Modelo
         // Propiedades
         public int id { get; set; }
         public int idvehiculo { get; set; }
-        public int idcliente { get; set; }
+        public int idCliente { get; set; }
         public int idEstado { get; set; }
         public int idSeguro { get; set; }
         public DateTime fechaInicio { get; set; }
@@ -23,6 +23,7 @@ namespace CarKier.Modelo
         // Constructor por defecto
         public contratos()
         {
+
         }
 
         // Constructor que inicializa todas las propiedades
@@ -30,7 +31,7 @@ namespace CarKier.Modelo
         {
             this.id = idcontrato;
             this.idvehiculo = idvehiculo;
-            this.idcliente = idcliente;
+            this.idCliente = idcliente;
             this.idEstado = idestado;
             this.idSeguro = id_seguro;
             this.fechaInicio = fecha_inicio;

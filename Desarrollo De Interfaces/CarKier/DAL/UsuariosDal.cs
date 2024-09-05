@@ -97,24 +97,50 @@ namespace CarKier.DAL
             }
         }
 
-        public async Task<int> findUsuarioDni(string dni)
+        public async Task<int?> findUsuarioDni(string dni)
         {
             string urlConParametros = apiUrl + "UsuarioDni/" + dni;
 
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
-                response.EnsureSuccessStatusCode();
 
-                string responseData = await response.Content.ReadAsStringAsync();
+                // Verifica si la respuesta es exitosa y contiene datos
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
 
-                usuarios usuario = JsonConvert.DeserializeObject<usuarios>(responseData);
-                return usuario.id;
+                    // Verifica si hay contenido antes de intentar deserializar
+                    if (!string.IsNullOrEmpty(responseData))
+                    {
+                        usuarios usuario = JsonConvert.DeserializeObject<usuarios>(responseData);
+                        return usuario?.id; // Si no se encuentra el usuario, devuelve null
+                    }
+                    else
+                    {
+                        return null; // Devuelve null si no hay contenido en la respuesta
+                    }
+                }
+                else
+                {
+                    // Maneja otros códigos de estado de error si es necesario
+                    return null;
+                }
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"Error en la solicitud: {e.Message}");
-                return 0; // Retorna "Error" si hay una excepción
+                return null; // Retorna null si hay una excepción de solicitud HTTP
+            }
+            catch (JsonSerializationException e)
+            {
+                Console.WriteLine($"Error en la deserialización: {e.Message}");
+                return null; // Retorna null si hay un error en la deserialización
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error inesperado: {e.Message}");
+                return null; // Retorna null para cualquier otro error inesperado
             }
         }
 

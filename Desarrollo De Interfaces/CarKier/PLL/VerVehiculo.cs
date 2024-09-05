@@ -231,10 +231,10 @@ namespace CarKier.PLL
             if (!string.IsNullOrEmpty(txtUsuPertenece.Text))
             {
                 // Intentamos obtener el ID del usuario
-                int idUsuario = await usuDal.findUsuarioDni(txtUsuPertenece.Text);
+                int? idUsuario = await usuDal.findUsuarioDni(txtUsuPertenece.Text);
 
                 // Si obtenemos un ID válido, lo asignamos al vehículo
-                if (idUsuario > 0)
+                if (idUsuario != null)
                 {
                     _vehiculo.idUsuariosPropietario = idUsuario;
                 }

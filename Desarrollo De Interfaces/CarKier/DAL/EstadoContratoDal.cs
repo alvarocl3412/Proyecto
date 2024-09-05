@@ -19,12 +19,39 @@ namespace CarKier.DAL
             _httpClient = new HttpClient();
         }
 
+        public async Task<List<estado_contrato>> EstadoContratosfindAll()
+        {
+            string cadena = apiUrl + "EstadoContratofindAll";
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
+
+                // Verificar si la solicitud fue exitosa
+                response.EnsureSuccessStatusCode();
+
+                // Leer el contenido de la respuesta como string
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Deserializar el string JSON a una lista de objetos Empresa
+                List<estado_contrato> estadoContrato = JsonConvert.DeserializeObject<List<estado_contrato>>(responseData);
+
+
+                return estadoContrato;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null;
+            }
+        }
+
+
         public async Task<string> findEstadoContratoid(int? id)
         {
             // Verificar si el id es null
             if (id == null)
                 return "Sin Estado";
-            string urlConParametros = apiUrl+"EstadoContratoId/" + id.ToString();
+            string urlConParametros = apiUrl + "EstadoContratoId/" + id.ToString();
 
             try
             {
@@ -58,7 +85,7 @@ namespace CarKier.DAL
                 string responseData = await response.Content.ReadAsStringAsync();
 
                 estado_contrato estadoContrato = JsonConvert.DeserializeObject<estado_contrato>(responseData);
-                return estadoContrato.id ;
+                return estadoContrato.id;
             }
             catch (HttpRequestException e)
             {
