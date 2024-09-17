@@ -2,13 +2,10 @@ package es.ua.eps.carkier
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import es.ua.eps.carkier.databinding.ActivityInicioSesionBinding
+import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.databinding.ActivityPrincipalBinding
 
 class Principal : AppCompatActivity() {
@@ -23,11 +20,11 @@ class Principal : AppCompatActivity() {
         binding.recyclerViewVehiculos?.layoutManager = GridLayoutManager(this, 2) // 2 columnas
         // Datos de ejemplo para los vehículos
         val listaDeVehiculos = listOf(
-            Vehiuclo("Coche 1"),
-            Vehiuclo("Coche 2"),
-            Vehiuclo("Coche 3"),
-            Vehiuclo("Coche 4"),
-            Vehiuclo("Coche 5")
+            Vehiculos("Coche 1"),
+            Vehiculos("Coche 2"),
+            Vehiculos("Coche 3"),
+            Vehiculos("Coche 4"),
+            Vehiculos("Coche 5")
         )
 
         // Asignar el adaptador
@@ -48,11 +45,25 @@ class Principal : AppCompatActivity() {
                     true
                 }
                 R.id.nav_profile -> {
-                    //startActivity(Intent(this, ProfileActivity::class.java))
+                    cerrarSesion()
                     true
                 }
                 else -> false
             }
         }
+    }
+
+
+         fun cerrarSesion() {
+        // Elimina las preferencias compartidas
+        val sharedPreferences = getSharedPreferences("MiPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear() // Borra todas las preferencias
+        editor.apply()
+
+        // Redirige al usuario a la actividad de inicio de sesión
+        val intent = Intent(this, InicioSesion::class.java)
+        startActivity(intent)
+        finish() // Termina la actividad actual para que el usuario no pueda regresar a ella
     }
 }

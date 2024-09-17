@@ -32,7 +32,7 @@ public class Usuario{
     private String contrasena;
 
     @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
+        private LocalDate fechaNacimiento;
 
     public Usuario() {
     }

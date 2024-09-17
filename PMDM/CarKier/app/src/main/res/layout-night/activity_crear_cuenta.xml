@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CrearCuenta">
+    tools:context=".CrearCuenta.CrearCuenta">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,18 +18,49 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0" >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textSize="32sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"
+            android:shadowColor ="@color/rojado_logo"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="188dp"
+        android:layout_height="174dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.109"
+        app:srcCompat="@drawable/perfil_oscuro" />
 
     <TableLayout
         android:id="@+id/tabla"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
+        android:layout_width="400dp"
+        android:layout_height="181dp"
+        android:layout_marginRight="8dp"
         android:stretchColumns="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.601">
         <!-- Fila 1 -->
         <TableRow>
 
@@ -50,8 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint=""
-                android:textColorHint="@color/white"
+                android:hint="DNI"
                 android:textColor="@color/white"
                 android:inputType="text"
                 android:padding="8dp"
@@ -79,12 +109,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint=""
+                android:hint="Nombre"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
+                android:textColor="@color/white"/>
         </TableRow>
 
         <!-- Fila 3 -->
@@ -107,12 +136,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint=""
+                android:hint="Apellido"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
+                android:textColor="@color/white"/>
         </TableRow>
 
         <!-- Fila 4 -->
@@ -135,12 +163,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint=""
+                android:hint="dia/mes/año"
                 android:inputType="date"
                 android:padding="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
+                android:textColor="@color/white"/>
 
         </TableRow>
 

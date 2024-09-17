@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,17 +20,17 @@
             android:label="@string/title_activity_principal"
             android:theme="@style/Theme.CarKier" />
         <activity
-            android:name=".OlvideContrasena"
+            android:name=".OlvideContrasenia"
             android:exported="false"
             android:theme="@style/Theme.CarKier" />
         <activity
-            android:name=".CrearCarnetDeConducir"
+            android:name=".CrearCuenta.CrearCarnetDeConducir"
             android:exported="false" />
         <activity
-            android:name=".CrearCuenta2"
+            android:name=".CrearCuenta.CrearCuenta2"
             android:exported="false" />
         <activity
-            android:name=".CrearCuenta"
+            android:name=".CrearCuenta.CrearCuenta"
             android:exported="false" />
         <activity
             android:name=".InicioSesion"

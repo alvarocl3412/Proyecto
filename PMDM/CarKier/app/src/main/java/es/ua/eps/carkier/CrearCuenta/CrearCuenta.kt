@@ -1,15 +1,15 @@
-package es.ua.eps.carkier
+package es.ua.eps.carkier.CrearCuenta
 
+import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.view.animation.AnimationUtils
+import es.ua.eps.carkier.R
 import es.ua.eps.carkier.databinding.ActivityCrearCuentaBinding
 
 class CrearCuenta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val binding = ActivityCrearCuentaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
