@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="azul">#0000ff</color>
+    <color name="azulito">#0ae7ff </color>
+    <color name ="azuloscuro">#96d3d9</color>
 </resources>

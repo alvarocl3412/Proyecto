@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CarKier</string>
 
     <string name="iniciosesion_correo">Correo</string>
     <string name="iniciosesion_contra">Contraseña</string>
@@ -23,11 +23,7 @@
     <string name="crearcarnet_fechaexpedicion">Fecha Expedicion:</string>
     <string name="crearcarnet_crearcarnet">Crear Carnet:</string>
 
-    <string name="olvidecontra_descripcion">Introduce tu correo.</string>
-    <string name="title_activity_principal">Principal</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="olvidecontra_descripcion">Introduce tu correo. </string>
     <string name="principal_menu_home">Home</string>
     <string name="principa_menu_buscar">pincipla</string>
     <string name="principal_menu_perfil">pincipal</string>

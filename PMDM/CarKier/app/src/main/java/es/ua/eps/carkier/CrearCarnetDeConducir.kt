@@ -1,23 +1,20 @@
 package es.ua.eps.carkier
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import es.ua.eps.carkier.databinding.ActivityCrearCuentaBinding
+import androidx.appcompat.app.AppCompatActivity
+import es.ua.eps.carkier.databinding.ActivityCrearCarnetDeConducirBinding
 
-class CrearCuenta : AppCompatActivity() {
+class CrearCarnetDeConducir : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityCrearCuentaBinding.inflate(layoutInflater)
+        val binding = ActivityCrearCarnetDeConducirBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnSiguiente.setOnClickListener(){
+        binding.btnCrearCarnet.setOnClickListener(){
             val intent = Intent(this, CrearCuenta2::class.java)
             startActivity(intent)
         }
-
     }
-
 }

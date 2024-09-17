@@ -14,7 +14,8 @@ class InicioSesion : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnInicioSesion.setOnClickListener(){
-
+            val intent = Intent(this, Principal::class.java)
+            startActivity(intent)
         }
 
         binding.btnCrearCuenta.setOnClickListener(){
@@ -22,8 +23,10 @@ class InicioSesion : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnSalir.setOnClickListener(){
-            finish()
+        binding.txtOlvideContra.setOnClickListener(){
+            val intent = Intent( this,OlvideContrasenia::class.java)
+            startActivity(intent)
         }
+
     }
 }
