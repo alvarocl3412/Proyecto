@@ -1,4 +1,4 @@
-package es.ua.eps.carkier
+package es.ua.eps.carkier.Carnets
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -8,23 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import es.ua.eps.carkier.Carnets.MostrarCarnets
-import es.ua.eps.carkier.Modelos.Vehiculos
-import es.ua.eps.carkier.adapter.VehiculoAdapter
-import es.ua.eps.carkier.databinding.ActivityPrincipalBinding
+import es.ua.eps.carkier.InicioSesion
+import es.ua.eps.carkier.Principal
+import es.ua.eps.carkier.R
+import es.ua.eps.carkier.databinding.ActivityMostrarCarnetsBinding
 
-class Principal : AppCompatActivity() {
-    private lateinit var binding: ActivityPrincipalBinding
+class MostrarCarnets : AppCompatActivity() {
+    private lateinit var binding: ActivityMostrarCarnetsBinding
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var sharedPreferences: SharedPreferences
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityPrincipalBinding.inflate(layoutInflater)
+        binding = ActivityMostrarCarnetsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         cargarDatos()
@@ -38,23 +35,6 @@ class Principal : AppCompatActivity() {
 
         // Inicializa el DrawerLayout
         drawerLayout = binding.drawerLayout
-
-        // RecyclerView configuration
-        binding.recyclerViewVehiculos.layoutManager = GridLayoutManager(this, 2) // 2 columnas
-
-        // Datos de ejemplo para los vehículos
-        val listaDeVehiculos = listOf(
-            Vehiculos("Coche 1"),
-            Vehiculos("Coche 2"),
-            Vehiculos("Coche 3"),
-            Vehiculos("Coche 4"),
-            Vehiculos("Coche 5")
-        )
-
-        // Asignar el adaptador
-        val adapter = VehiculoAdapter(listaDeVehiculos)
-        binding.recyclerViewVehiculos.adapter = adapter
-
         // Para la funcionalidad de los botones del menu de abajo
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -78,12 +58,8 @@ class Principal : AppCompatActivity() {
 
         // Configuración del NavigationView usando binding
         binding.navigationView.setNavigationItemSelectedListener { item ->
+
             when (item.itemId) {
-                R.id.carnet -> {
-                    val intent = Intent(this, MostrarCarnets::class.java)
-                    startActivity(intent)
-                    true
-                }
                 R.id.CerrarSesion -> {
                     cerrarSesion()
                     true
@@ -103,7 +79,7 @@ class Principal : AppCompatActivity() {
             }
         }
     }
-     fun setTheme(isDarkMode: Boolean) {
+    fun setTheme(isDarkMode: Boolean) {
         if (isDarkMode) {
             // Establecer modo oscuro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -134,7 +110,6 @@ class Principal : AppCompatActivity() {
         correoTextView.text = correoUsuario
 
     }
-
     fun cerrarSesion() {
         // Elimina las preferencias compartidas
         val sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
@@ -147,4 +122,5 @@ class Principal : AppCompatActivity() {
         startActivity(intent)
         finish() // Termina la actividad actual para que el usuario no pueda regresar a ella
     }
+
 }

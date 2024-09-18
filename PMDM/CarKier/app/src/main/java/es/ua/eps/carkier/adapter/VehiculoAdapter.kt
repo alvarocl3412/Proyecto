@@ -1,4 +1,4 @@
-package es.ua.eps.carkier
+package es.ua.eps.carkier.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import es.ua.eps.carkier.Modelos.Vehiculos
+import es.ua.eps.carkier.R
 
 class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
     RecyclerView.Adapter<VehiculoAdapter.VehiculoViewHolder>() {

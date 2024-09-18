@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">CarKier</string>
+    <string name="abierto">a</string>
+    <string name="cerrado">b</string>
 
     <string name="iniciosesion_correo">Correo</string>
     <string name="iniciosesion_contra">Contraseña</string>

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import android.app.DatePickerDialog
+import java.security.Principal
 
 class CrearCarnetDeConducir : AppCompatActivity() {
 
@@ -29,17 +30,17 @@ class CrearCarnetDeConducir : AppCompatActivity() {
 
         // Configura el clic en el EditText para mostrar el DatePickerDialog
         editTextDate.setOnClickListener {
-            showDatePickerDialog()
+            mostrarCalendario()
         }
 
         binding.btnCrearCarnet.setOnClickListener {
-            val intent = Intent(this, CrearCuenta2::class.java)
+            val intent = Intent(this, Principal::class.java)
             startActivity(intent)
         }
     }
 
-    private fun showDatePickerDialog() {
-        val datePickerDialog = DatePickerDialog(
+    private fun mostrarCalendario() {
+        val calendario = DatePickerDialog(
             this,
             { _, year, month, dayOfMonth ->
                 // Establece la fecha seleccionada en el calendario
@@ -53,7 +54,7 @@ class CrearCarnetDeConducir : AppCompatActivity() {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
-        datePickerDialog.show()
+        calendario.show()
     }
 
     private fun updateDateLabel() {

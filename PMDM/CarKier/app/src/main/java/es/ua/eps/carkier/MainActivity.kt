@@ -11,13 +11,12 @@ import es.ua.eps.carkier.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val uri: Uri = Uri.parse( "android.resource://" + packageName +"/raw/intro")
-        binding.IntroVideo.setVideoURI(uri)
-        binding.IntroVideo.start()
+        binding.IntroVideo?.setVideoURI(uri)
+        binding.IntroVideo?.start()
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent( this,InicioSesion::class.java)

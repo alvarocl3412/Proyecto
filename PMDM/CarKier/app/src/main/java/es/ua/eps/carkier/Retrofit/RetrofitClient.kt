@@ -1,4 +1,4 @@
-package es.ua.eps.carkier
+package es.ua.eps.carkier.Retrofit
 
 import es.ua.eps.carkier.ApiService.ApiService
 import retrofit2.Retrofit

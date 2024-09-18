@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EstiloTextoOscuroNavegacionLateral" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">19sp</item> <!-- Cambia 18sp al tamaño deseado -->
+        <item name="android:textColor">@color/white</item> <!-- Puedes mantener el color blanco aquí -->
+    </style>
+
+    <style name="EstiloTextoNavegacionLateral" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">19sp</item> <!-- Cambia 18sp al tamaño deseado -->
+        <item name="android:textColor">@color/black</item> <!-- Puedes mantener el color blanco aquí -->
+    </style>
+</resources>

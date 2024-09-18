@@ -6,116 +6,100 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import es.ua.eps.carkier.CrearCuenta.CrearCuenta
+import es.ua.eps.carkier.CrearCuenta.OlvideContrasenia
 import es.ua.eps.carkier.Modelos.Usuarios
+import es.ua.eps.carkier.Retrofit.RetrofitClient
 import es.ua.eps.carkier.databinding.ActivityInicioSesionBinding
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class InicioSesion : AppCompatActivity() {
     private lateinit var binding: ActivityInicioSesionBinding
-
-    // para acceder a las preferencias compartidas,
-    // que se usan para guardar datos persistentes en el dispositivo.
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityInicioSesionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*
-        Guardamos en MiPrefs  los datos y le ponemos mode_private
-        para que solo la aplicacion sea accesible
-         */
-        sharedPreferences = getSharedPreferences("MiPrefs", MODE_PRIVATE)
+        // Inicializa SharedPreferences para guardar datos persistentes
+        sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
 
-        // Revisa si el usuario está registrado
+        // Verifica si el usuario ya está registrado y redirige si es necesario
         verificarUsuarioRegistrado()
 
+        // Configura el botón de inicio de sesión
         binding.btnInicioSesion.setOnClickListener {
             val email = binding.txtEmail.text.toString()
             val contrasena = binding.txtContra.text.toString()
             comprobarExistente(email, contrasena)
         }
 
+        // Configura el botón de crear cuenta
         binding.btnCrearCuenta.setOnClickListener {
             val intent = Intent(this, CrearCuenta::class.java)
             startActivity(intent)
         }
 
+        // Configura el botón de "Olvidé mi contraseña"
         binding.txtOlvideContra.setOnClickListener {
             val intent = Intent(this, OlvideContrasenia::class.java)
             startActivity(intent)
         }
     }
 
-    //Metodo que le pasamos el email y la contraseña
+    // Método que comprueba si el usuario existe en la API
     private fun comprobarExistente(email: String, contra: String) {
-        //Hacemos la llamada a la api
         RetrofitClient.instance.loginUsuario(email, contra).enqueue(object : Callback<Usuarios> {
-            //Maneja la respuesta de la api
             override fun onResponse(call: Call<Usuarios>, response: Response<Usuarios>) {
                 if (response.isSuccessful) {
-                    // Si la respuesta es exitosa, mostrar el nombre del usuario
+                    // Si la respuesta es exitosa, obtener el usuario y guardar datos
                     val usuario = response.body()
-                    Toast.makeText(this@InicioSesion, "Usuario: ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
-                    Recordar(usuario)
-                    // Navegar a la actividad Principal
+                    Toast.makeText(this@InicioSesion, "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
+                    guardarDatosUsuario(usuario)
+                    // Redirige a la actividad principal
                     val intent = Intent(this@InicioSesion, Principal::class.java)
                     startActivity(intent)
                     finish() // Termina esta actividad para que el usuario no regrese a ella
                 } else {
-                    // Si la respuesta no es exitosa, mostrar un mensaje de error
+                    // Maneja la respuesta no exitosa
                     Toast.makeText(this@InicioSesion, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Usuarios>, t: Throwable) {
-                // Si ocurre un error, mostrar el mensaje de fallo
+                // Maneja errores de conexión
                 Toast.makeText(this@InicioSesion, "Fallo: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun Recordar(usuario: Usuarios?) {
-        // Guardar el estado del checkbox y detalles del usuario
+    // Método para guardar los detalles del usuario en SharedPreferences
+    private fun guardarDatosUsuario(usuario: Usuarios?) {
         val editor = sharedPreferences.edit()
-        if (binding.chbRecordarContrasenia.isChecked) {
-            editor.putBoolean("recordarme", true)
-            // Guardar detalles del usuario
-            editor.putLong("userId", usuario?.id ?: 0)
-            editor.putString("userDni", usuario?.dni)
-            editor.putString("userNombre", usuario?.nombre)
-            editor.putString("userApellidos", usuario?.apellidos)
-            editor.putString("userTelefono", usuario?.telefono)
-            editor.putString("userCorreo", usuario?.correo)
-            editor.putString("userContrasena", usuario?.contrasena)
-            editor.putString("userFechaNacimiento", usuario?.fechaNacimiento)
-        } else {
-            editor.putBoolean("recordarme", false)
-            // Borrar detalles del usuario si el checkbox no está marcado
-            editor.remove("userId")
-            editor.remove("userDni")
-            editor.remove("userNombre")
-            editor.remove("userApellidos")
-            editor.remove("userTelefono")
-            editor.remove("userCorreo")
-            editor.remove("userContrasena")
-            editor.remove("userFechaNacimiento")
-        }
-        editor.apply()
+        // Guardar detalles del usuario
+        editor.putBoolean("recordarme", true) // Ya no depende de un checkbox, siempre guardamos
+        editor.putLong("id", usuario?.id ?: 0)
+        editor.putString("dni", usuario?.dni)
+        editor.putString("nombre", usuario?.nombre)
+        editor.putString("apellido", usuario?.apellidos)
+        editor.putString("telefono", usuario?.telefono)
+        editor.putString("correo", usuario?.correo)
+        editor.putString("contrasena", usuario?.contrasena)
+        editor.putString("fechaNac", usuario?.fechaNacimiento)
+        editor.apply() // Aplica los cambios
     }
 
+    // Verifica si el usuario ya está registrado
     private fun verificarUsuarioRegistrado() {
+        // Si el usuario seleccionó 'recordarme', redirigir a la pantalla principal
         val recordarme = sharedPreferences.getBoolean("recordarme", false)
         if (recordarme) {
             val intent = Intent(this, Principal::class.java)
             startActivity(intent)
-            finish() // Termina esta actividad para que el usuario no regrese a ella
+            finish() // Termina la actividad para que no pueda regresar a ella
         }
     }
 }

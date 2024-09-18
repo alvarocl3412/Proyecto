@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/iti"
+        android:checkableBehavior="single">
+        <item android:id="@+id/carnet"
+            android:title="Carnets"
+            android:icon="@drawable/carnet"/>
+
+        <item android:id="@+id/modoNocturno"
+            android:title="Mode noche"
+            android:icon="@drawable/noche"/>
+
+        <item android:id="@+id/CerrarSesion"
+            android:title="Cerrar Sesion"
+            android:icon="@drawable/ajustes"/>
+
+    </group>
+</menu>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import es.ua.eps.carkier.Principal
 import es.ua.eps.carkier.databinding.ActivityCrearCuenta2Binding
 
 class CrearCuenta2 : AppCompatActivity() {
@@ -47,6 +48,7 @@ class CrearCuenta2 : AppCompatActivity() {
     }
 
     private fun noAgregarCarnet() {
-
+        val intent = Intent(this, Principal::class.java)
+        startActivity(intent)
     }
 }
