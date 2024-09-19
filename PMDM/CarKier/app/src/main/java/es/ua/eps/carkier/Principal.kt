@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
@@ -11,9 +12,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.Carnets.MostrarCarnets
+import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
+import es.ua.eps.carkier.Retrofit.RetrofitClient
 import es.ua.eps.carkier.adapter.VehiculoAdapter
 import es.ua.eps.carkier.databinding.ActivityPrincipalBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Principal : AppCompatActivity() {
     private lateinit var binding: ActivityPrincipalBinding
@@ -29,6 +35,9 @@ class Principal : AppCompatActivity() {
 
         cargarDatos()
 
+        //Cargamos el recylcevie de vehiuclos
+        comprobarExistente()
+
         // Cargar preferencias para el modo
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
 
@@ -38,22 +47,6 @@ class Principal : AppCompatActivity() {
 
         // Inicializa el DrawerLayout
         drawerLayout = binding.drawerLayout
-
-        // RecyclerView configuration
-        binding.recyclerViewVehiculos.layoutManager = GridLayoutManager(this, 2) // 2 columnas
-
-        // Datos de ejemplo para los vehículos
-        val listaDeVehiculos = listOf(
-            Vehiculos("Coche 1"),
-            Vehiculos("Coche 2"),
-            Vehiculos("Coche 3"),
-            Vehiculos("Coche 4"),
-            Vehiculos("Coche 5")
-        )
-
-        // Asignar el adaptador
-        val adapter = VehiculoAdapter(listaDeVehiculos)
-        binding.recyclerViewVehiculos.adapter = adapter
 
         // Para la funcionalidad de los botones del menu de abajo
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
@@ -123,7 +116,7 @@ class Principal : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
 
         val nombreUsuario = sharedPreferences.getString("nombre","sin Nombre")
-        val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
+        val correoUsuario = sharedPreferences.getString("fechaNac", "correo@ejemplo.com")
 
         val headerView = binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
@@ -134,6 +127,42 @@ class Principal : AppCompatActivity() {
         correoTextView.text = correoUsuario
 
     }
+
+    fun cargarLista(vehiculos: List<Vehiculos>){
+        // RecyclerView configuration
+        binding.recyclerViewVehiculos.layoutManager = GridLayoutManager(this, 1)
+
+
+        // Asignar el adaptador
+        val adapter = VehiculoAdapter(vehiculos)
+        binding.recyclerViewVehiculos.adapter = adapter
+
+    }
+
+
+    private fun comprobarExistente() {
+        // Llamada a la API para obtener los vehículos
+        RetrofitClient.instance.mostrarVehiculos().enqueue(object : Callback<List<Vehiculos>> {
+
+            override fun onResponse(call: Call<List<Vehiculos>>, response: Response<List<Vehiculos>>) {
+                if (response.isSuccessful) {
+                    // Si la respuesta es exitosa, obtener la lista de vehículos
+                    val vehiculos = response.body() ?: emptyList()
+                    cargarLista(vehiculos)
+                } else {
+                    // Maneja la respuesta no exitosa
+
+                }
+            }
+
+            override fun onFailure(call: Call<List<Vehiculos>>, t: Throwable) {
+                // Maneja errores de conexión
+                Toast.makeText(this@Principal, "Fallo: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 
     fun cerrarSesion() {
         // Elimina las preferencias compartidas

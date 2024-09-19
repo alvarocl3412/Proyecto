@@ -10,5 +10,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="azul">#0000ff</color>
     <color name="azulito">#0ae7ff </color>
+    <color name="gris">#292929 </color>
 
 </resources>

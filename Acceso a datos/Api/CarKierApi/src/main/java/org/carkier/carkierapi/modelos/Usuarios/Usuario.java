@@ -1,5 +1,6 @@
 package org.carkier.carkierapi.modelos.Usuarios;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -32,7 +33,7 @@ public class Usuario{
     private String contrasena;
 
     @Column(name = "fecha_nacimiento")
-        private LocalDate fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
     public Usuario() {
     }

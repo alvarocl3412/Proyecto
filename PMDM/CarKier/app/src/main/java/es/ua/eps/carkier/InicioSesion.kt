@@ -62,7 +62,9 @@ class InicioSesion : AppCompatActivity() {
                     // Redirige a la actividad principal
                     val intent = Intent(this@InicioSesion, Principal::class.java)
                     startActivity(intent)
-                    finish() // Termina esta actividad para que el usuario no regrese a ella
+
+                    //Terminamos la actividad para que no regresa a ella
+                    finish()
                 } else {
                     // Maneja la respuesta no exitosa
                     Toast.makeText(this@InicioSesion, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
@@ -88,7 +90,7 @@ class InicioSesion : AppCompatActivity() {
         editor.putString("telefono", usuario?.telefono)
         editor.putString("correo", usuario?.correo)
         editor.putString("contrasena", usuario?.contrasena)
-        editor.putString("fechaNac", usuario?.fechaNacimiento)
+        editor.putString("fechaNac", usuario?.fechaNacimiento.toString())
         editor.apply() // Aplica los cambios
     }
 
