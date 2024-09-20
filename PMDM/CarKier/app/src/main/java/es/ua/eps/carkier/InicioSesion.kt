@@ -58,7 +58,9 @@ class InicioSesion : AppCompatActivity() {
                     // Si la respuesta es exitosa, obtener el usuario y guardar datos
                     val usuario = response.body()
                     Toast.makeText(this@InicioSesion, "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
+
                     guardarDatosUsuario(usuario)
+
                     // Redirige a la actividad principal
                     val intent = Intent(this@InicioSesion, Principal::class.java)
                     startActivity(intent)

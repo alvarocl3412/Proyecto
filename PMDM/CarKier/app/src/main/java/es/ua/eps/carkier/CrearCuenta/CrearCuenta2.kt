@@ -37,7 +37,7 @@ class CrearCuenta2 : AppCompatActivity() {
     }
     fun recogerDatos() {
         // Recuperar datos del SharedPreferences
-        val sharedPreferences = getSharedPreferences("crearCliente", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
         val dni = sharedPreferences.getString("dni", "sin dni") ?: "sin dni"
         val nombre = sharedPreferences.getString("nombre", "d") ?: "d"
         val apellidos = sharedPreferences.getString("apellidos", "d") ?: "d"

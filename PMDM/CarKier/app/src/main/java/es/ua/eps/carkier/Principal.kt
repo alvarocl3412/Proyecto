@@ -33,6 +33,9 @@ class Principal : AppCompatActivity() {
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Recuperar nombre y correo del SharedPreferences
+        sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
+
         cargarDatos()
 
         //Cargamos el recylcevie de vehiuclos
@@ -96,7 +99,8 @@ class Principal : AppCompatActivity() {
             }
         }
     }
-     fun setTheme(isDarkMode: Boolean) {
+
+    fun setTheme(isDarkMode: Boolean) {
         if (isDarkMode) {
             // Establecer modo oscuro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -112,11 +116,9 @@ class Principal : AppCompatActivity() {
     }
 
     fun cargarDatos(){
-        // Recuperar nombre y correo del SharedPreferences
-        val sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
 
         val nombreUsuario = sharedPreferences.getString("nombre","sin Nombre")
-        val correoUsuario = sharedPreferences.getString("fechaNac", "correo@ejemplo.com")
+        val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
 
         val headerView = binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
@@ -139,8 +141,7 @@ class Principal : AppCompatActivity() {
 
     }
 
-
-    private fun comprobarExistente() {
+    fun comprobarExistente() {
         // Llamada a la API para obtener los vehículos
         RetrofitClient.instance.mostrarVehiculos().enqueue(object : Callback<List<Vehiculos>> {
 
@@ -161,8 +162,6 @@ class Principal : AppCompatActivity() {
             }
         })
     }
-
-
 
     fun cerrarSesion() {
         // Elimina las preferencias compartidas

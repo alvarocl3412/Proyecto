@@ -1,5 +1,6 @@
 package es.ua.eps.carkier.ApiService
 
+import es.ua.eps.carkier.Modelos.TipoCarnet
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
 import retrofit2.http.POST
@@ -20,5 +21,9 @@ interface ApiService {
 
     @GET("VehiculosfindAll")
     fun mostrarVehiculos():Call<List<Vehiculos>>
+
+    @GET("TipoCarnetfindAll")
+    fun TiposCarnet(): Call<List<TipoCarnet>>
+
 
 }

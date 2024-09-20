@@ -54,7 +54,7 @@ class CrearCuenta : AppCompatActivity() {
 
     fun recogerDatos() {
         // Inicializa SharedPreferences para guardar datos persistentes
-        val sharedPreferences = getSharedPreferences("crearCliente", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("dni", binding.etxtDni.text.toString())
         editor.putString("nombre", binding.etxtNombre.text.toString())

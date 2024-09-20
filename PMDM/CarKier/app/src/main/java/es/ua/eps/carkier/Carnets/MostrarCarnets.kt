@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import es.ua.eps.carkier.CrearCuenta.CrearCarnetDeConducir
 import es.ua.eps.carkier.InicioSesion
 import es.ua.eps.carkier.Principal
 import es.ua.eps.carkier.R
@@ -24,10 +25,14 @@ class MostrarCarnets : AppCompatActivity() {
         binding = ActivityMostrarCarnetsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Recuperar nombre y correo del SharedPreferences
+        sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
         cargarDatos()
 
-        // Cargar preferencias para el modo
-        sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
+        binding.button2.setOnClickListener(){
+            val intent = Intent(this, CrearCarnetDeConducir::class.java)
+            startActivity(intent)
+        }
 
         // Comprobar el modo previamente guardado
         val isDarkMode = sharedPreferences.getBoolean("dark_mode", false)
@@ -79,6 +84,7 @@ class MostrarCarnets : AppCompatActivity() {
             }
         }
     }
+
     fun setTheme(isDarkMode: Boolean) {
         if (isDarkMode) {
             // Establecer modo oscuro
@@ -95,13 +101,11 @@ class MostrarCarnets : AppCompatActivity() {
     }
 
     fun cargarDatos(){
-        // Recuperar nombre y correo del SharedPreferences
-        val sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
-
         val nombreUsuario = sharedPreferences.getString("nombre","sin Nombre")
         val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
 
-        val headerView = binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
+        // Obtener el header del NavigationView
+        val headerView = binding.navigationView.getHeaderView(0)
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
         val correoTextView: TextView = headerView.findViewById(R.id.correo)
 
@@ -110,6 +114,7 @@ class MostrarCarnets : AppCompatActivity() {
         correoTextView.text = correoUsuario
 
     }
+
     fun cerrarSesion() {
         // Elimina las preferencias compartidas
         val sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
