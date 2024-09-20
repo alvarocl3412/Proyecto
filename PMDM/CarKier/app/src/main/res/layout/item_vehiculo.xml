@@ -1,11 +1,10 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardElevation="4dp"
-    app:cardBackgroundColor="@android:color/white">
+    app:cardBackgroundColor="@android:color/white"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,86 +13,83 @@
         android:padding="16dp">
 
 
-
-
-    <!-- Fila con marca, modelo -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="start">
-
-        <TextView
-            android:id="@+id/txtMarca"
-            android:layout_width="0dp"
+        <!-- Fila con marca, modelo -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="70dp"
-            android:text="Marca:"
-            android:textStyle="bold|italic"
-            android:textSize="18sp" />
-        <!-- Espacio flexible para empujar el logo a la derecha -->
-        <Space
-            android:layout_width="0dp"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtMarca"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="70dp"
+                android:text="Marca:"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+            <!-- Espacio flexible para empujar el logo a la derecha -->
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
+
+            <TextView
+                android:id="@+id/txtModelo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="50dp"
+                android:text="Modelo:"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="130dp"
+            android:layout_height="176dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="logo"
+            android:src="@drawable/logo" />
+
+        <!-- Fila con kilometraje, precio por día y precio de venta -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1" />
+            android:gravity="start"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtModelo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="50dp"
-            android:text="Modelo:"
-            android:textStyle="bold|italic"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txtKm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kilometros:"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
+            <TextView
+                android:id="@+id/txtPrecioDia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Precio/Dia:"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="130dp"
-        android:layout_height="176dp"
-        android:layout_marginStart="16dp"
-        android:contentDescription="logo"
-        android:src="@drawable/logo" />
-
-    <!-- Fila con kilometraje, precio por día y precio de venta -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="start">
-
-        <TextView
-            android:id="@+id/txtKm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Kilometros:"
-            android:textStyle="bold|italic"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txtPrecioDia"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Precio/Dia:"
-            android:textStyle="bold|italic"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txtPrecioVenta"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Precio:"
-            android:textStyle="bold|italic"
-            android:textSize="18sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtPrecioVenta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Precio:"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -3,17 +3,28 @@ package es.ua.eps.carkier.Carnets
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.CrearCuenta.CrearCarnetDeConducir
 import es.ua.eps.carkier.InicioSesion
+import es.ua.eps.carkier.Modelos.CarnetConducir
+import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.Principal
 import es.ua.eps.carkier.R
+import es.ua.eps.carkier.Retrofit.RetrofitClient
+import es.ua.eps.carkier.adapter.CarnetAdapter
+import es.ua.eps.carkier.adapter.VehiculoAdapter
 import es.ua.eps.carkier.databinding.ActivityMostrarCarnetsBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MostrarCarnets : AppCompatActivity() {
     private lateinit var binding: ActivityMostrarCarnetsBinding
@@ -28,6 +39,9 @@ class MostrarCarnets : AppCompatActivity() {
         // Recuperar nombre y correo del SharedPreferences
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
         cargarDatos()
+
+        val nombreUsuario = sharedPreferences.getLong("id",0)
+        comprobarExistente(nombreUsuario)
 
         binding.button2.setOnClickListener(){
             val intent = Intent(this, CrearCarnetDeConducir::class.java)
@@ -114,6 +128,47 @@ class MostrarCarnets : AppCompatActivity() {
         correoTextView.text = correoUsuario
 
     }
+    fun comprobarExistente(idUsuario: Long) {
+        // Llamada a la API para obtener los carnets del usuario
+        RetrofitClient.instance.CarnetsPersona(idUsuario).enqueue(object : Callback<List<CarnetConducir>> {
+
+            override fun onResponse(call: Call<List<CarnetConducir>>, response: Response<List<CarnetConducir>>) {
+                if (response.isSuccessful) {
+                    // Si la respuesta es exitosa, obtener la lista de carnets
+                    val carnets = response.body() ?: emptyList()
+
+                    if (carnets.isEmpty()) {
+                        Toast.makeText(this@MostrarCarnets, "No hay carnets disponibles para este usuario", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Cargar la lista de carnets en alguna parte de la interfaz (por ejemplo, un RecyclerView)
+                        cargarLista(carnets)
+                    }
+                } else {
+                    // Manejar la respuesta no exitosa, mostrar mensaje de error
+                    Toast.makeText(this@MostrarCarnets, "Error en la respuesta: ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<CarnetConducir>>, t: Throwable) {
+                // Maneja errores de conexión
+                Toast.makeText(this@MostrarCarnets, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
+                Log.e("ErrorAPI", "Error en la llamada a la API: ${t.message}", t)
+            }
+        })
+    }
+
+
+    fun cargarLista(carnets: List<CarnetConducir>){
+        // RecyclerView configuration
+        binding.ListaCarnet.layoutManager = GridLayoutManager(this, 1)
+
+
+        // Asignar el adaptador
+        val adapter = CarnetAdapter(carnets)
+        binding.ListaCarnet.adapter = adapter
+
+    }
+
 
     fun cerrarSesion() {
         // Elimina las preferencias compartidas

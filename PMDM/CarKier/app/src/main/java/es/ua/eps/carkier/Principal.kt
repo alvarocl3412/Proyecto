@@ -117,7 +117,7 @@ class Principal : AppCompatActivity() {
 
     fun cargarDatos(){
 
-        val nombreUsuario = sharedPreferences.getString("nombre","sin Nombre")
+        val nombreUsuario = sharedPreferences.getString("nombre","")
         val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
 
         val headerView = binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView

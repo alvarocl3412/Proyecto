@@ -1,5 +1,6 @@
 package es.ua.eps.carkier.ApiService
 
+import es.ua.eps.carkier.Modelos.CarnetConducir
 import es.ua.eps.carkier.Modelos.TipoCarnet
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -8,6 +9,7 @@ import retrofit2.http.Query
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 
 interface ApiService {
@@ -24,6 +26,12 @@ interface ApiService {
 
     @GET("TipoCarnetfindAll")
     fun TiposCarnet(): Call<List<TipoCarnet>>
+
+    @POST("registrarCarnets")
+    fun CrearCarnetUsuario(@Body carnet: CarnetConducir):Call<String>
+
+    @GET("mostrarCarnetsUsuario/{idusuario}")
+    fun CarnetsPersona(@Path("idusuario") idusuario: Long): Call<List<CarnetConducir>>
 
 
 }
