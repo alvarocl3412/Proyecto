@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Colores del logo -->
-    <color name ="azul_logo">#15c0e9</color>
-    <color name ="morado_logo">#be73ed</color>
-    <color name ="rojado_logo">#f4505d</color>
+    <color name ="azul_logo">#15C0E9</color>
+    <color name ="morado_logo">#BE73ED</color>
+    <color name ="rojado_logo">#F4505D</color>
     <!-- Restos de colores -->
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="azul">#0000ff</color>
-    <color name="azulito">#0ae7ff </color>
+    <color name="rojo">#FF0000</color>
+    <color name="azul">#0000FF</color>
+    <color name="azulito">#0AE7FF </color>
     <color name="gris">#292929 </color>
 
 </resources>

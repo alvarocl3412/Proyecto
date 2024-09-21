@@ -3,21 +3,29 @@ package es.ua.eps.carkier.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import es.ua.eps.carkier.R
 import android.widget.ImageView
 import es.ua.eps.carkier.Modelos.CarnetConducir
+import es.ua.eps.carkier.Modelos.TipoCarnet
+import es.ua.eps.carkier.Retrofit.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CarnetAdapter(private val carnets: List<CarnetConducir>) :
     RecyclerView.Adapter<CarnetAdapter.CarnetViewHolder>() {
 
     // ViewHolder que contiene las vistas para cada tarjeta
     class CarnetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val txtUsuario: TextView = itemView.findViewById(R.id.txtUsuariosCarnet)
         val txtTipo: TextView = itemView.findViewById(R.id.txtTipoCarnet)
         val txtFechaExpedicion: TextView = itemView.findViewById(R.id.txtCarnetFechaExpedicion)
         val txtFechaCaducidad: TextView = itemView.findViewById(R.id.txtCarnetFechaCaducided)
+        val txtActualizar: TextView = itemView.findViewById(R.id.txtActualizar) // Añade esta línea
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
     }
 
@@ -32,10 +40,48 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
         val carnet = carnets[position]
 
         // Asignamos los valores a los campos correspondientes
-        holder.txtUsuario.text = "Usuario: ${carnet.idusuario}"
-        holder.txtTipo.text = "Tipo: ${carnet.idTipocarnet}"
         holder.txtFechaExpedicion.text = "Fecha Expedición: ${carnet.fechaExpedicion}"
         holder.txtFechaCaducidad.text = "Fecha Caducidad: ${carnet.fechaCaducidad ?: "No disponible"}"
+
+        // Llamada a la API para obtener el nombre del tipo de carnet en lugar del ID
+        verTipo(carnet.idTipocarnet.toString()) { tipoNombre ->
+            holder.txtTipo.text = "Tipo: $tipoNombre"
+        }
+
+        // Parseamos la fecha de caducidad
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        try {
+            val fechaCaducidad = carnet.fechaCaducidad?.let { dateFormat.parse(it) }
+            val fechaActual = Date() // Fecha actual
+
+            // Comparamos si la fecha de caducidad ha pasado
+            if (fechaCaducidad != null && fechaCaducidad.before(fechaActual)) {
+                // Si ha pasado, mostramos el TextView de actualización
+                holder.txtActualizar.visibility = View.VISIBLE
+                holder.txtActualizar.text = "Necesitas actualizar, está caducado" // Mensaje personalizado
+
+                // Hacemos la animacion para que este parpadeando
+                val blinkAnimation = AlphaAnimation(0.0f, 1.0f).apply {
+
+                    // duracion de segundo para papardear
+                    duration = 2000
+
+                    // Alterna entre transparente y visible
+                    repeatMode = AlphaAnimation.REVERSE
+
+                    // Hace que sea infinito osea como un bucle infinito
+                    repeatCount = AlphaAnimation.INFINITE
+                }
+                holder.txtActualizar.startAnimation(blinkAnimation) // Inicia la animación
+
+            } else {
+                // Si no ha pasado, ocultamos el TextView de actualización
+                holder.txtActualizar.visibility = View.GONE
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            holder.txtActualizar.visibility = View.GONE // En caso de error, no mostramos el mensaje
+        }
 
         // Aquí puedes asignar la imagen si tuvieras una diferente para cada carnet (por ejemplo)
         holder.imageView.setImageResource(R.drawable.carnet)
@@ -43,4 +89,25 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
 
     // Devuelve el número de carnets en la lista
     override fun getItemCount(): Int = carnets.size
+
+    // Función para hacer la llamada a la API y obtener el nombre del tipo de carnet
+    fun verTipo(id: String, callback: (String) -> Unit) {
+        RetrofitClient.instance.TipoCarnetNombre(id).enqueue(object : Callback<TipoCarnet> {
+            override fun onResponse(call: Call<TipoCarnet>, response: Response<TipoCarnet>) {
+                if (response.isSuccessful) {
+                    val tipoNombre = response.body()?.nombre ?: "Tipo no disponible"
+                    callback(tipoNombre)  // Llamamos al callback con el nombre del tipo
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    callback("Error al obtener tipo")
+                }
+            }
+
+            override fun onFailure(call: Call<TipoCarnet>, t: Throwable) {
+                callback("Error en la petición: ${t.message}")
+            }
+        })
+    }
+
 }
+

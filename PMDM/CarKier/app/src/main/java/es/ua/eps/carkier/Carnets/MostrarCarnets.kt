@@ -43,7 +43,7 @@ class MostrarCarnets : AppCompatActivity() {
         val nombreUsuario = sharedPreferences.getLong("id",0)
         comprobarExistente(nombreUsuario)
 
-        binding.button2.setOnClickListener(){
+        binding.btnAgregar.setOnClickListener(){
             val intent = Intent(this, CrearCarnetDeConducir::class.java)
             startActivity(intent)
         }

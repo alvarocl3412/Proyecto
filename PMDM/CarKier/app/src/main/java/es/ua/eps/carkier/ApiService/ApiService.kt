@@ -14,6 +14,7 @@ import retrofit2.http.Path
 
 interface ApiService {
 
+    //Metodos para el usuario
     @POST("UsuarioInicioSesion")
     fun loginUsuario(@Query("correo") correo: String, @Query("contrasena") contrasena: String
     ): Call<Usuarios>
@@ -21,12 +22,21 @@ interface ApiService {
     @POST("UsuarioRegistrar")
     fun crearUsuario(@Body usuario: Usuarios):Call<String>
 
+    //Metodos para el vehiculo
     @GET("VehiculosfindAll")
     fun mostrarVehiculos():Call<List<Vehiculos>>
 
+
+    //Metodos para el tipo carnet
     @GET("TipoCarnetfindAll")
     fun TiposCarnet(): Call<List<TipoCarnet>>
 
+    @GET("TipoCarnetId/{id}")
+    fun TipoCarnetNombre(@Path("id") id: String): Call<TipoCarnet>
+
+
+
+    //Metodos para los carnets
     @POST("registrarCarnets")
     fun CrearCarnetUsuario(@Body carnet: CarnetConducir):Call<String>
 

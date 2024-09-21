@@ -27,4 +27,10 @@
     <string name="principal_menu_home">Home</string>
     <string name="principa_menu_buscar">pincipla</string>
     <string name="principal_menu_perfil">pincipal</string>
+    <string name="necesitas_actualizar_esta_caducado">Necesitas Actualizar esta caducado</string>
+    <string name="imagen_carnet">Imagen carnet</string>
+    <string name="Carnet_usuario">Usuario:</string>
+    <string name="carnet_tipo">Tipo:</string>
+    <string name="carnet_fecha_expedicion">Fecha Expedicion:</string>
+    <string name="carnet_fecha_caducided">Fecha Caducided:</string>
 </resources>

@@ -7,18 +7,27 @@
     app:cardBackgroundColor="@android:color/white"
     app:cardElevation="4dp">
 
+    <TextView
+        android:id="@+id/txtActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:text="@string/necesitas_actualizar_esta_caducado"
+        android:textSize="19sp"
+        android:textColor="@color/rojo" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="7dp">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="97dp"
             android:layout_height="137dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="logo"
+            android:layout_marginStart="18dp"
+            android:contentDescription="@string/imagen_carnet"
             android:src="@drawable/carnet" />
 
         <LinearLayout
@@ -26,24 +35,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp">
-
-            <TextView
-                android:id="@+id/txtUsuariosCarnet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="35dp"
-                android:text="Usuario:"
-                android:textSize="18sp"
-                android:textStyle="bold|italic" />
-
+            
             <TextView
                 android:id="@+id/txtTipoCarnet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="35dp"
-                android:text="Tipo:"
+                android:text="@string/carnet_tipo"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
@@ -53,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="35dp"
-                android:text="Fecha Expedicion:"
+                android:text="@string/carnet_fecha_expedicion"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
@@ -63,12 +62,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="35dp"
-                android:text="Fecha Caducided:"
+                android:text="@string/carnet_fecha_caducided"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
-            android:textSize="18sp" />
-
         </LinearLayout>
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
