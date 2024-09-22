@@ -13,6 +13,8 @@ public interface VehiculoService {
     Optional<Vehiculo> findByMatricula(String matricula);
     Optional<Vehiculo> updateVehiuclo(Vehiculo vehiculo);
 
+    List<Vehiculo> obtenerVehiculosPorEstado(Long idEstado);
+
     Vehiculo save(Vehiculo vehiculo);
     void deleteById(Integer id);
 }

@@ -41,10 +41,14 @@ public class Vehiculo {
     @Column(name = "preciodia", nullable = false)
     private Double preciodia;
 
+    // Este campo almacenará la imagen en formato Base64 como texto
+    @Column(name = "imagen")
+    private String imagen;
+
     public Vehiculo() {
     }
 
-    public Vehiculo(Integer id, Integer idEmpresa, Integer idUsuariosPropietario, Integer idEstado, String matricula, String marca, String modelo, Integer anio, Integer km, Double precioventa, Double preciodia) {
+    public Vehiculo(Integer id, Integer idEmpresa, Integer idUsuariosPropietario, Integer idEstado, String matricula, String marca, String modelo, Integer anio, Integer km, Double precioventa, Double preciodia, String imagen) {
         this.id = id;
         this.idEmpresa = idEmpresa;
         this.idUsuariosPropietario = idUsuariosPropietario;
@@ -56,6 +60,7 @@ public class Vehiculo {
         this.km = km;
         this.precioventa = precioventa;
         this.preciodia = preciodia;
+        this.imagen = imagen;
     }
 
     public Integer getId() {
@@ -146,4 +151,11 @@ public class Vehiculo {
         this.preciodia = preciodia;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

@@ -23,7 +23,7 @@ interface ApiService {
     fun crearUsuario(@Body usuario: Usuarios):Call<String>
 
     //Metodos para el vehiculo
-    @GET("VehiculosfindAll")
+    @GET("estado/1")
     fun mostrarVehiculos():Call<List<Vehiculos>>
 
 

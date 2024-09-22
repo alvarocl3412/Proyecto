@@ -133,8 +133,6 @@ class Principal : AppCompatActivity() {
     fun cargarLista(vehiculos: List<Vehiculos>){
         // RecyclerView configuration
         binding.recyclerViewVehiculos.layoutManager = GridLayoutManager(this, 1)
-
-
         // Asignar el adaptador
         val adapter = VehiculoAdapter(vehiculos)
         binding.recyclerViewVehiculos.adapter = adapter

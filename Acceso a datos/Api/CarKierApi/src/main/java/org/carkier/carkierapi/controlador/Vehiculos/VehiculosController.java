@@ -46,6 +46,12 @@ public class VehiculosController {
         }
     }
 
+    @GetMapping("/estado/1")
+    public ResponseEntity<List<Vehiculo>> obtenerVehiculosConEstado1() {
+        List<Vehiculo> vehiculos = servicio .obtenerVehiculosPorEstado(1L);
+        return ResponseEntity.ok(vehiculos);
+    }
+
     @PutMapping("/updateVehiculo")
     public ResponseEntity<Vehiculo> updateVehiculo(@RequestBody Vehiculo vehiculo) {
         Optional<Vehiculo> updatedVehiculo = servicio.updateVehiuclo(vehiculo);

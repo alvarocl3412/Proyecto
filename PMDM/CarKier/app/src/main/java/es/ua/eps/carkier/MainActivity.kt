@@ -23,6 +23,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent( this,InicioSesion::class.java)
             startActivity(intent)
             finish()
-        },5000)
+        },2000)
     }
 }

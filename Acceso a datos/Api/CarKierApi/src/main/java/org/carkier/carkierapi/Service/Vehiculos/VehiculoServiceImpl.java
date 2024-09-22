@@ -92,4 +92,8 @@ public class VehiculoServiceImpl implements VehiculoService {
                 .orElseThrow(() -> new IllegalArgumentException("El vehiculo no se ha  encontrado con el ID: " + id));
         repositorio.delete(vehiculo);
     }
+    @Override
+    public List<Vehiculo> obtenerVehiculosPorEstado(Long idEstado) {
+        return repositorio.findByIdEstado(idEstado);
+    }
 }
