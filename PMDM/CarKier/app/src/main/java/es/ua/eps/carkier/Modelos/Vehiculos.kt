@@ -1,9 +1,9 @@
 package es.ua.eps.carkier.Modelos
 
 data class Vehiculos(
-    val  idvehiuclo: Int,
-    var  idEmpresa: Int,
-    var  idUsuariosPropietario: Int,
+    val  id: Long,
+    var  idEmpresa: Int?,
+    var  idUsuariosPropietario: Int?,
     var  idEstado: Int,
     var  matricula: String,
     var  marca: String,
@@ -12,5 +12,5 @@ data class Vehiculos(
     var  km: Int,
     var  precioventa: Double,
     var  preciodia: Double,
-    val  imagen: String
+    val  imagen: String?
 )

@@ -2,7 +2,12 @@ package es.ua.eps.carkier
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import java.io.ByteArrayOutputStream
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -60,7 +65,7 @@ class Principal : AppCompatActivity() {
                     true
                 }
                 R.id.filtrarBusqueda -> {
-
+                        modificarVehiculo()
                     true
                 }
                 R.id.perfil -> {
@@ -172,5 +177,62 @@ class Principal : AppCompatActivity() {
         val intent = Intent(this, InicioSesion::class.java)
         startActivity(intent)
         finish() // Termina la actividad actual para que el usuario no pueda regresar a ella
+    }
+
+    fun modificarVehiculo(){
+
+        val imagenBase64 = convertirImagenABase64(R.drawable.toyotacor) // O cualquier imagen que quieras usar
+
+        val v = Vehiculos(
+            id = 1,
+            idEmpresa = null, // Asegúrate de que esto sea permitido en tu clase
+            idUsuariosPropietario = 15,
+            idEstado = 1,
+            matricula = "369 DDD",
+            marca = "Toyota",
+            modelo = "Corolla",
+            anio = 2006,
+            km = 12121,
+            precioventa = 25000.0, // Asegúrate de usar un valor decimal si es necesario
+            preciodia = 123.0, // Igualmente, usa un valor decimal
+            imagen = imagenBase64 ?: null
+        )
+        updateVehiculo(v)
+    }
+
+    fun updateVehiculo(vehiculos: Vehiculos) {
+        RetrofitClient.instance.updateVehiculo(vehiculos).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Principal, "Creado correctamente", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Mensaje de error más detallado
+                    val errorBody = response.errorBody()?.string()
+                    Toast.makeText(this@Principal, "No se ha podido crear correctamente: $errorBody", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Toast.makeText(this@Principal, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Log.e("CrearClienteError", "Error: ${t.message}", t)
+            }
+        })
+    }
+    fun convertirImagenABase64(resId: Int): String? {
+        // Obtener el Bitmap del drawable
+        val bitmap = BitmapFactory.decodeResource(resources, resId)
+
+        // Comprobar si el bitmap es nulo
+        if (bitmap == null) {
+            return null
+        }
+
+        // Convertir el Bitmap a un Array de Bytes
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+
+        // Convertir a Base64
+        return Base64.encodeToString(byteArray, Base64.NO_WRAP)
     }
 }

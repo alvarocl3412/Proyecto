@@ -42,7 +42,11 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         holder.txtKm.text = "Kilometros: " + vehiculo.km.toString()
         holder.txtPrecioVenta.text = "Precio: " + vehiculo.precioventa.toString()
         holder.txtPrecioDia.text = "Precio/Día: " + vehiculo.preciodia.toString()
-        holder.imageView.setBase64Image(vehiculo.imagen)
+        if (vehiculo.imagen != null){
+            holder.imageView.setBase64Image(vehiculo.imagen)
+        }
+
+
 
 
 

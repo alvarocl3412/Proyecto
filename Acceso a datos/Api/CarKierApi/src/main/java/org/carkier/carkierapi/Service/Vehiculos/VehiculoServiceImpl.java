@@ -58,6 +58,7 @@ public class VehiculoServiceImpl implements VehiculoService {
             vehiculoActualizado.setKm(vehiculo.getKm());
             vehiculoActualizado.setPrecioventa(vehiculo.getPrecioventa());
             vehiculoActualizado.setPreciodia(vehiculo.getPreciodia());
+            vehiculoActualizado.setImagen(vehiculo.getImagen());
 
             repositorio.save(vehiculoActualizado);
             return Optional.of(vehiculoActualizado);
