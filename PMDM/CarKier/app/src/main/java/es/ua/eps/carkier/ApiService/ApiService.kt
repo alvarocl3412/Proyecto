@@ -30,6 +30,11 @@ interface ApiService {
     @PUT("updateVehiculo")
     fun updateVehiculo(@Body vehiculos: Vehiculos):Call<String>
 
+
+    @GET("VehiuculosId/{id}")
+    fun VehiculoId(@Path("id") id: Long?): Call<Vehiculos>
+
+
     //Metodos para el tipo carnet
     @GET("TipoCarnetfindAll")
     fun TiposCarnet(): Call<List<TipoCarnet>>

@@ -34,7 +34,7 @@ public class VehiculosController {
         } else {
             return ResponseEntity.ok(vehiculo.get());
         }
-    }
+    }   
 
     @GetMapping("/VehiuculosMatricula/{matricula}")
     public ResponseEntity<Vehiculo> getVehiculoByMatricula(@PathVariable String matricula) {

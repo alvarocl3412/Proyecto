@@ -1,5 +1,7 @@
 package es.ua.eps.carkier.Modelos
 
+import java.io.Serializable
+
 data class Vehiculos(
     val  id: Long,
     var  idEmpresa: Int?,
@@ -10,7 +12,7 @@ data class Vehiculos(
     var  modelo: String,
     var  anio: Int,
     var  km: Int,
-    var  precioventa: Double,
+    var  precioventa: Double?,
     var  preciodia: Double,
     val  imagen: String?
-)
+):Serializable

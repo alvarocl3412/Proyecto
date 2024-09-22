@@ -181,20 +181,20 @@ class Principal : AppCompatActivity() {
 
     fun modificarVehiculo(){
 
-        val imagenBase64 = convertirImagenABase64(R.drawable.toyotacor) // O cualquier imagen que quieras usar
+        val imagenBase64 = convertirImagenABase64(R.drawable.logo) // O cualquier imagen que quieras usar
 
         val v = Vehiculos(
-            id = 1,
+            id = 16,
             idEmpresa = null, // Asegúrate de que esto sea permitido en tu clase
             idUsuariosPropietario = 15,
             idEstado = 1,
-            matricula = "369 DDD",
-            marca = "Toyota",
-            modelo = "Corolla",
-            anio = 2006,
+            matricula = "840 DFG",
+            marca = "Honda",
+            modelo = "Civic Type R",
+            anio = 1995,
             km = 12121,
-            precioventa = 25000.0, // Asegúrate de usar un valor decimal si es necesario
-            preciodia = 123.0, // Igualmente, usa un valor decimal
+            precioventa = null, // Asegúrate de usar un valor decimal si es necesario
+            preciodia = 70.0, // Igualmente, usa un valor decimal
             imagen = imagenBase64 ?: null
         )
         updateVehiculo(v)

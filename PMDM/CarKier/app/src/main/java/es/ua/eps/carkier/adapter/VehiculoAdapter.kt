@@ -1,5 +1,6 @@
 package es.ua.eps.carkier.adapter
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import es.ua.eps.carkier.Modelos.Vehiculos
+import es.ua.eps.carkier.MostrarVehiculo
 import es.ua.eps.carkier.R
 
 
@@ -25,6 +27,8 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         val txtPrecioVenta: TextView = itemView.findViewById(R.id.txtPrecioVenta)
         val txtPrecioDia: TextView = itemView.findViewById(R.id.txtPrecioDia)
         val imageView: ImageView = itemView.findViewById(R.id.imgVehiculo)
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiculoViewHolder {
@@ -40,13 +44,22 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         holder.txtMarca.text = "Marca: " + vehiculo.marca
         holder.txtModelo.text = "Modelo: " + vehiculo.modelo
         holder.txtKm.text = "Kilometros: " + vehiculo.km.toString()
-        holder.txtPrecioVenta.text = "Precio: " + vehiculo.precioventa.toString()
+        holder.txtPrecioVenta.text ="Precio: " + (vehiculo.precioventa?.toString() ?: "No se vende")
         holder.txtPrecioDia.text = "Precio/Día: " + vehiculo.preciodia.toString()
+
         if (vehiculo.imagen != null){
             holder.imageView.setBase64Image(vehiculo.imagen)
         }
 
+        // Establecer el clic para cada ítem del RecyclerView
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, MostrarVehiculo::class.java)
 
+            // Pasar el vehículo como Serializable para poder usarlo en la nueva actividad
+            intent.putExtra("idvehiculo", vehiculo.id)
+            context.startActivity(intent)
+        }
 
 
 
