@@ -17,7 +17,7 @@ public class EstadoVehiculo {
     }
 
     public EstadoVehiculo(Integer id, String estado) {
-        this.id = id;
+        this.id = id;   
         this.estado = estado;
     }
 

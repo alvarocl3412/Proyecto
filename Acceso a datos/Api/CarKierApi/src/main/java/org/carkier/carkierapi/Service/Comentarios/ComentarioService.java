@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public interface ComentarioService {
     List<Comentario> findAll();
+    List<Comentario> findComentariosByVehiculoId(int idVehiculo);
     Optional<Comentario> findById(Integer id);
     Optional<Comentario> findByIdComentarioRespuesta(Integer idComentarioRespuesta);
     Optional<Comentario> updateComentario(Comentario comentario);

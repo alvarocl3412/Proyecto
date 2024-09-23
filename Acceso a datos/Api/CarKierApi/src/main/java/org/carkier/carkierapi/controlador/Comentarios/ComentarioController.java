@@ -35,6 +35,14 @@ public class ComentarioController {
             return ResponseEntity.ok(comentario.get());
         }
     }
+        @GetMapping("/ComentarioidVehiculo/{idVehiculo}")
+    public ResponseEntity<List<Comentario>> getComentariosByIdVehiculo(@PathVariable int idVehiculo) {
+        List<Comentario> comentarios = servicio.findComentariosByVehiculoId(idVehiculo);
+        if (comentarios.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Si no hay comentarios
+        }
+        return new ResponseEntity<>(comentarios, HttpStatus.OK);
+    }
 
     @GetMapping("/ComentariosIdRespuesta/{idComentarioRespuesta}")
     public ResponseEntity<Comentario> getComentarioByIdRespuesta(@PathVariable Integer idComentarioRespuesta) {

@@ -37,6 +37,9 @@ public class ComentarioServiceImpl implements ComentarioService {
     public Optional<Comentario> findByIdComentarioRespuesta(Integer idComentarioRespuesta) {
         return repositorio.findByIdComentarioRespuesta(idComentarioRespuesta);
     }
+    public List<Comentario> findComentariosByVehiculoId(int idVehiculo) {
+        return repositorio.findByIdVehiculo(idVehiculo);
+    }
 
     @Override
     public Optional<Comentario> updateComentario(Comentario comentario) {

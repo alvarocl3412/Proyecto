@@ -8,6 +8,7 @@ import android.util.Base64
 import java.io.ByteArrayOutputStream
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,14 @@ class Principal : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var sharedPreferences: SharedPreferences
 
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +50,8 @@ class Principal : AppCompatActivity() {
         // Recuperar nombre y correo del SharedPreferences
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
 
+        // Mostrar el ProgressBar antes de cargar los datos
+        showProgressBar()
         cargarDatos()
 
         //Cargamos el recylcevie de vehiuclos
@@ -141,7 +152,7 @@ class Principal : AppCompatActivity() {
         // Asignar el adaptador
         val adapter = VehiculoAdapter(vehiculos)
         binding.recyclerViewVehiculos.adapter = adapter
-
+        // Mostrar el ProgressBar antes de cargar los datos
     }
 
     fun comprobarExistente() {
@@ -153,6 +164,7 @@ class Principal : AppCompatActivity() {
                     // Si la respuesta es exitosa, obtener la lista de vehículos
                     val vehiculos = response.body() ?: emptyList()
                     cargarLista(vehiculos)
+                    hideProgressBar()
                 } else {
                     // Maneja la respuesta no exitosa
 
@@ -218,6 +230,7 @@ class Principal : AppCompatActivity() {
             }
         })
     }
+
     fun convertirImagenABase64(resId: Int): String? {
         // Obtener el Bitmap del drawable
         val bitmap = BitmapFactory.decodeResource(resources, resId)

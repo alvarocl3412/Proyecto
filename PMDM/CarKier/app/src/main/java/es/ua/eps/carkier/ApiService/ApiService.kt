@@ -1,6 +1,8 @@
 package es.ua.eps.carkier.ApiService
 
 import es.ua.eps.carkier.Modelos.CarnetConducir
+import es.ua.eps.carkier.Modelos.Comentario
+import es.ua.eps.carkier.Modelos.EstadoVehiculo
 import es.ua.eps.carkier.Modelos.TipoCarnet
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -23,6 +25,9 @@ interface ApiService {
     @POST("UsuarioRegistrar")
     fun crearUsuario(@Body usuario: Usuarios):Call<String>
 
+    @GET("UsuarioId/{id}")
+    fun UsuarioId(@Path("id") id: Long?):Call<Usuarios>
+
     //Metodos para el vehiculo
     @GET("estado/1")
     fun mostrarVehiculos():Call<List<Vehiculos>>
@@ -30,9 +35,12 @@ interface ApiService {
     @PUT("updateVehiculo")
     fun updateVehiculo(@Body vehiculos: Vehiculos):Call<String>
 
-
     @GET("VehiuculosId/{id}")
     fun VehiculoId(@Path("id") id: Long?): Call<Vehiculos>
+
+    //Estado Vehiculo
+    @GET("EstadoVehiculoId/{id}")
+    fun EstadoVehiculoId(@Path("id") id:Long?): Call<EstadoVehiculo>
 
 
     //Metodos para el tipo carnet
@@ -50,6 +58,12 @@ interface ApiService {
 
     @GET("mostrarCarnetsUsuario/{idusuario}")
     fun CarnetsPersona(@Path("idusuario") idusuario: Long): Call<List<CarnetConducir>>
+
+
+    //Comentarios
+    @GET("ComentarioidVehiculo/{idVehiculo}")
+    fun ComentarioVehiculo(@Path("idVehiculo") id: Long): Call<MutableList<Comentario>>
+
 
 
 }
