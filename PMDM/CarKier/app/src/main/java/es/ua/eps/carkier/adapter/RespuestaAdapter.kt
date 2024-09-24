@@ -24,6 +24,7 @@ class RespuestaAdapter(private val respuestas: List<Comentario>) :
         val txtUsu: TextView = itemView.findViewById(R.id.txtRespUsuario)
         val txtFecha : TextView = itemView.findViewById(R.id.txtRespFecha)
         val txtRespuesta: TextView = itemView.findViewById(R.id.txtResDescripcion)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RespuestaViewHolder {
@@ -56,8 +57,8 @@ class RespuestaAdapter(private val respuestas: List<Comentario>) :
             // Devuelve la fecha original si hubo un error
             holder.txtFecha.text = respuesta.fecha
         }
-
         holder.txtRespuesta.text = respuesta.comentario
+
     }
 
     override fun getItemCount(): Int {

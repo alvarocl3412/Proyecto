@@ -1,5 +1,6 @@
 package es.ua.eps.carkier
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -33,9 +34,9 @@ class MostrarVehiculo : AppCompatActivity() {
 
     private lateinit var binding: ActivityMostrarVehiculoBinding
     private var vehiculo: Vehiculos? = null
+    private var vehiculoId: Long? = null
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var adapter: ComentarioAdapter // Declarar aquí
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +45,11 @@ class MostrarVehiculo : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
 
         // Obtener los datos del vehículo pasados por intent
-        val vehiculoId: Long? = intent.getLongExtra("idvehiculo", -1L)
+        vehiculoId = intent.getLongExtra("idvehiculo", -1L)
         // Llamar a la función en un CoroutineScope
         if (vehiculoId != null) {
             CoroutineScope(Dispatchers.Main).launch {
-                vehiculo = obtenerVehiculoPorId(vehiculoId)
+                vehiculo = obtenerVehiculoPorId(vehiculoId!!.toLong())
                 inicializarComentario(vehiculo!!.id)
                 if (vehiculo != null) {
                     mostrarDetallesVehiculo(vehiculo!!)
@@ -75,6 +76,12 @@ class MostrarVehiculo : AppCompatActivity() {
 
         binding.btnEnviarComentario.setOnClickListener() {
             binding.layoutBotonesComentario.visibility = View.GONE
+            var comentario = Comentario(
+                idUsuario = sharedPreferences.getLong("id", 0L),
+                idVehiculo = vehiculo!!.id,
+                comentario = binding.etEscribirComentario.text.toString()
+            )
+            guardarComentario(comentario)
         }
 
     }
@@ -96,24 +103,33 @@ class MostrarVehiculo : AppCompatActivity() {
     fun inicializarComentario(idVehiculo: Long) {
         RetrofitClient.instance.ComentarioVehiculo(idVehiculo)
             .enqueue(object : Callback<MutableList<Comentario>> {
-                override fun onResponse(call: Call<MutableList<Comentario>>, response: Response<MutableList<Comentario>>) {
+                override fun onResponse(
+                    call: Call<MutableList<Comentario>>,
+                    response: Response<MutableList<Comentario>>
+                ) {
                     if (response.isSuccessful) {
                         val comentarios: MutableList<Comentario>? = response.body()
+
+                        // Verifica si comentarios es null o vacío
                         if (comentarios != null && comentarios.isNotEmpty()) {
                             binding.txtComent.text = "${comentarios.size} COMENTARIOS"
-                            binding.recycleComentario.layoutManager = LinearLayoutManager(this@MostrarVehiculo)
+                            binding.recycleComentario.layoutManager =
+                                LinearLayoutManager(this@MostrarVehiculo)
 
-                            val nombreUsuario = sharedPreferences.getLong("id",0L)
+                            val nombreUsuario = sharedPreferences.getLong("id", 0L)
 
-                            val adapter = ComentarioAdapter(comentarios.toMutableList()) { comentario, respuestaTexto ->
+                            val adapter = ComentarioAdapter(
+                                this@MostrarVehiculo,
+                                comentarios.toMutableList()
+                            ) { comentario, respuestaTexto ->
                                 // Genera un nuevo ID para la respuesta
                                 val nuevaRespuesta = Comentario(
-                                    id = generarNuevoId(), // Implementa esta función para generar IDs únicos
-                                    idUsuario = nombreUsuario, // Reemplaza con el ID real del usuario
+                                    id = generarNuevoId(),
+                                    idUsuario = nombreUsuario,
                                     idVehiculo = comentario.idVehiculo,
                                     idComentarioRespuesta = comentario.id,
                                     comentario = respuestaTexto,
-                                    fecha = obtenerFechaActual() // Asegúrate de implementar esta función
+                                    fecha = obtenerFechaActual()
                                 )
                                 // Agregar la nueva respuesta a la lista de comentarios
                                 comentarios.add(nuevaRespuesta)
@@ -123,16 +139,29 @@ class MostrarVehiculo : AppCompatActivity() {
 
                             binding.recycleComentario.adapter = adapter
                         } else {
+                            // Manejo cuando no hay comentarios
                             binding.txtComent.text = "0 COMENTARIOS"
-                            Toast.makeText(this@MostrarVehiculo, "No hay comentarios disponibles", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@MostrarVehiculo,
+                                "No hay comentarios disponibles",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     } else {
-                        Toast.makeText(this@MostrarVehiculo, "Error al cargar comentarios. Código: ${response.code()}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MostrarVehiculo,
+                            "Error al cargar comentarios. Código: ${response.code()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
                 override fun onFailure(call: Call<MutableList<Comentario>>, t: Throwable) {
-                    Toast.makeText(this@MostrarVehiculo, "Error de conexión: ${t.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@MostrarVehiculo,
+                        "Error de conexión: ${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             })
     }
@@ -148,10 +177,6 @@ class MostrarVehiculo : AppCompatActivity() {
         val formatoSalida = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return formatoSalida.format(Date())
     }
-
-
-
-
 
     fun mostrarDetallesVehiculo(vehiculos: Vehiculos?) {
         EstadoNombre(vehiculos?.idEstado?.toLong()) { estado ->
@@ -211,6 +236,39 @@ class MostrarVehiculo : AppCompatActivity() {
         })
     }
 
+    fun guardarComentario(comentario: Comentario) {
+        RetrofitClient.instance.ComentarioRegistrar(comentario).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+
+                    vehiculo?.id?.let { inicializarComentario(it) }
+
+                    // Limpiar el campo de texto y ocultar el layout de botones
+                    binding.etEscribirComentario.text.clear()
+                    binding.layoutBotonesComentario.visibility = View.GONE
+
+                } else {
+                    // Mensaje de error más detallado
+                    val errorBody = response.errorBody()?.string()
+                    Toast.makeText(
+                        this@MostrarVehiculo,
+                        "No se ha podido crear correctamente: $errorBody",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    vehiculo?.id?.let { inicializarComentario(it) }
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                vehiculo?.id?.let { inicializarComentario(it) }
+                // Limpiar el campo de texto y ocultar el layout de botones
+                binding.etEscribirComentario.text.clear()
+                binding.layoutBotonesComentario.visibility = View.GONE
+            }
+        })
+
+
+    }
 
     fun ImageView.setBase64Image(base64Image: String): Bitmap? {
         return try {

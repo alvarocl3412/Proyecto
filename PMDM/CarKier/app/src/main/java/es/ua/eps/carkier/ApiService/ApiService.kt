@@ -64,6 +64,9 @@ interface ApiService {
     @GET("ComentarioidVehiculo/{idVehiculo}")
     fun ComentarioVehiculo(@Path("idVehiculo") id: Long): Call<MutableList<Comentario>>
 
+    @POST("CrearComentario")
+    fun ComentarioRegistrar(@Body comentario: Comentario):Call<String>
+
 
 
 }

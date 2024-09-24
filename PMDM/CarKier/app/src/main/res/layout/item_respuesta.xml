@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
+    android:background="@color/material_dynamic_secondary90"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="15dp">
 
     <!-- Sección para mostrar el usuario y la fecha -->
     <LinearLayout
@@ -45,5 +45,12 @@
         android:textSize="20sp"
         android:textStyle="italic" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@color/morado_logo" />
 </LinearLayout>

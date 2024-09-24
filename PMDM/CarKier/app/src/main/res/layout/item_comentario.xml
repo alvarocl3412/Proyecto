@@ -64,9 +64,8 @@
             android:visibility="visible" />
 
         <Space
-            android:layout_width="130dp"
-            android:layout_height="15dp" />
-
+            android:layout_width="120dp"
+            android:layout_height="match_parent" />
         <!-- Botón para responder -->
         <TextView
             android:id="@+id/txtResponder"
@@ -75,17 +74,7 @@
             android:text="Responder"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="18sp" />
-
     </LinearLayout>
-
-    <!-- Lista de respuestas, inicialmente oculta -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerRespuestas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:nestedScrollingEnabled="false"
-        android:visibility="gone" />
 
     <!-- Campo de texto para respuesta, inicialmente oculto -->
     <LinearLayout
@@ -99,10 +88,10 @@
             android:id="@+id/etResponder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@color/material_dynamic_secondary90"
             android:hint="Escribe una respuesta..."
             android:padding="10dp"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,7 +105,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="Cancelar" />
+                android:backgroundTint="@color/black"
+                android:text="Cancelar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnEnviarRespuesta"
@@ -124,8 +116,23 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
                 android:text="Comentar"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
         </LinearLayout>
-
     </LinearLayout>
+
+    <!-- Lista de respuestas, inicialmente oculta -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerRespuestas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:nestedScrollingEnabled="false"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#BDBDBD" />
+
 </LinearLayout>
