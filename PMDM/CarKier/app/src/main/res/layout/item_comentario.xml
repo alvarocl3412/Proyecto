@@ -91,7 +91,10 @@
             android:background="@color/material_dynamic_secondary90"
             android:hint="Escribe una respuesta..."
             android:padding="10dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"

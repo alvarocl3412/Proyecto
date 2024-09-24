@@ -142,6 +142,8 @@ class ComentarioAdapter(
                                 ).show()
                             }
                         }
+                        holder.etResponder.text.clear()
+                        holder.layoutResponder.visibility = View.GONE
                     }
                 } else {
                     Toast.makeText(

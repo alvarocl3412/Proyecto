@@ -27,7 +27,7 @@ public class EstadoVehiculoController {
         else
             return ResponseEntity.ok(estado);
     }
-    @GetMapping("/EstadoVehiculoId/{id}")
+    @GetMapping("/EstadoVehiculoId/{id}")   
     public ResponseEntity<EstadoVehiculo> getEstadoVehiculotById(@PathVariable  Integer id) {
         Optional<EstadoVehiculo> estados = servicio.findById(id);
         if (!estados.isPresent()) {

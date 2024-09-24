@@ -3,6 +3,7 @@ package es.ua.eps.carkier.ApiService
 import es.ua.eps.carkier.Modelos.CarnetConducir
 import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.EstadoVehiculo
+import es.ua.eps.carkier.Modelos.Seguros
 import es.ua.eps.carkier.Modelos.TipoCarnet
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -50,8 +51,6 @@ interface ApiService {
     @GET("TipoCarnetId/{id}")
     fun TipoCarnetNombre(@Path("id") id: String): Call<TipoCarnet>
 
-
-
     //Metodos para los carnets
     @POST("registrarCarnets")
     fun CrearCarnetUsuario(@Body carnet: CarnetConducir):Call<String>
@@ -67,6 +66,8 @@ interface ApiService {
     @POST("CrearComentario")
     fun ComentarioRegistrar(@Body comentario: Comentario):Call<String>
 
-
+    //Seguros
+    @GET("TipoSegurofindAll")
+    fun Seguros():Call<List<Seguros>>
 
 }

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CarKier"
         tools:targetApi="31">
         <activity
+            android:name=".ContratarVehiculo"
+            android:exported="false" />
+        <activity
             android:name=".MostrarVehiculo"
             android:exported="false" />
         <activity
