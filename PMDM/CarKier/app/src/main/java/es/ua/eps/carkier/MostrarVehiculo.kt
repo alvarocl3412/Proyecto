@@ -94,6 +94,7 @@ import java.util.Locale
             binding.btnContratar.setOnClickListener(){
                 val intent = Intent(this, ContratarVehiculo::class.java)
                 intent.putExtra("idvehiculo", vehiculoId)
+                intent.putExtra("preciovehiculo", vehiculo?.preciodia)
                 startActivity(intent)
             }
 
