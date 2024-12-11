@@ -34,13 +34,13 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
-            this.txtIdVehiculo = new System.Windows.Forms.TextBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pcImgComentario = new System.Windows.Forms.PictureBox();
             this.lblIdRespuesta = new System.Windows.Forms.Label();
             this.txtRespuesta = new System.Windows.Forms.TextBox();
+            this.txtMatriculaComentario = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcImgComentario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,13 +98,6 @@
             this.txtFecha.Size = new System.Drawing.Size(145, 20);
             this.txtFecha.TabIndex = 22;
             // 
-            // txtIdVehiculo
-            // 
-            this.txtIdVehiculo.Location = new System.Drawing.Point(360, 95);
-            this.txtIdVehiculo.Name = "txtIdVehiculo";
-            this.txtIdVehiculo.Size = new System.Drawing.Size(143, 20);
-            this.txtIdVehiculo.TabIndex = 23;
-            // 
             // txtComentario
             // 
             this.txtComentario.Location = new System.Drawing.Point(90, 241);
@@ -153,7 +146,7 @@
             // 
             this.lblIdRespuesta.AutoSize = true;
             this.lblIdRespuesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdRespuesta.Location = new System.Drawing.Point(508, 28);
+            this.lblIdRespuesta.Location = new System.Drawing.Point(504, 28);
             this.lblIdRespuesta.Name = "lblIdRespuesta";
             this.lblIdRespuesta.Size = new System.Drawing.Size(104, 20);
             this.lblIdRespuesta.TabIndex = 38;
@@ -166,17 +159,24 @@
             this.txtRespuesta.Size = new System.Drawing.Size(136, 20);
             this.txtRespuesta.TabIndex = 39;
             // 
+            // txtMatriculaComentario
+            // 
+            this.txtMatriculaComentario.Location = new System.Drawing.Point(365, 95);
+            this.txtMatriculaComentario.Name = "txtMatriculaComentario";
+            this.txtMatriculaComentario.Size = new System.Drawing.Size(143, 20);
+            this.txtMatriculaComentario.TabIndex = 40;
+            // 
             // VerComentario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtMatriculaComentario);
             this.Controls.Add(this.txtRespuesta);
             this.Controls.Add(this.lblIdRespuesta);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtComentario);
-            this.Controls.Add(this.txtIdVehiculo);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.lblFecha);
@@ -201,11 +201,11 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.TextBox txtIdUsuario;
         private System.Windows.Forms.TextBox txtFecha;
-        private System.Windows.Forms.TextBox txtIdVehiculo;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblIdRespuesta;
         private System.Windows.Forms.TextBox txtRespuesta;
+        private System.Windows.Forms.TextBox txtMatriculaComentario;
     }
 }

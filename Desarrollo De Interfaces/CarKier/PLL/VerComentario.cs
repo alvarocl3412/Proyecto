@@ -24,6 +24,12 @@ namespace CarKier.PLL
         public VerComentario()
         {
             InitializeComponent();
+            _comentarios = new comentarios();
+            btnGuardar.Text = "Crear";
+            lblIdUsuario.Text = "DNI";
+            lblIdRespuesta.Text = "DNI RESPONDE:";
+            txtFecha.Visible = false;
+            lblFecha.Visible = false;
         }
         public VerComentario(usuarios us)
         {
@@ -31,9 +37,7 @@ namespace CarKier.PLL
             usuAdmin = us;
             _comentarios = new comentarios();
             btnGuardar.Text = "Crear";
-
             txtIdUsuario.Text = usuAdmin.nombre + " - " + usuAdmin.apellidos;
-
             txtRespuesta.Visible = false;
             lblIdRespuesta.Visible = false;
             txtIdUsuario.Enabled = false;
@@ -133,19 +137,19 @@ namespace CarKier.PLL
             txtRespuesta.Text = cadena;
 
             vehiculos vehi = await vehiculoDal.findVehiculoId(_comentarios.idVehiculo);
-            txtIdVehiculo.Text = vehi.matricula;
+            txtMatriculaComentario.Text = vehi.matricula;
 
             txtComentario.Text = _comentarios.comentario;
-            txtFecha.Text = _comentarios.fecha.ToString("dd/MM/yyyy");
+            txtFecha.Text = _comentarios.fecha;
         }
 
         private async void ModificarComentario()
         {
             //Actualizamos los datos los usuarios no se podra modifcar ni el id de respuesta 
-            _comentarios.fecha = DateTime.Parse(txtFecha.Text);
+            _comentarios.fecha = txtFecha.Text;
             _comentarios.comentario = txtComentario.Text;
 
-            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
+            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtMatriculaComentario.Text);
             if (vehi != null)
             {
                 _comentarios.idVehiculo = vehi.id;
@@ -171,18 +175,34 @@ namespace CarKier.PLL
 
         private async void CrearComentario()
         {
+            _comentarios.fecha = DateTime.Now.ToString();
             _comentarios.comentario = txtComentario.Text;
-            _comentarios.idUsuario = usuAdmin.id;
-            _comentarios.idComentarioRespuesta = null;
-           
 
-            if (string.IsNullOrWhiteSpace(txtIdVehiculo.Text))
+            int? ID = await usuDal.findUsuarioDni(txtIdUsuario.Text);
+            if (ID != null)
+            {
+                _comentarios.idUsuario = ID.Value;
+            }
+
+            int? IDCOMEN = await usuDal.findUsuarioDni(txtRespuesta.Text);
+            _comentarios.idComentarioRespuesta = null;
+            if (IDCOMEN != null)
+            {
+                _comentarios.idComentarioRespuesta = IDCOMEN;
+            }
+
+            // Verifica si la matrícula está vacía o contiene solo espacios en blanco
+            if (string.IsNullOrWhiteSpace(txtMatriculaComentario.Text.Trim()))
             {
                 MessageBox.Show("La matrícula del vehículo no puede estar vacía.");
                 return;
             }
 
-            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
+            // Depuración: verificar el valor que se obtiene del campo de matrícula
+            Console.WriteLine($"Matrícula del vehículo ingresada: '{txtMatriculaComentario.Text}'");
+
+            // Buscar el vehículo por matrícula
+            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtMatriculaComentario.Text);
 
             if (vehi != null)
             {
@@ -194,8 +214,7 @@ namespace CarKier.PLL
                 return;
             }
 
-
-
+            // Crear el comentario en la base de datos
             bool creado = await comenDal.CrearComentario(_comentarios);
 
             if (creado)
@@ -208,7 +227,7 @@ namespace CarKier.PLL
             }
         }
 
-        #endregion
 
+        #endregion
     }
 }

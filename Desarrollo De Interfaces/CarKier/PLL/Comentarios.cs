@@ -52,7 +52,7 @@ namespace CarKier.PLL
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-            PLL.VerComentario comentario = new PLL.VerComentario(usuAdmin);
+            PLL.VerComentario comentario = new PLL.VerComentario();
             comentario.Show();
         }
 
@@ -120,7 +120,7 @@ namespace CarKier.PLL
 
                 item.SubItems.Add(comentarios.comentario);
 
-                item.SubItems.Add(comentarios.fecha.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(comentarios.fecha);
                 item.Tag = comentarios.id.ToString();
                 lvComentarios.Items.Add(item);
             }
