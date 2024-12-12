@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,19 +20,22 @@ namespace CarKier.PLL
         private static ComentariosDal comenDal = new ComentariosDal();
         private static VehiculosDal vehiculoDal = new VehiculosDal();
         private static UsuariosDal usuDal = new UsuariosDal();
+        private Comentarios _actualizarComentarios;
 
-
-        public VerComentario()
+        public VerComentario(Comentarios ventanaPrincipal)
         {
             InitializeComponent();
             _comentarios = new comentarios();
             btnGuardar.Text = "Crear";
             lblIdUsuario.Text = "DNI";
-            lblIdRespuesta.Text = "DNI RESPONDE:";
+
+            lblIdRespuesta.Visible = false;
+            txtRespuesta.Visible = false;
             txtFecha.Visible = false;
             lblFecha.Visible = false;
+            _actualizarComentarios = ventanaPrincipal;
         }
-        public VerComentario(usuarios us)
+        public VerComentario(usuarios us, Comentarios ventanaPrincipal)
         {
             InitializeComponent();
             usuAdmin = us;
@@ -43,10 +47,11 @@ namespace CarKier.PLL
             txtIdUsuario.Enabled = false;
             lblFecha.Visible = false;
             txtFecha.Visible = false;
+            _actualizarComentarios = ventanaPrincipal;
 
         }
 
-        public VerComentario(comentarios comen, usuarios us)
+        public VerComentario(comentarios comen, usuarios us, Comentarios ventanaPrincipal)
         {
             InitializeComponent();
             _comentarios = comen;
@@ -54,12 +59,16 @@ namespace CarKier.PLL
             MostrarComentario();
             txtRespuesta.Enabled = false;
             txtIdUsuario.Enabled = false;
+            _actualizarComentarios = ventanaPrincipal;
         }
 
         #region METODOS INTERFAZ
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
+
+            var matricula = txtMatriculaComentario.Text;
+
             if (btnGuardar.Text.Contains("Crear"))
             {
                 DialogResult result = MessageBox.Show("¿Quieres crear el nuevo comentarios?", "Confirmar Guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -67,7 +76,7 @@ namespace CarKier.PLL
                 {
                     // El usuario hizo clic en "Yes"
                     //Se agrega el nuevo carnet
-                    CrearComentario();
+                    CrearComentario(matricula);
 
                     //Cerramos la ventana
                     this.Close();
@@ -165,6 +174,7 @@ namespace CarKier.PLL
             if (modificado)
             {
                 MessageBox.Show("Se ha modificado correctamente");
+                _actualizarComentarios.CargarTabla();
             }
             else
             {
@@ -173,9 +183,10 @@ namespace CarKier.PLL
         }
 
 
-        private async void CrearComentario()
+        private async void CrearComentario(string matricula)
         {
-            _comentarios.fecha = DateTime.Now.ToString();
+
+            var matriculaComent = matricula;
             _comentarios.comentario = txtComentario.Text;
 
             int? ID = await usuDal.findUsuarioDni(txtIdUsuario.Text);
@@ -191,8 +202,11 @@ namespace CarKier.PLL
                 _comentarios.idComentarioRespuesta = IDCOMEN;
             }
 
+            //var matricula = txtMatriculaComentario.Text;
+            //Console.WriteLine("MAtricula: " + matricula);
+
             // Verifica si la matrícula está vacía o contiene solo espacios en blanco
-            if (string.IsNullOrWhiteSpace(txtMatriculaComentario.Text.Trim()))
+            if (string.IsNullOrEmpty(matricula))
             {
                 MessageBox.Show("La matrícula del vehículo no puede estar vacía.");
                 return;
@@ -202,7 +216,7 @@ namespace CarKier.PLL
             Console.WriteLine($"Matrícula del vehículo ingresada: '{txtMatriculaComentario.Text}'");
 
             // Buscar el vehículo por matrícula
-            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(txtMatriculaComentario.Text);
+            vehiculos vehi = await vehiculoDal.findVehiculoMatricula(matricula);
 
             if (vehi != null)
             {
@@ -220,11 +234,13 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Se ha creado el comentario correctamente.");
+                _actualizarComentarios.CargarTabla();
             }
             else
             {
                 MessageBox.Show("No se ha podido crear el comentario.");
             }
+            
         }
 
 

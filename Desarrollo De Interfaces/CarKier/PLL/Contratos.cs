@@ -45,7 +45,7 @@ namespace CarKier.PLL
 
         private void tsmNuevo_Click(object sender, EventArgs e)
         {
-            PLL.VerContrato infoContrato = new PLL.VerContrato();
+            PLL.VerContrato infoContrato = new PLL.VerContrato(this);
             infoContrato.Show();
         }
 
@@ -100,7 +100,7 @@ namespace CarKier.PLL
         #region METODOS COMPLEMENTARIOS
 
 
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<contratos> listaContratos = await contratoDal.ContratosfindAll();
@@ -125,8 +125,8 @@ namespace CarKier.PLL
                 string seguro = await seguroDal.findSegurosid(contra.idSeguro);
                 item.SubItems.Add(seguro);
 
-                item.SubItems.Add(contra.fechaInicio.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(contra.fechaFin.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(contra.fechaInicio);
+                item.SubItems.Add(contra.fechaFin);
                 item.SubItems.Add(contra.precioDia.ToString());
                 item.SubItems.Add(contra.precioTotal.ToString());
                 item.SubItems.Add(contra.pagado ? "SI" : "NO");
@@ -144,7 +144,7 @@ namespace CarKier.PLL
 
             if (contrato != null)
             {
-                PLL.VerContrato infoContrato = new PLL.VerContrato(contrato);
+                PLL.VerContrato infoContrato = new PLL.VerContrato(contrato,this);
                 infoContrato.Show();
 
             }

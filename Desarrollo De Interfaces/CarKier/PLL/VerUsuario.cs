@@ -15,20 +15,22 @@ namespace CarKier.PLL
     public partial class VerUsuario : Form
     {
         private static usuarios _usuario;
+        private Usuarios _ventanaPrincipal;
         private static CarnetsDeConducirDal cdcdal = new CarnetsDeConducirDal();
         private static TipoCarnetDal tcDal = new TipoCarnetDal();
         private static UsuariosDal usudal = new UsuariosDal();
 
-        public VerUsuario()
+        public VerUsuario(Usuarios ventanaPrincipal)
         {
             InitializeComponent();
             _usuario = new usuarios();
             btnGuardar.Text = "Crear";
             txtContrasenia.Visible = true;
             lblContrasenia.Visible = true;
+            _ventanaPrincipal = ventanaPrincipal;
         }
 
-        public VerUsuario(usuarios usu)
+        public VerUsuario(usuarios usu,Usuarios ventanaPrincipal)
         {
             InitializeComponent();
             btnGuardar.Text = "Guardar";
@@ -42,6 +44,8 @@ namespace CarKier.PLL
             txtCorreo.Text = _usuario.correo;
             txtContrasenia.Visible = false;
             lblContrasenia.Visible = false;
+            _ventanaPrincipal = ventanaPrincipal;
+
 
         }
 
@@ -68,7 +72,7 @@ namespace CarKier.PLL
         private void ntsmNuevo_Click(object sender, EventArgs e)
         {
             int id = _usuario.id;
-            PLL.CarnetVerModificar CarnetNUevo = new PLL.CarnetVerModificar(id);
+            PLL.CarnetVerModificar CarnetNUevo = new PLL.CarnetVerModificar(id,this);
             CarnetNUevo.Show();
         }
 
@@ -171,7 +175,7 @@ namespace CarKier.PLL
 
 
         #region METODOS COMPLEMENTARIOS
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
 
             List<carnets_de_conducir> listaCarntes = await cdcdal.findAllByUsuario(_usuario.id);
@@ -198,10 +202,17 @@ namespace CarKier.PLL
             _usuario.telefono = txtTelefono.Text;
             _usuario.fechaNacimiento = DateTime.Parse(txtFechaNac.Text);
             _usuario.correo = txtCorreo.Text;
-            
+           
+           bool modificacion = await usudal.UpdateUsuarioId(_usuario);
+           if(modificacion)
+            {
+                MessageBox.Show("Se ha modificado el usuario correctamente");
+                await _ventanaPrincipal.CargarTabla();
+            } else
+            {
+                MessageBox.Show("No se ha podido modificar el usuario");
 
-            await usudal.UpdateUsuarioId(_usuario);
-
+            }
 
         }
 
@@ -220,6 +231,7 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Se ha creado el usuario correctamente");
+                await _ventanaPrincipal.CargarTabla();
             }
             else
             {
@@ -236,7 +248,7 @@ namespace CarKier.PLL
             int carnetid = int.Parse(selectedItem.Tag.ToString());
             carnets_de_conducir carnet = await cdcdal.findAllByID(carnetid);
 
-            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(carnet);
+            PLL.CarnetVerModificar CarnetVerModificar = new PLL.CarnetVerModificar(carnet, this);
             CarnetVerModificar.Show();
         }
 

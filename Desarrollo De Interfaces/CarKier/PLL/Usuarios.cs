@@ -111,7 +111,7 @@ namespace CarKier.PLL
 
         private void crearUsuario()
         {
-            VerUsuario verUsuarioForm = new VerUsuario();
+            VerUsuario verUsuarioForm = new VerUsuario(this);
             verUsuarioForm.ShowDialog();
         }
 
@@ -124,7 +124,7 @@ namespace CarKier.PLL
 
                 if (usuario != null)
                 {
-                    VerUsuario verUsuarioForm = new VerUsuario(usuario);
+                    VerUsuario verUsuarioForm = new VerUsuario(usuario,this);
                     verUsuarioForm.ShowDialog();
                     
                 }

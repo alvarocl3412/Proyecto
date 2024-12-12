@@ -15,30 +15,35 @@ namespace CarKier.PLL
     public partial class VerContrato : Form
     {
         private static contratos _contrato;
+        private Contratos _ventanaPrincipal;
         private static ContratosDal contratoDal = new ContratosDal();
         private static UsuariosDal usuDal = new UsuariosDal();
         private static VehiculosDal vehiculoDal = new VehiculosDal();
         private static SegurosDal seguroDal = new SegurosDal();
         private static EstadoContratoDal estadoContratoDal = new EstadoContratoDal();
 
-        public VerContrato()
+        public VerContrato(Contratos ventanaPrincipal)
         {
             InitializeComponent();
             _contrato = new contratos();
             btnGuardar.Text = "Crear";
+            lblIdCliente.Text = "Dni Cliente:";
             lblPrecioDia.Visible = false;
             lblPreciototal.Visible = false;
             txtPrecioDia.Visible = false;
             txtPrecioTotal.Visible = false;
+            _ventanaPrincipal = ventanaPrincipal;
+
         }
 
-        public VerContrato(contratos contrato)
+        public VerContrato(contratos contrato, Contratos ventanaPrincipal)
         {
             InitializeComponent();
             _contrato = contrato;
             ComponentesInicializar();
             txtIdVehiculo.Enabled = false;
             txtIdCliente.Enabled = false;
+            _ventanaPrincipal = ventanaPrincipal;
         }
 
         #region METODOS INTERFAZ
@@ -57,8 +62,10 @@ namespace CarKier.PLL
                 {
                     // El usuario hizo clic en "Yes"
                     //Se agrega el nuevo carnet
-
-                    CrearContrato();
+                    string dni = txtIdCliente.Text;
+                    _contrato.fechaFin = txtFechaFinal.Text;
+                    _contrato.fechaInicio = txtFechaInicio.Text;
+                    CrearContrato(dni);
                     //Cerramos la ventana
                     this.Close();
                 }
@@ -116,9 +123,6 @@ namespace CarKier.PLL
 
         public async void CargarComboBox()
         {
-         
-
-
             List<tipos_seguros> seguros = await seguroDal.SegurosfindAll(); // lista seguros
             List<estado_contrato> estadoContrato = await estadoContratoDal.EstadoContratosfindAll();
 
@@ -175,13 +179,13 @@ namespace CarKier.PLL
                 cbPagado.SelectedItem = "No";
             }
 
-            txtFechaInicio.Text = _contrato.fechaInicio.ToString("dd/MM/yyyy");
-            txtFechaFinal.Text = _contrato.fechaFin.ToString("dd/MM/yyyy");
+            txtFechaInicio.Text = _contrato.fechaInicio;
+            txtFechaFinal.Text = _contrato.fechaFin;
             txtPrecioDia.Text = _contrato.precioDia.ToString();
             txtPrecioTotal.Text = _contrato.precioTotal.ToString();
         }
 
-        public async void CrearContrato()
+        public async void CrearContrato(String dni)
         {
             vehiculos vehiculo = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
             if(vehiculo != null)
@@ -194,7 +198,7 @@ namespace CarKier.PLL
                
             }
 
-            int? idCliente = await usuDal.findUsuarioDni(txtIdCliente.Text);
+            int? idCliente = await usuDal.findUsuarioDni(dni);
             if (idCliente != null)
             {
                 _contrato.idvehiculo = vehiculo.id;
@@ -216,13 +220,11 @@ namespace CarKier.PLL
                 _contrato.pagado = true;
             }
 
-            _contrato.fechaInicio = DateTime.Parse(txtFechaInicio.Text);
-            _contrato.fechaFin = DateTime.Parse(txtFechaFinal.Text);
-
             bool creado = await contratoDal.CrearContrato(_contrato);
             if (creado)
             {
                 MessageBox.Show("Se ha creado el contrato");
+                _ventanaPrincipal.CargarTabla();
             }
             else
             {
@@ -244,13 +246,15 @@ namespace CarKier.PLL
                 _contrato.pagado = true;
             }
 
-            _contrato.fechaInicio = DateTime.Parse(txtFechaInicio.Text); 
-            _contrato.fechaFin = DateTime.Parse(txtFechaFinal.Text);
+            _contrato.fechaInicio = txtFechaInicio.Text; 
+            _contrato.fechaFin = txtFechaFinal.Text;
 
             bool modificado = await contratoDal.UpdateContrato(_contrato);
             if (modificado)
             {
                 MessageBox.Show("Se ha modificado correctamente el contrato");
+                _ventanaPrincipal.CargarTabla();
+
             }
             else
             {

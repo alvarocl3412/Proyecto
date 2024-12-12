@@ -16,19 +16,23 @@ namespace CarKier.PLL
     public partial class VerEmpresa : Form
     {
         private static empresas _empresa;
+        private Empresas _ventanaPrincipal;
         private static EmpresasDal emprDal = new EmpresasDal();
-        public VerEmpresa()
+        public VerEmpresa(Empresas ventanaPrincipal)
         {
             InitializeComponent();
             _empresa = new empresas();
             btnGuardar.Text = "Crear";
+            _ventanaPrincipal = ventanaPrincipal;
         }
 
-        public VerEmpresa(empresas empr)
+        public VerEmpresa(empresas empr,Empresas ventanaPrincipal)
         {
             InitializeComponent();
             _empresa = empr;
             mostrarDatos();
+            _ventanaPrincipal = ventanaPrincipal;
+
         }
 
         #region METODOS INTERFAZ
@@ -100,6 +104,7 @@ namespace CarKier.PLL
             if (modificado)
             {
                 MessageBox.Show("Se ha modificado correctamente");
+                await _ventanaPrincipal.CargarTabla();
             }
             else
             {
@@ -115,6 +120,8 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Se ha modificado correctamente");
+               await _ventanaPrincipal.CargarTabla();
+
             }
             else
             {

@@ -46,7 +46,7 @@ namespace CarKier.PLL
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PLL.VerVehiculo infoVehiculo = new PLL.VerVehiculo();
+            PLL.VerVehiculo infoVehiculo = new PLL.VerVehiculo(this);
             infoVehiculo.Show();
         }
 
@@ -79,7 +79,7 @@ namespace CarKier.PLL
         #endregion
 
         #region METODOS COMPLEMENTARIOS
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<vehiculos> listaVehiculo = await vehiculoDal.VehiculosfindAll();
@@ -104,7 +104,16 @@ namespace CarKier.PLL
                 item.SubItems.Add(vehiculo.modelo);
                 item.SubItems.Add(vehiculo.anio.ToString());
                 item.SubItems.Add(vehiculo.km.ToString());
-                item.SubItems.Add(vehiculo.precioventa.ToString() + " €") ;
+                if(vehiculo.precioventa == null)
+                {
+                    item.SubItems.Add("No se Vende");
+
+                }
+                else
+                {
+                    item.SubItems.Add(vehiculo.precioventa.ToString() + " €");
+
+                }
                 item.SubItems.Add(vehiculo.preciodia.ToString() + " €");
                 item.Tag = vehiculo.id;
                 lvVehiculos.Items.Add(item);
@@ -120,7 +129,7 @@ namespace CarKier.PLL
 
             if (vehiculo != null)
             {
-                PLL.VerVehiculo infoVehiculo = new PLL.VerVehiculo(vehiculo);
+                PLL.VerVehiculo infoVehiculo = new PLL.VerVehiculo(vehiculo,this);
                 infoVehiculo.Show();
 
             }

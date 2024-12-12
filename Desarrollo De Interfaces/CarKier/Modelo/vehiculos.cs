@@ -22,13 +22,16 @@ namespace CarKier.Modelo
         public double? precioventa { get; set; }
         public double? preciodia { get; set; }
 
+        public string imagen { get; set; }
+
         // Constructor por defecto
         public vehiculos()
         {
         }
 
         // Constructor que inicializa todas las propiedades
-        public vehiculos(int idvehiculo, int? idempresa, int? idusuariospropietario, int? idestado, string matricula, string marca, string modelo, int? anio, int? km, double? precioventa, double? preciodia)
+        public vehiculos(int idvehiculo, int? idempresa, int? idusuariospropietario, int? idestado, string matricula,
+            string marca, string modelo, int? anio, int? km, double? precioventa, double? preciodia, string imgBase64)
         {
             this.id = idvehiculo;
             this.idEmpresa = idempresa;
@@ -41,6 +44,7 @@ namespace CarKier.Modelo
             this.km = km;
             this.precioventa = precioventa;
             this.preciodia = preciodia;
+            this.imagen = imgBase64;
         }
     }
 }

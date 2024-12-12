@@ -15,31 +15,36 @@ namespace CarKier.PLL
     public partial class CarnetVerModificar : Form
     {
         public static CarnetsDeConducirDal cdcDal = new CarnetsDeConducirDal();
+        private VerUsuario _ventanaPrincipal;
         public static TipoCarnetDal tcDal = new TipoCarnetDal();
         public static UsuariosDal usuDal = new UsuariosDal();
         public static usuarios usuNuevo = new usuarios();
         public static carnets_de_conducir _carnet;
-        public CarnetVerModificar()
+        public CarnetVerModificar(VerUsuario ventanaPrincipal)
         {
             InitializeComponent();
             _carnet = new carnets_de_conducir();
+            _ventanaPrincipal = ventanaPrincipal;
         }
 
-        public CarnetVerModificar(carnets_de_conducir carnet)
+        public CarnetVerModificar(carnets_de_conducir carnet, VerUsuario ventanaPrincipal)
         {
             InitializeComponent();
             _carnet = carnet;
+            txtIdUsuario.Enabled = false;
+            _ventanaPrincipal = ventanaPrincipal;
             InicializarComponentesVer();
 
 
         }
 
-        public CarnetVerModificar(int id)
+        public CarnetVerModificar(int id, VerUsuario ventanaPrincipal)
         {
             InitializeComponent();
             _carnet = new carnets_de_conducir();
             btnGuardar.Text = " CREAR";
             usuNuevo.id = id;
+            _ventanaPrincipal = ventanaPrincipal;
             InicializarComponentesCrear(id);
         }
 
@@ -220,6 +225,7 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Se ha creado correctamente");
+               await _ventanaPrincipal.CargarTabla();
             } else
             {
                 MessageBox.Show("No se ha creado correctamente");
@@ -236,6 +242,7 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Se ha modificado correctamente");
+                await _ventanaPrincipal.CargarTabla();
             }
             else
             {

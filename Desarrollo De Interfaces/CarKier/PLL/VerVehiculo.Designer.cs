@@ -52,6 +52,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.cbEstado = new System.Windows.Forms.ComboBox();
+            this.btnImagen = new System.Windows.Forms.Button();
+            this.txtRutaImg = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,7 +224,7 @@
             // 
             this.pcCoche.BackColor = System.Drawing.Color.Transparent;
             this.pcCoche.Image = global::CarKier.Properties.Resources.coche;
-            this.pcCoche.Location = new System.Drawing.Point(0, 83);
+            this.pcCoche.Location = new System.Drawing.Point(12, 89);
             this.pcCoche.Name = "pcCoche";
             this.pcCoche.Size = new System.Drawing.Size(168, 146);
             this.pcCoche.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -263,11 +265,32 @@
             this.cbEstado.Size = new System.Drawing.Size(146, 21);
             this.cbEstado.TabIndex = 31;
             // 
+            // btnImagen
+            // 
+            this.btnImagen.Location = new System.Drawing.Point(47, 243);
+            this.btnImagen.Name = "btnImagen";
+            this.btnImagen.Size = new System.Drawing.Size(89, 25);
+            this.btnImagen.TabIndex = 32;
+            this.btnImagen.Text = "Elefir foto";
+            this.btnImagen.UseVisualStyleBackColor = true;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            // 
+            // txtRutaImg
+            // 
+            this.txtRutaImg.Location = new System.Drawing.Point(22, 293);
+            this.txtRutaImg.Multiline = true;
+            this.txtRutaImg.Name = "txtRutaImg";
+            this.txtRutaImg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtRutaImg.Size = new System.Drawing.Size(100, 20);
+            this.txtRutaImg.TabIndex = 33;
+            // 
             // VerVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRutaImg);
+            this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
@@ -294,7 +317,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerVehiculo";
             this.Text = "Vehiculo";
-            this.Load += new System.EventHandler(this.VerVehiculo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -326,5 +348,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ComboBox cbEstado;
+        private System.Windows.Forms.Button btnImagen;
+        private System.Windows.Forms.TextBox txtRutaImg;
     }
 }

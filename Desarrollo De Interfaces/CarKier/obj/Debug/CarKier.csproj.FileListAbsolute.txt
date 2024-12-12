@@ -1,7 +1,7 @@
-C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.exe
-C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.exe.config
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.exe
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.pdb
+C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.AssemblyReference.cache
 C:\Users\Alumno\Desktop\proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.InicioSesion.resources

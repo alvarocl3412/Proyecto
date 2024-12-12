@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,37 +17,39 @@ namespace CarKier.PLL
     public partial class VerVehiculo : Form
     {
         private static vehiculos _vehiculo;
+        private Vehiculos _ventanaPrincipal;
         private static VehiculosDal vehiculoDal = new VehiculosDal();
         private static UsuariosDal usuDal = new UsuariosDal();
         private static EmpresasDal emprDal = new EmpresasDal();
         private static EstadoVehiculoDal estadoVehiDal = new EstadoVehiculoDal();
         private static EstadoContratoDal estadoContratoDal = new EstadoContratoDal();
-        public VerVehiculo()
+        public VerVehiculo(Vehiculos ventanaPrincipal)
         {
             InitializeComponent();
             cargarCombo();
             _vehiculo = new vehiculos();
             btnGuardar.Text = " Crear";
             lblUsuario.Text = "Usuario Pertenece DNI:";
+            txtRutaImg.Visible = false;
+            _ventanaPrincipal = ventanaPrincipal;
         }
 
-        public VerVehiculo(vehiculos vehiculo)
+        public VerVehiculo(vehiculos vehiculo, Vehiculos ventanaPrincipal)
         {
             InitializeComponent();
             cargarCombo();
+            btnImagen.Text = "Cambiar foto";
             _vehiculo = vehiculo;
             mostrarDatos();
+            txtRutaImg.Visible = false;
             txtUsuPertenece.Enabled = false;
             txtEmpresa.Enabled = false;
+            _ventanaPrincipal = ventanaPrincipal;
+
         }
 
 
         #region METODOS INTERFAZ
-
-        private void VerVehiculo_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -108,6 +111,29 @@ namespace CarKier.PLL
             }
         }
 
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            // Crear un cuadro de diálogo para seleccionar archivos
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivos de Imagen|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                openFileDialog.Title = "Seleccionar una Imagen";
+
+                // Mostrar el cuadro de diálogo y verificar si el usuario seleccionó un archivo
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaArchivo = openFileDialog.FileName;
+
+                    // Convertir la imagen a Base64
+                    string imagenBase64 = ConvertirImagenABase64(rutaArchivo);
+
+                    // Mostrar el resultado en el TextBox
+                    txtRutaImg.Text = imagenBase64;
+                }
+            }
+        }
+
+
         #endregion
 
 
@@ -151,6 +177,20 @@ namespace CarKier.PLL
             txtKilometro.Text = _vehiculo.km.ToString();
             txtPrecioVenta.Text = _vehiculo.precioventa.ToString();
             txtPrecioDia.Text = _vehiculo.preciodia.ToString();
+            if(_vehiculo.imagen != null)
+            {
+                // Convertir la cadena Base64 a un arreglo de bytes
+                byte[] imageBytes = Convert.FromBase64String(_vehiculo.imagen);
+
+                // Crear un objeto Image a partir de los bytes
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    Image image = Image.FromStream(ms);
+
+                    // O bien, mostrarla en un PictureBox (si es una aplicación Windows Forms)
+                     pcCoche.Image = image;
+                }
+            } 
         }
 
         public async void ModificarVehiculo()
@@ -163,6 +203,11 @@ namespace CarKier.PLL
             {
                 MessageBox.Show("Por favor selecciona un estado válido.");
                 return; // Salir del método si no hay un valor seleccionado
+            }
+
+            if (txtRutaImg.Text != null)
+            {
+                _vehiculo.imagen = txtRutaImg.Text;
             }
 
             _vehiculo.matricula = txtMatricula.Text;
@@ -180,12 +225,16 @@ namespace CarKier.PLL
             }
             _vehiculo.km = kilometro;
 
-            if (!double.TryParse(txtPrecioVenta.Text, out double precioVenta))
+
+                if (!double.TryParse(txtPrecioVenta.Text, out double precioVenta))
+                {
+                    _vehiculo.precioventa = null;
+                } else
             {
-                MessageBox.Show("Por favor ingresa un precio de venta válido.");
-                return;
+                _vehiculo.precioventa = precioVenta;
+
             }
-            _vehiculo.precioventa = precioVenta;
+
 
             if (!double.TryParse(txtPrecioDia.Text, out double precioDia))
             {
@@ -199,7 +248,8 @@ namespace CarKier.PLL
 
             if (modificado)
             {
-                MessageBox.Show("Vehiculo Modificado");
+                MessageBox.Show("Vehiculo Modificado correctamente.");
+                await _ventanaPrincipal.CargarTabla();
             }
             else
             {
@@ -254,6 +304,11 @@ namespace CarKier.PLL
                 MessageBox.Show("Por favor selecciona un estado válido.");
             }
 
+            if(txtRutaImg.Text != null)
+            {
+                _vehiculo.imagen = txtRutaImg.Text;
+            }
+
             _vehiculo.matricula = txtMatricula.Text;
             _vehiculo.marca = txtMarca.Text;
             _vehiculo.modelo = txtModelo.Text;
@@ -271,10 +326,14 @@ namespace CarKier.PLL
 
             if (!double.TryParse(txtPrecioVenta.Text, out double precioVenta))
             {
-                MessageBox.Show("Por favor ingresa un precio de venta válido.");
-                return;
+                _vehiculo.precioventa = null;
+
             }
-            _vehiculo.precioventa = precioVenta;
+            else
+            {
+                _vehiculo.precioventa = precioVenta;
+
+            }
 
             if (!double.TryParse(txtPrecioDia.Text, out double precioDia))
             {
@@ -287,6 +346,7 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Creado correctamente");
+                await _ventanaPrincipal.CargarTabla();
             }
             else
             {
@@ -295,7 +355,18 @@ namespace CarKier.PLL
 
         }
 
+
+        private string ConvertirImagenABase64(string rutaArchivo)
+        {
+            // Leer el archivo como un arreglo de bytes
+            byte[] imageBytes = File.ReadAllBytes(rutaArchivo);
+
+            // Convertir el arreglo de bytes a Base64
+            return Convert.ToBase64String(imageBytes);
+        }
+
         #endregion
+
 
     }
 }

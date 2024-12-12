@@ -18,6 +18,7 @@ namespace CarKier.PLL
         private static UsuariosDal usuDal = new UsuariosDal();
         private static VehiculosDal vehiDal = new VehiculosDal();
         private static usuarios usuAdmin;
+
         public Comentarios()
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace CarKier.PLL
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-            PLL.VerComentario comentario = new PLL.VerComentario();
+            PLL.VerComentario comentario = new PLL.VerComentario(this);
             comentario.Show();
         }
 
@@ -89,7 +90,7 @@ namespace CarKier.PLL
 
         #region METODOS COMPLEMENTARIOS
 
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
             List<comentarios> listaComentarios = await comenDal.ComentariosfindAll();
@@ -135,7 +136,7 @@ namespace CarKier.PLL
 
             if (comentario != null)
             {
-                PLL.VerComentario verComentario = new PLL.VerComentario(comentario,usuAdmin);
+                PLL.VerComentario verComentario = new PLL.VerComentario(comentario,usuAdmin,this);
                 verComentario.Show();
             }
             else

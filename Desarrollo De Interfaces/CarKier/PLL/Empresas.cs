@@ -43,7 +43,7 @@ namespace CarKier.PLL
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-            PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa();
+            PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa(this);
             infoEmpresa.Show();
         }
 
@@ -100,7 +100,7 @@ namespace CarKier.PLL
 
         #region METODOS COMPLEMENTARIOS
 
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
 
             List<empresas> listaEmpresas = await emprDal.findEmpresaAll();
@@ -131,7 +131,7 @@ namespace CarKier.PLL
 
             if (empresa != null)
             {
-                PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa(empresa);
+                PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa(empresa,this);
                 infoEmpresa.Show();
 
             }
