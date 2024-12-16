@@ -40,7 +40,7 @@ namespace CarKier.PLL
         {
             InitializeComponent();
             _contrato = contrato;
-            ComponentesInicializar();
+            ComponentesInicializarAsync();
             txtIdVehiculo.Enabled = false;
             txtIdCliente.Enabled = false;
             _ventanaPrincipal = ventanaPrincipal;
@@ -50,7 +50,7 @@ namespace CarKier.PLL
 
         private void VerContrato_Load(object sender, EventArgs e)
         {
-            CargarComboBox();
+            CargarComboBoxAsync();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -63,9 +63,11 @@ namespace CarKier.PLL
                     // El usuario hizo clic en "Yes"
                     //Se agrega el nuevo carnet
                     string dni = txtIdCliente.Text;
+                    string matricula = txtIdVehiculo.Text;
+
                     _contrato.fechaFin = txtFechaFinal.Text;
                     _contrato.fechaInicio = txtFechaInicio.Text;
-                    CrearContrato(dni);
+                    CrearContrato(dni, matricula);
                     //Cerramos la ventana
                     this.Close();
                 }
@@ -119,118 +121,134 @@ namespace CarKier.PLL
 
         #endregion
 
-      
 
-        public async void CargarComboBox()
+
+        public async Task CargarComboBoxAsync()
         {
-            List<tipos_seguros> seguros = await seguroDal.SegurosfindAll(); // lista seguros
-            List<estado_contrato> estadoContrato = await estadoContratoDal.EstadoContratosfindAll();
-
-
-            if (seguros != null && seguros.Count > 0)
+            try
             {
-                cbSeguro.DataSource = seguros;
+                // Cargar seguros
+                List<tipos_seguros> seguros = await seguroDal.SegurosfindAll();
+                if (seguros != null && seguros.Count > 0)
+                {
+                    cbSeguro.DataSource = seguros;
+                    cbSeguro.DisplayMember = "Nombre"; // Nombre visible en el ComboBox
+                    cbSeguro.ValueMember = "Id";      // Valor interno del ComboBox
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron cargar los seguros.");
+                }
 
-                // Mostrar solo los nombres de los seguros
-                cbSeguro.DisplayMember = "Nombre";
+                // Cargar estados de contrato
+                List<estado_contrato> estadosContrato = await estadoContratoDal.EstadoContratosfindAll();
+                if (estadosContrato != null && estadosContrato.Count > 0)
+                {
+                    // Verificar el contenido de la lista
+                    foreach (var estado in estadosContrato)
+                    {
+                        Console.WriteLine($"Id: {estado.id}, Estado: {estado.estado}");
+                    }
 
-                // (Opcional) Establecer el valor seleccionado con el ID del seguro
-                cbSeguro.ValueMember = "Id";
+                    // Forzar sincronización y asignar DataSource
+                    cbEstadoContrato.BindingContext = new BindingContext();
+                    cbEstadoContrato.DataSource = estadosContrato;
+                    cbEstadoContrato.DisplayMember = "estado";
+                    cbEstadoContrato.ValueMember = "Id";
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron cargar los estados del contrato.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudieron cargar los seguros.");
+                MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
-
-            if (estadoContrato != null && estadoContrato.Count > 0)
-            {
-                cbEstadoContrato.DataSource = estadoContrato;
-
-                // Mostrar solo los nombres de los seguros
-                cbEstadoContrato.DisplayMember = "estado";
-
-                // (Opcional) Establecer el valor seleccionado con el ID del seguro
-                cbEstadoContrato.ValueMember = "Id";
-            }
-            else
-            {
-                MessageBox.Show("No se pudieron cargar los estados del contrato.");
-            }
-
-        }
-      
-
-        public async void ComponentesInicializar()
-        {
-            cbSeguro.SelectedValue = _contrato.idSeguro;
-            cbEstadoContrato.SelectedValue = _contrato.idEstado;
-
-            vehiculos vehiculo = await vehiculoDal.findVehiculoId(_contrato.idvehiculo);
-            txtIdVehiculo.Text = vehiculo.matricula;
-
-            usuarios usu = await usuDal.findUsuarioId(_contrato.idCliente);
-            txtIdCliente.Text = usu.nombre + " " + usu.apellidos;
-
-            if (_contrato.pagado)
-            {
-                cbPagado.SelectedItem = "Si";
-            } else
-            {
-                cbPagado.SelectedItem = "No";
-            }
-
-            txtFechaInicio.Text = _contrato.fechaInicio;
-            txtFechaFinal.Text = _contrato.fechaFin;
-            txtPrecioDia.Text = _contrato.precioDia.ToString();
-            txtPrecioTotal.Text = _contrato.precioTotal.ToString();
         }
 
-        public async void CrearContrato(String dni)
+        public async Task ComponentesInicializarAsync()
         {
-            vehiculos vehiculo = await vehiculoDal.findVehiculoMatricula(txtIdVehiculo.Text);
-            if(vehiculo != null)
+            try
+            {
+                // Esperar a que se carguen los ComboBox
+                await CargarComboBoxAsync();
+
+                // Asignar valores a los ComboBox después de cargar los datos
+                cbSeguro.SelectedValue = _contrato.idSeguro;
+                cbEstadoContrato.SelectedValue = _contrato.idEstado;
+
+                // Cargar datos del vehículo
+                vehiculos vehiculo = await vehiculoDal.findVehiculoId(_contrato.idvehiculo);
+                txtIdVehiculo.Text = vehiculo.matricula;
+
+                // Cargar datos del cliente
+                usuarios usu = await usuDal.findUsuarioId(_contrato.idCliente);
+                txtIdCliente.Text = $"{usu.nombre} {usu.apellidos}";
+
+                // Asignar estado pagado
+                cbPagado.SelectedItem = _contrato.pagado ? "Si" : "No";
+
+                // Asignar otros campos del contrato
+                txtFechaInicio.Text = _contrato.fechaInicio;
+                txtFechaFinal.Text = _contrato.fechaFin;
+                txtPrecioDia.Text = _contrato.precioDia.ToString();
+                txtPrecioTotal.Text = _contrato.precioTotal.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al inicializar los componentes: {ex.Message}");
+            }
+        }
+
+        public async void CrearContrato(string dni, string matricula)
+        {
+            // Buscar el vehículo por su matrícula
+            vehiculos vehiculo = await vehiculoDal.findVehiculoMatricula(matricula);
+            if (vehiculo != null)
             {
                 _contrato.idvehiculo = vehiculo.id;
             }
             else
             {
-                MessageBox.Show("No existe el vehiculo con esa matricula "); ;
-               
+                MessageBox.Show("No existe el vehículo con esa matrícula.");
+                return; // Salir del método para evitar errores
             }
 
+            // Buscar el cliente por su DNI
             int? idCliente = await usuDal.findUsuarioDni(dni);
             if (idCliente != null)
             {
-                _contrato.idvehiculo = vehiculo.id;
+                _contrato.idCliente = idCliente.Value; // Asignar correctamente idCliente a _contrato.idcliente
             }
             else
             {
-                MessageBox.Show("No existe el cliente con ese dni "); ;
+                MessageBox.Show("No existe el cliente con ese DNI.");
+                return; // Salir del método para evitar errores
             }
 
+            // Configurar detalles del contrato desde los controles de la interfaz
             int idEstado = (int)cbEstadoContrato.SelectedValue;
             _contrato.idEstado = idEstado;
 
             int idSeguro = (int)cbSeguro.SelectedValue;
             _contrato.idSeguro = idSeguro;
 
-            _contrato.pagado = false;
-            if (cbPagado.Text.Contains("Si"))
-            {
-                _contrato.pagado = true;
-            }
+            _contrato.pagado = cbPagado.Text.Contains("Si");
 
+            // Intentar crear el contrato
             bool creado = await contratoDal.CrearContrato(_contrato);
             if (creado)
             {
-                MessageBox.Show("Se ha creado el contrato");
+                MessageBox.Show("Se ha creado el contrato.");
                 _ventanaPrincipal.CargarTabla();
             }
             else
             {
-                MessageBox.Show("No se ha podido crear el  contrato");
+                MessageBox.Show("No se ha podido crear el contrato.");
             }
         }
+
 
         public async void ModificarContrato()
         {

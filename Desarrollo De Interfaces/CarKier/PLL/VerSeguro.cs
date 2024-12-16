@@ -15,18 +15,21 @@ namespace CarKier.PLL
     public partial class VerSeguro : Form
     {
         private static tipos_seguros _seguro;
+        private Seguros _ventanPrincipal;
         private static SegurosDal seguroDal = new SegurosDal();
-        public VerSeguro()
+        public VerSeguro(Seguros seguros)
         {
             InitializeComponent();
             _seguro = new tipos_seguros();
             btnGuardar.Text = "Crear";
+            _ventanPrincipal = seguros;
         }
 
-        public VerSeguro(tipos_seguros seguro)
+        public VerSeguro(tipos_seguros seguro,Seguros seguros)
         {
             InitializeComponent();
             _seguro = seguro;
+            _ventanPrincipal = seguros;
             mostrarSeguro();
         }
 
@@ -112,6 +115,7 @@ namespace CarKier.PLL
             if (modificado)
             {
                 MessageBox.Show("Se ha modificado el seguro correctamente");
+                _ventanPrincipal.CargarTabla();     
             }
             else
             {
@@ -126,6 +130,7 @@ namespace CarKier.PLL
             if (creado)
             {
                 MessageBox.Show("Se ha creado el nuevo seguro");
+                _ventanPrincipal.CargarTabla();
             }
             else
             {

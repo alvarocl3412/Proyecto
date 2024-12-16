@@ -15,6 +15,7 @@ namespace CarKier.PLL
     public partial class Seguros : Form
     {
         private static SegurosDal seguroDal = new SegurosDal();
+     
 
         public Seguros()
         {
@@ -43,7 +44,7 @@ namespace CarKier.PLL
 
         private void tsmiNuevo_Click(object sender, EventArgs e)
         {
-            PLL.VerSeguro infoSeguro = new PLL.VerSeguro();
+            PLL.VerSeguro infoSeguro = new PLL.VerSeguro(this);
             infoSeguro.Show();
         }
 
@@ -76,7 +77,7 @@ namespace CarKier.PLL
 
 
         #region METODOS COMPLEMENTARIOS
-        private async Task CargarTabla()
+        public async Task CargarTabla()
         {
            
             //Creamos la lista y llamamos al metodo para pedir los vehiuclos
@@ -106,7 +107,7 @@ namespace CarKier.PLL
 
             if (seguro != null)
             {
-                PLL.VerSeguro infoSeguro = new PLL.VerSeguro(seguro);
+                PLL.VerSeguro infoSeguro = new PLL.VerSeguro(seguro,this);
                 infoSeguro.Show();
             }
             else
