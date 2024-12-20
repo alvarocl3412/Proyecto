@@ -8,8 +8,8 @@ data class CarnetConducir (
     var fechaExpedicion: String,
     var fechaCaducidad: String?,
 ) {
-    constructor(idusuario: Long, idTipocarnet: Long, fechaExpedicion: String) : this(
-        id = null, // Puedes dejar esto como null si no se proporciona
+    constructor(id: Long?, idusuario: Long, idTipocarnet: Long, fechaExpedicion: String) : this(
+        id = id,
         idusuario = idusuario,
         idTipocarnet = idTipocarnet,
         fechaExpedicion = fechaExpedicion,

@@ -55,6 +55,11 @@ interface ApiService {
     @POST("registrarCarnets")
     fun CrearCarnetUsuario(@Body carnet: CarnetConducir):Call<String>
 
+    // Definir el método PUT para actualizar un carnet
+    @PUT("updateCarnets")
+    fun updateCarnet(@Body carnet: CarnetConducir): Call<CarnetConducir>
+
+
     @GET("mostrarCarnetsUsuario/{idusuario}")
     fun CarnetsPersona(@Path("idusuario") idusuario: Long): Call<List<CarnetConducir>>
 

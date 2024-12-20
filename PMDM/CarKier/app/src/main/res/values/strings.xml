@@ -41,4 +41,5 @@
     <string name="carnet_fecha_caducided">Fecha Caducided:</string>
     <string name="Mostrar_contrtar_servicios">Contrtar Servicios</string>
     <string name="Mostrar_precio_venta">Precio Venta:</string>
+    <string name="modificar">Modificar</string>
 </resources>

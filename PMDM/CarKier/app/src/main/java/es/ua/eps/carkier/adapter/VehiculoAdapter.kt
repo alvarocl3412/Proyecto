@@ -27,8 +27,6 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         val txtPrecioVenta: TextView = itemView.findViewById(R.id.txtPrecioVenta)
         val txtPrecioDia: TextView = itemView.findViewById(R.id.txtPrecioDia)
         val imageView: ImageView = itemView.findViewById(R.id.imgVehiculo)
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiculoViewHolder {
@@ -43,12 +41,17 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         // Asignar los valores a los campos correspondientes
         holder.txtMarca.text = "Marca: " + vehiculo.marca
         holder.txtModelo.text = "Modelo: " + vehiculo.modelo
-        holder.txtKm.text = "Kilometros: " + vehiculo.km.toString()
-        holder.txtPrecioVenta.text ="Precio: " + (vehiculo.precioventa?.toString() ?: "No se vende")
+        holder.txtKm.text = "Kilómetros: " + vehiculo.km.toString()
+        holder.txtPrecioVenta.text =
+            "Precio: " + (vehiculo.precioventa?.toString() ?: "No se vende")
         holder.txtPrecioDia.text = "Precio/Día: " + vehiculo.preciodia.toString()
 
-        if (vehiculo.imagen != null){
+        if (!vehiculo.imagen.isNullOrEmpty()) {
+            // Decodificar y asignar la imagen si existe
             holder.imageView.setBase64Image(vehiculo.imagen)
+        } else {
+            // Establecer una imagen predeterminada si no hay imagen
+            holder.imageView.setImageResource(R.drawable.logo)
         }
 
         // Establecer el clic para cada ítem del RecyclerView
@@ -60,28 +63,26 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
             intent.putExtra("idvehiculo", vehiculo.id)
             context.startActivity(intent)
         }
-
-
-
     }
 
     override fun getItemCount() = vehiculos.size
 
+    // Extensión para establecer la imagen en un ImageView desde una cadena Base64
     fun ImageView.setBase64Image(base64Image: String) {
         try {
-            // Eliminar el prefijo "data:image/png;base64,"
-            val imageData = base64Image.substringAfter(",")
-            val imageBytes = Base64.decode(imageData, Base64.DEFAULT)
+            // Decodificar la cadena Base64 directamente (sin eliminar prefijos)
+            val imageBytes = Base64.decode(base64Image, Base64.DEFAULT)
+
+            // Crear un Bitmap a partir de los bytes
             val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
 
             if (bitmap != null) {
-                this.setImageBitmap(bitmap)
+                this.setImageBitmap(bitmap) // Asignar el Bitmap al ImageView
             } else {
-                Log.e("ImageView", "El bitmap es nulo")
+                Log.e("ImageView", "No se pudo crear el bitmap desde los bytes")
             }
         } catch (e: Exception) {
-            Log.e("ImageView", "Error al establecer la imagen", e)
+            Log.e("ImageView", "Error al convertir la cadena Base64 a Bitmap", e)
         }
     }
-
 }

@@ -75,15 +75,18 @@ class Principal : AppCompatActivity() {
                     startActivity(Intent(this, Principal::class.java))
                     true
                 }
+
                 R.id.filtrarBusqueda -> {
-                        modificarVehiculo()
+                    modificarVehiculo()
                     true
                 }
+
                 R.id.perfil -> {
                     // Abre el Navigation Drawer cuando se pulsa en nav_search
                     drawerLayout.openDrawer(GravityCompat.START)
                     true
                 }
+
                 else -> false
             }
         }
@@ -96,10 +99,12 @@ class Principal : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
+
                 R.id.CerrarSesion -> {
                     cerrarSesion()
                     true
                 }
+
                 R.id.modoNocturno -> {
                     // Cambiar entre modo oscuro y modo claro
                     val isCurrentlyDarkMode = sharedPreferences.getBoolean("dark_mode", false)
@@ -131,12 +136,13 @@ class Principal : AppCompatActivity() {
         editor.apply()
     }
 
-    fun cargarDatos(){
+    fun cargarDatos() {
 
-        val nombreUsuario = sharedPreferences.getString("nombre","")
+        val nombreUsuario = sharedPreferences.getString("nombre", "")
         val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
 
-        val headerView = binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
+        val headerView =
+            binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
         val correoTextView: TextView = headerView.findViewById(R.id.correo)
 
@@ -146,7 +152,7 @@ class Principal : AppCompatActivity() {
 
     }
 
-    fun cargarLista(vehiculos: List<Vehiculos>){
+    fun cargarLista(vehiculos: List<Vehiculos>) {
         // RecyclerView configuration
         binding.recyclerViewVehiculos.layoutManager = GridLayoutManager(this, 1)
         // Asignar el adaptador
@@ -159,7 +165,10 @@ class Principal : AppCompatActivity() {
         // Llamada a la API para obtener los vehículos
         RetrofitClient.instance.mostrarVehiculos().enqueue(object : Callback<List<Vehiculos>> {
 
-            override fun onResponse(call: Call<List<Vehiculos>>, response: Response<List<Vehiculos>>) {
+            override fun onResponse(
+                call: Call<List<Vehiculos>>,
+                response: Response<List<Vehiculos>>
+            ) {
                 if (response.isSuccessful) {
                     // Si la respuesta es exitosa, obtener la lista de vehículos
                     val vehiculos = response.body() ?: emptyList()
@@ -191,61 +200,8 @@ class Principal : AppCompatActivity() {
         finish() // Termina la actividad actual para que el usuario no pueda regresar a ella
     }
 
-    fun modificarVehiculo(){
-
-        val imagenBase64 = convertirImagenABase64(R.drawable.logo) // O cualquier imagen que quieras usar
-
-        val v = Vehiculos(
-            id = 16,
-            idEmpresa = null, // Asegúrate de que esto sea permitido en tu clase
-            idUsuariosPropietario = 15,
-            idEstado = 1,
-            matricula = "840 DFG",
-            marca = "Honda",
-            modelo = "Civic Type R",
-            anio = 1995,
-            km = 12121,
-            precioventa = null, // Asegúrate de usar un valor decimal si es necesario
-            preciodia = 70.0, // Igualmente, usa un valor decimal
-            imagen = imagenBase64 ?: null
-        )
-        updateVehiculo(v)
+    fun modificarVehiculo() {
+        Toast.makeText(this, "Funcion futirsta", Toast.LENGTH_SHORT).show()
     }
 
-    fun updateVehiculo(vehiculos: Vehiculos) {
-        RetrofitClient.instance.updateVehiculo(vehiculos).enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@Principal, "Creado correctamente", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Mensaje de error más detallado
-                    val errorBody = response.errorBody()?.string()
-                    Toast.makeText(this@Principal, "No se ha podido crear correctamente: $errorBody", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                Toast.makeText(this@Principal, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                Log.e("CrearClienteError", "Error: ${t.message}", t)
-            }
-        })
-    }
-
-    fun convertirImagenABase64(resId: Int): String? {
-        // Obtener el Bitmap del drawable
-        val bitmap = BitmapFactory.decodeResource(resources, resId)
-
-        // Comprobar si el bitmap es nulo
-        if (bitmap == null) {
-            return null
-        }
-
-        // Convertir el Bitmap a un Array de Bytes
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val byteArray = byteArrayOutputStream.toByteArray()
-
-        // Convertir a Base64
-        return Base64.encodeToString(byteArray, Base64.NO_WRAP)
-    }
 }

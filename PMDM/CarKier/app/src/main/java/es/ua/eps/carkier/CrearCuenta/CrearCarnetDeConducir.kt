@@ -115,6 +115,7 @@ package es.ua.eps.carkier.CrearCuenta
 
         fun CrearCarnet(id2: Long) {
             val carnet = CarnetConducir(
+                id = null,
                 idusuario = id2,
                 idTipocarnet = idTipoCarnetSeleccionado ?: return,
                 fechaExpedicion = editTextDate.text.toString()

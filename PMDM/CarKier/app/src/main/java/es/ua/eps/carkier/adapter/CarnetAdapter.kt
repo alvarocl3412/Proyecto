@@ -17,15 +17,17 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CarnetAdapter(private val carnets: List<CarnetConducir>) :
-    RecyclerView.Adapter<CarnetAdapter.CarnetViewHolder>() {
+class CarnetAdapter(
+    private val carnets: List<CarnetConducir>,
+    private val onClick: (CarnetConducir) -> Unit // Callback para manejar el clic
+) : RecyclerView.Adapter<CarnetAdapter.CarnetViewHolder>() {
 
     // ViewHolder que contiene las vistas para cada tarjeta
     class CarnetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtTipo: TextView = itemView.findViewById(R.id.txtTipoCarnet)
         val txtFechaExpedicion: TextView = itemView.findViewById(R.id.txtCarnetFechaExpedicion)
         val txtFechaCaducidad: TextView = itemView.findViewById(R.id.txtCarnetFechaCaducided)
-        val txtActualizar: TextView = itemView.findViewById(R.id.txtActualizar) // Añade esta línea
+        val txtActualizar: TextView = itemView.findViewById(R.id.txtActualizar)
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
     }
 
@@ -43,7 +45,7 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
         holder.txtFechaExpedicion.text = "Fecha Expedición: ${carnet.fechaExpedicion}"
         holder.txtFechaCaducidad.text = "Fecha Caducidad: ${carnet.fechaCaducidad ?: "No disponible"}"
 
-        // Llamada a la API para obtener el nombre del tipo de carnet en lugar del ID
+        // Llamada a la API para obtener el nombre del tipo de carnet
         verTipo(carnet.idTipocarnet.toString()) { tipoNombre ->
             holder.txtTipo.text = "Tipo: $tipoNombre"
         }
@@ -58,21 +60,15 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
             if (fechaCaducidad != null && fechaCaducidad.before(fechaActual)) {
                 // Si ha pasado, mostramos el TextView de actualización
                 holder.txtActualizar.visibility = View.VISIBLE
-                holder.txtActualizar.text = "Necesitas actualizar, está caducado" // Mensaje personalizado
+                holder.txtActualizar.text = "Necesitas actualizar, está caducado"
 
-                // Hacemos la animacion para que este parpadeando
+                // Hacemos la animación para que esté parpadeando
                 val blinkAnimation = AlphaAnimation(0.0f, 1.0f).apply {
-
-                    // duracion de segundo para papardear
                     duration = 2000
-
-                    // Alterna entre transparente y visible
                     repeatMode = AlphaAnimation.REVERSE
-
-                    // Hace que sea infinito osea como un bucle infinito
                     repeatCount = AlphaAnimation.INFINITE
                 }
-                holder.txtActualizar.startAnimation(blinkAnimation) // Inicia la animación
+                holder.txtActualizar.startAnimation(blinkAnimation)
 
             } else {
                 // Si no ha pasado, ocultamos el TextView de actualización
@@ -80,11 +76,16 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            holder.txtActualizar.visibility = View.GONE // En caso de error, no mostramos el mensaje
+            holder.txtActualizar.visibility = View.GONE
         }
 
-        // Aquí puedes asignar la imagen si tuvieras una diferente para cada carnet (por ejemplo)
+        // Aquí puedes asignar la imagen si tuvieras una diferente para cada carnet
         holder.imageView.setImageResource(R.drawable.carnet)
+
+        // Configurar el clic en el ítem
+        holder.itemView.setOnClickListener {
+            onClick(carnet) // Ejecutamos el callback con el objeto carnet
+        }
     }
 
     // Devuelve el número de carnets en la lista
@@ -98,7 +99,6 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
                     val tipoNombre = response.body()?.nombre ?: "Tipo no disponible"
                     callback(tipoNombre)  // Llamamos al callback con el nombre del tipo
                 } else {
-                    val errorBody = response.errorBody()?.string()
                     callback("Error al obtener tipo")
                 }
             }
@@ -108,6 +108,6 @@ class CarnetAdapter(private val carnets: List<CarnetConducir>) :
             }
         })
     }
-
 }
+
 

@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.CrearCuenta.CrearCarnetDeConducir
+import es.ua.eps.carkier.CrearCuenta.ModificarCarnets
 import es.ua.eps.carkier.InicioSesion
 import es.ua.eps.carkier.Modelos.CarnetConducir
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -157,16 +158,23 @@ class MostrarCarnets : AppCompatActivity() {
         })
     }
 
-
-    fun cargarLista(carnets: List<CarnetConducir>){
+    fun cargarLista(carnets: List<CarnetConducir>) {
         // RecyclerView configuration
         binding.ListaCarnet.layoutManager = GridLayoutManager(this, 1)
 
+        // Crear el adaptador y pasar el callback para el clic
+        val adapter = CarnetAdapter(carnets) { carnet ->
+            // Esta es la acción que se realiza cuando se hace clic en un item
+            val intent = Intent(this, ModificarCarnets::class.java).apply {
+                putExtra("idCarnet", carnet.id) // Enviar el ID del carnet
+                putExtra("idUsuarios", carnet.idusuario) // Enviar el ID del usuario
+                putExtra("fechaExpedicion", carnet.fechaExpedicion) // Enviar la fecha
+                putExtra("tipo", carnet.idTipocarnet) // Enviar el ID del tipo
+            }
+            startActivity(intent)
+        }
 
-        // Asignar el adaptador
-        val adapter = CarnetAdapter(carnets)
         binding.ListaCarnet.adapter = adapter
-
     }
 
 
