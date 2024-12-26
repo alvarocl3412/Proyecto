@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.Carnets.MostrarCarnets
+import es.ua.eps.carkier.Contratos.VerContratos
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.Retrofit.RetrofitClient
@@ -96,6 +97,12 @@ class Principal : AppCompatActivity() {
             when (item.itemId) {
                 R.id.carnet -> {
                     val intent = Intent(this, MostrarCarnets::class.java)
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.contrato -> {
+                    val intent = Intent(this, VerContratos::class.java)
                     startActivity(intent)
                     true
                 }

@@ -177,8 +177,6 @@ class ContratarVehiculo : AppCompatActivity() {
         }
     }
 
-
-
     fun ObtenerSeguro(id: Long,precioVehiculo: Double): Double {
         for (seguro in listaTiposSeguros) {
             if (seguro.id == id) {

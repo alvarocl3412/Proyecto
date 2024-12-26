@@ -33,6 +33,21 @@ public class ContratoServiceImpl implements ContratoService {
         return repositorio.findById(id);
     }
 
+    // Obtener contratos por estado
+    public List<Contrato> obtenerContratosPorEstado(Integer idEstado) {
+        return repositorio.findByIdEstado(idEstado);
+    }
+
+    // Obtener contratos por cliente
+    public List<Contrato> obtenerContratosPorCliente(Integer idCliente) {
+        return repositorio.findByIdCliente(idCliente);
+    }
+
+    // Obtener contratos por estado y cliente
+    public List<Contrato> obtenerContratosPorEstadoYCliente(Integer idEstado, Integer idCliente) {
+        return repositorio.findByIdEstadoAndIdCliente(idEstado, idCliente);
+    }
+
     @Override
     public Optional<Contrato> updateContrato(Contrato contrato) {
         Optional<Contrato> exiseContrato = repositorio.findById(contrato.getId());

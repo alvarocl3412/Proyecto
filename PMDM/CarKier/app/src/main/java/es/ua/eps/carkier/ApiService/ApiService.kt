@@ -2,6 +2,7 @@ package es.ua.eps.carkier.ApiService
 
 import es.ua.eps.carkier.Modelos.CarnetConducir
 import es.ua.eps.carkier.Modelos.Comentario
+import es.ua.eps.carkier.Modelos.Contrato
 import es.ua.eps.carkier.Modelos.EstadoVehiculo
 import es.ua.eps.carkier.Modelos.Seguros
 import es.ua.eps.carkier.Modelos.TipoCarnet
@@ -74,5 +75,14 @@ interface ApiService {
     //Seguros
     @GET("TipoSegurofindAll")
     fun Seguros():Call<List<Seguros>>
+
+    // Contratos
+
+    @GET("contratoEstadocliente/{idEstado}/{idCliente}")
+    fun contratoEstado(@Path("idEstado") idEstado: Int, @Path("idCliente") idCliente: Int): Call<List<Contrato>>
+
+    @GET("contratocliente/{idCliente}")
+    fun contratosCliente(@Path("idCliente") idCliente: Int): Call<List<Contrato>>
+
 
 }

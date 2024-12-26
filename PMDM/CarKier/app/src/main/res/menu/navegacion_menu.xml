@@ -6,15 +6,19 @@
     <group android:id="@+id/iti"
         android:checkableBehavior="single">
         <item android:id="@+id/carnet"
-            android:title="Carnets"
+            android:title="@string/carnetsMenu"
             android:icon="@drawable/carnet"/>
 
+        <item android:id="@+id/contrato"
+            android:title="@string/contratosNav"
+            android:icon="@drawable/contrato"/>
+
         <item android:id="@+id/modoNocturno"
-            android:title="Mode noche"
+            android:title="@string/mode_noche"
             android:icon="@drawable/noche"/>
 
         <item android:id="@+id/CerrarSesion"
-            android:title="Cerrar Sesion"
+            android:title="@string/cerrar_sesion"
             android:icon="@drawable/ajustes"/>
 
     </group>

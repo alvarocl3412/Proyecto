@@ -39,7 +39,11 @@
     <string name="carnet_tipo">Tipo:</string>
     <string name="carnet_fecha_expedicion">Fecha Expedicion:</string>
     <string name="carnet_fecha_caducided">Fecha Caducided:</string>
-    <string name="Mostrar_contrtar_servicios">Contrtar Servicios</string>
+    <string name="Mostrar_contrtar_servicios">Contratar Servicios</string>
     <string name="Mostrar_precio_venta">Precio Venta:</string>
     <string name="modificar">Modificar</string>
+    <string name="carnetsMenu">Carnets</string>
+    <string name="contratosNav">Tus Contratos</string>
+    <string name="mode_noche">Mode noche</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
 </resources>
