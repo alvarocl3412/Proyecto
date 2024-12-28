@@ -7,19 +7,23 @@
         android:checkableBehavior="single">
         <item android:id="@+id/carnet"
             android:title="@string/carnetsMenu"
-            android:icon="@drawable/carnet_oscuro"/>
+            android:icon="@drawable/carnet_oscuro"
+            android:textColor="@android:color/white"/>
 
         <item android:id="@+id/contrato"
             android:title="@string/contratosNav"
-            android:icon="@drawable/contrato"/>
+            android:icon="@drawable/contrato"
+            android:textColor="@android:color/white"/>
 
         <item android:id="@+id/modoNocturno"
             android:title="@string/mode_noche"
-            android:icon="@drawable/noche_oscuro"/>
+            android:icon="@drawable/noche_oscuro"
+            android:textColor="@android:color/white"/>
 
         <item android:id="@+id/CerrarSesion"
             android:title="@string/cerrar_sesion"
-            android:icon="@drawable/ajustes"/>
+            android:icon="@drawable/ajuste_oscuro"
+            android:textColor="@android:color/white"/>
 
     </group>
 </menu>

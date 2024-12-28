@@ -2,6 +2,8 @@ package es.ua.eps.carkier.Carnets
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -12,6 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import es.ua.eps.carkier.Contratos.VerContratos
 import es.ua.eps.carkier.CrearCuenta.CrearCarnetDeConducir
 import es.ua.eps.carkier.CrearCuenta.ModificarCarnets
 import es.ua.eps.carkier.InicioSesion
@@ -64,7 +67,6 @@ class MostrarCarnets : AppCompatActivity() {
                     true
                 }
                 R.id.filtrarBusqueda -> {
-
                     true
                 }
                 R.id.perfil -> {
@@ -82,6 +84,11 @@ class MostrarCarnets : AppCompatActivity() {
             when (item.itemId) {
                 R.id.CerrarSesion -> {
                     cerrarSesion()
+                    true
+                }
+                R.id.contrato -> {
+                    val intent = Intent(this, VerContratos::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.modoNocturno -> {
@@ -104,9 +111,17 @@ class MostrarCarnets : AppCompatActivity() {
         if (isDarkMode) {
             // Establecer modo oscuro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+            // Actualizar los colores del NavigationView para el modo oscuro
+            binding.navigationView.setItemTextColor(ColorStateList.valueOf(Color.WHITE))
+            binding.navigationView.setItemIconTintList(ColorStateList.valueOf(Color.WHITE))
         } else {
             // Establecer modo claro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+            // Actualizar los colores del NavigationView para el modo claro
+            binding.navigationView.setItemTextColor(ColorStateList.valueOf(Color.BLACK))
+            binding.navigationView.setItemIconTintList(ColorStateList.valueOf(Color.BLACK))
         }
 
         // Guardar la preferencia del usuario

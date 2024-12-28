@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@android:color/white"
+    app:cardBackgroundColor="@android:color/darker_gray"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -35,7 +35,8 @@
                 android:id="@+id/txtMatricula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Matrícula: ABC123"
+                android:text="Matrícula ABC123"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -44,7 +45,8 @@
                 android:id="@+id/txtFechaInicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha inicio: 01/01/2024"
+                android:text="Fecha inicio 01/01/2024"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <!-- Fecha final -->
@@ -52,7 +54,8 @@
                 android:id="@+id/txtFechaFinal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha final: 07/01/2024"
+                android:text="Fecha final 07/01/2024"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <!-- Precio por día -->
@@ -61,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Precio/Día: $50"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <!-- Precio final -->
@@ -69,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Precio final: $350"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <!-- Pagado -->
@@ -77,40 +82,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Pagado: Sí"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
 
-                <!-- Botón estado -->
-                <Button
-                    android:id="@+id/btnEstado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Estado"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:enabled="false"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white" />
+            <!-- Botón estado -->
+            <Button
+                android:id="@+id/btnEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Estado"
+                android:backgroundTint="@color/black"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:textSize="18sp"
+                android:textColor="@android:color/white" />
 
-                <Space
-                    android:layout_width="8sp"
-                    android:layout_height="wrap_content"
-                    />
+            <Space
+                android:layout_width="8sp"
+                android:layout_height="wrap_content"
+                />
 
-                <!-- Botón Cancelar Contrato -->
-                <Button
-                    android:id="@+id/btnCancelar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Cancelar"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white" />
+            <!-- Botón Cancelar Contrato -->
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Cancelar"
+                android:backgroundTint="@color/black"
+
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </LinearLayout>

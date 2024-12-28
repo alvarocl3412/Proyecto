@@ -3,6 +3,7 @@ package es.ua.eps.carkier.ApiService
 import es.ua.eps.carkier.Modelos.CarnetConducir
 import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.Contrato
+import es.ua.eps.carkier.Modelos.EstadoContrato
 import es.ua.eps.carkier.Modelos.EstadoVehiculo
 import es.ua.eps.carkier.Modelos.Seguros
 import es.ua.eps.carkier.Modelos.TipoCarnet
@@ -12,6 +13,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -84,5 +86,10 @@ interface ApiService {
     @GET("contratocliente/{idCliente}")
     fun contratosCliente(@Path("idCliente") idCliente: Int): Call<List<Contrato>>
 
+    @GET("EstadoContratoId/{id}")
+    fun contratoEstado(@Path("id") id: Int): Call<EstadoContrato>
+
+    @DELETE("deleteEstadoContrato/{id}")
+    fun cancelarContrato(@Path("id") id: Int): Call<Void>
 
 }

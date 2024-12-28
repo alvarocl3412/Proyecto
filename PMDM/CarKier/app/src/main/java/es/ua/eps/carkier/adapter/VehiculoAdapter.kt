@@ -1,7 +1,6 @@
 package es.ua.eps.carkier.adapter
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.MostrarVehiculo
 import es.ua.eps.carkier.R
-
 
 class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
     RecyclerView.Adapter<VehiculoAdapter.VehiculoViewHolder>() {
@@ -39,15 +37,15 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         val vehiculo = vehiculos[position]
 
         // Asignar los valores a los campos correspondientes
-        holder.txtMarca.text = "Marca: " + vehiculo.marca
-        holder.txtModelo.text = "Modelo: " + vehiculo.modelo
-        holder.txtKm.text = "Kilómetros: " + vehiculo.km.toString()
+        holder.txtMarca.text = "Marca: ${vehiculo.marca}"
+        holder.txtModelo.text = "Modelo: ${vehiculo.modelo}"
+        holder.txtKm.text = "Kilómetros: ${vehiculo.km}"
         holder.txtPrecioVenta.text =
-            "Precio: " + (vehiculo.precioventa?.toString() ?: "No se vende")
-        holder.txtPrecioDia.text = "Precio/Día: " + vehiculo.preciodia.toString()
+            "Precio: ${vehiculo.precioventa?.toString() ?: "No se vende"}"
+        holder.txtPrecioDia.text = "Precio/Día: ${vehiculo.preciodia}"
 
+        // Decodificar la imagen si está disponible
         if (!vehiculo.imagen.isNullOrEmpty()) {
-            // Decodificar y asignar la imagen si existe
             holder.imageView.setBase64Image(vehiculo.imagen)
         } else {
             // Establecer una imagen predeterminada si no hay imagen
@@ -68,9 +66,9 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
     override fun getItemCount() = vehiculos.size
 
     // Extensión para establecer la imagen en un ImageView desde una cadena Base64
-    fun ImageView.setBase64Image(base64Image: String) {
+    private fun ImageView.setBase64Image(base64Image: String) {
         try {
-            // Decodificar la cadena Base64 directamente (sin eliminar prefijos)
+            // Decodificar la cadena Base64 directamente
             val imageBytes = Base64.decode(base64Image, Base64.DEFAULT)
 
             // Crear un Bitmap a partir de los bytes
@@ -80,9 +78,11 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
                 this.setImageBitmap(bitmap) // Asignar el Bitmap al ImageView
             } else {
                 Log.e("ImageView", "No se pudo crear el bitmap desde los bytes")
+                this.setImageResource(R.drawable.logo) // Imagen predeterminada
             }
         } catch (e: Exception) {
             Log.e("ImageView", "Error al convertir la cadena Base64 a Bitmap", e)
+            this.setImageResource(R.drawable.logo) // Imagen predeterminada en caso de error
         }
     }
 }

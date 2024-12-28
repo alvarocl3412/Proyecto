@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@android:color/white"
+    app:cardBackgroundColor="@android:color/darker_gray"
     app:cardElevation="4dp">
 
     <TextView
@@ -43,6 +43,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="35dp"
                 android:text="@string/carnet_tipo"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
 
@@ -52,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="35dp"
+                android:textColor="@color/black"
                 android:text="@string/carnet_fecha_expedicion"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
@@ -63,6 +65,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="35dp"
                 android:text="@string/carnet_fecha_caducided"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold|italic" />
         </LinearLayout>

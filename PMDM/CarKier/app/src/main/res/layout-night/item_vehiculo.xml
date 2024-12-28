@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardElevation="4dp"
-    app:cardBackgroundColor="@color/gris">
+    app:cardBackgroundColor="@android:color/darker_gray">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="70dp"
-                android:text="Marca:"
+                android:text="Marca"
+                android:textColor="@color/black"
                 android:textStyle="bold|italic"
                 android:textSize="18sp" />
             <!-- Espacio flexible para empujar el logo a la derecha -->
@@ -41,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="50dp"
-                android:text="Modelo:"
+                android:text="Modelo"
+                android:textColor="@color/black"
                 android:textStyle="bold|italic"
                 android:textSize="18sp" />
 
@@ -69,7 +71,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kilometros:"
+                android:text="Kilometros"
+                android:textColor="@color/black"
                 android:textStyle="bold|italic"
                 android:textSize="18sp" />
 
@@ -78,7 +81,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Precio/Dia:"
+                android:text="Precio/Dia"
+                android:textColor="@color/black"
+
                 android:textStyle="bold|italic"
                 android:textSize="18sp" />
 
@@ -87,7 +92,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Precio:"
+                android:text="Precio"
+                android:textColor="@color/black"
                 android:textStyle="bold|italic"
                 android:textSize="18sp" />
         </LinearLayout>

@@ -2,6 +2,8 @@ package es.ua.eps.carkier.Contratos
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -51,24 +53,30 @@ class VerContratos : AppCompatActivity() {
         val idUsuario = sharedPreferences.getLong("id", -1)
 
         comprobarActivos(idUsuario.toInt())
+
         // Observa los cambios de los CheckBox y actualiza el RecyclerView
-        binding.checkboxActiveContracts.setOnCheckedChangeListener { _, _ ->
-
-            actualizarRecyclerView(idUsuario.toInt())
-        }
-
-        binding.checkboxTerminatedContracts.setOnCheckedChangeListener { _, _ ->
-            actualizarRecyclerView(idUsuario.toInt())
-        }
-        binding.checkboxProgContracts.setOnCheckedChangeListener { _, _ ->
-            actualizarRecyclerView(idUsuario.toInt())
-        }
 
         binding.checkboxProgContracts.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked && binding.checkboxActiveContracts.isChecked) {
-                binding.checkboxTerminatedContracts.isEnabled = false // Desactiva "Todos" si ambos están marcados
-            } else if (!isChecked || !binding.checkboxActiveContracts.isChecked) {
-                binding.checkboxTerminatedContracts.isEnabled = true // Activa "Todos" si alguno se desmarca
+            manejarCheckBoxes()
+            actualizarRecyclerView(idUsuario.toInt())
+        }
+
+        binding.checkboxActiveContracts.setOnCheckedChangeListener { _, isChecked ->
+            manejarCheckBoxes()
+            actualizarRecyclerView(idUsuario.toInt())
+        }
+
+        binding.checkboxTerminatedContracts.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Si se activa el tercer checkbox, desactiva y desmarca los otros dos
+                binding.checkboxProgContracts.isChecked = false
+                binding.checkboxActiveContracts.isChecked = false
+                binding.checkboxProgContracts.isEnabled = false
+                binding.checkboxActiveContracts.isEnabled = false
+            } else {
+                // Si se desactiva, habilita los otros dos checkboxes
+                binding.checkboxProgContracts.isEnabled = true
+                binding.checkboxActiveContracts.isEnabled = true
             }
             actualizarRecyclerView(idUsuario.toInt())
         }
@@ -169,9 +177,17 @@ class VerContratos : AppCompatActivity() {
         if (isDarkMode) {
             // Establecer modo oscuro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+            // Actualizar los colores del NavigationView para el modo oscuro
+            binding.navigationView.setItemTextColor(ColorStateList.valueOf(Color.WHITE))
+            binding.navigationView.setItemIconTintList(ColorStateList.valueOf(Color.WHITE))
         } else {
             // Establecer modo claro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+            // Actualizar los colores del NavigationView para el modo claro
+            binding.navigationView.setItemTextColor(ColorStateList.valueOf(Color.BLACK))
+            binding.navigationView.setItemIconTintList(ColorStateList.valueOf(Color.BLACK))
         }
 
         // Guardar la preferencia del usuario
@@ -191,6 +207,16 @@ class VerContratos : AppCompatActivity() {
         val intent = Intent(this, InicioSesion::class.java)
         startActivity(intent)
         finish() // Termina la actividad actual para que el usuario no pueda regresar a ella
+    }
+
+    private fun manejarCheckBoxes() {
+        // Verifica el estado de los dos primeros checkboxes
+        if (binding.checkboxProgContracts.isChecked && binding.checkboxActiveContracts.isChecked) {
+            binding.checkboxTerminatedContracts.isEnabled = false // Desactiva el tercer checkbox
+            binding.checkboxTerminatedContracts.isChecked = false
+        } else {
+            binding.checkboxTerminatedContracts.isEnabled = true // Activa el tercer checkbox
+        }
     }
 
     // Función para actualizar el contenido del RecyclerView según el estado de los CheckBox
