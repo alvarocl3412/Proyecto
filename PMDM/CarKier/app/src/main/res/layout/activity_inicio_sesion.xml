@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLogo"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <EditText
         android:id="@+id/txtContra"
@@ -43,8 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail"
-        app:layout_constraintVertical_bias="0.048" />
-
+        app:layout_constraintVertical_bias="0.126" />
 
     <Button
         android:id="@+id/btnInicioSesion"
@@ -55,22 +54,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
-
-    <ImageView
-        android:id="@+id/imgHuella"
-        android:layout_width="62dp"
-        android:layout_height="65dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chbRecordarContrasenia"
-        app:layout_constraintVertical_bias="0.074"
-        app:srcCompat="@drawable/huella" />
+        app:layout_constraintVertical_bias="0.818" />
 
     <CheckBox
         android:id="@+id/chbRecordarContrasenia"
@@ -82,22 +69,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContra"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintVertical_bias="0.297" />
 
     <TextView
         android:id="@+id/txtOlvideContra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:text="@string/iniciosesion_olvidecontra"
         android:textColor="@color/azul"
         android:textSize="18sp"
-        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContra"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <Button
         android:id="@+id/btnCrearCuenta"

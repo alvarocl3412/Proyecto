@@ -90,6 +90,7 @@
         <!-- Fila 2 -->
         <TableRow>
 
+
             <TextView
                 android:id="@+id/txtCorreo"
                 android:layout_width="wrap_content"
@@ -99,7 +100,6 @@
                 android:padding="8dp"
                 android:text="@string/crearcuenta2_correo"
                 android:textSize="18sp" />
-
 
             <EditText
                 android:id="@+id/etxtCorreo"
@@ -122,10 +122,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:text="@string/crearcuenta2_contra"
                 android:textSize="18sp" />
-
 
             <EditText
                 android:id="@+id/etxtContra"
