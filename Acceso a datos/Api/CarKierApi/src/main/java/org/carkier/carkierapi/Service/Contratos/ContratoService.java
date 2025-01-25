@@ -1,7 +1,9 @@
 package org.carkier.carkierapi.Service.Contratos;
 
+import org.carkier.carkierapi.Dto.FechasOcupadas;
 import org.carkier.carkierapi.modelos.Contratos.Contrato;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,4 +23,6 @@ public interface ContratoService {
     Contrato save(Contrato vehiculo);
 
     void deleteById(Integer id);
+
+    FechasOcupadas getFechasOcupadasDesdeHoyPorVehiculo(int idVehiculo);
 }

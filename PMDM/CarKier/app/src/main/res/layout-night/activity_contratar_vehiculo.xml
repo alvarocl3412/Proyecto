@@ -238,6 +238,13 @@
                     android:hint="0€"
                     android:textSize="18sp"
                     android:focusable="false"/>
+                <ImageView
+                    android:id="@+id/imgCalculator"
+                    android:layout_width="57dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/calculadoranoche" />
+
             </LinearLayout>
 
             <Space

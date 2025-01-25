@@ -1,5 +1,6 @@
 package org.carkier.carkierapi.controlador.Contratos;
 
+import org.carkier.carkierapi.Dto.FechasOcupadas;
 import org.carkier.carkierapi.Service.Contratos.ContratoService;
 import org.carkier.carkierapi.modelos.Contratos.Contrato;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,11 @@ public class ContratoController {
         return servicio.obtenerContratosPorEstadoYCliente(idEstado, idCliente);
     }
 
+    // Metodo para conseguir las fechas de los contratos
+    @GetMapping("/contratofechasOcupada/{idVehiculo}")
+    public FechasOcupadas obtenerFechasOcupadas(@PathVariable int idVehiculo) {
+        return servicio.getFechasOcupadasDesdeHoyPorVehiculo(idVehiculo);
+    }
 
     @PutMapping("/updateContrato")
     public ResponseEntity<Contrato> updateContrato(@RequestBody Contrato contrato) {
@@ -78,4 +84,6 @@ public class ContratoController {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }

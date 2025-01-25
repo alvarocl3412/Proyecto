@@ -5,6 +5,7 @@ import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.Contrato
 import es.ua.eps.carkier.Modelos.EstadoContrato
 import es.ua.eps.carkier.Modelos.EstadoVehiculo
+import es.ua.eps.carkier.Modelos.FechaOcupada
 import es.ua.eps.carkier.Modelos.Seguros
 import es.ua.eps.carkier.Modelos.TipoCarnet
 import es.ua.eps.carkier.Modelos.Usuarios
@@ -17,6 +18,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import java.time.LocalDate
 
 
 interface ApiService {
@@ -86,10 +88,15 @@ interface ApiService {
     @GET("contratocliente/{idCliente}")
     fun contratosCliente(@Path("idCliente") idCliente: Int): Call<List<Contrato>>
 
+    @GET("contratofechasOcupada/{idVehiculo}")
+    fun getFechasOcupadas(@Path("idVehiculo") idVehiculo: Int): Call<FechaOcupada>
+
     @GET("EstadoContratoId/{id}")
     fun contratoEstado(@Path("id") id: Int): Call<EstadoContrato>
 
     @DELETE("deleteEstadoContrato/{id}")
     fun cancelarContrato(@Path("id") id: Int): Call<Void>
+
+
 
 }

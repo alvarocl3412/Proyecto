@@ -6,8 +6,8 @@ data class Contrato(
     var idCliente: Long,
     var idEstado: Long,
     val idSeguro: Long,
-    val precioDia: Long,
-    val precioTotal: Long,
+    val precioDia: Double,
+    val precioTotal: Double,
     val fechaInicio: String,
     val fechaFin: String,
 ) {
@@ -15,8 +15,8 @@ data class Contrato(
         idvehiculo: Long,
         idCliente: Long,
         idSeguro: String,
-        precioDia: Long,
-        precioTotal: Long,
+        precioDia: Double,
+        precioTotal: Double,
         fechaInicio: String,
         fechaFin: String
     ) :

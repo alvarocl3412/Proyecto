@@ -1,5 +1,6 @@
 package org.carkier.carkierapi.Service.Contratos;
 
+import org.carkier.carkierapi.Dto.FechasOcupadas;
 import org.carkier.carkierapi.Repositorio.Contratos.ContratoRepository;
 import org.carkier.carkierapi.Repositorio.Usuarios.UsuarioRepository;
 import org.carkier.carkierapi.Repositorio.Vehiculos.VehiculoRepository;
@@ -8,8 +9,8 @@ import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class ContratoServiceImpl implements ContratoService {
@@ -84,5 +85,37 @@ public class ContratoServiceImpl implements ContratoService {
         Contrato contrato = repositorio.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("El contrato no se ha encontrado con el ID: " + id));
         repositorio.delete(contrato);
+    }
+
+    @Override
+    public FechasOcupadas getFechasOcupadasDesdeHoyPorVehiculo(int idVehiculo) {
+        LocalDate fechaActual = LocalDate.now(); // Día actual
+        Set<String> diasOcupados = new HashSet<>(); // Usamos un Set para evitar duplicados
+        List<Contrato> contratos = repositorio.findByIdVehiculoAndFechaFinAfter(idVehiculo, fechaActual);
+
+        for (Contrato contrato : contratos) {
+            // Filtrar solo contratos del vehículo específico
+            if (contrato.getIdvehiculo() == idVehiculo) {
+                // Solo consideramos contratos que terminan después de hoy
+                if (contrato.getFechaFin().isAfter(fechaActual) || contrato.getFechaFin().isEqual(fechaActual)) {
+                    // Ajustamos la fecha de inicio al día actual si está dentro del rango
+                    LocalDate inicio = contrato.getFechaInicio().isBefore(fechaActual) ? fechaActual : contrato.getFechaInicio();
+                    LocalDate fin = contrato.getFechaFin();
+
+                    // Agregamos cada día del rango a la lista
+                    while (!inicio.isAfter(fin)) {
+                        diasOcupados.add(inicio.toString());
+                        inicio = inicio.plusDays(1); // Pasamos al día siguiente
+                    }
+                }
+            }
+        }
+
+        // Convertimos el Set a una lista ordenada
+        List<String> listaDiasOcupados = new ArrayList<>(diasOcupados);
+        listaDiasOcupados.sort(String::compareTo); // Ordenamos las fechas
+
+        // Devolvemos un objeto FechaOcupada que contiene la lista de fechas ocupadas
+        return new FechasOcupadas(listaDiasOcupados);
     }
 }
