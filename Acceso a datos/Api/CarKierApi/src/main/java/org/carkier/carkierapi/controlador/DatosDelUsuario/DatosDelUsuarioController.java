@@ -34,7 +34,7 @@ public class DatosDelUsuarioController {
             return ResponseEntity.notFound().build();
         } else {
             DatosDelUsuario usur = datos.get();
-            return ResponseEntity.ok(usur);
+            return ResponseEntity.  ok(usur);
         }
     }
 

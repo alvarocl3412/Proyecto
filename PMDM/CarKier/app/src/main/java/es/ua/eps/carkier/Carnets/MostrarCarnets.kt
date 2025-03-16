@@ -44,10 +44,10 @@ class MostrarCarnets : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
         cargarDatos()
 
-        val nombreUsuario = sharedPreferences.getLong("id",0)
+        val nombreUsuario = sharedPreferences.getLong("id", 0)
         comprobarExistente(nombreUsuario)
 
-        binding.btnAgregar.setOnClickListener(){
+        binding.btnAgregar.setOnClickListener() {
             val intent = Intent(this, CrearCarnetDeConducir::class.java)
             startActivity(intent)
         }
@@ -66,14 +66,17 @@ class MostrarCarnets : AppCompatActivity() {
                     startActivity(Intent(this, Principal::class.java))
                     true
                 }
+
                 R.id.filtrarBusqueda -> {
                     true
                 }
+
                 R.id.perfil -> {
                     // Abre el Navigation Drawer cuando se pulsa en nav_search
                     drawerLayout.openDrawer(GravityCompat.START)
                     true
                 }
+
                 else -> false
             }
         }
@@ -86,11 +89,13 @@ class MostrarCarnets : AppCompatActivity() {
                     cerrarSesion()
                     true
                 }
+
                 R.id.contrato -> {
                     val intent = Intent(this, VerContratos::class.java)
                     startActivity(intent)
                     true
                 }
+
                 R.id.modoNocturno -> {
                     // Cambiar entre modo oscuro y modo claro
                     val isCurrentlyDarkMode = sharedPreferences.getBoolean("dark_mode", false)
@@ -130,47 +135,67 @@ class MostrarCarnets : AppCompatActivity() {
         editor.apply()
     }
 
-    fun cargarDatos(){
-        val nombreUsuario = sharedPreferences.getString("nombre","sin Nombre")
+    fun cargarDatos() {
+        val nombreUsuario = sharedPreferences.getString("nombre", "sin Nombre")
         val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
-
+        var puntosUsario = sharedPreferences.getString("puntos", "0 CarPoints")
+        puntosUsario = puntosUsario + " CarPoints"
         // Obtener el header del NavigationView
         val headerView = binding.navigationView.getHeaderView(0)
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
         val correoTextView: TextView = headerView.findViewById(R.id.correo)
+        val puntosTextView: TextView = headerView.findViewById(R.id.puntos)
 
         // Asignar los valores recuperados a los TextViews del header
         nombreTextView.text = nombreUsuario
         correoTextView.text = correoUsuario
+        puntosTextView.text = puntosUsario
 
     }
+
     fun comprobarExistente(idUsuario: Long) {
         // Llamada a la API para obtener los carnets del usuario
-        RetrofitClient.instance.CarnetsPersona(idUsuario).enqueue(object : Callback<List<CarnetConducir>> {
+        RetrofitClient.instance.CarnetsPersona(idUsuario)
+            .enqueue(object : Callback<List<CarnetConducir>> {
 
-            override fun onResponse(call: Call<List<CarnetConducir>>, response: Response<List<CarnetConducir>>) {
-                if (response.isSuccessful) {
-                    // Si la respuesta es exitosa, obtener la lista de carnets
-                    val carnets = response.body() ?: emptyList()
+                override fun onResponse(
+                    call: Call<List<CarnetConducir>>,
+                    response: Response<List<CarnetConducir>>
+                ) {
+                    if (response.isSuccessful) {
+                        // Si la respuesta es exitosa, obtener la lista de carnets
+                        val carnets = response.body() ?: emptyList()
 
-                    if (carnets.isEmpty()) {
-                        Toast.makeText(this@MostrarCarnets, "No hay carnets disponibles para este usuario", Toast.LENGTH_SHORT).show()
+                        if (carnets.isEmpty()) {
+                            Toast.makeText(
+                                this@MostrarCarnets,
+                                "No hay carnets disponibles para este usuario",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            // Cargar la lista de carnets en alguna parte de la interfaz (por ejemplo, un RecyclerView)
+                            cargarLista(carnets)
+                        }
                     } else {
-                        // Cargar la lista de carnets en alguna parte de la interfaz (por ejemplo, un RecyclerView)
-                        cargarLista(carnets)
+                        // Manejar la respuesta no exitosa, mostrar mensaje de error
+                        Toast.makeText(
+                            this@MostrarCarnets,
+                            "Error en la respuesta: ${response.message()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                } else {
-                    // Manejar la respuesta no exitosa, mostrar mensaje de error
-                    Toast.makeText(this@MostrarCarnets, "Error en la respuesta: ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
-            }
 
-            override fun onFailure(call: Call<List<CarnetConducir>>, t: Throwable) {
-                // Maneja errores de conexión
-                Toast.makeText(this@MostrarCarnets, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
-                Log.e("ErrorAPI", "Error en la llamada a la API: ${t.message}", t)
-            }
-        })
+                override fun onFailure(call: Call<List<CarnetConducir>>, t: Throwable) {
+                    // Maneja errores de conexión
+                    Toast.makeText(
+                        this@MostrarCarnets,
+                        "Error de conexión: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e("ErrorAPI", "Error en la llamada a la API: ${t.message}", t)
+                }
+            })
     }
 
     fun cargarLista(carnets: List<CarnetConducir>) {

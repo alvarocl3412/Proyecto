@@ -82,6 +82,7 @@ public class ContratoServiceImpl implements ContratoService {
 
     @Override
     public void deleteById(Integer id) {
+
         Contrato contrato = repositorio.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("El contrato no se ha encontrado con el ID: " + id));
         repositorio.delete(contrato);

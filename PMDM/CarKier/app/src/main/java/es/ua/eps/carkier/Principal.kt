@@ -1,5 +1,6 @@
 package es.ua.eps.carkier
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.Carnets.MostrarCarnets
 import es.ua.eps.carkier.Contratos.VerContratos
+import es.ua.eps.carkier.Modelos.DatosUsuarios
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.Retrofit.RetrofitClient
@@ -50,10 +52,10 @@ class Principal : AppCompatActivity() {
 
         // Recuperar nombre y correo del SharedPreferences
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("correo", MODE_PRIVATE)
 
         // Mostrar el ProgressBar antes de cargar los datos
         showProgressBar()
-        cargarDatos()
 
         //Cargamos el recylcevie de vehiuclos
         comprobarExistente()
@@ -126,6 +128,25 @@ class Principal : AppCompatActivity() {
                 else -> false
             }
         }
+
+        val idUsuario = sharedPreferences.getLong("id", 0)
+
+        if (idUsuario.toInt() != 0) {
+            cargarDatosUsuarios(idUsuario) { datos ->
+                if (datos != null) {
+                    println("Usuario puntos: ${datos.puntos}")
+
+                    val editor = sharedPreferences.edit()
+                    editor.putString("puntos", datos.puntos.toString())  // Clave: "puntos", Valor: "100"
+                    editor.apply()  // Aplica los cambios de manera asíncrona
+
+                    cargarDatos()
+                } else {
+                    println("Error al cargar datos del usuario")
+                    cargarDatos()
+                }
+            }
+        }
     }
 
     fun setTheme(isDarkMode: Boolean) {
@@ -144,18 +165,20 @@ class Principal : AppCompatActivity() {
     }
 
     fun cargarDatos() {
-
         val nombreUsuario = sharedPreferences.getString("nombre", "")
         val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
-
+        var puntosUsario = sharedPreferences.getString("puntos", "0 CarPoints")
+        puntosUsario = puntosUsario+ " CarPoints"
         val headerView =
             binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
         val correoTextView: TextView = headerView.findViewById(R.id.correo)
+        val puntosTextView: TextView = headerView.findViewById(R.id.puntos)
 
         // Asignar los valores recuperados a los TextViews del header
         nombreTextView.text = nombreUsuario
         correoTextView.text = correoUsuario
+        puntosTextView.text = puntosUsario
 
     }
 
@@ -210,5 +233,30 @@ class Principal : AppCompatActivity() {
     fun modificarVehiculo() {
         Toast.makeText(this, "Funcion futirsta", Toast.LENGTH_SHORT).show()
     }
+
+    fun cargarDatosUsuarios(idUsuario: Long, callback: (DatosUsuarios?) -> Unit) {
+        // Asegúrate de que la llamada de Retrofit esté configurada correctamente
+        RetrofitClient.instance.datosUsuarios(idUsuario).enqueue(object : Callback<DatosUsuarios> {
+
+            override fun onResponse(call: Call<DatosUsuarios>, response: Response<DatosUsuarios>) {
+                if (response.isSuccessful) {
+                    // Log para verificar la respuesta de la API
+                    Log.d("Retrofit", "Datos de usuario obtenidos: ${response.body()}")
+                    callback(response.body()) // Llamar al callback con los datos
+                } else {
+                    // Log para respuesta no exitosa
+                    Log.e("Retrofit", "Error en la respuesta: ${response.code()}")
+                    callback(null) // Llamar al callback con null si hay un error
+                }
+            }
+
+            override fun onFailure(call: Call<DatosUsuarios>, t: Throwable) {
+                // Log para verificar error de la llamada (sin conexión, etc.)
+                Log.e("Retrofit", "Error en la conexión: ${t.message}")
+                callback(null) // Llamar al callback con null si la llamada falla
+            }
+        })
+    }
+
 
 }

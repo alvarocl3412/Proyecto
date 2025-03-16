@@ -50,6 +50,7 @@ class VerContratos : AppCompatActivity() {
         // Mostrar el ProgressBar antes de cargar los datos
         showProgressBar()
         cargarDatos()
+
         val idUsuario = sharedPreferences.getLong("id", -1)
 
         comprobarActivos(idUsuario.toInt())
@@ -161,15 +162,19 @@ class VerContratos : AppCompatActivity() {
 
         val nombreUsuario = sharedPreferences.getString("nombre", "")
         val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
+        var puntosUsario = sharedPreferences.getString("puntos", "0 CarPoints")
+        puntosUsario = puntosUsario+ " CarPoints"
 
         val headerView =
             binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
         val correoTextView: TextView = headerView.findViewById(R.id.correo)
+        val putnosTextView: TextView = headerView.findViewById(R.id.puntos)
 
         // Asignar los valores recuperados a los TextViews del header
         nombreTextView.text = nombreUsuario
         correoTextView.text = correoUsuario
+        putnosTextView.text = puntosUsario
 
     }
 
@@ -267,7 +272,7 @@ class VerContratos : AppCompatActivity() {
                     if (response.isSuccessful) {
                         // Si la respuesta es exitosa, obtener la lista de contratos
                         val contratos = response.body() ?: emptyList()
-                        cargarLista(contratos)  // Método que carga la lista de contratos
+                                cargarLista(contratos)  // Método que carga la lista de contratos
                         hideProgressBar()  // Método para ocultar el progreso
                     } else {
                         // Maneja la respuesta no exitosa

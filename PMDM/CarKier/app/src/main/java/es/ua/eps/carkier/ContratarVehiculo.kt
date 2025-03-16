@@ -23,9 +23,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import es.ua.eps.carkier.ApiService.ApiService
 import es.ua.eps.carkier.Carnets.MostrarCarnets
 import es.ua.eps.carkier.Contratos.VerContratos
+import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.Contrato
+import es.ua.eps.carkier.Modelos.DatosUsuarios
 import es.ua.eps.carkier.Modelos.FechaOcupada
 import es.ua.eps.carkier.Modelos.Seguros
 import es.ua.eps.carkier.Retrofit.RetrofitClient
@@ -99,6 +102,21 @@ class ContratarVehiculo : AppCompatActivity() {
             val fechaInicio = binding.etxtContratoFechaInicio.text.toString()
             val fechaFinal = binding.etxtContratoFechaFinal.text.toString()
             val precioDiaStr = binding.etxtContratoPrecioDia.text.toString()
+            val puntos = binding.etxtPuntos.text.toString().toIntOrNull() ?: 0
+            val precioString = binding.etxtContratoPrecioFinal.text.toString()
+            val cleanedString = precioString.replace(",", ".")
+            val precioFinal = cleanedString.toDoubleOrNull() ?: 0.0
+
+            val puntosPersonal = sharedPreferences.getString("puntos", "0")?.toIntOrNull() ?: 0
+
+            if (puntos < 0) {
+                Toast.makeText(this, "Los puntos no pueden ser negativos", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            if (puntos > puntosPersonal) {
+                Toast.makeText(this, "No tienes tantos puntos", Toast.LENGTH_SHORT).show()
+            }
 
             // Verificar que el campo de precio no esté vacío y contenga un número
             if (precioDiaStr.isNotEmpty()) {
@@ -111,24 +129,34 @@ class ContratarVehiculo : AppCompatActivity() {
                     val fechaFinalDate = formatoFecha.parse(fechaFinal)
 
                     if (fechaInicioDate != null && fechaFinalDate != null) {
-                        val diferenciaDias = ((fechaFinalDate.time - fechaInicioDate.time) / (1000 * 60 * 60 * 24)).toInt()
+                        val diferenciaDias =
+                            ((fechaFinalDate.time - fechaInicioDate.time) / (1000 * 60 * 60 * 24)).toInt()
 
                         if (diferenciaDias < 1) {
-                            Toast.makeText(this, "La fecha final debe ser posterior a la fecha de inicio", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this,
+                                "La fecha final debe ser posterior a la fecha de inicio",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
                         }
 
-                        // Calculamos el precio final
-                        val precioFinal = diferenciaDias * precioDia
-
                         // Mostramos el dialogo de confirmación
-                        mostrarConfirmacionContratacion(precioFinal)
+                        mostrarConfirmacionContratacion(precioFinal, puntos)
                     } else {
-                        Toast.makeText(this, "Por favor, introduce fechas válidas", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Por favor, introduce fechas válidas",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 } catch (e: NumberFormatException) {
-                    Toast.makeText(this, "Por favor, introduce un precio válido", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Por favor, introduce un precio válido",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 Toast.makeText(this, "El campo de precio está vacío", Toast.LENGTH_SHORT).show()
@@ -138,14 +166,34 @@ class ContratarVehiculo : AppCompatActivity() {
         binding.imgCalculator.setOnClickListener {
             val fechaInicio = binding.etxtContratoFechaInicio.text.toString()
             val fechaFinal = binding.etxtContratoFechaFinal.text.toString()
-            calcularPrecioTotal(fechaInicio, fechaFinal, precioVehiculo)
+            val puntos = (binding.etxtPuntos.text.toString().ifEmpty { "0" }).toInt()
+            var puntosPersonal: Int = sharedPreferences.getString("puntos", "0")?.toIntOrNull() ?: 0
+
+            if (puntos < 0) {
+                Toast.makeText(this, "Los puntos no pueden ser negativos", Toast.LENGTH_SHORT)
+                    .show()
+                binding.etxtPuntos.setText("0")
+                return@setOnClickListener
+            }
+
+            if (puntos > puntosPersonal) {
+                Toast.makeText(this, "No tienes tantos puntos", Toast.LENGTH_SHORT).show()
+                binding.etxtPuntos.setText("0")
+                return@setOnClickListener
+            }
+
+            var descuento: Double = puntos.toInt().toDouble() / 100.0
+            println(descuento)
+            calcularPrecioTotal(fechaInicio, fechaFinal, precioVehiculo, descuento)
         }
 
         binding.btnContratoCancelar.setOnClickListener() {
-            val intent = Intent(this, MostrarVehiculo::class.java)
-            startActivity(intent)
+            val intent2 = Intent(this, Principal::class.java)
+            startActivity(intent2)
         }
 
+
+        cargarDatos()
 
         // Inicializa el DrawerLayout
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
@@ -345,7 +393,7 @@ class ContratarVehiculo : AppCompatActivity() {
             })
     }
 
-    fun mostrarConfirmacionContratacion(precioFinal: Double) {
+    fun mostrarConfirmacionContratacion(precioFinal: Double, puntos: Int) {
         // Crear el mensaje con el precio final
         val mensaje = "¿Estás seguro de que deseas contratar el servicio?\n\n" +
                 "Precio Total: ${String.format("%.2f", precioFinal)} €"
@@ -358,7 +406,7 @@ class ContratarVehiculo : AppCompatActivity() {
         // Botón "Sí" para confirmar
         builder.setPositiveButton("Sí") { dialog, which ->
             // Aquí se crea el contrato si el usuario confirma
-            crearContrato(precioFinal)
+            crearContrato(precioFinal, puntos)
             Toast.makeText(this, "Contrato creado exitosamente.", Toast.LENGTH_SHORT).show()
         }
 
@@ -372,7 +420,7 @@ class ContratarVehiculo : AppCompatActivity() {
         builder.create().show()
     }
 
-    fun crearContrato(precioFinal: Double) {
+    fun crearContrato(precioFinal: Double, puntos: Int) {
         val fechaInicio = binding.etxtContratoFechaInicio.text.toString()
         val fechaFinal = binding.etxtContratoFechaFinal.text.toString()
         val idVehiculo = intent.getLongExtra("idvehiculo", -1)
@@ -385,16 +433,83 @@ class ContratarVehiculo : AppCompatActivity() {
             precioDia = 30.0, // Este valor lo puedes obtener de tu UI como ya lo hacías
             precioTotal = precioFinal,
             fechaInicio = fechaInicio,
-            fechaFin = fechaFinal
+            fechaFin = fechaFinal,
+            pagado = false
         )
 
         // Aquí puedes realizar la llamada a la API para crear el contrato o guardarlo localmente
         // Ejemplo de llamada a la API:
         // RetrofitClient.instance.crearContrato(contrato).enqueue(....)
+        crearContrato(contrato) { exito ->
+            if (exito) {
+                Log.d("CrearContrato", "Contrato registrado con éxito")
+                Log.d("Contrato", "Contrato creado: $contrato")
+            } else {
+                Log.e("CrearContrato", "Error al registrar el contrato")
+            }
+            update(puntos,fechaInicio,fechaFinal)
+            val intent = Intent(this, VerContratos::class.java)
+            startActivity(intent)
 
-        Log.d("Contrato", "Contrato creado: $contrato")
+        }
     }
 
+    private fun update(puntos: Int,  fechaInicioStr: String, fechaFinalStr: String) {
+
+        // Convertir las fechas de String a Date
+        val formatoFecha = SimpleDateFormat("yyyy-MM-dd", Locale("es", "ES"))
+        val fechaInicio = formatoFecha.parse(fechaInicioStr)
+        val fechaFinal = formatoFecha.parse(fechaFinalStr)
+
+
+        // Usamos Calendar para contar los días de forma más precisa
+        val calendarInicio = Calendar.getInstance()
+        val calendarFinal = Calendar.getInstance()
+
+        // Establecemos las fechas en los calendarios
+        calendarInicio.time = fechaInicio
+        calendarFinal.time = fechaFinal
+
+        // Calculamos la diferencia en días
+        val diferenciaDias =
+            ((calendarFinal.timeInMillis - calendarInicio.timeInMillis) / (1000 * 60 * 60 * 24)).toInt()
+        // Calcular el precio total
+        val puntosAumentado = diferenciaDias * 15
+        var puntosPersonal: Int = sharedPreferences.getString("puntos", "0")?.toIntOrNull() ?: 0
+        var puntosGastados: Int = puntos;
+        // Lo que haremos es restar los puntos gastados y aumentamso 15 puntos por dias
+        puntosPersonal = puntosPersonal - puntosGastados + puntosAumentado
+
+        val datosUsuarios = DatosUsuarios(
+            id = sharedPreferences.getLong("id", -1),
+            puntos = puntosPersonal
+        )
+        val call = RetrofitClient.instance.updateUsuario(datosUsuarios)
+
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    // Handle successful response (updated data, HTTP 200)
+                    val result = response.body()
+                    Log.d("API", "User updated: $result")
+                } else {
+                    // Handle failed response (e.g., not found, HTTP 404)
+                    Log.e("API", "Failed to update user: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                // Handle failure to connect to the server
+                Log.e("API", "Error: ${t.message}")
+            }
+        })
+
+        val editor = sharedPreferences.edit()
+        editor.putString("puntos", puntosPersonal.toString())  // Clave: "puntos", Valor: "100"
+        editor.apply()  // Aplica los cambios de manera asíncrona
+        cargarDatos()
+
+    }
 
     fun cerrarSesion() {
         // Elimina las preferencias compartidas
@@ -425,7 +540,12 @@ class ContratarVehiculo : AppCompatActivity() {
     }
 
     // Función para calcular el precio total
-    fun calcularPrecioTotal(fechaInicioStr: String, fechaFinalStr: String, precioDia: Double) {
+    fun calcularPrecioTotal(
+        fechaInicioStr: String,
+        fechaFinalStr: String,
+        precioDia: Double,
+        descuento: Double
+    ) {
         if (fechaInicioStr.isNotBlank() && fechaFinalStr.isNotBlank()) {
             try {
                 // Convertir las fechas de String a Date
@@ -471,10 +591,11 @@ class ContratarVehiculo : AppCompatActivity() {
 
                     // Calcular el precio total
                     val precioTotal =
-                        diferenciaDias * binding.etxtContratoPrecioDia.text.toString().toDouble()
+                        (diferenciaDias * binding.etxtContratoPrecioDia.text.toString()
+                            .toDouble()) - descuento
 
                     // Mostrar el precio total
-                    val precioTotalFormateado = String.format("%.2f €", precioTotal)
+                    val precioTotalFormateado = String.format("%.2f ", precioTotal)
                     binding.etxtContratoPrecioFinal.setText(precioTotalFormateado)
 
                 }
@@ -494,6 +615,45 @@ class ContratarVehiculo : AppCompatActivity() {
             ).show()
         }
     }
+
+    // Cambia la función crearComentario para aceptar un callback
+    fun crearContrato(contrato: Contrato, onComplete: (Boolean) -> Unit) {
+        RetrofitClient.instance.contratoCrear(contrato).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    onComplete(true) // Éxito en la creación del contrato
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("Crear Contrato error", "Error: $errorBody")
+                    onComplete(false) // Fallo en la creación del contrato
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.e("Crear Contrato error", "Fallo en la red: ${t.message}")
+                onComplete(false) // Fallo en la solicitud (problema de conexión, timeout, etc.)
+            }
+        })
+    }
+
+    fun cargarDatos() {
+        val nombreUsuario = sharedPreferences.getString("nombre", "")
+        val correoUsuario = sharedPreferences.getString("correo", "correo@ejemplo.com")
+        var puntosUsario = sharedPreferences.getString("puntos", "0 CarPoints")
+        puntosUsario = puntosUsario + " CarPoints"
+        val headerView =
+            binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
+        val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
+        val correoTextView: TextView = headerView.findViewById(R.id.correo)
+        val puntosTextView: TextView = headerView.findViewById(R.id.puntos)
+
+        // Asignar los valores recuperados a los TextViews del header
+        nombreTextView.text = nombreUsuario
+        correoTextView.text = correoUsuario
+        puntosTextView.text = puntosUsario
+
+    }
+
 
 }
 

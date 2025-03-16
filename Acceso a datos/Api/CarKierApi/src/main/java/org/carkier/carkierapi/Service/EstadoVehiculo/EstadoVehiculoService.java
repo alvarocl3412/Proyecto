@@ -5,7 +5,7 @@ import org.carkier.carkierapi.modelos.EstadoVehiculo.EstadoVehiculo;
 import java.util.List;
 import java.util.Optional;
 
-public interface EstadoVehiculoService {
+public interface    EstadoVehiculoService {
 
     List<EstadoVehiculo> findAll();
 

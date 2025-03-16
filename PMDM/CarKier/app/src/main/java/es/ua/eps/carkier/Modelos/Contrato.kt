@@ -10,6 +10,7 @@ data class Contrato(
     val precioTotal: Double,
     val fechaInicio: String,
     val fechaFin: String,
+    val pagado: Boolean
 ) {
     constructor(
         idvehiculo: Long,
@@ -18,17 +19,19 @@ data class Contrato(
         precioDia: Double,
         precioTotal: Double,
         fechaInicio: String,
-        fechaFin: String
+        fechaFin: String,
+        pagado: Boolean
     ) :
             this(
                 id = 0,
                 idvehiculo = idvehiculo,
                 idCliente = idCliente,
-                idEstado = 1,
+                idEstado = 4,
                 idSeguro = idSeguro.toLong(),
                 precioDia = precioDia,
                 precioTotal = precioTotal,
                 fechaInicio = fechaInicio,
-                fechaFin = fechaFin
+                fechaFin = fechaFin,
+                pagado = pagado
             )
 }

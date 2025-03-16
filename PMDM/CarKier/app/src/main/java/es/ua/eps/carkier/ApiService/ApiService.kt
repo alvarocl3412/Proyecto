@@ -3,6 +3,7 @@ package es.ua.eps.carkier.ApiService
 import es.ua.eps.carkier.Modelos.CarnetConducir
 import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.Contrato
+import es.ua.eps.carkier.Modelos.DatosUsuarios
 import es.ua.eps.carkier.Modelos.EstadoContrato
 import es.ua.eps.carkier.Modelos.EstadoVehiculo
 import es.ua.eps.carkier.Modelos.FechaOcupada
@@ -18,7 +19,6 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PUT
 import retrofit2.http.Path
-import java.time.LocalDate
 
 
 interface ApiService {
@@ -44,10 +44,17 @@ interface ApiService {
     @GET("VehiuculosId/{id}")
     fun VehiculoId(@Path("id") id: Long?): Call<Vehiculos>
 
+
+    // Datos del usuario
+    @GET("DatosUsuariosId/{id}")
+    fun datosUsuarios(@Path("id") id: Long?): Call<DatosUsuarios>
+
+    @PUT("updateDatosUsuarios")
+    fun updateUsuario(@Body datosUsuarios: DatosUsuarios): Call<String>
+
     //Estado Vehiculo
     @GET("EstadoVehiculoId/{id}")
     fun EstadoVehiculoId(@Path("id") id:Long?): Call<EstadoVehiculo>
-
 
     //Metodos para el tipo carnet
     @GET("TipoCarnetfindAll")
@@ -94,7 +101,10 @@ interface ApiService {
     @GET("EstadoContratoId/{id}")
     fun contratoEstado(@Path("id") id: Int): Call<EstadoContrato>
 
-    @DELETE("deleteEstadoContrato/{id}")
+    @POST("CrearContrato")
+    fun contratoCrear(@Body contrato: Contrato): Call<String>
+
+    @DELETE("deleteContrato/{id}")
     fun cancelarContrato(@Path("id") id: Int): Call<Void>
 
 

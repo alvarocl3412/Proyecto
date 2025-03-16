@@ -14,10 +14,6 @@ import es.ua.eps.carkier.Modelos.EstadoContrato
 import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.R
 import es.ua.eps.carkier.Retrofit.RetrofitClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -82,6 +78,7 @@ class ContratoAdapter(
                         if (success) {
                             Toast.makeText(context, "Contrato cancelado exitosamente", Toast.LENGTH_SHORT).show()
                             // Opcionalmente, actualiza la lista o el estado del contrato
+
                         } else {
                             Toast.makeText(context, "Error al cancelar el contrato", Toast.LENGTH_SHORT).show()
                         }
@@ -148,7 +145,7 @@ class ContratoAdapter(
     }
 
     fun cancelarContrato(idContrato: Long, callback: (Boolean) -> Unit) {
-        // Usamos enqueue para hacer la llamada asíncrona
+        // Convertimos idContrato a Int antes de pasarlo a la API
         RetrofitClient.instance.cancelarContrato(idContrato.toInt()).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
