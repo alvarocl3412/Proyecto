@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import es.ua.eps.carkier.Contratos.VerContratos
 import es.ua.eps.carkier.Modelos.Contrato
 import es.ua.eps.carkier.Modelos.EstadoContrato
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -78,7 +79,6 @@ class ContratoAdapter(
                         if (success) {
                             Toast.makeText(context, "Contrato cancelado exitosamente", Toast.LENGTH_SHORT).show()
                             // Opcionalmente, actualiza la lista o el estado del contrato
-
                         } else {
                             Toast.makeText(context, "Error al cancelar el contrato", Toast.LENGTH_SHORT).show()
                         }

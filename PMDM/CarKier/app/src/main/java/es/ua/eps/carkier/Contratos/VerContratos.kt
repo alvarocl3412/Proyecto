@@ -272,7 +272,7 @@ class VerContratos : AppCompatActivity() {
                     if (response.isSuccessful) {
                         // Si la respuesta es exitosa, obtener la lista de contratos
                         val contratos = response.body() ?: emptyList()
-                                cargarLista(contratos)  // Método que carga la lista de contratos
+                        cargarLista(contratos)  // Método que carga la lista de contratos
                         hideProgressBar()  // Método para ocultar el progreso
                     } else {
                         // Maneja la respuesta no exitosa
