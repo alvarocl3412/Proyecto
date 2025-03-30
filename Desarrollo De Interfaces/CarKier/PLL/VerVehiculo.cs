@@ -169,7 +169,7 @@ namespace CarKier.PLL
 
             // Aquí seleccionamos el item por el valor de "ValueMember"
             cbEstado.SelectedValue = _vehiculo.idEstado;
-
+            
             txtMatricula.Text = _vehiculo.matricula;
             txtMarca.Text = _vehiculo.marca;
             txtModelo.Text = _vehiculo.modelo;
