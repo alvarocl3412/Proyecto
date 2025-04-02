@@ -19,6 +19,8 @@ namespace CarKier.PLL
         private static UsuariosDal usuDal = new UsuariosDal();
         private static EstadoContratoDal estadoContDal = new EstadoContratoDal();
         private static SegurosDal seguroDal = new SegurosDal();
+
+        // Constructor
         public Contratos()
         {
             InitializeComponent();
