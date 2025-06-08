@@ -1,4 +1,5 @@
 ﻿using CarKier.Modelo;
+using CarKier.PLL;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace CarKier.DAL
     public class UsuariosDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier/";
+        string apiUrl = "http://localhost:8089/CarKier/";
 
         public UsuariosDal()
         {
@@ -143,6 +144,54 @@ namespace CarKier.DAL
                 return null; // Retorna null para cualquier otro error inesperado
             }
         }
+
+        public async Task<usuarios> findUsuarioDni2(string dni)
+        {
+            string urlConParametros = apiUrl + "UsuarioDni/" + dni;
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(urlConParametros);
+
+                // Verifica si la respuesta es exitosa y contiene datos
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+
+                    // Verifica si hay contenido antes de intentar deserializar
+                    if (!string.IsNullOrEmpty(responseData))
+                    {
+                        usuarios usuario = JsonConvert.DeserializeObject<usuarios>(responseData);
+                        return usuario; // Si no se encuentra el usuario, devuelve null
+                    }
+                    else
+                    {
+                        return null; // Devuelve null si no hay contenido en la respuesta
+                    }
+                }
+                else
+                {
+                    // Maneja otros códigos de estado de error si es necesario
+                    return null;
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null; // Retorna null si hay una excepción de solicitud HTTP
+            }
+            catch (JsonSerializationException e)
+            {
+                Console.WriteLine($"Error en la deserialización: {e.Message}");
+                return null; // Retorna null si hay un error en la deserialización
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error inesperado: {e.Message}");
+                return null; // Retorna null para cualquier otro error inesperado
+            }
+        }
+
 
         public async Task<usuarios> findUsuarioNombreApellido(String nombre, String appellidos)
         {

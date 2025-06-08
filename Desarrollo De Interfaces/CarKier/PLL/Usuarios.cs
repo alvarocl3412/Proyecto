@@ -17,10 +17,17 @@ namespace CarKier.PLL
     {
         private static UsuariosDal usuDal = new UsuariosDal();
         private static DatosDelUsuarioDal datosDal = new DatosDelUsuarioDal();
+        private string txtFiltro = "Introduce el dni";
+
         public Usuarios()
         {
             InitializeComponent();
             configuracion();
+            txtFiltrarDni.Text = txtFiltro;
+            txtFiltrarDni.ForeColor = Color.Gray;
+
+            txtFiltrarDni.Enter += RemovePlaceholder;
+            txtFiltrarDni.Leave += SetPlaceholder;
             CargarTabla();
 
         }
@@ -29,6 +36,8 @@ namespace CarKier.PLL
         private async void Usuarios_Load(object sender, EventArgs e)
         {
             await CargarTabla();
+            txtFiltrarDni.TextChanged += TxtFiltroMarca_TextChanged;
+
         }
 
         private void lvUsuarios_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -76,6 +85,24 @@ namespace CarKier.PLL
             verUsuario();
         }
 
+        private void RemovePlaceholder(object sender, EventArgs e)
+        {
+            if (txtFiltrarDni.Text == txtFiltro)
+            {
+                txtFiltrarDni.Text = "";
+                txtFiltrarDni.ForeColor = Color.Black;
+            }
+        }
+
+        private void SetPlaceholder(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltrarDni.Text))
+            {
+                txtFiltrarDni.Text = txtFiltro;
+                txtFiltrarDni.ForeColor = Color.Gray;
+                CargarTabla();
+            }
+        }
         private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var selectedItem = lvUsuarios.SelectedItems[0];
@@ -94,6 +121,44 @@ namespace CarKier.PLL
             }
 
         }
+
+        private async void TxtFiltroMarca_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txtFiltrarDni.Text.Trim();
+
+            if (texto.Equals("Introduce el dni"))
+            {
+                CargarTabla();
+            }
+
+            // Evitar filtrar si está mostrando el placeholder (texto gris)
+            if (string.IsNullOrEmpty(texto) || texto == txtFiltro || txtFiltrarDni.ForeColor == Color.Gray)
+            {
+                return; // No hacer nada
+            }
+
+            usuarios resultado = await usuDal.findUsuarioDni2(texto);
+
+            lvUsuarios.Items.Clear();
+
+            if (resultado != null)
+            {
+                ListViewItem item = new ListViewItem(resultado.dni);
+                item.SubItems.Add(resultado.nombre);
+                item.SubItems.Add(resultado.apellidos);
+                item.SubItems.Add(resultado.telefono);
+                item.SubItems.Add(resultado.correo);
+                item.SubItems.Add(resultado.fechaNacimiento.ToString("dd/MM/yyyy"));
+                item.Tag = resultado.id.ToString();
+                lvUsuarios.Items.Add(item);
+            }
+            else
+            {
+                CargarTabla();
+            }
+        }
+
+
 
         #endregion
 

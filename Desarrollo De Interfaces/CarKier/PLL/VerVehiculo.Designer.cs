@@ -61,9 +61,10 @@
             // 
             this.lblEmpresa.AutoSize = true;
             this.lblEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblEmpresa.Location = new System.Drawing.Point(214, 45);
+            this.lblEmpresa.Location = new System.Drawing.Point(285, 55);
+            this.lblEmpresa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpresa.Name = "lblEmpresa";
-            this.lblEmpresa.Size = new System.Drawing.Size(77, 20);
+            this.lblEmpresa.Size = new System.Drawing.Size(96, 25);
             this.lblEmpresa.TabIndex = 6;
             this.lblEmpresa.Text = "Empresa:";
             // 
@@ -71,9 +72,10 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblUsuario.Location = new System.Drawing.Point(446, 47);
+            this.lblUsuario.Location = new System.Drawing.Point(595, 58);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(145, 20);
+            this.lblUsuario.Size = new System.Drawing.Size(179, 25);
             this.lblUsuario.TabIndex = 7;
             this.lblUsuario.Text = "Usuario Pertenece:";
             // 
@@ -81,9 +83,10 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblEstado.Location = new System.Drawing.Point(499, 94);
+            this.lblEstado.Location = new System.Drawing.Point(665, 116);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(64, 20);
+            this.lblEstado.Size = new System.Drawing.Size(79, 25);
             this.lblEstado.TabIndex = 8;
             this.lblEstado.Text = "Estado:";
             // 
@@ -91,9 +94,10 @@
             // 
             this.lblModelo.AutoSize = true;
             this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblModelo.Location = new System.Drawing.Point(503, 143);
+            this.lblModelo.Location = new System.Drawing.Point(671, 176);
+            this.lblModelo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(65, 20);
+            this.lblModelo.Size = new System.Drawing.Size(83, 25);
             this.lblModelo.TabIndex = 9;
             this.lblModelo.Text = "Modelo:";
             // 
@@ -101,19 +105,21 @@
             // 
             this.lblAnio.AutoSize = true;
             this.lblAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblAnio.Location = new System.Drawing.Point(223, 194);
+            this.lblAnio.Location = new System.Drawing.Point(297, 239);
+            this.lblAnio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(42, 20);
+            this.lblAnio.Size = new System.Drawing.Size(48, 25);
             this.lblAnio.TabIndex = 10;
-            this.lblAnio.Text = "Año:";
+            this.lblAnio.Text = "Año";
             // 
             // lblKilometro
             // 
             this.lblKilometro.AutoSize = true;
             this.lblKilometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblKilometro.Location = new System.Drawing.Point(484, 196);
+            this.lblKilometro.Location = new System.Drawing.Point(645, 241);
+            this.lblKilometro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKilometro.Name = "lblKilometro";
-            this.lblKilometro.Size = new System.Drawing.Size(79, 20);
+            this.lblKilometro.Size = new System.Drawing.Size(100, 25);
             this.lblKilometro.TabIndex = 11;
             this.lblKilometro.Text = "Kilometro:";
             // 
@@ -121,9 +127,10 @@
             // 
             this.lblMatricula.AutoSize = true;
             this.lblMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblMatricula.Location = new System.Drawing.Point(209, 94);
+            this.lblMatricula.Location = new System.Drawing.Point(279, 116);
+            this.lblMatricula.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(77, 20);
+            this.lblMatricula.Size = new System.Drawing.Size(97, 25);
             this.lblMatricula.TabIndex = 12;
             this.lblMatricula.Text = "Matricula:";
             // 
@@ -131,9 +138,10 @@
             // 
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblPrecioVenta.Location = new System.Drawing.Point(187, 246);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(249, 303);
+            this.lblPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
-            this.lblPrecioVenta.Size = new System.Drawing.Size(104, 20);
+            this.lblPrecioVenta.Size = new System.Drawing.Size(130, 25);
             this.lblPrecioVenta.TabIndex = 13;
             this.lblPrecioVenta.Text = "Precio Venta:";
             // 
@@ -141,9 +149,10 @@
             // 
             this.lblPrecioDia.AutoSize = true;
             this.lblPrecioDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblPrecioDia.Location = new System.Drawing.Point(483, 244);
+            this.lblPrecioDia.Location = new System.Drawing.Point(644, 300);
+            this.lblPrecioDia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioDia.Name = "lblPrecioDia";
-            this.lblPrecioDia.Size = new System.Drawing.Size(85, 20);
+            this.lblPrecioDia.Size = new System.Drawing.Size(107, 25);
             this.lblPrecioDia.TabIndex = 14;
             this.lblPrecioDia.Text = "Precio Dia:";
             // 
@@ -151,82 +160,93 @@
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic);
-            this.lblMarca.Location = new System.Drawing.Point(229, 143);
+            this.lblMarca.Location = new System.Drawing.Point(305, 176);
+            this.lblMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(57, 20);
+            this.lblMarca.Size = new System.Drawing.Size(73, 25);
             this.lblMarca.TabIndex = 15;
             this.lblMarca.Text = "Marca:";
             // 
             // txtEmpresa
             // 
-            this.txtEmpresa.Location = new System.Drawing.Point(310, 47);
+            this.txtEmpresa.Location = new System.Drawing.Point(413, 58);
+            this.txtEmpresa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmpresa.Name = "txtEmpresa";
-            this.txtEmpresa.Size = new System.Drawing.Size(136, 20);
+            this.txtEmpresa.Size = new System.Drawing.Size(180, 22);
             this.txtEmpresa.TabIndex = 18;
             // 
             // txtUsuPertenece
             // 
-            this.txtUsuPertenece.Location = new System.Drawing.Point(622, 49);
+            this.txtUsuPertenece.Location = new System.Drawing.Point(829, 60);
+            this.txtUsuPertenece.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsuPertenece.Name = "txtUsuPertenece";
-            this.txtUsuPertenece.Size = new System.Drawing.Size(146, 20);
+            this.txtUsuPertenece.Size = new System.Drawing.Size(193, 22);
             this.txtUsuPertenece.TabIndex = 19;
             // 
             // txtModelo
             // 
-            this.txtModelo.Location = new System.Drawing.Point(622, 143);
+            this.txtModelo.Location = new System.Drawing.Point(829, 176);
+            this.txtModelo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(146, 20);
+            this.txtModelo.Size = new System.Drawing.Size(193, 22);
             this.txtModelo.TabIndex = 20;
             // 
             // txtAnio
             // 
-            this.txtAnio.Location = new System.Drawing.Point(310, 196);
+            this.txtAnio.Location = new System.Drawing.Point(413, 241);
+            this.txtAnio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(136, 20);
+            this.txtAnio.Size = new System.Drawing.Size(180, 22);
             this.txtAnio.TabIndex = 21;
             // 
             // txtKilometro
             // 
-            this.txtKilometro.Location = new System.Drawing.Point(622, 194);
+            this.txtKilometro.Location = new System.Drawing.Point(829, 239);
+            this.txtKilometro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtKilometro.Name = "txtKilometro";
-            this.txtKilometro.Size = new System.Drawing.Size(146, 20);
+            this.txtKilometro.Size = new System.Drawing.Size(193, 22);
             this.txtKilometro.TabIndex = 22;
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(310, 96);
+            this.txtMatricula.Location = new System.Drawing.Point(413, 118);
+            this.txtMatricula.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(136, 20);
+            this.txtMatricula.Size = new System.Drawing.Size(180, 22);
             this.txtMatricula.TabIndex = 23;
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(310, 248);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(413, 305);
+            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(136, 20);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(180, 22);
             this.txtPrecioVenta.TabIndex = 24;
             // 
             // txtPrecioDia
             // 
-            this.txtPrecioDia.Location = new System.Drawing.Point(622, 246);
+            this.txtPrecioDia.Location = new System.Drawing.Point(829, 303);
+            this.txtPrecioDia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrecioDia.Name = "txtPrecioDia";
-            this.txtPrecioDia.Size = new System.Drawing.Size(146, 20);
+            this.txtPrecioDia.Size = new System.Drawing.Size(193, 22);
             this.txtPrecioDia.TabIndex = 25;
             // 
             // txtMarca
             // 
-            this.txtMarca.Location = new System.Drawing.Point(310, 145);
+            this.txtMarca.Location = new System.Drawing.Point(413, 178);
+            this.txtMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(136, 20);
+            this.txtMarca.Size = new System.Drawing.Size(180, 22);
             this.txtMarca.TabIndex = 26;
             // 
             // pcCoche
             // 
             this.pcCoche.BackColor = System.Drawing.Color.Transparent;
             this.pcCoche.Image = global::CarKier.Properties.Resources.coche;
-            this.pcCoche.Location = new System.Drawing.Point(12, 89);
+            this.pcCoche.Location = new System.Drawing.Point(16, 110);
+            this.pcCoche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcCoche.Name = "pcCoche";
-            this.pcCoche.Size = new System.Drawing.Size(168, 146);
+            this.pcCoche.Size = new System.Drawing.Size(224, 180);
             this.pcCoche.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcCoche.TabIndex = 4;
             this.pcCoche.TabStop = false;
@@ -236,9 +256,10 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(488, 355);
+            this.btnCancelar.Location = new System.Drawing.Point(651, 437);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(127, 41);
+            this.btnCancelar.Size = new System.Drawing.Size(169, 50);
             this.btnCancelar.TabIndex = 30;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -249,9 +270,10 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::CarKier.Properties.Resources.Save_6530;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(227, 355);
+            this.btnGuardar.Location = new System.Drawing.Point(303, 437);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(127, 41);
+            this.btnGuardar.Size = new System.Drawing.Size(169, 50);
             this.btnGuardar.TabIndex = 29;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -260,16 +282,18 @@
             // cbEstado
             // 
             this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Location = new System.Drawing.Point(622, 93);
+            this.cbEstado.Location = new System.Drawing.Point(829, 114);
+            this.cbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(146, 21);
+            this.cbEstado.Size = new System.Drawing.Size(193, 24);
             this.cbEstado.TabIndex = 31;
             // 
             // btnImagen
             // 
-            this.btnImagen.Location = new System.Drawing.Point(47, 243);
+            this.btnImagen.Location = new System.Drawing.Point(63, 299);
+            this.btnImagen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImagen.Name = "btnImagen";
-            this.btnImagen.Size = new System.Drawing.Size(89, 25);
+            this.btnImagen.Size = new System.Drawing.Size(119, 31);
             this.btnImagen.TabIndex = 32;
             this.btnImagen.Text = "Elefir foto";
             this.btnImagen.UseVisualStyleBackColor = true;
@@ -277,18 +301,19 @@
             // 
             // txtRutaImg
             // 
-            this.txtRutaImg.Location = new System.Drawing.Point(22, 293);
+            this.txtRutaImg.Location = new System.Drawing.Point(29, 361);
+            this.txtRutaImg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRutaImg.Multiline = true;
             this.txtRutaImg.Name = "txtRutaImg";
             this.txtRutaImg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRutaImg.Size = new System.Drawing.Size(100, 20);
+            this.txtRutaImg.Size = new System.Drawing.Size(132, 24);
             this.txtRutaImg.TabIndex = 33;
             // 
             // VerVehiculo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.txtRutaImg);
             this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.cbEstado);
@@ -315,6 +340,7 @@
             this.Controls.Add(this.lblEmpresa);
             this.Controls.Add(this.pcCoche);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "VerVehiculo";
             this.Text = "Vehiculo";
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).EndInit();

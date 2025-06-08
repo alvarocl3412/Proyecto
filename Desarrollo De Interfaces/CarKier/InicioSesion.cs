@@ -107,6 +107,8 @@ namespace CarKier
 
             //Calcular los botones
             btnInicioSesion.Left = (ClientSize.Width - btnInicioSesion.Width) / 2;
+            btnSalir.Left = (ClientSize.Width - btnSalir.Width) / 2;
+
         }
 
   

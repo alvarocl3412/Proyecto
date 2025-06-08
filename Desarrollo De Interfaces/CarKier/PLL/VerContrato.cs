@@ -1,4 +1,4 @@
-﻿ using CarKier.DAL;
+﻿using CarKier.DAL;
 using CarKier.Modelo;
 using System;
 using System.Collections.Generic;
@@ -177,7 +177,6 @@ namespace CarKier.PLL
                 // Asignar valores a los ComboBox después de cargar los datos
                 cbSeguro.SelectedValue = _contrato.idSeguro;
                 cbEstadoContrato.SelectedValue = _contrato.idEstado;
-
 
                 // Cargar datos del vehículo
                 vehiculos vehiculo = await vehiculoDal.findVehiculoId(_contrato.idvehiculo);

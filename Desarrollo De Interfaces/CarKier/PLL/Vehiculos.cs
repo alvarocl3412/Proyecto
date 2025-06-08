@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CarKier.PLL
 {
@@ -19,9 +20,15 @@ namespace CarKier.PLL
         private static UsuariosDal usuDal = new UsuariosDal();
         private static EmpresasDal emprDal = new EmpresasDal();
         private static EstadoVehiculoDal estadoVehiDal = new EstadoVehiculoDal();
+        private string txtFiltro = "Introduce la marca";
         public Vehiculos()
         {
             InitializeComponent();
+            txtFiltroMarca.Text = txtFiltro;
+            txtFiltroMarca.ForeColor = Color.Gray;
+
+            txtFiltroMarca.Enter += RemovePlaceholder;
+            txtFiltroMarca.Leave += SetPlaceholder;
 
         }
 
@@ -32,6 +39,8 @@ namespace CarKier.PLL
             CargarTabla();
             verToolStripMenuItem.Enabled = false;
             eliminarToolStripMenuItem.Enabled = false;
+            // Mostrar todos al inicio
+            txtFiltroMarca.TextChanged += TxtFiltroMarca_TextChanged;
         }
 
         private void lvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +129,8 @@ namespace CarKier.PLL
             }
         }
 
+
+
         private async void verVehiculo()
         {
             var selectedItem = lvVehiculos.SelectedItems[0];
@@ -140,6 +151,85 @@ namespace CarKier.PLL
 
             
         }
+
+        private void RemovePlaceholder(object sender, EventArgs e)
+        {
+            if (txtFiltroMarca.Text == txtFiltro)
+            {
+                txtFiltroMarca.Text = "";
+                txtFiltroMarca.ForeColor = Color.Black;
+               
+            }
+        }
+
+        private void SetPlaceholder(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltroMarca.Text))
+            {
+                txtFiltroMarca.Text = txtFiltro;
+                txtFiltroMarca.ForeColor = Color.Gray;
+            }
+        }
+
+        private async void TxtFiltroMarca_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txtFiltroMarca.Text.Trim();
+
+            // Evitar filtrar con el placeholder
+            if (string.IsNullOrEmpty(texto) || texto == txtFiltro)
+            {
+                await CargarTabla(); // Mostrar todos si no hay filtro
+                return;
+            }
+
+            // Llamada a la API con filtro
+            List<vehiculos> resultado = await vehiculoDal.findVehiculoMarca(texto); // debes tener este método en DAL
+
+            // Limpiar el ListView
+            lvVehiculos.Items.Clear();
+
+            // Mostrar resultados si hay
+            if (resultado != null && resultado.Count > 0)
+            {
+                foreach (var vehiculo in resultado)
+                {
+                    await AgregarVehiculoAlListView(vehiculo); 
+                }
+            }
+            else
+            {
+                lvVehiculos.Items.Clear();
+            }
+        }
+
+        private async Task AgregarVehiculoAlListView(vehiculos vehiculo)
+        {
+            string nom = await emprDal.findEmpresid(vehiculo.idEmpresa);
+            ListViewItem item = new ListViewItem(nom);
+
+            string idusu = await usuDal.findUsuarioid(vehiculo.idUsuariosPropietario);
+            item.SubItems.Add(idusu);
+
+            string idest = await estadoVehiDal.findEstadoid(vehiculo.idEstado);
+            item.SubItems.Add(idest);
+
+            item.SubItems.Add(vehiculo.matricula);
+            item.SubItems.Add(vehiculo.marca);
+            item.SubItems.Add(vehiculo.modelo);
+            item.SubItems.Add(vehiculo.anio.ToString());
+            item.SubItems.Add(vehiculo.km.ToString());
+
+            if (vehiculo.precioventa == null)
+                item.SubItems.Add("No se Vende");
+            else
+                item.SubItems.Add(vehiculo.precioventa.ToString() + " €");
+
+            item.SubItems.Add(vehiculo.preciodia.ToString() + " €");
+            item.Tag = vehiculo.id;
+
+            lvVehiculos.Items.Add(item);
+        }
+
 
 
 

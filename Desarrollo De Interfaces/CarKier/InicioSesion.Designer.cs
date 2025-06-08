@@ -36,6 +36,7 @@
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.pbOjo = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbOjo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -123,12 +124,26 @@
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(312, 396);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(13);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(195, 40);
+            this.btnSalir.TabIndex = 7;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // InicioSesion
             // 
             this.AcceptButton = this.btnInicioSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pbOjo);
             this.Controls.Add(this.txtContrasena);
             this.Controls.Add(this.lblContraseña);
@@ -156,6 +171,7 @@
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.PictureBox pbOjo;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

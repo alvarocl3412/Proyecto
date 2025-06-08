@@ -88,15 +88,23 @@ namespace CarKier.PLL
         {
             txtUsuario.Text = usuario.nombre + " " + usuario.apellidos;
 
-            bool valor = datos.administrador;
-            cbAdministrador.SelectedItem = valor ? "SI" : "NO";
+            cbAdministrador.SelectedItem = datos.administrador.HasValue && datos.administrador.Value ? "SI" : "NO";
 
-            txtPuntos.Text = datos.puntos.ToString();
-            txtFechaBanInicio.Text = datos.fechaBanInicio.HasValue ? datos.fechaBanInicio.Value.ToString("yyyy-MM-dd"): "Sin bannear";
+            if (datos.puntos != null)
+            {
+                txtPuntos.Text = datos.puntos.ToString();
+
+            } else
+            {
+                txtPuntos.Text = "0";
+
+            }
+            txtFechaBanInicio.Text = datos.fechaBanInicio.HasValue ? datos.fechaBanInicio.Value.ToString("yyyy-MM-dd") : "Sin bannear";
 
             txtFechaBanFinal.Text = datos.fechaBanFinal.HasValue ? datos.fechaBanFinal.Value.ToString("yyyy-MM-dd") : "Sin bannear";
-            txtCantidadBan.Text = datos.cantidadBan.ToString();
-            cbEliminar.Checked = datos.marcaEliminar;
+            txtCantidadBan.Text = datos.cantidadBan.HasValue ? datos.cantidadBan.Value.ToString() : "0";
+            cbEliminar.Checked = datos.marcaEliminar.HasValue && datos.marcaEliminar.Value;
+
         }
 
         private async void guardarCambios()

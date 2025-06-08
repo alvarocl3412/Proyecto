@@ -49,8 +49,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pcCoche = new System.Windows.Forms.PictureBox();
-            this.cbFiltrarEstado = new System.Windows.Forms.ComboBox();
-            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.txtFiltroMarca = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).BeginInit();
             this.SuspendLayout();
@@ -73,10 +72,11 @@
             this.lvVehiculos.FullRowSelect = true;
             this.lvVehiculos.GridLines = true;
             this.lvVehiculos.HideSelection = false;
-            this.lvVehiculos.Location = new System.Drawing.Point(12, 113);
+            this.lvVehiculos.Location = new System.Drawing.Point(16, 139);
+            this.lvVehiculos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvVehiculos.MultiSelect = false;
             this.lvVehiculos.Name = "lvVehiculos";
-            this.lvVehiculos.Size = new System.Drawing.Size(776, 325);
+            this.lvVehiculos.Size = new System.Drawing.Size(1033, 399);
             this.lvVehiculos.TabIndex = 2;
             this.lvVehiculos.UseCompatibleStateImageBehavior = false;
             this.lvVehiculos.View = System.Windows.Forms.View.Details;
@@ -143,6 +143,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.nuevoToolStripMenuItem,
@@ -151,44 +152,44 @@
             this.toolStripSeparator3,
             this.eliminarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 110);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 100);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
             // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_add_16xMD;
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
             // 
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Image = global::CarKier.Properties.Resources.ojo1;
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.verToolStripMenuItem.Text = "Ver";
             this.verToolStripMenuItem.Click += new System.EventHandler(this.verToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(133, 6);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -196,50 +197,38 @@
             // 
             this.pcCoche.BackColor = System.Drawing.Color.Transparent;
             this.pcCoche.Image = global::CarKier.Properties.Resources.coche;
-            this.pcCoche.Location = new System.Drawing.Point(12, 6);
+            this.pcCoche.Location = new System.Drawing.Point(16, 7);
+            this.pcCoche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pcCoche.Name = "pcCoche";
-            this.pcCoche.Size = new System.Drawing.Size(140, 103);
+            this.pcCoche.Size = new System.Drawing.Size(187, 127);
             this.pcCoche.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcCoche.TabIndex = 3;
             this.pcCoche.TabStop = false;
             // 
-            // cbFiltrarEstado
+            // txtFiltroMarca
             // 
-            this.cbFiltrarEstado.FormattingEnabled = true;
-            this.cbFiltrarEstado.Items.AddRange(new object[] {
-            "SI",
-            "NO"});
-            this.cbFiltrarEstado.Location = new System.Drawing.Point(250, 55);
-            this.cbFiltrarEstado.Name = "cbFiltrarEstado";
-            this.cbFiltrarEstado.Size = new System.Drawing.Size(171, 21);
-            this.cbFiltrarEstado.TabIndex = 13;
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Location = new System.Drawing.Point(456, 44);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(86, 38);
-            this.btnFiltrar.TabIndex = 14;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.txtFiltroMarca.Location = new System.Drawing.Point(333, 69);
+            this.txtFiltroMarca.Name = "txtFiltroMarca";
+            this.txtFiltroMarca.Size = new System.Drawing.Size(227, 22);
+            this.txtFiltroMarca.TabIndex = 15;
             // 
             // Vehiculos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnFiltrar);
-            this.Controls.Add(this.cbFiltrarEstado);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.txtFiltroMarca);
             this.Controls.Add(this.pcCoche);
             this.Controls.Add(this.lvVehiculos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Vehiculos";
             this.Text = "Vehiculos";
             this.Load += new System.EventHandler(this.Vehiculos_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcCoche)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -257,8 +246,6 @@
         private System.Windows.Forms.ColumnHeader chPrecioVenta;
         private System.Windows.Forms.ColumnHeader chPrecioDia;
         private System.Windows.Forms.PictureBox pcCoche;
-        private System.Windows.Forms.ComboBox cbFiltrarEstado;
-        private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
@@ -266,5 +253,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.TextBox txtFiltroMarca;
     }
 }

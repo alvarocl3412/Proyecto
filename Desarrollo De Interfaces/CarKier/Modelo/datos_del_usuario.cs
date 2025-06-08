@@ -10,12 +10,12 @@ namespace CarKier.Modelo
     {
         // Propiedades
         public int id { get; set; }
-        public int puntos { get; set; }
-        public bool administrador { get; set; }
+        public int? puntos { get; set; }
+        public bool? administrador { get; set; }
         public DateTime? fechaBanInicio { get; set; }
         public DateTime? fechaBanFinal { get; set; }
-        public int cantidadBan { get; set; }
-        public bool marcaEliminar { get; set; }
+        public int? cantidadBan { get; set; }
+        public bool? marcaEliminar { get; set; }
 
         // Constructor por defecto
         public datos_del_usuario()

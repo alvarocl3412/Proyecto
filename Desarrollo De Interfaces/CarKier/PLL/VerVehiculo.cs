@@ -113,25 +113,37 @@ namespace CarKier.PLL
 
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            // Crear un cuadro de diálogo para seleccionar archivos
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Archivos de Imagen|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
                 openFileDialog.Title = "Seleccionar una Imagen";
 
-                // Mostrar el cuadro de diálogo y verificar si el usuario seleccionó un archivo
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string rutaArchivo = openFileDialog.FileName;
 
-                    // Convertir la imagen a Base64
+                    // Convertir a Base64
                     string imagenBase64 = ConvertirImagenABase64(rutaArchivo);
-
-                    // Mostrar el resultado en el TextBox
                     txtRutaImg.Text = imagenBase64;
+
+                    // Mostrar en el PictureBox
+                    try
+                    {
+                        byte[] imageBytes = Convert.FromBase64String(imagenBase64);
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            Image image = Image.FromStream(ms);
+                            pcCoche.Image = image;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar la imagen seleccionada: " + ex.Message);
+                    }
                 }
             }
         }
+
 
 
         #endregion
@@ -169,7 +181,7 @@ namespace CarKier.PLL
 
             // Aquí seleccionamos el item por el valor de "ValueMember"
             cbEstado.SelectedValue = _vehiculo.idEstado;
-            
+
             txtMatricula.Text = _vehiculo.matricula;
             txtMarca.Text = _vehiculo.marca;
             txtModelo.Text = _vehiculo.modelo;
@@ -177,20 +189,26 @@ namespace CarKier.PLL
             txtKilometro.Text = _vehiculo.km.ToString();
             txtPrecioVenta.Text = _vehiculo.precioventa.ToString();
             txtPrecioDia.Text = _vehiculo.preciodia.ToString();
-            if(_vehiculo.imagen != null)
+            if (_vehiculo.imagen != null && _vehiculo.imagen.Length > 0)
             {
-                // Convertir la cadena Base64 a un arreglo de bytes
-                byte[] imageBytes = Convert.FromBase64String(_vehiculo.imagen);
-
-                // Crear un objeto Image a partir de los bytes
-                using (MemoryStream ms = new MemoryStream(imageBytes))
+                try
                 {
-                    Image image = Image.FromStream(ms);
-
-                    // O bien, mostrarla en un PictureBox (si es una aplicación Windows Forms)
-                     pcCoche.Image = image;
+                    byte[] imageBytes = Convert.FromBase64String(_vehiculo.imagen);
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pcCoche.Image = Image.FromStream(ms);
+                    }
                 }
-            } 
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("La imagen no está en formato Base64 válido: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen: " + ex.Message);
+                }
+            }
+
         }
 
         public async void ModificarVehiculo()
@@ -259,6 +277,15 @@ namespace CarKier.PLL
 
         public async void crearVehiculo()
         {
+            string textoAnio = txtAnio.Text?.Trim();
+            string textoKilometro = txtKilometro.Text?.Trim();
+            string textoPrecioDia = txtPrecioDia.Text?.Trim();
+            string textoPrecioVenta = txtPrecioVenta.Text?.Trim();
+            string textoMatricula = txtMatricula.Text?.Trim();
+            string textoMarca = txtMarca.Text?.Trim();
+            string textoModelo = txtModelo.Text?.Trim();
+            string textoImagen = txtRutaImg.Text?.Trim();
+
             //id emprsa
             if (!string.IsNullOrEmpty(txtEmpresa.Text))
             {
@@ -304,55 +331,72 @@ namespace CarKier.PLL
                 MessageBox.Show("Por favor selecciona un estado válido.");
             }
 
-            if(txtRutaImg.Text != null)
+            if (textoImagen != null)
             {
-                _vehiculo.imagen = txtRutaImg.Text;
+                _vehiculo.imagen = textoImagen;
             }
 
-            _vehiculo.matricula = txtMatricula.Text;
-            _vehiculo.marca = txtMarca.Text;
-            _vehiculo.modelo = txtModelo.Text;
+            if (!string.IsNullOrEmpty(textoMatricula)) 
+            {
+                _vehiculo.matricula = textoMatricula;
+            } 
+            
+            if (!string.IsNullOrEmpty(textoMarca)) 
+            {
+                _vehiculo.marca = textoMarca;
+
+            } 
+            
+            if (!string.IsNullOrEmpty(textoModelo)) 
+            {
+                _vehiculo.modelo = textoModelo;
+            }
 
             // Manejo seguro de conversiones de texto a números
 
-            _vehiculo.anio = int.Parse(txtAnio.Text);
+            if (!int.TryParse(textoAnio, out int anio))
+            {
+                    MessageBox.Show("Por favor ingresa un año válido.");
+                MessageBox.Show($"Texto ingresado: '{txtAnio.Text}'");
 
-            if (!int.TryParse(txtKilometro.Text, out int kilometro))
+                return;
+            }
+             _vehiculo.anio = anio;
+
+            if (!int.TryParse(textoKilometro, out int kilometro))
             {
                 MessageBox.Show("Por favor ingresa un kilometraje válido.");
                 return;
             }
             _vehiculo.km = kilometro;
 
-            if (!double.TryParse(txtPrecioVenta.Text, out double precioVenta))
+            if (!double.TryParse(textoPrecioVenta, out double precioVenta))
             {
-                _vehiculo.precioventa = null;
-
-            }
-            else
+                 _vehiculo.precioventa = null;
+            } 
+            else  
             {
                 _vehiculo.precioventa = precioVenta;
-
             }
 
-            if (!double.TryParse(txtPrecioDia.Text, out double precioDia))
+            if (!double.TryParse(textoPrecioDia, out double precioDia))
             {
                 MessageBox.Show("Por favor ingresa un precio por día válido.");
                 return;
             }
             _vehiculo.preciodia = precioDia;
 
-            bool creado = await vehiculoDal.CrearVehiculo(_vehiculo);
-            if (creado)
-            {
-                MessageBox.Show("Creado correctamente");
-                await _ventanaPrincipal.CargarTabla();
-            }
-            else
-            {
-                MessageBox.Show("No se ha podido crear");
-            }
 
+                bool creado = await vehiculoDal.CrearVehiculo(_vehiculo);
+                if (creado)
+                {
+                    MessageBox.Show("Creado correctamente");
+                    await _ventanaPrincipal.CargarTabla();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido crear");
+                }
         }
 
 

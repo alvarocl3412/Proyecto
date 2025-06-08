@@ -13,7 +13,7 @@ namespace CarKier.DAL
     public class VehiculosDal
     {
         private readonly HttpClient _httpClient;
-        string apiUrl = "http://10.0.2.2:8089/CarKier/";
+        string apiUrl = "http://localhost:8089/CarKier/";
 
         public VehiculosDal()
         {
@@ -115,6 +115,46 @@ namespace CarKier.DAL
                 Console.WriteLine($"Respuesta de la API para findVehiculoMatricula: {responseData}");
 
                 vehiculos vehiculo = JsonConvert.DeserializeObject<vehiculos>(responseData);
+
+                if (vehiculo != null)
+                {
+                    return vehiculo;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo deserializar el vehículo.");
+                    return null; // Valor predeterminado si no se encuentra el vehículo
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Error en la solicitud: {e.Message}");
+                return null; // Retorna null en caso de error
+            }
+            catch (JsonException e)
+            {
+                Console.WriteLine($"Error al deserializar el JSON: {e.Message}");
+                return null; // Retorna null si hay un error al deserializar
+            }
+        }
+
+        public async Task<List<vehiculos>> findVehiculoMarca(string marca)
+        {
+          
+
+            string cadena = apiUrl + "VehiculosMarca/" + Uri.EscapeDataString(marca);
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(cadena);
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Debug: Verifica la respuesta obtenida
+                Console.WriteLine($"Respuesta de la API para findVehiculoMarca: {responseData}");
+
+                List<vehiculos> vehiculo = JsonConvert.DeserializeObject<List<vehiculos>>(responseData);
 
                 if (vehiculo != null)
                 {
