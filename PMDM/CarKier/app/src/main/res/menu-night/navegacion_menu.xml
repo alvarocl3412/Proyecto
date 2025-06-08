@@ -26,4 +26,21 @@
             android:textColor="@android:color/white"/>
 
     </group>
+
+    <!-- Sección de contacto -->
+    <group android:id="@+id/contactoGroup" android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/tituloContacto"
+            android:title="@string/contacto" />
+
+        <item
+            android:id="@+id/contactoTelefono"
+            android:title="@string/tel_fono_123_456_789" />
+
+        <item
+            android:id="@+id/contactoCorreo"
+            android:title="@string/correo_ejemplo_email_com"/>
+
+    </group>
 </menu>

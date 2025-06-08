@@ -2,19 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/material_dynamic_secondary90"
     android:orientation="vertical"
-    android:backgroundTint="@color/black"
-    android:padding="15dp">
+    android:padding="16dp">
 
-    <!-- Sección para mostrar el usuario y la fecha -->
+    <!-- Usuario y Fecha en una sola línea, separados por espacio -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <!-- Nombre del Usuario -->
         <TextView
             android:id="@+id/txtRespUsuario"
             android:layout_width="0dp"
@@ -25,33 +22,34 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Fecha del comentario -->
         <TextView
             android:id="@+id/txtRespFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="01/01/2025"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- Descripción del comentario -->
+    <!-- Comentario -->
     <TextView
         android:id="@+id/txtResDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:text="Descripción del comentario."
         android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="italic" />
 
+    <!-- Separación -->
     <Space
         android:layout_width="match_parent"
-        android:layout_height="15dp" />
+        android:layout_height="12dp" />
 
+    <!-- Línea divisora -->
     <View
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/morado_logo" />
+        android:background="@color/white" />
 </LinearLayout>

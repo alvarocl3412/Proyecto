@@ -2,99 +2,92 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="16dp"
+    android:background="@android:color/transparent">
 
-    <!-- Sección para mostrar el usuario y la fecha -->
+    <!-- Encabezado: Usuario y fecha -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
         android:orientation="horizontal">
 
-        <!-- Nombre del Usuario -->
         <TextView
             android:id="@+id/txtComentarioUsuario"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:text="Nombre de Usuario"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
 
-        <!-- Fecha del comentario -->
         <TextView
             android:id="@+id/txtComentarioFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:text="01/01/2025"
+            android:textSize="14sp"
+            android:textColor="@color/black" />
     </LinearLayout>
 
-    <!-- Descripción del comentario -->
+    <!-- Comentario -->
     <TextView
         android:id="@+id/txtDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Descripción del comentario. Este es un ejemplo de un comentario dejado por un usuario."
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="italic" />
+        android:layout_marginTop="8dp"
+        android:text="Este es un comentario de prueba para mostrar cómo se ve el diseño mejorado."
+        android:textSize="16sp"
+        android:textColor="@android:color/black" />
 
-    <!-- Layout horizontal para "Ver respuestas" y "Responder" -->
+    <!-- Acciones: Ver respuestas / Responder -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp">
 
-        <!-- Botón para ver respuestas -->
         <TextView
             android:id="@+id/txtVerRespuestas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Ver respuestas ()"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="18sp"
-            android:visibility="visible" />
-
+            android:text="Ver respuestas (0)"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_blue_light" />
         <Space
             android:layout_width="120dp"
             android:layout_height="match_parent" />
-        <!-- Botón para responder -->
         <TextView
             android:id="@+id/txtResponder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:text="Responder"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="18sp" />
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_blue_light" />
     </LinearLayout>
 
-    <!-- Campo de texto para respuesta, inicialmente oculto -->
+
+    <!-- Respuesta (EditText + Botones) -->
     <LinearLayout
         android:id="@+id/layoutResponder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="8dp"
         android:visibility="gone">
 
         <EditText
             android:id="@+id/etResponder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_secondary90"
             android:hint="Escribe una respuesta..."
-            android:padding="10dp"
-            android:textSize="18sp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"/>
+            android:background="@drawable/edittext_rounded_bg"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="16sp"
+            android:padding="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,35 +100,35 @@
                 android:id="@+id/btnCancelarRespuesta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/black"
                 android:text="Cancelar"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btnEnviarRespuesta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:backgroundTint="@color/black"
                 android:text="Comentar"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Lista de respuestas, inicialmente oculta -->
+    <!-- Lista de respuestas -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerRespuestas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:nestedScrollingEnabled="false"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_marginTop="8dp" />
 
+    <!-- Separador -->
     <View
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#BDBDBD" />
+        android:layout_marginTop="12dp"
+        android:background="#333333" />
 
 </LinearLayout>

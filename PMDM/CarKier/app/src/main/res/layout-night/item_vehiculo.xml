@@ -1,11 +1,11 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardElevation="4dp"
-    app:cardBackgroundColor="@android:color/darker_gray">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    android:backgroundTint="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,91 +13,89 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Fila con marca, modelo -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="start">
-
-            <TextView
-                android:id="@+id/txtMarca"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="70dp"
-                android:text="Marca"
-                android:textColor="@color/black"
-                android:textStyle="bold|italic"
-                android:textSize="18sp" />
-            <!-- Espacio flexible para empujar el logo a la derecha -->
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1" />
-
-            <TextView
-                android:id="@+id/txtModelo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="50dp"
-                android:text="Modelo"
-                android:textColor="@color/black"
-                android:textStyle="bold|italic"
-                android:textSize="18sp" />
-
-
-
-        </LinearLayout>
-
+        <!-- Imagen del vehículo -->
         <ImageView
             android:id="@+id/imgVehiculo"
-            android:layout_width="130dp"
-            android:layout_height="176dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="logo"
-            android:src="@drawable/logo"/>
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"
+            android:background="@drawable/rounded_img_bg"
+            android:contentDescription="Imagen del coche"
+            android:layout_marginBottom="12dp" />
 
-        <!-- Fila con kilometraje, precio por día y precio de venta -->
+        <!-- Marca -->
+        <TextView
+            android:id="@+id/txtMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marca: Toyota"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#444"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Modelo -->
+        <TextView
+            android:id="@+id/txtModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo: Proace City GX"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#444"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Marca + Modelo juntos (opcional o alternativo) -->
+        <TextView
+            android:id="@+id/txtMarcaModelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Toyota - Proace City GX"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" /> <!-- Puedes ponerlo en visible si lo usas -->
+
+        <!-- Datos del coche -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="start">
+            android:weightSum="3"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/txtKm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kilometros"
-                android:textColor="@color/black"
-                android:textStyle="bold|italic"
-                android:textSize="18sp" />
+                android:text="🚗 24,561 km"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="#666" />
 
             <TextView
                 android:id="@+id/txtPrecioDia"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Precio/Dia"
-                android:textColor="@color/black"
-
-                android:textStyle="bold|italic"
-                android:textSize="18sp" />
+                android:text="💸 25.0 €/día"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="#666" />
 
             <TextView
                 android:id="@+id/txtPrecioVenta"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Precio"
-                android:textColor="@color/black"
-                android:textStyle="bold|italic"
-                android:textSize="18sp" />
+                android:text="🛑 No se vende"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="#666" />
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

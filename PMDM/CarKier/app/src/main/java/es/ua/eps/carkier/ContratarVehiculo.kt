@@ -4,15 +4,20 @@ package es.ua.eps.carkier
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -20,22 +25,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import es.ua.eps.carkier.ApiService.ApiService
 import es.ua.eps.carkier.Carnets.MostrarCarnets
 import es.ua.eps.carkier.Contratos.VerContratos
+import es.ua.eps.carkier.Filtro.FilterActivity
 import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.Contrato
 import es.ua.eps.carkier.Modelos.DatosUsuarios
 import es.ua.eps.carkier.Modelos.FechaOcupada
 import es.ua.eps.carkier.Modelos.Seguros
+import es.ua.eps.carkier.Modelos.Vehiculos
 import es.ua.eps.carkier.Retrofit.RetrofitClient
+import es.ua.eps.carkier.adapter.ComentarioAdapter
 import es.ua.eps.carkier.databinding.ActivityContratarVehiculoBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -68,6 +81,21 @@ class ContratarVehiculo : AppCompatActivity() {
 
         // Metodo para saber las fechas ocupadas del vehiculo
         obtenerFechasOcupadas(intent.getLongExtra("idvehiculo", -1).toInt())
+        val idVehiculo = intent.getLongExtra("idvehiculo", -1).toInt()
+        CoroutineScope(Dispatchers.Main).launch {
+            val vehiculo = obtenerVehiculoPorId(idVehiculo!!.toLong())
+            if (vehiculo != null) {
+                val bitmap =
+                    binding.imgContratoVehiculo.setBase64Image(vehiculo!!.imagen.toString())
+                if (bitmap != null) {
+                    binding.imgContratoVehiculo.setScaledImage(bitmap)
+                } else {
+                    Log.e("MostrarVehiculo", "El bitmap es nulo")
+                }
+            } else {
+
+            }
+        }
 
         binding.spinnerContratoSeguro.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -98,11 +126,11 @@ class ContratarVehiculo : AppCompatActivity() {
         editTextDate2 = binding.etxtContratoFechaFinal
         editTextDate2.setOnClickListener { mostrarCalendario(editTextDate2) }
 
-        binding.btnContratar.setOnClickListener {
+        binding.btnContratoAceptar.setOnClickListener {
             val fechaInicio = binding.etxtContratoFechaInicio.text.toString()
             val fechaFinal = binding.etxtContratoFechaFinal.text.toString()
             val precioDiaStr = binding.etxtContratoPrecioDia.text.toString()
-            val puntos = binding.etxtPuntos.text.toString().toIntOrNull() ?: 0
+            val puntos = binding.etxtContratoPuntos.text.toString().toIntOrNull() ?: 0
             val precioString = binding.etxtContratoPrecioFinal.text.toString()
             val cleanedString = precioString.replace(",", ".")
             val precioFinal = cleanedString.toDoubleOrNull() ?: 0.0
@@ -163,22 +191,22 @@ class ContratarVehiculo : AppCompatActivity() {
             }
         }
 
-        binding.imgCalculator.setOnClickListener {
+        binding.imgContratoCalculadora.setOnClickListener {
             val fechaInicio = binding.etxtContratoFechaInicio.text.toString()
             val fechaFinal = binding.etxtContratoFechaFinal.text.toString()
-            val puntos = (binding.etxtPuntos.text.toString().ifEmpty { "0" }).toInt()
+            val puntos = (binding.etxtContratoPuntos.text.toString().ifEmpty { "0" }).toInt()
             var puntosPersonal: Int = sharedPreferences.getString("puntos", "0")?.toIntOrNull() ?: 0
 
             if (puntos < 0) {
                 Toast.makeText(this, "Los puntos no pueden ser negativos", Toast.LENGTH_SHORT)
                     .show()
-                binding.etxtPuntos.setText("0")
+                binding.etxtContratoPuntos.setText("0")
                 return@setOnClickListener
             }
 
             if (puntos > puntosPersonal) {
                 Toast.makeText(this, "No tienes tantos puntos", Toast.LENGTH_SHORT).show()
-                binding.etxtPuntos.setText("0")
+                binding.etxtContratoPuntos.setText("0")
                 return@setOnClickListener
             }
 
@@ -196,7 +224,7 @@ class ContratarVehiculo : AppCompatActivity() {
         cargarDatos()
 
         // Inicializa el DrawerLayout
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerLayout = findViewById<DrawerLayout>(R.id.layoutContratoDrawer)
 
 
         // Comprobar el modo previamente guardado
@@ -204,7 +232,7 @@ class ContratarVehiculo : AppCompatActivity() {
         setTheme(isDarkMode)
 
         // Para la funcionalidad de los botones del menu de abajo
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.navContratoInferior)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.principal -> {
@@ -213,6 +241,7 @@ class ContratarVehiculo : AppCompatActivity() {
                 }
 
                 R.id.filtrarBusqueda -> {
+                    startActivity(Intent(this, FilterActivity::class.java))
                     true
                 }
 
@@ -227,7 +256,7 @@ class ContratarVehiculo : AppCompatActivity() {
         }
 
         // Configuración del NavigationView usando binding
-        binding.navigationView.setNavigationItemSelectedListener { item ->
+        binding.navContratoLateral.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.carnet -> {
                     val intent = Intent(this, MostrarCarnets::class.java)
@@ -254,6 +283,21 @@ class ContratarVehiculo : AppCompatActivity() {
                     } else {
                         setTheme(true)  // Cambiar a modo oscuro
                     }
+                    true
+                }
+
+                R.id.contactoTelefono -> {
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:637 65 02 50")
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.contactoCorreo -> {
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:carkier@email.com")
+                    }
+                    startActivity(Intent.createChooser(intent, "Enviar correo con..."))
                     true
                 }
                 // Otros ítems pueden ser manejados aquí
@@ -447,14 +491,14 @@ class ContratarVehiculo : AppCompatActivity() {
             } else {
                 Log.e("CrearContrato", "Error al registrar el contrato")
             }
-            update(puntos,fechaInicio,fechaFinal)
+            update(puntos, fechaInicio, fechaFinal)
             val intent = Intent(this, VerContratos::class.java)
             startActivity(intent)
 
         }
     }
 
-    private fun update(puntos: Int,  fechaInicioStr: String, fechaFinalStr: String) {
+    private fun update(puntos: Int, fechaInicioStr: String, fechaFinalStr: String) {
 
         // Convertir las fechas de String a Date
         val formatoFecha = SimpleDateFormat("yyyy-MM-dd", Locale("es", "ES"))
@@ -642,7 +686,7 @@ class ContratarVehiculo : AppCompatActivity() {
         var puntosUsario = sharedPreferences.getString("puntos", "0 CarPoints")
         puntosUsario = puntosUsario + " CarPoints"
         val headerView =
-            binding.navigationView.getHeaderView(0) // Obtener el header del NavigationView
+            binding.navContratoLateral.getHeaderView(0) // Obtener el header del NavigationView
         val nombreTextView: TextView = headerView.findViewById(R.id.nombre)
         val correoTextView: TextView = headerView.findViewById(R.id.correo)
         val puntosTextView: TextView = headerView.findViewById(R.id.puntos)
@@ -654,6 +698,50 @@ class ContratarVehiculo : AppCompatActivity() {
 
     }
 
+    suspend fun obtenerVehiculoPorId(vehiculoId: Long): Vehiculos? {
+        return try {
+            val response = RetrofitClient.instance.VehiculoId(vehiculoId).awaitResponse()
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("VehiculoAPI", "Error en la petición: ${e.message}")
+            null
+        }
+    }
+
+    fun ImageView.setBase64Image(base64Image: String): Bitmap? {
+        return try {
+            // Eliminar el prefijo "data:image/png;base64,"
+            val imageData = base64Image.substringAfter(",")
+            val imageBytes = Base64.decode(imageData, Base64.DEFAULT)
+            val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+
+            if (bitmap != null) {
+                this.setImageBitmap(bitmap)
+                bitmap // Devuelve el bitmap
+            } else {
+                Log.e("ImageView", "El bitmap es nulo")
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("ImageView", "Error al establecer la imagen", e)
+            null
+        }
+    }
+
+    fun ImageView.setScaledImage(bitmap: Bitmap) {
+        // Obtener el ancho y alto del ImageView
+        val width = this.width
+        val height = this.height
+
+        // Escalar el bitmap al tamaño del ImageView
+        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, width, height, true)
+
+        // Establecer el bitmap escalado en la ImageView
+        this.setImageBitmap(scaledBitmap)
+    }
 
 }
-

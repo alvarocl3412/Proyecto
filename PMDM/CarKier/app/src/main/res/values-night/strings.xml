@@ -21,7 +21,7 @@
 
     <string name="crearcarnet_tipo">Tipo:</string>
     <string name="crearcarnet_fechaexpedicion">Fecha Expedicion:</string>
-    <string name="crearcarnet_crearcarnet">Crear Carnet:</string>
+    <string name="crearcarnet_crearcarnet">Crear Carnet</string>
 
     <string name="olvidecontra_descripcion">Introduce tu correo. </string>
     <string name="principal_menu_home">Home</string>
@@ -40,4 +40,7 @@
     <string name="contratosNav">Tus Contratos</string>
     <string name="mode_noche">Mode noche</string>
     <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="tel_fono_123_456_789">Teléfono: 123 456 789</string>
+    <string name="correo_ejemplo_email_com">Correo: carkier@email.com</string>
+    <string name="contacto">Contacto</string>
 </resources>

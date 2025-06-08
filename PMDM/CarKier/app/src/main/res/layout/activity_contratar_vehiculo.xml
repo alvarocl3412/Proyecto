@@ -2,22 +2,20 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/layoutContratoDrawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MostrarVehiculo">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:id="@+id/main"
+        android:id="@+id/layoutContratoContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MostrarVehiculo">
 
         <!-- Toolbar -->
         <include
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarContrato"
             layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,326 +23,376 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!-- Contenido principal debajo del toolbar -->
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <!-- Contenido principal con ScrollView para permitir desplazamiento -->
+        <ScrollView
+            android:id="@+id/scrollContratoMain"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:orientation="vertical"
-            android:paddingLeft="2dp"
-            android:paddingTop="10dp"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@id/navContratoInferior"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
+            app:layout_constraintTop_toBottomOf="@id/toolbarContrato">
 
-            <!-- Foto vehiculo -->
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <ImageView
-                android:layout_width="328dp"
-                android:layout_height="122dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <!--Fecha inicio  -->
-            <LinearLayout
-                android:id="@+id/linearlayoutMos"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutContratoMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
+                android:padding="16dp">
 
-                <Space
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtContratoFechaInicio"
-                    android:layout_width="wrap_content"
+                <!-- Foto vehículo -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContratoImagen"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.9">
+
+                    <ImageView
+                        android:id="@+id/imgContratoVehiculo"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/logo"
+                        android:contentDescription="Imagen del vehículo" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tarjeta de información de fechas -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContratoFechas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintEnd_toEndOf="@id/cardContratoImagen"
+                    app:layout_constraintStart_toStartOf="@id/cardContratoImagen"
+                    app:layout_constraintTop_toBottomOf="@id/cardContratoImagen">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Información de Fechas"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"/>
+
+                        <!-- Fecha inicio -->
+                        <LinearLayout
+                            android:id="@+id/layoutContratoFechaInicio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp">
+
+                            <TextView
+                                android:id="@+id/txtContratoFechaInicio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Fecha Inicio:"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/etxtContratoFechaInicio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background"
+                                android:hint="12-12-2000"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:focusable="false"/>
+                        </LinearLayout>
+
+                        <!-- Fecha final -->
+                        <LinearLayout
+                            android:id="@+id/layoutContratoFechaFinal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp">
+
+                            <TextView
+                                android:id="@+id/txtContratoFechaFinal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Fecha Final:"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/etxtContratoFechaFinal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background"
+                                android:hint="12-12-2000"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:focusable="false"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tarjeta de información de precios -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContratoPrecios"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintEnd_toEndOf="@id/cardContratoFechas"
+                    app:layout_constraintStart_toStartOf="@id/cardContratoFechas"
+                    app:layout_constraintTop_toBottomOf="@id/cardContratoFechas">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Información de Precios"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"/>
+
+                        <!-- Seguro -->
+                        <LinearLayout
+                            android:id="@+id/layoutContratoSeguro"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp">
+
+                            <TextView
+                                android:id="@+id/txtContratoSeguro"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Seguro:"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/spinnerContratoSeguro"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/btn_dropdown"
+                                android:padding="8dp"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <!-- Precio Día -->
+                        <LinearLayout
+                            android:id="@+id/layoutContratoPrecioDia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp">
+
+                            <TextView
+                                android:id="@+id/txtContratoPrecioDia"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Precio Día:"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/etxtContratoPrecioDia"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background"
+                                android:hint="0€"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:focusable="false"/>
+                        </LinearLayout>
+
+                        <!-- Precio Final -->
+                        <LinearLayout
+                            android:id="@+id/layoutContratoPrecioFinal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp">
+
+                            <TextView
+                                android:id="@+id/txtContratoPrecioFinal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Precio Final:"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/etxtContratoPrecioFinal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@android:drawable/editbox_background"
+                                    android:hint="0€"
+                                    android:padding="8dp"
+                                    android:textSize="16sp"
+                                    android:focusable="false"/>
+
+                                <ImageView
+                                    android:id="@+id/imgContratoCalculadora"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginStart="8dp"
+                                    app:srcCompat="@drawable/calculadora"
+                                    android:contentDescription="Calculadora" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tarjeta de puntos -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContratoPuntos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintEnd_toEndOf="@id/cardContratoPrecios"
+                    app:layout_constraintStart_toStartOf="@id/cardContratoPrecios"
+                    app:layout_constraintTop_toBottomOf="@id/cardContratoPrecios">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Puntos de Fidelidad"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"/>
+
+                        <!-- Puntos -->
+                        <LinearLayout
+                            android:id="@+id/layoutContratoPuntos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp">
+
+                            <TextView
+                                android:id="@+id/txtContratoPuntos"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Puntos:"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/etxtContratoPuntos"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/editbox_background"
+                                android:hint="0"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:focusable="true"
+                                android:inputType="number"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Botones -->
+                <LinearLayout
+                    android:id="@+id/layoutContratoBotones"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
                     android:gravity="center"
-                    android:text="Fecha Inicio:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    app:layout_constraintEnd_toEndOf="@id/cardContratoPuntos"
+                    app:layout_constraintStart_toStartOf="@id/cardContratoPuntos"
+                    app:layout_constraintTop_toBottomOf="@id/cardContratoPuntos"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
-                <Space
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/btnContratoCancelar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#F44336"
+                        android:text="Cancelar"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:padding="12dp" />
 
-                <EditText
-                    android:id="@+id/etxtContratoFechaInicio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="12-12-2000"
-                    android:textSize="18sp"
-                    android:focusable="false"/>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-            <!--Fecha final  -->
-            <LinearLayout
-                android:id="@+id/linearlayoutMos2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <Space
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtContratoFechaFinal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Fecha Final:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="53dp"
-                    android:layout_height="wrap_content" />
-
-                <EditText
-                    android:id="@+id/etxtContratoFechaFinal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="12-12-2000"
-                    android:textSize="18sp"
-                    android:focusable="false"/>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-            <!-- Seguro  -->
-            <LinearLayout
-                android:id="@+id/linearlayoutMos3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <Space
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtContratoSeguro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Seguro:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
-
-                <Spinner
-                    android:id="@+id/spinnerContratoSeguro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="12-12-2000"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-            <!-- Precio Dia  -->
-            <LinearLayout
-                android:id="@+id/linearlayoutMos4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <Space
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtContratoPrecio_Dia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Precio Dia:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content" />
-
-                <EditText
-                    android:id="@+id/etxtContratoPrecioDia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="0€"
-                    android:textSize="18sp"
-                    android:focusable="false"/>
-
-
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-            <!-- Precio Final  -->
-            <LinearLayout
-                android:id="@+id/linearlayoutMos5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <Space
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtContratoPrecioFinal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Precio Final:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content" />
-
-                <EditText
-                    android:id="@+id/etxtContratoPrecioFinal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="0€"
-                    android:textSize="18sp"
-                    android:focusable="false"/>
-
-                <ImageView
-                    android:id="@+id/imgCalculator"
-                    android:layout_width="57dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/calculadora" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <!-- Puntos  -->
-            <LinearLayout
-                android:id="@+id/linearlayo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <Space
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtPuntos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Puntos:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content" />
-
-                <EditText
-                    android:id="@+id/etxtPuntos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="0"
-                    android:textSize="18sp"
-                    android:focusable="true"/>
-
-            </LinearLayout>
-
-            <!-- Botones Aceptar, Cancelar  -->
-            <LinearLayout
-                android:id="@+id/linearlayoutMos6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <Space
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/btnContratoCancelar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Cancelar:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/btnContratar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contratar"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-
-        </LinearLayout>
+                    <Button
+                        android:id="@+id/btnContratoAceptar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="#4CAF50"
+                        android:text="Contratar"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
         <!-- Bottom Navigation Menu -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
+            android:id="@+id/navContratoInferior"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:itemIconSize="37sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu" />
-
+            app:menu="@menu/bottom_nav_menu"
+            android:windowSoftInputMode="adjustPan"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <!-- Menu lateral -->
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
+        android:id="@+id/navContratoLateral"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.Carnets.MostrarCarnets
+import es.ua.eps.carkier.Filtro.FilterActivity
 import es.ua.eps.carkier.Modelos.Comentario
 import es.ua.eps.carkier.Modelos.EstadoVehiculo
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -118,6 +120,8 @@ class MostrarVehiculo : AppCompatActivity() {
                 }
 
                 R.id.filtrarBusqueda -> {
+                    startActivity(Intent(this, FilterActivity::class.java))
+
                     true
                 }
 
@@ -153,6 +157,21 @@ class MostrarVehiculo : AppCompatActivity() {
                     } else {
                         setTheme(true)  // Cambiar a modo oscuro
                     }
+                    true
+                }
+
+                R.id.contactoTelefono -> {
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:637 65 02 50")
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.contactoCorreo -> {
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:carkier@email.com")
+                    }
+                    startActivity(Intent.createChooser(intent, "Enviar correo con..."))
                     true
                 }
                 // Otros ítems pueden ser manejados aquí

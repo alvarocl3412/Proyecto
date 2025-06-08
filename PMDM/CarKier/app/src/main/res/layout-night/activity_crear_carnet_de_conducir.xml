@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".CrearCuenta.CrearCarnetDeConducir">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,138 +23,169 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="0.2"
+            android:shadowColor="@color/rojado_logo"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:letterSpacing="0.2"
-        android:shadowColor="@color/rojado_logo"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="5"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="203dp"
-        android:layout_height="164dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162"
-        app:srcCompat="@drawable/carnet_oscuro" />
-
-    <TableLayout
-        android:id="@+id/tabla"
-        android:layout_width="400dp"
-        android:layout_height="181dp"
-        android:layout_marginRight="8dp"
-        android:stretchColumns="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687">
-
-        <!-- Fila 1 -->
-        <TableRow>
-
-            <TextView
-                android:id="@+id/txtTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/crearcarnet_tipo"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.174"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                app:layout_constraintVertical_bias="0.295" />
-
-            <Spinner
-                android:id="@+id/spnTipo"
-                android:layout_width="107dp"
-                android:layout_height="27dp"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                app:layout_constraintVertical_bias="0.292" />
-        </TableRow>
-
-        <Space
-            android:id="@+id/space"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            app:layout_constraintEnd_toStartOf="@id/txtFechaExpedicion"
-            app:layout_constraintStart_toEndOf="@id/txtTipo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.5" />
-
-        <!-- Fila 2 -->
-        <TableRow>
-
-            <TextView
-                android:id="@+id/txtFechaExpedicion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/crearcarnet_fechaexpedicion"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.059"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.34" />
-
-            <EditText
-                android:id="@+id/calendarFechaExpedicion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:focusable="false"
-                android:hint="@string/crearcarnet_fechaexpedicion"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.483"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-        </TableRow>
-    </TableLayout>
-
-    <Button
-        android:id="@+id/btnCrearCarnet"
-        android:layout_width="wrap_content"
+    <!-- Tarjeta para la imagen del carnet -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImagenCarnet"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/crearcarnet_crearcarnet"
-        android:textSize="18sp"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintWidth_percent="0.7">
 
+        <ImageView
+            android:id="@+id/imgModificarCarnet"
+            android:layout_width="203dp"
+            android:layout_height="164dp"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.524"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.162"
+            app:srcCompat="@drawable/carnet_oscuro" />
+    </androidx.cardview.widget.CardView>
 
+    <!-- Tarjeta para los datos del carnet -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDatosCarnet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardImagenCarnet">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datos del Carnet"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Tipo de carnet -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="8dp">
+
+                <TextView
+                    android:id="@+id/txtTipo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/crearcarnet_tipo"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+
+                <Spinner
+                    android:id="@+id/spnTipo"
+                    android:layout_width="107dp"
+                    android:layout_height="27dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:layout_constraintVertical_bias="0.292" />
+            </LinearLayout>
+
+            <!-- Fecha de expedición -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="8dp">
+
+                <TextView
+                    android:id="@+id/txtFechaExpedicion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/crearcarnet_fechaexpedicion"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/calendarFechaExpedicion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/crearcarnet_fechaexpedicion"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botón de crear carnet -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBotonCrear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardDatosCarnet"
+        app:layout_constraintWidth_percent="0.7">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCrearCarnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crearcarnet_crearcarnet"
+            android:textSize="18sp"
+            android:backgroundTint="@color/colorPrimary"
+            android:padding="12dp"
+            app:cornerRadius="8dp"
+            app:elevation="4dp" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

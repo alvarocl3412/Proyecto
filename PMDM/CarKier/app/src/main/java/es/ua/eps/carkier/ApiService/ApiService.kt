@@ -38,6 +38,9 @@ interface ApiService {
     @GET("estado/1")
     fun mostrarVehiculos():Call<List<Vehiculos>>
 
+    @GET("VehiculosMarca/{marca}")
+    fun filterVehculo(@Path("marca") marca: String):Call<List<Vehiculos>>
+
     @PUT("updateVehiculo")
     fun updateVehiculo(@Body vehiculos: Vehiculos):Call<String>
 

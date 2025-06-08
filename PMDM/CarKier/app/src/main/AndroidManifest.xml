@@ -16,44 +16,60 @@
         android:theme="@style/Theme.CarKier"
         tools:targetApi="31">
         <activity
+            android:name=".Filtro.FilterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".Contratos.VerContratos"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".CrearCuenta.ModificarCarnets"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".ContratarVehiculo"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".MostrarVehiculo"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Carnets.MostrarCarnets"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Principal"
             android:exported="false"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.CarKier" />
+            android:theme="@style/Theme.CarKier"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".CrearCuenta.OlvideContrasenia"
             android:exported="false"
-            android:theme="@style/Theme.CarKier" />
+            android:theme="@style/Theme.CarKier"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".CrearCuenta.CrearCarnetDeConducir"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".CrearCuenta.CrearCuenta2"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".CrearCuenta.CrearCuenta"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".InicioSesion"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,13 +6,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import es.ua.eps.carkier.R
 import es.ua.eps.carkier.databinding.ActivityCrearCuentaBinding
 import java.util.Calendar
 
 class CrearCuenta : AppCompatActivity() {
         private lateinit var binding:ActivityCrearCuentaBinding
         private lateinit var sharedPreferences: SharedPreferences
-        private lateinit var editTextDate: EditText
+        private lateinit var editTextDate: TextInputEditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +22,7 @@ class CrearCuenta : AppCompatActivity() {
             binding = ActivityCrearCuentaBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
-        editTextDate = binding.etxtFechaNac
+        editTextDate = binding.etxtFechaNac as TextInputEditText
 
         // Establecer un listener para mostrar el DatePicker
         editTextDate.setOnClickListener {
@@ -53,12 +55,18 @@ class CrearCuenta : AppCompatActivity() {
     }
 
     fun recogerDatos() {
+
+        val dni = (findViewById<TextInputEditText>(R.id.etxtDni)).text?.toString()
+        val nombre = (findViewById<TextInputEditText>(R.id.etxtNombre)).text?.toString()
+        val apellidos = (findViewById<TextInputEditText>(R.id.etxtApellidos)).text?.toString()
+
         // Inicializa SharedPreferences para guardar datos persistentes
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString("dni", binding.etxtDni.text.toString())
-        editor.putString("nombre", binding.etxtNombre.text.toString())
-        editor.putString("apellidos", binding.etxtApellidos.text.toString()) // Asegúrate de que esto sea correcto
+     //   editor.putString("dni", binding.etxtDni.text.toString())
+        editor.putString("dni", dni)
+        editor.putString("nombre", nombre)
+        editor.putString("apellidos", apellidos) // Asegúrate de que esto sea correcto
         editor.putString("fechaNacimiento", editTextDate.text.toString())
         editor.apply()
     }

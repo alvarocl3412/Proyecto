@@ -14,10 +14,13 @@ package es.ua.eps.carkier.CrearCuenta
     import android.view.View
     import android.widget.AdapterView
     import android.widget.ArrayAdapter
+    import android.widget.TextView
     import android.widget.Toast
     import es.ua.eps.carkier.Carnets.MostrarCarnets
     import es.ua.eps.carkier.Modelos.CarnetConducir
+    import es.ua.eps.carkier.Modelos.DatosUsuarios
     import es.ua.eps.carkier.Modelos.TipoCarnet
+    import es.ua.eps.carkier.R
     import es.ua.eps.carkier.Retrofit.RetrofitClient
     import retrofit2.Call
     import retrofit2.Callback
@@ -40,7 +43,8 @@ package es.ua.eps.carkier.CrearCuenta
 
             // Recuperar nombre y correo del SharedPreferences
             sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
-            val id: Long = sharedPreferences.getLong("id", 0)
+
+            val idUsuario:Long = sharedPreferences.getLong("id", 0)
 
             // Cargar el Spinner y configurar el Listener
             CargarSpinner()
@@ -62,7 +66,7 @@ package es.ua.eps.carkier.CrearCuenta
 
             binding.btnCrearCarnet.setOnClickListener {
                 if (idTipoCarnetSeleccionado != null && editTextDate.text.isNotEmpty()) {
-                    CrearCarnet(id)
+                    CrearCarnet(idUsuario)
                     startActivity(Intent(this, MostrarCarnets::class.java))
                 } else {
                     Toast.makeText(this, "Selecciona un tipo de carnet y una fecha válida", Toast.LENGTH_SHORT).show()
@@ -113,10 +117,10 @@ package es.ua.eps.carkier.CrearCuenta
             editTextDate.setText(sdf.format(calendar.time))
         }
 
-        fun CrearCarnet(id2: Long) {
+        fun CrearCarnet(idUsuario: Long) {
             val carnet = CarnetConducir(
                 id = null,
-                idusuario = id2,
+                idusuario = idUsuario,
                 idTipocarnet = idTipoCarnetSeleccionado ?: return,
                 fechaExpedicion = editTextDate.text.toString()
             )
@@ -132,7 +136,6 @@ package es.ua.eps.carkier.CrearCuenta
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(this@CrearCarnetDeConducir, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                     Log.e("CrearCarnetError", "Error: ${t.message}", t)
                 }
             })

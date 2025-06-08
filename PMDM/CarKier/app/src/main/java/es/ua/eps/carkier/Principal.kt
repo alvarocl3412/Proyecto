@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Base64
 import java.io.ByteArrayOutputStream
 import android.os.Bundle
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import es.ua.eps.carkier.Carnets.MostrarCarnets
 import es.ua.eps.carkier.Contratos.VerContratos
+import es.ua.eps.carkier.Filtro.FilterActivity
 import es.ua.eps.carkier.Modelos.DatosUsuarios
 import es.ua.eps.carkier.Modelos.Usuarios
 import es.ua.eps.carkier.Modelos.Vehiculos
@@ -80,7 +82,7 @@ class Principal : AppCompatActivity() {
                 }
 
                 R.id.filtrarBusqueda -> {
-                    modificarVehiculo()
+                    startActivity(Intent(this, FilterActivity::class.java))
                     true
                 }
 
@@ -122,6 +124,20 @@ class Principal : AppCompatActivity() {
                     } else {
                         setTheme(true)  // Cambiar a modo oscuro
                     }
+                    true
+                }
+
+                R.id.contactoTelefono -> {
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:637 65 02 50")
+                    startActivity(intent)
+                    true
+                }
+                R.id.contactoCorreo -> {
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:carkier@email.com")
+                    }
+                    startActivity(Intent.createChooser(intent, "Enviar correo con..."))
                     true
                 }
                 // Otros ítems pueden ser manejados aquí
@@ -229,10 +245,7 @@ class Principal : AppCompatActivity() {
         startActivity(intent)
         finish() // Termina la actividad actual para que el usuario no pueda regresar a ella
     }
-
-    fun modificarVehiculo() {
-        Toast.makeText(this, "Funcion futirsta", Toast.LENGTH_SHORT).show()
-    }
+    
 
     fun cargarDatosUsuarios(idUsuario: Long, callback: (DatosUsuarios?) -> Unit) {
         // Asegúrate de que la llamada de Retrofit esté configurada correctamente

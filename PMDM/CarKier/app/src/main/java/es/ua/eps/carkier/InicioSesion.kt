@@ -1,9 +1,12 @@
 package es.ua.eps.carkier
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.LinearInterpolator
+import android.widget.ImageView
 import android.widget.Toast
 import es.ua.eps.carkier.CrearCuenta.CrearCuenta
 import es.ua.eps.carkier.CrearCuenta.OlvideContrasenia
@@ -26,6 +29,15 @@ class InicioSesion : AppCompatActivity() {
 
         // Inicializa SharedPreferences para guardar datos persistentes
         sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE)
+
+        val logo = findViewById<ImageView>(R.id.imgLogo)
+
+        val animator = ObjectAnimator.ofFloat(logo, "rotationY", 0f, 360f) // 360° * 10 vueltas
+        animator.duration = 3500 // 10 segundos
+        animator.interpolator = LinearInterpolator()
+        animator.repeatCount = 0
+        animator.start()
+
 
         // Verifica si el usuario ya está registrado y redirige si es necesario
         verificarUsuarioRegistrado()
@@ -57,9 +69,15 @@ class InicioSesion : AppCompatActivity() {
                 if (response.isSuccessful) {
                     // Si la respuesta es exitosa, obtener el usuario y guardar datos
                     val usuario = response.body()
-                    Toast.makeText(this@InicioSesion, "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
-
-                    guardarDatosUsuario(usuario)
+                    Toast.makeText(
+                        this@InicioSesion,
+                        "Bienvenido ${usuario?.nombre}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (binding.chbRecordarContrasenia.isChecked) {
+                        // Si el checkbox está marcado, guardar los datos del usuario
+                        guardarDatosUsuario(usuario)
+                    }
 
                     // Redirige a la actividad principal
                     val intent = Intent(this@InicioSesion, Principal::class.java)
@@ -69,13 +87,17 @@ class InicioSesion : AppCompatActivity() {
                     finish()
                 } else {
                     // Maneja la respuesta no exitosa
-                    Toast.makeText(this@InicioSesion, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@InicioSesion,
+                        "Error: ${response.message()}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
             override fun onFailure(call: Call<Usuarios>, t: Throwable) {
                 // Maneja errores de conexión
-                Toast.makeText(this@InicioSesion, "Fallo: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@InicioSesion, "Error con los datos de inicio sesion: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -39,10 +39,10 @@ class VehiculoAdapter(private val vehiculos: List<Vehiculos>) :
         // Asignar los valores a los campos correspondientes
         holder.txtMarca.text = "Marca: ${vehiculo.marca}"
         holder.txtModelo.text = "Modelo: ${vehiculo.modelo}"
-        holder.txtKm.text = "Kilómetros: ${vehiculo.km}"
+        holder.txtKm.text = "Kilometros \n \uD83D\uDE97: ${vehiculo.km} km"
         holder.txtPrecioVenta.text =
-            "Precio: ${vehiculo.precioventa?.toString() ?: "No se vende"}"
-        holder.txtPrecioDia.text = "Precio/Día: ${vehiculo.preciodia}"
+            "Precio/Venta \n  ${vehiculo.precioventa?.toString() ?: "No se vende"}"
+        holder.txtPrecioDia.text = "Precio/Día \n \uD83D\uDCB8 ${vehiculo.preciodia}"
 
         // Decodificar la imagen si está disponible
         if (!vehiculo.imagen.isNullOrEmpty()) {

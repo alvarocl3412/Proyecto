@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_gradient_background"
     tools:context=".CrearCuenta.CrearCuenta">
-
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -38,145 +38,132 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TableLayout
-        android:id="@+id/tabla"
-        android:layout_width="400dp"
-        android:layout_height="181dp"
-        android:layout_marginRight="8dp"
-        android:stretchColumns="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.601">
-        <!-- Fila 1 -->
-        <TableRow>
-
-            <TextView
-                android:id="@+id/txtDni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:padding="8dp"
-                android:text="@string/crearcuenta_dni"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etxtDni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:hint="82232323J"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <!-- Fila 2 -->
-        <TableRow>
-
-            <TextView
-                android:id="@+id/txtNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:padding="8dp"
-                android:text="@string/crearcuenta_nombre"
-                android:textSize="18sp" />
-
-
-            <EditText
-                android:id="@+id/etxtNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:hint="Halfonsa"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <!-- Fila 3 -->
-        <TableRow>
-
-            <TextView
-                android:id="@+id/txtApellidos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:padding="8dp"
-                android:text="@string/crearcuenta_apellido"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etxtApellidos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:hint="Martinez Diaz"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <!-- Fila 4 -->
-        <TableRow>
-
-            <TextView
-                android:id="@+id/txtFechaNac"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:padding="8dp"
-                android:text="@string/crearcuenta_fecha_nacimiento"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etxtFechaNac"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:hint="2000/12/08"
-                android:inputType="date"
-                android:focusable="false"
-                android:padding="8dp"
-                android:textSize="18sp" />
-
-        </TableRow>
-
-    </TableLayout>
-
-    <Button
-        android:id="@+id/btnSiguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/crearcuenta_seguiente"
-        android:textSize="18sp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabla" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="188dp"
-        android:layout_height="174dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/login_gradient_background"
+        android:elevation="4dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewCrearCuenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/perfil" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewCrearCuenta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.15"
-        app:srcCompat="@drawable/perfil" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="24dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dniInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/crearcuenta_dni"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etxtDni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nombreInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/crearcuenta_nombre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dniInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etxtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/apellidosInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/crearcuenta_apellido"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombreInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etxtApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fechaNacInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/crearcuenta_fecha_nacimiento"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/apellidosInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etxtFechaNac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSiguiente"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/crearcuenta_seguiente"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:elevation="4dp"
+                app:cornerRadius="8dp"
+                app:rippleColor="@color/colorPrimaryDark"
+                app:strokeColor="@color/colorPrimaryDark"
+                app:strokeWidth="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fechaNacInputLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
