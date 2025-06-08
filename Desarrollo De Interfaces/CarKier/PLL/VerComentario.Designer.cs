@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerComentario));
             this.lblIdUsuario = new System.Windows.Forms.Label();
             this.lblIdVehiculo = new System.Windows.Forms.Label();
             this.lblComentario = new System.Windows.Forms.Label();
@@ -184,6 +185,7 @@
             this.Controls.Add(this.lblIdVehiculo);
             this.Controls.Add(this.lblIdUsuario);
             this.Controls.Add(this.pcImgComentario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerComentario";
             this.Text = "VerComentario";
             ((System.ComponentModel.ISupportInitialize)(this.pcImgComentario)).EndInit();
