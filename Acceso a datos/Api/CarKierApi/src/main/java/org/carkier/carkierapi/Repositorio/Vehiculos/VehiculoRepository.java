@@ -11,4 +11,5 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo,Integer> {
     Optional<Vehiculo> findByMatricula(String matricula);
     List<Vehiculo> findByIdEstado(Long idEstado);
 
+    List<Vehiculo> findByMarca(String marca);
 }

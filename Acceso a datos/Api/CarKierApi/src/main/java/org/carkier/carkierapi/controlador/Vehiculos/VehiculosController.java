@@ -46,6 +46,13 @@ public class VehiculosController {
         }
     }
 
+    @GetMapping("/VehiculosMarca/{marca}")
+    public ResponseEntity<List<Vehiculo>> getVehiculoByMarca(@PathVariable String marca) {
+        List<Vehiculo> vehiculo = servicio.findByMarca(marca);
+        return ResponseEntity.ok(vehiculo);
+
+    }
+
     @GetMapping("/estado/1")
     public ResponseEntity<List<Vehiculo>> obtenerVehiculosConEstado1() {
         List<Vehiculo> vehiculos = servicio .obtenerVehiculosPorEstado(1L);
@@ -72,5 +79,15 @@ public class VehiculosController {
     public ResponseEntity<Void> deleteVehiculo(@PathVariable  Integer id) {
         servicio.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/busquedaCoche")
+    public ResponseEntity<List<Vehiculo>> busquedaCoche(@RequestBody Vehiculo filtro) {
+        List<Vehiculo> vehiculosEncontrados = servicio.busquedaCoche(filtro);
+        if (vehiculosEncontrados.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(vehiculosEncontrados);
+        }
     }
 }

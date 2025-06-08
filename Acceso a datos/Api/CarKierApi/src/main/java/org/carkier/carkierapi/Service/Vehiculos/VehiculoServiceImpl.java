@@ -8,10 +8,13 @@ import org.carkier.carkierapi.modelos.Empresa.Empresa;
 import org.carkier.carkierapi.modelos.Usuarios.Usuario;
 import org.carkier.carkierapi.modelos.Vehiculos.Vehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class VehiculoServiceImpl implements VehiculoService {
@@ -40,6 +43,10 @@ public class VehiculoServiceImpl implements VehiculoService {
         return repositorio.findByMatricula(matricula);
     }
 
+    @Override
+    public List<Vehiculo> findByMarca(String marca) {
+        return repositorio.findByMarca(marca);
+    }
 
     @Override
     public Optional<Vehiculo> updateVehiuclo(Vehiculo vehiculo) {
@@ -66,6 +73,8 @@ public class VehiculoServiceImpl implements VehiculoService {
             return Optional.empty();
         }
     }
+
+
 
     @Override
     public Vehiculo save(Vehiculo vehiculo) {
@@ -96,5 +105,75 @@ public class VehiculoServiceImpl implements VehiculoService {
     @Override
     public List<Vehiculo> obtenerVehiculosPorEstado(Long idEstado) {
         return repositorio.findByIdEstado(idEstado);
+    }
+
+    @Override
+    public List<Vehiculo> busquedaCoche(Vehiculo filtro) {
+        List<Vehiculo> todosVehiculos = repositorio.findAll();
+
+        return todosVehiculos.stream()
+            .filter(vehiculo -> {
+                // Filtrar por id si no es nulo
+                if (filtro.getId() != null && !filtro.getId().equals(vehiculo.getId())) {
+                    return false;
+                }
+
+                // Filtrar por idEmpresa si no es nulo
+                if (filtro.getIdEmpresa() != null && !filtro.getIdEmpresa().equals(vehiculo.getIdEmpresa())) {
+                    return false;
+                }
+
+                // Filtrar por idUsuariosPropietario si no es nulo
+                if (filtro.getIdUsuariosPropietario() != null && !filtro.getIdUsuariosPropietario().equals(vehiculo.getIdUsuariosPropietario())) {
+                    return false;
+                }
+
+                // Filtrar por idEstado si no es nulo
+                if (filtro.getIdEstado() != null && !filtro.getIdEstado().equals(vehiculo.getIdEstado())) {
+                    return false;
+                }
+
+                // Filtrar por matricula si no es nula
+                if (filtro.getMatricula() != null && !filtro.getMatricula().isEmpty() && 
+                    !vehiculo.getMatricula().toLowerCase().contains(filtro.getMatricula().toLowerCase())) {
+                    return false;
+                }
+
+                // Filtrar por marca si no es nula
+                if (filtro.getMarca() != null && !filtro.getMarca().isEmpty() && 
+                    !vehiculo.getMarca().toLowerCase().contains(filtro.getMarca().toLowerCase())) {
+                    return false;
+                }
+
+                // Filtrar por modelo si no es nulo
+                if (filtro.getModelo() != null && !filtro.getModelo().isEmpty() && 
+                    !vehiculo.getModelo().toLowerCase().contains(filtro.getModelo().toLowerCase())) {
+                    return false;
+                }
+
+                // Filtrar por año si no es nulo
+                if (filtro.getAnio() != null && !filtro.getAnio().equals(vehiculo.getAnio())) {
+                    return false;
+                }
+
+                // Filtrar por km si no es nulo
+                if (filtro.getKm() != null && !filtro.getKm().equals(vehiculo.getKm())) {
+                    return false;
+                }
+
+                // Filtrar por precioventa si no es nulo
+                if (filtro.getPrecioventa() != null && !filtro.getPrecioventa().equals(vehiculo.getPrecioventa())) {
+                    return false;
+                }
+
+                // Filtrar por preciodia si no es nulo
+                if (filtro.getPreciodia() != null && !filtro.getPreciodia().equals(vehiculo.getPreciodia())) {
+                    return false;
+                }
+
+                // Si pasa todos los filtros, incluir en el resultado
+                return true;
+            })
+            .collect(Collectors.toList());
     }
 }
