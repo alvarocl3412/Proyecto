@@ -26,7 +26,7 @@ namespace CarKier.PLL
             _ventanaPrincipal = ventanaPrincipal;
         }
 
-        public VerEmpresa(empresas empr,Empresas ventanaPrincipal)
+        public VerEmpresa(empresas empr, Empresas ventanaPrincipal)
         {
             InitializeComponent();
             _empresa = empr;
@@ -99,7 +99,13 @@ namespace CarKier.PLL
 
         public async void modificarDatos()
         {
-            recogerDatos();
+            _empresa.nombre = txtNombre.Text;
+            _empresa.direccion = txtDescripcion.Text;
+            _empresa.telefono = txtTelefono.Text;
+            _empresa.ofreceCoches = int.Parse(txtOfreceCoches.Text);
+            _empresa.correoElectronico = txtCorreo.Text;
+            _empresa.descripcion = txtDescripcion.Text;
+
             bool modificado = await emprDal.UpdateEmpresa(_empresa);
             if (modificado)
             {
@@ -115,12 +121,23 @@ namespace CarKier.PLL
 
         public async void crear()
         {
-            recogerDatos();
+            _empresa.nombre = txtNombre.Text;
+            _empresa.direccion = txtDireccion.Text;
+            _empresa.telefono = txtTelefono.Text;
+            if (txtOfreceCoches.Text.Length > 0)
+            {
+                _empresa.ofreceCoches = int.Parse(txtOfreceCoches.Text);
+
+            }
+
+            _empresa.correoElectronico = txtCorreo.Text;
+            _empresa.descripcion = txtDescripcion.Text;
+
             bool creado = await emprDal.CrearUsuario(_empresa);
             if (creado)
             {
                 MessageBox.Show("Se ha modificado correctamente");
-               await _ventanaPrincipal.CargarTabla();
+                await _ventanaPrincipal.CargarTabla();
 
             }
             else

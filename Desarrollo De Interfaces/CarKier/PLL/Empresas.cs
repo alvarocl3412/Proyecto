@@ -16,6 +16,7 @@ namespace CarKier.PLL
     public partial class Empresas : Form
     {
         private static EmpresasDal emprDal = new EmpresasDal();
+        private string txtFiltro = "Introduce el nombre";
 
         public Empresas()
         {
@@ -28,6 +29,7 @@ namespace CarKier.PLL
             CargarTabla();
             tsmiVer.Enabled = false;
             tsmiEliminar.Enabled = false;
+            txtFiltrar.TextChanged += txtFiltrar_TextChanged;
         }
 
         private void lvEmpresas_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,7 +79,7 @@ namespace CarKier.PLL
         private void txtFiltrar_Enter(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
-            if (txt.Text == "Introduce el telefono para filtrar")
+            if (txt.Text == "Introduce el nombre")
             {
                 txt.Text = "";
                 txt.ForeColor = Color.Black;
@@ -89,7 +91,7 @@ namespace CarKier.PLL
             TextBox txt = sender as TextBox;
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
-                txt.Text = "Introduce el telefono para filtrar";
+                txt.Text = "Introduce el nombre";
                 txt.ForeColor = Color.Gray;
             }
 
@@ -131,7 +133,7 @@ namespace CarKier.PLL
 
             if (empresa != null)
             {
-                PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa(empresa,this);
+                PLL.VerEmpresa infoEmpresa = new PLL.VerEmpresa(empresa, this);
                 infoEmpresa.Show();
 
             }
@@ -142,8 +144,39 @@ namespace CarKier.PLL
 
         }
 
+
         #endregion
 
+        private async void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txtFiltrar.Text.Trim();
+
+            if (string.IsNullOrEmpty(texto) || texto == txtFiltro || txtFiltrar.ForeColor == Color.Gray)
+            {
+                CargarTabla();
+                return;
+            }
+
+            empresas resultados = await emprDal.findEmpresasPorNombre(texto);
+
+            lvEmpresas.Items.Clear();
+
+            if (resultados != null)
+            {
+                ListViewItem item = new ListViewItem(resultados.nombre);
+                item.SubItems.Add(resultados.descripcion);
+                item.SubItems.Add(resultados.direccion);
+                item.SubItems.Add(resultados.telefono);
+                item.SubItems.Add(resultados.correoElectronico);
+                item.SubItems.Add(resultados.ofreceCoches.ToString());
+                item.Tag = resultados.id.ToString();
+                lvEmpresas.Items.Add(item);
+            }
+            else
+            {
+                CargarTabla();
+            }
+        }
 
     }
 }

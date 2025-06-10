@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,8 +66,8 @@ namespace CarKier.PLL
                     string dni = txtIdCliente.Text;
                     string matricula = txtIdVehiculo.Text;
 
-                    _contrato.fechaFin = txtFechaFinal.Text;
-                    _contrato.fechaInicio = txtFechaInicio.Text;
+                    _contrato.fechaInicio = NormalizarFecha(txtFechaInicio.Text);
+                    _contrato.fechaFin = NormalizarFecha(txtFechaFinal.Text);
                     CrearContrato(dni, matricula);
                     //Cerramos la ventana
                     this.Close();
@@ -117,7 +118,29 @@ namespace CarKier.PLL
             }
         }
 
+        private string NormalizarFecha(string fechaTexto)
+        {
+            // Intentamos primero si ya está en formato correcto
+            if (DateTime.TryParseExact(fechaTexto, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaCorrecta))
+            {
+                return fechaCorrecta.ToString("yyyy-MM-dd");
+            }
 
+            // Intentamos formato común europeo
+            if (DateTime.TryParseExact(fechaTexto, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaEuropea))
+            {
+                return fechaEuropea.ToString("yyyy-MM-dd");
+            }
+
+            // Si no coincide con ninguno, intentar análisis más flexible
+            if (DateTime.TryParse(fechaTexto, out DateTime fechaGeneral))
+            {
+                return fechaGeneral.ToString("yyyy-MM-dd");
+            }
+
+            // Si no es válida, puedes lanzar error o devolver string vacío
+            throw new FormatException("Formato de fecha inválido: " + fechaTexto);
+        }
 
         #endregion
 
@@ -264,8 +287,8 @@ namespace CarKier.PLL
                 _contrato.pagado = true;
             }
 
-            _contrato.fechaInicio = txtFechaInicio.Text; 
-            _contrato.fechaFin = txtFechaFinal.Text;
+            _contrato.fechaInicio = NormalizarFecha(txtFechaInicio.Text);
+            _contrato.fechaFin = NormalizarFecha(txtFechaFinal.Text);
 
             bool modificado = await contratoDal.UpdateContrato(_contrato);
             if (modificado)

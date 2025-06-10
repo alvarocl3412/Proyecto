@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\",
+  "WorkspaceRootPath": "C:\\Users\\Alvaro\\Desktop\\Solucionar\\Nueva carpeta (2)\\Proyecto\\Desarrollo De Interfaces\\CarKier\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|c:\\users\\alvaro\\desktop\\mv\\proyecto\\desarrollo de interfaces\\carkier\\dal\\carnetsdeconducirdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|solutionrelative:dal\\carnetsdeconducirdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|c:\\users\\alvaro\\desktop\\solucionar\\nueva carpeta (2)\\proyecto\\desarrollo de interfaces\\carkier\\pll\\vercontrato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|solutionrelative:pll\\vercontrato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|solutionrelative:iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|solutionrelative:iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|c:\\users\\alvaro\\desktop\\solucionar\\nueva carpeta (2)\\proyecto\\desarrollo de interfaces\\carkier\\pll\\vercontrato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{30368C12-33BD-4DE8-B9F8-4187399E89A3}|CarKier.csproj|solutionrelative:pll\\vercontrato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -95,38 +91,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CarnetsDeConducirDal.cs",
-              "DocumentMoniker": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\DAL\\CarnetsDeConducirDal.cs",
-              "RelativeDocumentMoniker": "DAL\\CarnetsDeConducirDal.cs",
-              "ToolTip": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\DAL\\CarnetsDeConducirDal.cs",
-              "RelativeToolTip": "DAL\\CarnetsDeConducirDal.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Title": "VerContrato.cs",
+              "DocumentMoniker": "C:\\Users\\Alvaro\\Desktop\\Solucionar\\Nueva carpeta (2)\\Proyecto\\Desarrollo De Interfaces\\CarKier\\PLL\\VerContrato.cs",
+              "RelativeDocumentMoniker": "PLL\\VerContrato.cs",
+              "ToolTip": "C:\\Users\\Alvaro\\Desktop\\Solucionar\\Nueva carpeta (2)\\Proyecto\\Desarrollo De Interfaces\\CarKier\\PLL\\VerContrato.cs",
+              "RelativeToolTip": "PLL\\VerContrato.cs",
+              "ViewState": "AgIAABcBAAAAAAAAAAAgwCIBAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T18:20:35.564Z",
+              "WhenOpened": "2025-06-10T20:32:08.826Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InicioSesion.cs",
-              "DocumentMoniker": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\InicioSesion.cs",
-              "RelativeDocumentMoniker": "InicioSesion.cs",
-              "ToolTip": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\InicioSesion.cs",
-              "RelativeToolTip": "InicioSesion.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Title": "VerContrato.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Alvaro\\Desktop\\Solucionar\\Nueva carpeta (2)\\Proyecto\\Desarrollo De Interfaces\\CarKier\\PLL\\VerContrato.cs",
+              "RelativeDocumentMoniker": "PLL\\VerContrato.cs",
+              "ToolTip": "C:\\Users\\Alvaro\\Desktop\\Solucionar\\Nueva carpeta (2)\\Proyecto\\Desarrollo De Interfaces\\CarKier\\PLL\\VerContrato.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PLL\\VerContrato.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T13:18:03.23Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InicioSesion.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\InicioSesion.cs",
-              "RelativeDocumentMoniker": "InicioSesion.cs",
-              "ToolTip": "C:\\Users\\Alvaro\\Desktop\\mv\\Proyecto\\Desarrollo De Interfaces\\CarKier\\InicioSesion.cs [Dise\u00F1o]",
-              "RelativeToolTip": "InicioSesion.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T13:18:01.601Z"
+              "WhenOpened": "2025-06-10T20:32:07.212Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

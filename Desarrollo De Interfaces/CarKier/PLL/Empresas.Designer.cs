@@ -44,7 +44,6 @@
             this.tsmiVer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFiltrar = new System.Windows.Forms.Button();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
             this.pbImgEmpresa = new System.Windows.Forms.PictureBox();
             this.xmsMenuTablaEmpresa.SuspendLayout();
@@ -65,10 +64,11 @@
             this.lvEmpresas.FullRowSelect = true;
             this.lvEmpresas.GridLines = true;
             this.lvEmpresas.HideSelection = false;
-            this.lvEmpresas.Location = new System.Drawing.Point(12, 132);
+            this.lvEmpresas.Location = new System.Drawing.Point(16, 162);
+            this.lvEmpresas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvEmpresas.MultiSelect = false;
             this.lvEmpresas.Name = "lvEmpresas";
-            this.lvEmpresas.Size = new System.Drawing.Size(768, 306);
+            this.lvEmpresas.Size = new System.Drawing.Size(1023, 376);
             this.lvEmpresas.TabIndex = 3;
             this.lvEmpresas.UseCompatibleStateImageBehavior = false;
             this.lvEmpresas.View = System.Windows.Forms.View.Details;
@@ -113,6 +113,7 @@
             // 
             // xmsMenuTablaEmpresa
             // 
+            this.xmsMenuTablaEmpresa.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.xmsMenuTablaEmpresa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.tsmiNuevo,
@@ -121,86 +122,79 @@
             this.toolStripSeparator3,
             this.tsmiEliminar});
             this.xmsMenuTablaEmpresa.Name = "xmsMenuTablaEmpresa";
-            this.xmsMenuTablaEmpresa.Size = new System.Drawing.Size(118, 88);
+            this.xmsMenuTablaEmpresa.Size = new System.Drawing.Size(137, 100);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
             // 
             // tsmiNuevo
             // 
             this.tsmiNuevo.Image = global::CarKier.Properties.Resources.action_add_16xMD;
             this.tsmiNuevo.Name = "tsmiNuevo";
-            this.tsmiNuevo.Size = new System.Drawing.Size(117, 22);
+            this.tsmiNuevo.Size = new System.Drawing.Size(136, 26);
             this.tsmiNuevo.Text = "Nuevo";
             this.tsmiNuevo.Click += new System.EventHandler(this.tsmiNuevo_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
             // 
             // tsmiVer
             // 
             this.tsmiVer.Image = global::CarKier.Properties.Resources.ojo1;
             this.tsmiVer.Name = "tsmiVer";
-            this.tsmiVer.Size = new System.Drawing.Size(117, 22);
+            this.tsmiVer.Size = new System.Drawing.Size(136, 26);
             this.tsmiVer.Text = "Ver";
             this.tsmiVer.Click += new System.EventHandler(this.tsmiVer_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(114, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(133, 6);
             // 
             // tsmiEliminar
             // 
             this.tsmiEliminar.Image = global::CarKier.Properties.Resources.action_Cancel_16xMD;
             this.tsmiEliminar.Name = "tsmiEliminar";
-            this.tsmiEliminar.Size = new System.Drawing.Size(117, 22);
+            this.tsmiEliminar.Size = new System.Drawing.Size(136, 26);
             this.tsmiEliminar.Text = "Eliminar";
             this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
             // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Location = new System.Drawing.Point(483, 44);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(86, 38);
-            this.btnFiltrar.TabIndex = 5;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            // 
             // txtFiltrar
             // 
-            this.txtFiltrar.Location = new System.Drawing.Point(264, 55);
+            this.txtFiltrar.Location = new System.Drawing.Point(352, 68);
+            this.txtFiltrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(184, 20);
+            this.txtFiltrar.Size = new System.Drawing.Size(244, 22);
             this.txtFiltrar.TabIndex = 6;
+            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
             this.txtFiltrar.Enter += new System.EventHandler(this.txtFiltrar_Enter);
             this.txtFiltrar.Leave += new System.EventHandler(this.txtFiltrar_Leave);
             // 
             // pbImgEmpresa
             // 
             this.pbImgEmpresa.Image = global::CarKier.Properties.Resources.empresa;
-            this.pbImgEmpresa.Location = new System.Drawing.Point(12, 12);
+            this.pbImgEmpresa.Location = new System.Drawing.Point(16, 15);
+            this.pbImgEmpresa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbImgEmpresa.Name = "pbImgEmpresa";
-            this.pbImgEmpresa.Size = new System.Drawing.Size(164, 114);
+            this.pbImgEmpresa.Size = new System.Drawing.Size(219, 140);
             this.pbImgEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImgEmpresa.TabIndex = 8;
             this.pbImgEmpresa.TabStop = false;
             // 
             // Empresas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.pbImgEmpresa);
             this.Controls.Add(this.txtFiltrar);
-            this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.lvEmpresas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Empresas";
             this.Text = "Empresas";
             this.Load += new System.EventHandler(this.Empresas_Load);
@@ -220,7 +214,6 @@
         private System.Windows.Forms.ColumnHeader chTelefono;
         private System.Windows.Forms.ColumnHeader chCorreo;
         private System.Windows.Forms.ColumnHeader chOfreceCoches;
-        private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.TextBox txtFiltrar;
         private System.Windows.Forms.ContextMenuStrip xmsMenuTablaEmpresa;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

@@ -69,7 +69,6 @@ namespace CarKier.DAL
             }
         }
 
-
         public async Task<string> findSegurosid(int? id)
         {
             // Verificar si el id es null
@@ -122,7 +121,6 @@ namespace CarKier.DAL
             }
         }
 
-
         public async Task<bool> UpdateSeguro(tipos_seguros seguro)
         {
             string cadena = apiUrl + "modificarSeguro";
@@ -145,7 +143,6 @@ namespace CarKier.DAL
                 return false;
             }
         }
-
 
         public async Task<bool> deleteSegurosid(int? id)
         {

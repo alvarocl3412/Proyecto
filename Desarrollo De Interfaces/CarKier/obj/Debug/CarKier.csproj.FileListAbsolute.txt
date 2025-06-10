@@ -54,3 +54,31 @@ C:\Users\Alvaro\Desktop\mv\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\C
 C:\Users\Alvaro\Desktop\mv\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.Up2Date
 C:\Users\Alvaro\Desktop\mv\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.exe
 C:\Users\Alvaro\Desktop\mv\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.pdb
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.AssemblyReference.cache
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.InicioSesion.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.CarnetVerModificar.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Comentarios.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Contratos.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.DatosDelUsuario.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Empresas.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Seguros.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Usuarios.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.Vehiculos.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerComentario.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerContrato.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerEmpresa.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerSeguro.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerUsuario.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.PLL.VerVehiculo.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.Principal.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.Properties.Resources.resources
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.GenerateResource.cache
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.CoreCompileInputs.cache
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.exe
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.pdb
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.exe.config
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.exe
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\CarKier.pdb
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alvaro\Desktop\Solucionar\Nueva carpeta (2)\Proyecto\Desarrollo De Interfaces\CarKier\obj\Debug\CarKier.csproj.Up2Date
