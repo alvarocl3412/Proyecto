@@ -97,25 +97,30 @@ class ContratarVehiculo : AppCompatActivity() {
             }
         }
 
-        binding.spinnerContratoSeguro.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    idSeguro = listaTiposSeguros[position].id?.toLong()
-                    val precio = ObtenerSeguro(id + 1, precioVehiculo)
-                    binding.etxtContratoPrecioDia.setText(precio.toString())
+       binding.spinnerContratoSeguro.onItemSelectedListener =
+    object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(
+            parent: AdapterView<*>?,
+            view: View?,
+            position: Int,
+            id: Long
+        ) {
+            // Usamos position para obtener el seguro seleccionado directamente de la lista
+            val seguroSeleccionado = listaTiposSeguros[position]
+            idSeguro = seguroSeleccionado.id?.toLong()
+            
+            // Obtenemos el precio del vehículo del Intent
+            val precioVehiculo = intent.getDoubleExtra("preciovehiculo", 0.0)
+            
+            // Calculamos el precio del día sumando el coste del seguro y el precio del vehículo
+            val precioDia = seguroSeleccionado.coste + precioVehiculo
+            binding.etxtContratoPrecioDia.setText(precioDia.toString())
+        }
 
-                    // cargarPreciovehiculo(precioVehiculo,precio)
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    idSeguro = null
-                }
-            }
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+            idSeguro = null
+        }
+    }
 
         calendar = Calendar.getInstance(Locale("es", "ES")) // Establecer el idioma a español
 
